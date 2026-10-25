@@ -86,7 +86,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 ### RAYE
 
-- **Welcome to the Winter (EP, 2014):** Albumcover, Quelle: https://raye.fandom.com/wiki/Welcome_to_the_Winter_(EP)
+- **Welcome to the Winter (EP, 2014):** Offizielles Albumcover, Quelle: https://raye.fandom.com/wiki/Welcome_to_the_Winter_(EP)
 
 - **My 21st Century Blues (Album, 2023):** Offizielles Albumcover, Quelle: https://www.deezer.com/album/393727427
 
@@ -98,8 +98,13 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **Blame Game (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/3n7Vjwe7Jm5PiEdYYpgrih
 
-- **Middle Child (Album, 2026): Cover-Artwork, Quelle: https://open.spotify.com/album/40UETJYLuyi0ys3kWhFuXM
+- **Middle Child (Album, 2026):** Cover-Artwork, Quelle: https://open.spotify.com/album/40UETJYLuyi0ys3kWhFuXM
 
+### Absolutely
+
+- **CEREBRUM (Album, 2023):** Offizielles Albumcover, Quelle: https://open.spotify.com/intl-de/album/3NY3LrCmVkMoUKrAc9wSPQ
+
+- **Paracosm (Album, 2026):** Offizielles Albumcover, Quelle: https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25
 
 ## KI-Nutzung
 
