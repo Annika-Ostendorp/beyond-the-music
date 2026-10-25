@@ -2,7 +2,7 @@
 
 **BEYOND THE MUSIC** 🎵
 
-*Three sisters. Three journeys. Their music and the stories behind it.*
+_Three sisters. Three journeys. Their music and the stories behind it._
 
 ## Thema
 
@@ -31,23 +31,23 @@ Die Webseite richtet sich an Musikinteressierte, Fans von RAYE, AMMA und Absolut
 
 ### Kategorien
 
-Die Sammlung ist in drei Hauptkategorien unterteilt: **RAYE, Amma und Absolutely**. Jede Musikveröffentlichung wird der jeweiligen Künstlerin zugeordnet. 
+Die Sammlung ist in drei Hauptkategorien unterteilt: **RAYE, Amma und Absolutely**. Jede Musikveröffentlichung wird der jeweiligen Künstlerin zugeordnet.
 
 Auf der Übersichtsseite werden die Veröffentlichungen in eigenen Bereichen pro Künstlerin dargestellt. Mithilfe des Kategorien-Filters können Nutzer entweder alle Veröffentlichungen oder nur die einer bestimmten Künstlerin sich anzeigen lassen.
 
-Die Veröffentlichungsart *(sei es Single, EP, Studioalbum oder Live-Album)* ist dabei keine eigene Hauptkategorie, sondern eine zusätzliche Eigenschaft des jeweiligen Sammlungseintrags, die dabei steht.
+Die Veröffentlichungsart _(sei es Single, EP, Studioalbum oder Live-Album)_ ist dabei keine eigene Hauptkategorie, sondern eine zusätzliche Eigenschaft des jeweiligen Sammlungseintrags, die dabei steht.
 
 ### Fakten pro Sammlungseintrag
 
 Jeder Eintrag steht für eine bestimmte musikalische Veröffentlichung und enthält folgende Informationen:
 
-| Fakt | Beschreibung |
-|---|---|
-| Titel | Name des Songs, der EP oder des Albums |
-| Künstlerin | RAYE, Amma oder Absolutely |
-| Veröffentlichungsdatum | Jahr bzw. genaues Erscheinungsdatum |
-| Veröffentlichungsart | Single, Song, EP, Studioalbum oder Live-Album |
-| Umfang | Anzahl der Tracks bei EPs und Alben bzw. Spieldauer bei einzelnen Songs |
+| Fakt                   | Beschreibung                                                            |
+| ---------------------- | ----------------------------------------------------------------------- |
+| Titel                  | Name des Songs, der EP oder des Albums                                  |
+| Künstlerin             | RAYE, Amma oder Absolutely                                              |
+| Veröffentlichungsdatum | Jahr bzw. genaues Erscheinungsdatum                                     |
+| Veröffentlichungsart   | Single, Song, EP, Studioalbum oder Live-Album                           |
+| Umfang                 | Anzahl der Tracks bei EPs und Alben bzw. Spieldauer bei einzelnen Songs |
 
 Auf den Detailseiten wird der Titel als große Überschrift dargestellt. Die weiteren Fakten erscheinen dann darunter in kleinen, ovalen Infofeldern, die mit der HTML-Definitionsliste (dl) umgesetzt werden.
 
@@ -57,7 +57,7 @@ Ergänzend zu diesen Fakten enthalten die Detailseiten dann noch die Hintergrund
 
 ### Langfristige Projektvision
 
-Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in einer Zeitleiste pro Artist, eine Detailseite für einen bestimmten Song mit Interpretation oder auch Infos zum Soundprofil des Songs *(welche Instrumente etc.)* sowie eine persönliche **My Collection**-Seite. Dort können Nutzer dann ihre Lieblingswerke *(sei es Song, Album oder Karriere-Kapitel)* speichern und eigene Gedanken oder Erinnerungen dazu festhalten.
+Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in einer Zeitleiste pro Artist, eine Detailseite für einen bestimmten Song mit Interpretation oder auch Infos zum Soundprofil des Songs _(welche Instrumente etc.)_ sowie eine persönliche **My Collection**-Seite. Dort können Nutzer dann ihre Lieblingswerke _(sei es Song, Album oder Karriere-Kapitel)_ speichern und eigene Gedanken oder Erinnerungen dazu festhalten.
 
 ### Repository
 
@@ -65,13 +65,14 @@ Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in ein
 
 ## Seitenstruktur
 
-*Wird im Verlauf der Umsetzung ergänzt.*
+_Wird im Verlauf der Umsetzung ergänzt._
 
 ## Bildquellen
 
-*Wird ergänzt, sobald die Bilder für die Website feststehen.*
+_Wird ergänzt, sobald die Bilder für die Website feststehen._
 
 ## KI-Nutzung
+
 - **ChatGPT:** Brainstorming und Weiterentwicklung meiner ursprünglichen Projektidee zu einer Entdeckungsseite für RAYE, AMMA und Absolutely mit deren Karrieren und Musik.
 
 - **ChatGPT:** Feedback zu meinen selbst skizzierten Wireframes, insbesondere zur semantischen HTML-Struktur und zu den Layoutentscheidungen (Flexbox vs. Grid).
@@ -80,4 +81,4 @@ Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in ein
 
 - **Claude und v0:** Erstellung visueller, interaktiver Prototypen als Designinspiration für die langfristige Projektvision.
 
-- **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website
+- **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website & Footer-Inhalt (Unterscheidung zwischen Header-/Footer-Navigation mit aria-label)
