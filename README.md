@@ -92,6 +92,15 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **THIS MUSIC MAY CONTAIN HOPE. (Album, 2026):** Offizielles Albumcover, Quelle: https://open.spotify.com/album/3ZN01xzenGMhWHdC5kfAe9
 
+### AMMA
+
+- **Middle Child (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/5KfhyZmRRUfQuiJB1aZVlV
+
+- **Blame Game (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/3n7Vjwe7Jm5PiEdYYpgrih
+
+- **Middle Child (Album, 2026): Cover-Artwork, Quelle: https://open.spotify.com/album/40UETJYLuyi0ys3kWhFuXM
+
+
 ## KI-Nutzung
 
 - **ChatGPT:** Brainstorming und Weiterentwicklung meiner ursprünglichen Projektidee zu einer Entdeckungsseite für RAYE, AMMA und Absolutely mit deren Karrieren und Musik.
