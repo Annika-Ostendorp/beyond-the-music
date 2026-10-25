@@ -69,7 +69,20 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 ## Bildquellen
 
-_Wird ergänzt, sobald die Bilder für die Website feststehen._
+### Künstlerinnenporträts
+
+- **RAYE:** Journal.hr, „Poslušali smo: This Music May Contain Hope, Raye“ (31.03.2026). Bildcredit: Profimedia.
+  Quelle: https://www.journal.hr/kultura/glazba/this-music-may-contain-hope-raye-poslusali-smo/
+
+- **AMMA:** WithGuitars, „Amma Unveils Bold and Versatile Debut Project Middle Child“ (22.08.2025).
+  Foto: Nat Raxel.
+  Quelle: https://www.withguitars.com/amma-unveils-bold-and-versatile-debut-project-middle-child/
+
+- **Absolutely:** The Independent, „The next big star in UK pop? Absolutely“ (11.01.2026).
+  Bildcredit: Press; Fotograf nicht angegeben.
+  Quelle: https://www.independent.co.uk/arts-entertainment/music/features/absolutely-singer-raye-sister-tour-b2897570.html
+
+### Record-Cover
 
 ## KI-Nutzung
 
