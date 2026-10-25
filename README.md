@@ -84,6 +84,14 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 ### Record-Cover
 
+### RAYE
+
+- **Welcome to the Winter (EP, 2014):** Albumcover, Quelle: https://raye.fandom.com/wiki/Welcome_to_the_Winter_(EP)
+
+- **My 21st Century Blues (Album, 2023):** Offizielles Albumcover, Quelle: https://www.deezer.com/album/393727427
+
+- **THIS MUSIC MAY CONTAIN HOPE. (Album, 2026):** Offizielles Albumcover, Quelle: https://open.spotify.com/album/3ZN01xzenGMhWHdC5kfAe9
+
 ## KI-Nutzung
 
 - **ChatGPT:** Brainstorming und Weiterentwicklung meiner ursprünglichen Projektidee zu einer Entdeckungsseite für RAYE, AMMA und Absolutely mit deren Karrieren und Musik.
@@ -95,3 +103,5 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **Claude und v0:** Erstellung visueller, interaktiver Prototypen als Designinspiration für die langfristige Projektvision.
 
 - **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website & Footer-Inhalt (Unterscheidung zwischen Header-/Footer-Navigation mit aria-label)
+
+- **ChatGPT:** Bildquellen richtig zitieren für README
