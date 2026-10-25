@@ -79,3 +79,5 @@ Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in ein
 - **ChatGPT:** Unterstützung bei der Erstellung und Formatierung einer Markdown-Tabelle für das README.
 
 - **Claude und v0:** Erstellung visueller, interaktiver Prototypen als Designinspiration für die langfristige Projektvision.
+
+- **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website
