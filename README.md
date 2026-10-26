@@ -150,4 +150,4 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website & Footer-Inhalt (Unterscheidung zwischen Header-/Footer-Navigation mit aria-label)
 
-- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags <dl>, <dt> und <dd>
+- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags "<dl>", "<dt>" und "<dd>"
