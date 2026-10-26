@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leave a Note | Beyond the Music</title>
+    <link rel="icon" href="images/favicon_BTM.png" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Beyond the Music</a></li>
+          <li><a href="raye.html">RAYE</a></li>
+          <li><a href="amma.html">Amma</a></li>
+          <li><a href="absolutely.html">Absolutely</a></li>
+          <li><a href="my-collection.html">My collection</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="contact-intro">
+        <p>Beyond the Music · Contact</p>
+        <h1>Leave a Note.</h1>
+
+        <p>
+          Spotted a missing detail, have a suggestion, or just want to say
+          hello? Every perspective adds something to the stories.
+        </p>
+      </section>
+
+      <section class="contact-form-section">
+        <h2>Write Your Note</h2>
+
+        <form method="post">
+          <div class="form-field">
+            <label for="contact-name">Your name</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              placeholder="What should we call you?"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email">Your email</label>
+
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-topic">What's on your mind?</label>
+            <select id="contact-topic" name="topic">
+              <option value="">Choose a topic</option>
+              <option value="correction">A missing or incorrect detail</option>
+              <option value="suggestion">A music or story suggestion</option>
+              <option value="feedback">Feedback on the website</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">Your note</label>
+            <!-- rows="6" -> gibt an, wie viele Textzeilen Eingabefeld standardmäßig hoch ist -->
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="6"
+              placeholder="Tell us what you'd like to share..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit">Send note (demo only)</button>
+        </form>
+
+        <p>
+          This form is part of a student project. Submitted messages are not
+          processed or stored.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Beyond the Music</strong></p>
+      <p>
+        An independent, non-commercial student concept. This is not an official
+        website of RAYE, Amma or Absolutely and is not affiliated with them,
+        their labels or management. Names, images and facts are drawn from
+        public sources. No audio is hosted here, and the contact messages are
+        not processed or stored.
+      </p>
+
+      <nav aria-label="Footer navigation">
+        <ul>
+          <li><a href="raye.html">RAYE</a></li>
+          <li><a href="amma.html">Amma</a></li>
+          <li><a href="absolutely.html">Absolutely</a></li>
+          <li><a href="my-collection.html">My Collection</a></li>
+          <li><a href="sources.html">Sources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>
