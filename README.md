@@ -152,4 +152,4 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags "<dl>", "<dt>" und "<dd>" verstehen
 
-- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote)
+- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit "<cite>" Titel akurater kennzeichnen statt nur mit "<i>".
