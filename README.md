@@ -87,7 +87,7 @@ Dadurch können Nutzer nicht nur die grundlegenden Informationen nachlesen, sond
 
 ### Langfristige Projektvision
 
-Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in einer chronologischen Zeitleiste pro Artist, eine Detailseite für einen bestimmten Song mit Interpretation oder auch Infos zum Soundprofil des Songs _(welche Instrumente etc.)_ sowie eine persönliche **My Collection**-Seite. 
+Geplant sind zusätzlich noch eine Seite für die Geschichte der Karriere in einer chronologischen Zeitleiste pro Artist, eine Detailseite für einen bestimmten Song mit Interpretation oder auch Infos zum Soundprofil des Songs _(welche Instrumente etc.)_ sowie eine persönliche **My Collection**-Seite.
 
 Dort können Nutzer dann ihre Lieblingswerke _(sei es Song, Album oder Karriere-Kapitel)_ speichern und eigene Gedanken oder Erinnerungen dazu festhalten.
 
@@ -150,4 +150,6 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website & Footer-Inhalt (Unterscheidung zwischen Header-/Footer-Navigation mit aria-label)
 
-- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags "<dl>", "<dt>" und "<dd>"
+- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags "<dl>", "<dt>" und "<dd>" verstehen
+
+- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote)
