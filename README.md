@@ -159,3 +159,5 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **ChatGPT:** Verstehen, wie ich eine Tracklist passend in HTML programmieren kann (mit geordneter Liste, Feature richtig schreiben und span-Tag für richtige Ausrichtung der Songdauer später mit CSS)
 
 - **ChatGPT:** Verstehen, wie ich die Quellen für die bereitgestellten Infos einer Seite in HTML passend darstellen kann zum Aufklappen (details, summary,...)
+
+- **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
