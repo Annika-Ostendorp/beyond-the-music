@@ -155,3 +155,5 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit "<cite>" Titel akurater kennzeichnen statt nur mit "<i>".
 
 - **ChatGPT:** Verstehen, wie ich eine Tracklist passend in HTML programmieren kann (mit geordneter Liste, Feature richtig schreiben und span-Tag für richtige Ausrichtung der Songdauer später mit CSS)
+
+- **ChatGPT:** Verstehen, wie ich die Quellen für die bereitgestellten Infos einer Seite in HTML passend darstellen kann zum Aufklappen (details, summary,...)
