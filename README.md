@@ -25,7 +25,7 @@ Jeder Eintrag beschreibt dabei eine Veröffentlichung mit den wichtigsten Inform
 
 ### Zielgruppe
 
-Die Webseite richtet sich an Musikinteressierte, Fans von RAYE, Amma und Absolutely sowie an diejenigen, die mehr über die Hintergründe und auch Interpretationen derer Veröffentlichungen erfahren möchten.
+Die Webseite richtet sich an Musikinteressierte, Fans von RAYE, Amma und Absolutely sowie an diejenigen, die mehr über die Hintergründe und auch Interpretationen ihrer Veröffentlichungen erfahren möchten.
 
 ### Kategorien
 
@@ -154,7 +154,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Hilfe bei der Erstellung der Infotexte auf den Album-Detailseiten.
 
-- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit **cite** Titel akurater kennzeichnen statt nur mit **i**.
+- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit **cite** Titel korrekter kennzeichnen statt nur mit **i**.
 
 - **ChatGPT:** Verstehen, wie ich eine Tracklist passend in HTML programmieren kann (mit geordneter Liste, Feature richtig schreiben und span-Tag für richtige Ausrichtung der Songdauer später mit CSS)
 
