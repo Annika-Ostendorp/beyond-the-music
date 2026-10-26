@@ -150,9 +150,11 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website & Footer-Inhalt (Unterscheidung zwischen Header-/Footer-Navigation mit aria-label)
 
-- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags "<dl>", "<dt>" und "<dd>" verstehen
+- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags **dl**, **dt** und **dd** verstehen
 
-- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit "<cite>" Titel akurater kennzeichnen statt nur mit "<i>".
+- **ChatGPT:** Hilfe bei der Erstellung der Infotexte auf den Album-Detailseiten.
+
+- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit **cite** Titel akurater kennzeichnen statt nur mit **i**.
 
 - **ChatGPT:** Verstehen, wie ich eine Tracklist passend in HTML programmieren kann (mit geordneter Liste, Feature richtig schreiben und span-Tag für richtige Ausrichtung der Songdauer später mit CSS)
 
