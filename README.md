@@ -162,4 +162,4 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
 
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen (margin: 0, :root, etc.)
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen (margin: 0, :root, flex-wrap, flex-basis, :focus-visible)

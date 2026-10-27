@@ -39,9 +39,30 @@
     width: 100%
 }
 
+.nav-list a {
+    color: var(--color-heading);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-list a:hover { /* Farbe, wenn man über Link hoovert */
+    color: var(--color-accent);
+}
+
+.nav-list a:focus-visible { /* macht den aktuell mit Tastatur ausgewählten Link sichtbar */
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
 .nav-brand {
     flex-basis: 100%; /* Website-Namen zunächst eigene Zeile */
     text-align: center;
+}
+
+.nav-brand a {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
 }
 
 body {
