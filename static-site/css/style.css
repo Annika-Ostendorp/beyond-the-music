@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,600;1,600&display=swap");
+
+:root {
+    --color-bg: #0b090d;
+    --color-surface: #1d171d;
+    --color-heading: #f3e8da;
+    --color-text: #d2c6c8;
+    --color-accent: #ddb66f;
+    --color-border: #40363d;
+
+    --font-heading: "Fraunces", Georgia, serif;
+    --font-body: "DM Sans", Arial, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-surface);
+    border: var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.site-nav {
+    display: flex;
+    flex: 1;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap; /* erzeugt Umbrüche, wenn Platz nicht reichen sollte */
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1rem; /* Abstand zwischen Navigationselementen */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%
+}
+
+.nav-brand {
+    flex-basis: 100%; /* Website-Namen zunächst eigene Zeile */
+    text-align: center;
+}
+
+body {
+    /* margin: 0 --> entfernt voreingestellten äußeren Seitenabstand von Browser */
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    line-height: 1.1;
+}
+
+/* damit three sisters im Hero separat ansprechen und Farbe ändern */
+.home-hero em {
+    color: var(--color-accent);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto; /* Seitenverhältnisse bleiben erhalten */
+}

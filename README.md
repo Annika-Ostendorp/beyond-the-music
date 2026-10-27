@@ -161,3 +161,5 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **ChatGPT:** Verstehen, wie ich die Quellen für die bereitgestellten Infos einer Seite in HTML passend darstellen kann zum Aufklappen (details, summary,...)
 
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
+
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen (margin: 0, :root, etc.)
