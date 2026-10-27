@@ -175,3 +175,8 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
   **Hero-Section:**
   - clamp(..rem, ..vw,..rem)
+
+  **Artists-Section:**
+  - aria-labelledby
+  - transition
+  - object-fit & object-position
