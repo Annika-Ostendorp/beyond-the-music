@@ -15,56 +15,115 @@
 .site-header {
     display: flex;
     align-items: center;
-    margin: 1rem;
+    gap: 0.75rem;
+    width: calc(100% - 2rem); /* 100% gesamte verfügbare Breite - 2rem (32px bei Standardschriftgröße 16px) --> vefügbare Breite minus 32 px --> mehr Platz zum Bildschirmrand*/
+    max-width: 70rem;
+    box-sizing: border-box;
+    margin: 1rem auto;
     padding: 0.75rem 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: 999px;
+    position: relative;
 }
 
+.site-brand {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-heading);
+    text-decoration: none; /* so kein unterstrichener Text */
+    white-space: nowrap; /* bricht Text nicht automatisch um mehrere Zeilen um --> Logo soll auf einer Zeile bleiben */
+}
+.site-brand em {
+    color: var(--color-accent);
+}
 .site-nav {
-    display: flex;
-    flex: 1;
+    display: none;
 }
 
-.nav-list {
+.header-actions {
     display: flex;
-    flex-wrap: wrap; /* erzeugt Umbrüche, wenn Platz nicht reichen sollte */
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Collection Button - Mobile First */
+.nav-collection {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem 1rem; /* Abstand zwischen Navigationselementen */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+    gap: 0.5rem;
+
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border-radius: 999px;
+    text-decoration: none;
 }
 
-.nav-list a {
+.collection-label {
+    display: none;
+}
+
+/* Mobile Dropdown Menü */
+.mobile-menu summary {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--color-heading);
+    font-size: 1.7rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker { /* damit standardmäßig spezifisches Dreieck vor summary weg kommt*/
+    display: none;
+}
+
+.mobile-menu nav {
+    position: absolute; /* damit Menü unter Navigation erscheint, aber nicht gesamte Seite damit nach untern verschiebt */
+    top: calc(100% + 0,5rem); /* Menü beginnt unterhalb Hamburger-Symbol */
+    right: 0;
+    z-index: 10; /* damit Dropdown-Menü über Seitenhintergrund steht --> höhere Stapelpriorität */
+
+    display: grid;
+    gap: 1rem;
+
+    min-width: 180px;
+    padding: 1rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+.mobile-menu nav a {
     color: var(--color-heading);
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
 }
 
-.nav-list a:hover { /* Farbe, wenn man über Link hoovert */
+/* Navigation Interaktion */
+.nav-list a:hover, /* mit Komma getrennt, damit diesselbe CSS-Regel auf beide Selektoren angewendet wird --> sowohl in Mobile als auch Desktop Version */
+.mobile-menu nav a:hover {
     color: var(--color-accent);
 }
 
-.nav-list a:focus-visible { /* macht den aktuell mit Tastatur ausgewählten Link sichtbar */
+.site-header a:focus-visible,
+.mobile-menu summary:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
 }
 
-.nav-brand {
-    flex-basis: 100%; /* Website-Namen zunächst eigene Zeile */
-    text-align: center;
-}
 
-.nav-brand a {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-}
-
+/* Body-Styling */
 body {
     /* margin: 0 --> entfernt voreingestellten äußeren Seitenabstand von Browser */
     margin: 0;
@@ -94,22 +153,45 @@ img {
     height: auto; /* Seitenverhältnisse bleiben erhalten */
 }
 
-/* Mobile first */
+/* Desktop Navigation */
 @media (min-width: 768px) {
-    .site-header {
-        max-width: 70rem;
-        margin: 1.25rem auto;
-        border-radius: 999px;
+    .site-brand {
+        flex: 1;
+    }
+
+    .site-nav {
+        display: flex;
     }
 
     .nav-list {
-        justify-content: space-between;
-        flex-wrap: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         gap: 1.25rem;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .nav-brand {
-        flex-basis: auto; /* hebt volle Zeilenbreite für Websitenamen auf --> kann neben anderen Nav-Elementen stehen */
-        text-align: left;
+    .nav-list a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .header-actions {
+        flex: 1;
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+
+    .collection-label {
+        display: inline;
+    }
+
+    .mobile-menu {
+        display: none;
     }
 }

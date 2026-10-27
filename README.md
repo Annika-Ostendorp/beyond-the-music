@@ -162,4 +162,12 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
 
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen (margin: 0, :root, flex-wrap, flex-basis, :focus-visible, flex-basis, wie Lesezeichen-Symbol einfügen für My Collection Button im Header --> index.html class="header-action")
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen (Header für index.html)
+  - margin: 0
+  - :root
+  - flex-wrap, flex-basis, :focus-visible,
+  - wie Lesezeichen-Symbol einfügen für My Collection Button im Header --> index.html class="header-action"
+  - width oder top: calc(100%-2rem)
+  - text-decoration & white-space: nowrap
+  - .mobile-menu summary::-webkit-details-marker
+  - z-index, .nav-list a:hover, .mobile-menu nav a:hover {color: var(--color-accent);}
