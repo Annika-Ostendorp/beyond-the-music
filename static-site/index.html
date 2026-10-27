@@ -9,17 +9,46 @@
   </head>
   <body class="page-home">
     <header class="site-header">
+      <a class="site-brand" href="index.html"> Beyond <em>the</em> Music </a>
+
       <nav class="site-nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li class="nav-brand">
-            <a href="index.html">Beyond the Music</a>
-          </li>
           <li><a href="raye.html">RAYE</a></li>
           <li><a href="amma.html">Amma</a></li>
           <li><a href="absolutely.html">Absolutely</a></li>
-          <li><a href="my-collection.html">My collection</a></li>
         </ul>
       </nav>
+
+      <div class="header-actions">
+        <a
+          class="nav-collection"
+          href="my-collection.html"
+          aria-label="My Collection"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M6 4h12v17l-6-4-6 4z" />
+          </svg>
+
+          <span class="collection-label">My Collection</span>
+        </a>
+
+        <details class="mobile-menu">
+          <summary aria-label="Navigation">☰</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="raye.html">RAYE</a>
+            <a href="amma.html">Amma</a>
+            <a href="absolutely.html">Absolutely</a>
+          </nav>
+        </details>
+      </div>
     </header>
 
     <main>
