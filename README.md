@@ -162,7 +162,8 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
 
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen (Header für index.html)
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen
+  **Header:**
   - margin: 0
   - :root
   - flex-wrap, flex-basis, :focus-visible,
@@ -171,3 +172,6 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - text-decoration & white-space: nowrap
   - .mobile-menu summary::-webkit-details-marker
   - z-index, .nav-list a:hover, .mobile-menu nav a:hover {color: var(--color-accent);}
+
+  **Hero-Section:**
+  - clamp(..rem, ..vw,..rem)

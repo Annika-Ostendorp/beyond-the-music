@@ -12,6 +12,7 @@
     --font-body: "DM Sans", Arial, sans-serif;
 }
 
+/* Header - mobile first */
 .site-header {
     display: flex;
     align-items: center;
@@ -80,7 +81,7 @@
 
     color: var(--color-heading);
     font-size: 1.7rem;
-    cursor: pointer;
+    cursor: pointer; /* über Links hoovern */
     list-style: none;
 }
 
@@ -123,6 +124,35 @@
 }
 
 
+/* Homepage Hero - Mobile First */
+.home-hero {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 3rem 1rem 4rem;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 5rem); /* Minimum, flexibler Wert, Maximum --> damit Schriftgröße flexibel anpassen zwischen Desktop & Mobile-Version*/
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0,03em;
+    margin: 0;
+}
+
+/* damit three sisters im Hero separat ansprechen und Farbe ändern */
+.home-hero h1 em {
+    display: block; /* damit beginnt three sisters dann in neuer Zeile */
+    color: var(--color-accent);
+}
+
+.hero-description {
+    max-width: 42rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
 /* Body-Styling */
 body {
     /* margin: 0 --> entfernt voreingestellten äußeren Seitenabstand von Browser */
@@ -142,11 +172,6 @@ h4 {
     line-height: 1.1;
 }
 
-/* damit three sisters im Hero separat ansprechen und Farbe ändern */
-.home-hero em {
-    color: var(--color-accent);
-}
-
 img {
     display: block;
     max-width: 100%;
@@ -155,6 +180,7 @@ img {
 
 /* Desktop Navigation */
 @media (min-width: 768px) {
+    /* Header */
     .site-brand {
         flex: 1;
     }
@@ -193,5 +219,15 @@ img {
 
     .mobile-menu {
         display: none;
+    }
+
+    /* Hero-Sektion */
+    .home-hero {
+        padding-top: 6rem;
+        padding-bottom: 7rem;
+    }
+
+    .hero-description {
+        font-size: 1.125rem;
     }
 }
