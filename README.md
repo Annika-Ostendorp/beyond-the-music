@@ -163,6 +163,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
 
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen
+  
   **Header:**
   - margin: 0
   - :root
@@ -180,3 +181,6 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - aria-labelledby
   - transition
   - object-fit & object-position
+
+  **How-to-Explore-Section:**
+  

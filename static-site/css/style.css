@@ -38,7 +38,7 @@ img {
 }
 
 
-/* Header - mobile first */
+/* Header - Mobile First */
 .site-header {
     display: flex;
     align-items: center;
@@ -231,6 +231,53 @@ img {
 }
 
 
+/* How to Explore-Section Mobile First*/
+.artists-section,
+.explore-section {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+.step-card {
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.step-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.step-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.step-card p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+
 /* Desktop Navigation */
 @media (min-width: 768px) {
     /* Header */
@@ -274,7 +321,7 @@ img {
         display: none;
     }
 
-    /* Hero-Sektion */
+    /* Hero-Section */
     .home-hero {
         padding-top: 6rem;
         padding-bottom: 7rem;
@@ -284,8 +331,13 @@ img {
         font-size: 1.125rem;
     }
 
-    /* Artists-Sektion */
+    /* Artists-Section */
     .artist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* How to Explore-Section*/
+    .steps-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
@@ -293,6 +345,10 @@ img {
 @media (min-width: 1100px) {
     .artist-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
