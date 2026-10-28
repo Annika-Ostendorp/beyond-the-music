@@ -164,43 +164,49 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Homepage
   
-  **Header:**
-  - margin: 0
-  - :root
-  - flex-wrap, flex-basis, :focus-visible,
-  - wie Lesezeichen-Symbol einfügen für My Collection Button im Header --> index.html class="header-action"
-  - width oder top: calc(100%-2rem)
-  - text-decoration & white-space: nowrap
-  - .mobile-menu summary::-webkit-details-marker
-  - z-index, .nav-list a:hover, .mobile-menu nav a:hover {color: var(--color-accent);}
+    **Header:**
+    - margin: 0
+    - :root
+    - flex-wrap, flex-basis, :focus-visible,
+    - wie Lesezeichen-Symbol einfügen für My Collection Button im Header --> index.html class="header-action"
+    - width oder top: calc(100%-2rem)
+    - text-decoration & white-space: nowrap
+    - .mobile-menu summary::-webkit-details-marker
+    - z-index, .nav-list a:hover, .mobile-menu nav a:hover {color: var(--color-accent);}
 
-  **Hero-Section:**
-  - clamp(..rem, ..vw,..rem)
+    **Hero-Section:**
+    - clamp(..rem, ..vw,..rem)
 
-  **Artists-Section:**
-  - aria-labelledby
-  - transition
-  - object-fit & object-position
+    **Artists-Section:**
+    - aria-labelledby
+    - transition
+    - object-fit & object-position
 
-  **Explore the Records-Section:**
-  - Verstehen & Programmierung von Code für 4 Filterbuttons (mit data-filter, aria-pressed) --> noch ohne Veränderung der Ansicht nach Klicken
-  - .filter-chip[aria-pressed="true"]
-  - flex-direction: column
-  - .record-group + .record-group
+    **Explore the Records-Section:**
+    - Verstehen & Programmierung von Code für 4 Filterbuttons (mit data-filter, aria-pressed) --> noch ohne Veränderung der Ansicht nach Klicken
+    - .filter-chip[aria-pressed="true"]
+    - flex-direction: column
+    - .record-group + .record-group
 
-  **Footer-Section:**
-  - flex-direction: row
-  - flex: 1
-  - flex-shrink
+    **Footer-Section:**
+    - flex-direction: row
+    - flex: 1
+    - flex-shrink
+
 
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen für RAYE Album Detailseite
 
-**Hero-Section:**
-- grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr)
-- class="text-link"
-- display: inline-flex
-- overflow-wrap: anywhere
-- mehrere Fakten-Pills nebeneinander anordnen (Musical Style & Collaborators) --> flex-direction: row
+  **Hero-Section:**
+  - grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr)
+  - class="text-link"
+  - display: inline-flex
+  - overflow-wrap: anywhere
+  - mehrere Fakten-Pills nebeneinander anordnen (Musical Style & Collaborators) --> flex-direction: row
 
-**Story-Section:**
-- .story-details > section
+  **Story-Section:**
+  - .story-details > section
+
+  **Tracklist-Section:**
+  - grid-column: 1 / -1
+  - font-variant-numeric: tabular-nums für Track-Duration 
+  - Tracklist-Nummerierung anpassen mit .season li::marker, counter-reset: track, counter-increment: track, content: counter(track, decimal-leading-zero)
