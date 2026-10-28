@@ -187,3 +187,8 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - .filter-chip[aria-pressed="true"]
   - flex-direction: column
   - .record-group + .record-group
+
+  **Footer-Section:**
+  - flex-direction: row
+  - flex: 1
+  - flex-shrink
