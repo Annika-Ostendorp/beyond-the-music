@@ -27,6 +27,20 @@
     --color-divider: rgb(235 213 201 / 26%);
 }
 
+/* Absolutely album detail page theme */
+.page-absolutely {
+    --color-bg: #000000;
+    --color-surface: #131013;
+    --color-heading: #f5f5f5;
+    --color-text: #d6d6d6;
+    --color-accent: #e82924;
+    --color-border: #41282b;
+
+    --color-detail-card: #211517;
+    --color-divider: rgb(214 214 214 / 25%);
+    --color-pill-border: rgb(245 245 245 / 35%);
+}
+
 
 /*--------------------------------*/
 /* HOMEPAGE DESIGN - Mobile First */
@@ -686,6 +700,11 @@ img {
     min-width: 0;
 }
 
+.story-details h3 {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 0.75rem;
+}
+
 .story-details > section { /* damit nur <section>-Elemente auswählen, die direkte Kinder von .story-details sind  --> gezielt Why It Matters & The Sound gestalten */
     min-width: 0;
     padding: 1.5rem;
@@ -1085,6 +1104,146 @@ img {
 }
 
 
+
+/*----------------------------------------------------*/
+/* Absolutely Album detail page Design - Mobile First */
+/*----------------------------------------------------*/
+
+/* Hero Section */
+.page-absolutely .nav-collection {
+    background-color: #bb2522;
+    color: #ffffff;
+}
+
+.page-absolutely .album-hero__media img {
+    border: 1px solid rgb(245 245 245 / 20%);
+    border-radius: 1.25rem;
+    box-sizing: border-box;
+}
+
+.page-absolutely .button--primary {
+    background-color: #bb2522;
+    border-color: #bb2522;
+    color: #ffffff;
+}
+
+.page-absolutely .button--secondary {
+    border-color: var(--color-heading);
+    color: var(--color-heading);
+}
+
+.page-absolutely .button--secondary:hover,
+.page-absolutely .button--secondary:focus-visible {
+    background-color: #bb2522;
+    border-color: #bb2522;
+    color: #ffffff;
+}
+
+/* Story-Section */
+.page-absolutely .story-text {
+    border-color: #383035;
+}
+
+.page-absolutely .story-details > section {
+    background-color: var(--color-detail-card);
+    border-color: rgb(187 37 34 / 55%);
+}
+
+.page-absolutely .story-details h3 {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 0.75rem;
+}
+
+/* Tracklist-Section */
+.album-tracklist--single ol {
+    counter-reset: paracosm-track;
+    list-style: none;
+
+    margin: 0;
+    padding: 1rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.album-tracklist--single li {
+    counter-increment: paracosm-track;
+
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr) auto 1.25rem;
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+
+    padding: 0.85rem 0.75rem;
+    border-radius: 0;
+}
+
+.album-tracklist--single li + li {
+    border-top: 1px solid rgb(245 245 245 / 14%);
+}
+
+.album-tracklist--single li::before {
+    content: counter(paracosm-track, decimal-leading-zero);
+    grid-column: 1;
+    grid-row: 1;
+
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.album-tracklist--single li > cite {
+    grid-column: 2;
+    grid-row: 1;
+
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-style: normal;
+}
+
+.album-tracklist--single .track-duration {
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+
+    color: var(--color-text);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.album-tracklist--single li::after {
+    content: "↗";
+    grid-column: 4;
+    grid-row: 1;
+
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.album-tracklist--single li:hover,
+.album-tracklist--single li:focus-within {
+    background-color: rgb(187 37 34 / 18%);
+    border-radius: 0.65rem;
+}
+
+.album-tracklist--single li:hover::after,
+.album-tracklist--single li:focus-within::after {
+    opacity: 1;
+}
+
+.page-absolutely .artist-preview__link:hover,
+.page-absolutely .artist-preview__link:focus-visible {
+    background-color: var(--color-detail-card);
+    border-color: #bb2522;
+}
+
+
 /* Desktop Navigation */
 @media (min-width: 768px) {
     /*------------------*/
@@ -1200,6 +1359,13 @@ img {
 
     .timeline-neighbors > article:last-of-type {
         text-align: right;
+    }
+
+    /*-------------------------------------*/
+    /* Absolutely album detail page Design */
+    /*------------------------------------*/
+    .album-tracklist--single ol {
+        padding: 1.75rem 2rem;
     }
 }
 
