@@ -213,3 +213,6 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
   **Page Sources-Section:**
   - Wie bei aufklappbarer Liste Symbol von + zu - ändern --> mit [open]
+
+  **Timeline-Section:**
+  - Wie Richtungspfeile je Timeline Event gestalten --> mit article:first-of-type p::before bzw. article:last-of-type p::after

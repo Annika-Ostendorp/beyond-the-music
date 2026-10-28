@@ -1034,6 +1034,57 @@ img {
 }
 
 
+/* Timeline Navigation Section */
+.timeline-neighbors {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+
+    max-width: 70rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 2rem 1rem 5rem;
+}
+
+.timeline-neighbors > h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 0.5rem;
+}
+
+.timeline-neighbors > article {
+    min-width: 0;
+    padding: 1.5rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.timeline-neighbors article > p {
+    margin: 0 0 0.75rem;
+
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.timeline-neighbors article > h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.25;
+}
+
+.timeline-neighbors article:first-of-type p::before {
+    content: "← ";
+}
+
+.timeline-neighbors article:last-of-type p::after {
+    content: " →";
+}
+
+
 /* Desktop Navigation */
 @media (min-width: 768px) {
     /*------------------*/
@@ -1141,6 +1192,14 @@ img {
 
     .keep-going {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline-neighbors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline-neighbors > article:last-of-type {
+        text-align: right;
     }
 }
 
