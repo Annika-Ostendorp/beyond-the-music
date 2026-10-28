@@ -650,6 +650,78 @@ img {
 }
 
 
+/* Album Story Section */
+.album-story {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 5rem;
+}
+
+.story-text {
+    min-width: 0;
+    padding: 1.5rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.story-details {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    min-width: 0;
+}
+
+.story-details > section { /* damit nur <section>-Elemente auswählen, die direkte Kinder von .story-details sind  --> gezielt Why It Matters & The Sound gestalten */
+    min-width: 0;
+    padding: 1.5rem;
+
+    background-color: var(--color-detail-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.album-story h2,
+.album-story h3 {
+    margin: 0 0 1rem;
+}
+
+.story-text > p,
+.story-details > section > p {
+    margin: 0;
+    line-height: 1.75;
+}
+
+.story-text > p + p, /* wieder wie bei Records -> nur auf aufeinanderfolgende Absätze Abstand erzeugen */
+.story-details > section > p + p {
+    margin-top: 1rem;
+}
+
+.story-text blockquote {
+    margin: 2rem 0 0;
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 3px solid var(--color-accent);
+}
+
+.story-text blockquote p {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.story-text blockquote footer {
+    margin-top: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.8rem;
+}
+
 /* Desktop Navigation */
 @media (min-width: 768px) {
     /*------------------*/
@@ -768,4 +840,11 @@ img {
         grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); /* zweispaltiges Raster, das den Platz im flexiblen Verhältnis von 45% zu 55% aufteilt */
         align-items: center;
         gap: 3rem;
+    }
+
+    .album-story {
+        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+        align-items: start;
+        gap: 1.5rem;
+    }
 }

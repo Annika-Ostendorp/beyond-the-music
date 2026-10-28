@@ -202,3 +202,5 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - overflow-wrap: anywhere
 - mehrere Fakten-Pills nebeneinander anordnen (Musical Style & Collaborators) --> flex-direction: row
 
+**Story-Section:**
+- .story-details > section
