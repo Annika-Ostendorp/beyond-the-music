@@ -734,15 +734,12 @@ img {
 
 /* Tracklist-Section */
 .album-tracklist {
+    counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
     max-width: 70rem;
     box-sizing: border-box;
     margin: 0 auto;
     padding: 3rem 1rem 5rem;
     border-top: 1px solid var(--color-divider);
-}
-
-.album-tracklist {
-    counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
 }
 
 .album-tracklist > h2 {
@@ -797,14 +794,6 @@ img {
     font-size: 0.75rem;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
-}
-
-
-.season li::marker { /* mit marker nur gezielt Nummern von nummerierter Tracklist ansprechen */
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: rgb(255 240 221 / 75%)
 }
 
 
@@ -892,6 +881,79 @@ img {
 .season li:focus-within::after {
     opacity: 1;
 }
+
+
+/* Keep Going-Section */
+.keep-going {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 5rem;
+}
+
+.keep-going > h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 0.5rem;
+}
+
+
+.artist-preview__link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+
+    color: var(--color-heading);
+    text-decoration: none;
+}
+
+.artist-preview__link img {
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: cover; /* Kreis ausfüllen, ohne zu verzerren */
+    border-radius: 50%; /* damit Bilder rund */
+    flex-shrink: 0;
+    object-position: center 15%;
+}
+
+.artist-preview__copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.artist-preview__copy h3,
+.artist-preview__copy p {
+    margin: 0;
+}
+
+.artist-preview__copy p {
+    margin-top: 0.25rem;
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+.artist-preview__arrow {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.artist-preview__link:hover {
+    border-color: var(--color-accent);
+}
+
+.artist-preview__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
 
 /* Desktop Navigation */
 @media (min-width: 768px) {
@@ -996,6 +1058,10 @@ img {
 
     .season h3 {
         font-size: 2rem;
+    }
+
+    .keep-going {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
