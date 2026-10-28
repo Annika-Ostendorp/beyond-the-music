@@ -955,6 +955,85 @@ img {
 }
 
 
+/* Sources Section */
+.album-sources {
+    width: calc(100% - 2rem);
+    max-width: 68rem;
+    box-sizing: border-box;
+
+    margin: 0 auto 3rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+.album-sources summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 44px;
+    padding: 1rem 1.25rem;
+
+    color: var(--color-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+}
+
+.album-sources summary::-webkit-details-marker {
+    display: none;
+}
+
+.album-sources summary::after {
+    content: "+";
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.album-sources[open] summary::after {
+    content: "-";
+}
+
+.album-sources summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+.album-sources ul {
+    margin: 0;
+    padding: 1.25rem 1.5rem 1.5rem 2.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.album-sources li + li {
+    margin-top: 0.75rem;
+}
+
+.album-sources li::marker { /* damit für jeden Stichpunkt Akzentfarbe */
+    color: var(--color-accent);
+}
+
+
+.album-sources a {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+}
+
+.album-sources a:hover {
+    color: var(--color-accent);
+}
+
+.album-sources a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+
 /* Desktop Navigation */
 @media (min-width: 768px) {
     /*------------------*/

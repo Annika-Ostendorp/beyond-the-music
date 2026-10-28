@@ -173,7 +173,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - text-decoration & white-space: nowrap
   - .mobile-menu summary::-webkit-details-marker
   - z-index, .nav-list a:hover, .mobile-menu nav a:hover {color: var(--color-accent);}
-  
+
   **Hero-Section:**
   - clamp(..rem, ..vw,..rem)
 
@@ -210,3 +210,6 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - grid-column: 1 / -1
   - font-variant-numeric: tabular-nums für Track-Duration 
   - Tracklist-Nummerierung anpassen mit counter-reset: track, counter-increment: track, content: counter(track, decimal-leading-zero)
+
+  **Page Sources-Section:**
+  - Wie bei aufklappbarer Liste Symbol von + zu - ändern --> mit [open]
