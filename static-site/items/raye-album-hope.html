@@ -5,18 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>THIS MUSIC MAY CONTAIN HOPE. | Beyond The Music</title>
     <link rel="icon" href="../images/favicon_BTM.png" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="../index.html">Beyond the Music</a></li>
+  <body class="page-raye">
+    <header class="site-header">
+      <a class="site-brand" href="../index.html"> Beyond <em>the</em> Music </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
           <li><a href="../raye.html">RAYE</a></li>
           <li><a href="../amma.html">Amma</a></li>
           <li><a href="../absolutely.html">Absolutely</a></li>
-          <li><a href="../my-collection.html">My collection</a></li>
         </ul>
       </nav>
+
+      <div class="header-actions">
+        <a
+          class="nav-collection"
+          href="../my-collection.html"
+          aria-label="My Collection"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M6 4h12v17l-6-4-6 4z" />
+          </svg>
+
+          <span class="collection-label">My Collection</span>
+        </a>
+
+        <details class="mobile-menu">
+          <summary aria-label="Navigation">☰</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="../raye.html">RAYE</a>
+            <a href="../amma.html">Amma</a>
+            <a href="../absolutely.html">Absolutely</a>
+          </nav>
+        </details>
+      </div>
     </header>
 
     <main>
@@ -365,26 +397,33 @@
       </section>
     </main>
 
-    <footer>
-      <p><strong>Beyond the Music</strong></p>
-      <p>
-        An independent, non-commercial student concept. This is not an official
-        website of RAYE, Amma or Absolutely and is not affiliated with them,
-        their labels or management. Names, images and facts are drawn from
-        public sources. No audio is hosted here, and the contact messages are
-        not processed or stored.
-      </p>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <a class="site-brand footer-brand" href="../index.html">
+            Beyond <em>the</em> Music
+          </a>
 
-      <nav aria-label="Footer navigation">
-        <ul>
-          <li><a href="../raye.html">RAYE</a></li>
-          <li><a href="../amma.html">Amma</a></li>
-          <li><a href="../absolutely.html">Absolutely</a></li>
-          <li><a href="../my-collection.html">My Collection</a></li>
-          <li><a href="../sources.html">Sources</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          <p class="footer-disclaimer">
+            An independent, non-commercial student concept. This is not an
+            official website of RAYE, Amma or Absolutely and is not affiliated
+            with them, their labels or management. Names, images and facts are
+            drawn from public sources. No audio is hosted here, and the contact
+            messages are not processed or stored.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="../raye.html">RAYE</a></li>
+            <li><a href="../amma.html">Amma</a></li>
+            <li><a href="../absolutely.html">Absolutely</a></li>
+            <li><a href="../my-collection.html">My Collection</a></li>
+            <li><a href="../sources.html">Sources</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>
