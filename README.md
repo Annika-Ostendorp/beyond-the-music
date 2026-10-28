@@ -192,3 +192,13 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - flex-direction: row
   - flex: 1
   - flex-shrink
+
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen für RAYE Album Detailseite
+
+**Hero-Section:**
+- grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr)
+- class="text-link"
+- display: inline-flex
+- overflow-wrap: anywhere
+- mehrere Fakten-Pills nebeneinander anordnen (Musical Style & Collaborators) --> flex-direction: row
+

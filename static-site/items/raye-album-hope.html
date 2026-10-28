@@ -52,45 +52,77 @@
     </header>
 
     <main>
-      <a href="../raye.html">Back to RAYE's story</a>
+      <div class="album-back">
+        <a href="../raye.html" class="text-link">← Back to RAYE's story</a>
+      </div>
 
-      <section>
-        <img
-          src="../images/raye-hope.png"
-          alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
-          width="180"
-          height="180"
-        />
+      <section class="album-hero">
+        <div class="album-hero__media">
+          <img
+            src="../images/raye-hope.png"
+            alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
+            width="180"
+            height="180"
+          />
 
-        <a href="https://open.spotify.com/album/3ZN01xzenGMhWHdC5kfAe9"
-          >Listen on Spotify</a
-        >
+          <a
+            class="button button--secondary button--compact"
+            href="https://open.spotify.com/album/3ZN01xzenGMhWHdC5kfAe9"
+            >Listen on Spotify ↗</a
+          >
+        </div>
 
-        <h1>THIS MUSIC MAY CONTAIN HOPE.</h1>
-        <!-- umfasst gesamte Faktenliste -->
-        <dl>
-          <!-- bezeichnet jew. Fakt -->
-          <dt>Artist</dt>
-          <!-- enthält zugehörigen Wert -->
-          <dd>RAYE</dd>
+        <div class="album-hero__content">
+          <h1>THIS MUSIC MAY CONTAIN HOPE.</h1>
+          <!-- umfasst gesamte Faktenliste -->
+          <dl class="album-facts">
+            <div class="album-fact">
+              <!-- bezeichnet jew. Fakt -->
+              <dt>Artist</dt>
+              <!-- enthält zugehörigen Wert -->
+              <dd>RAYE</dd>
+            </div>
 
-          <dt>Release type</dt>
-          <dd>Studio album</dd>
+            <div class="album-fact">
+              <dt>Release type</dt>
+              <dd>Studio album</dd>
+            </div>
 
-          <dt>Release date</dt>
-          <dd>27 March 2026</dd>
+            <div class="album-fact">
+              <dt>Release date</dt>
+              <dd>27 March 2026</dd>
+            </div>
 
-          <dt>Scope</dt>
-          <dd>17 tracks</dd>
+            <div class="album-fact">
+              <dt>Scope</dt>
+              <dd>17 tracks</dd>
+            </div>
 
-          <dt>Musical style</dt>
-          <dd>Cinematic pop, retro soul, blues, big-band jazz, R&amp;B</dd>
+            <div class="album-fact album-fact--wide">
+              <dt>Musical style</dt>
+              <dd>Cinematic pop</dd>
+              <dd>Retro soul</dd>
+              <dd>Blues</dd>
+              <dd>Big-band jazz</dd>
+              <dd>R&amp;B</dd>
+            </div>
 
-          <dt>Collaborators</dt>
-          <dd>Hans Zimmer, Al Green, Grandad Michael, Amma, Absolutely</dd>
-        </dl>
+            <div class="album-fact album-fact--wide">
+              <dt>Collaborators</dt>
+              <dd>Hans Zimmer</dd>
+              <dd>Al Green</dd>
+              <dd>Grandad Michael</dd>
+              <dd>Amma</dd>
+              <dd>Absolutely</dd>
+            </div>
+          </dl>
 
-        <button type="button" disabled>Save this record</button>
+          <div class="save-action">
+            <button type="button" class="button button--primary" disabled>
+              Save this record
+            </button>
+          </div>
+        </div>
       </section>
 
       <section class="album-story">
