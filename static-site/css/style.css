@@ -206,6 +206,7 @@ img {
 .artist-card h3, /* damit kein unnötiger Abstand mehr zwischen Titel und einzelnen Beschreibungen d. Sängerinnen besteht */
 .artist-card p {
     margin: 0;
+    align-self: center;
 }
 
 .artist-card__image {
@@ -228,12 +229,16 @@ img {
 .artist-card .button {
     align-self: center;
     margin-top: auto; /* damit Button in Flexbox nach unten geschoben wird */
+    margin-top: 0.6rem;
+    padding: 0.25rem 0.75rem;
+    
 }
 
 
 /* How to Explore-Section Mobile First*/
 .artists-section,
-.explore-section {
+.explore-section,
+.records-section {
     max-width: 70rem;
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
@@ -277,6 +282,127 @@ img {
     line-height: 1.6;
 }
 
+
+/* Explore the Records Section - Mobile First */
+/* Kategorienfilter */
+.record-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.filter-chip {
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+
+    background-color: transparent;
+    color: var(--color-heading);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter-chip:hover,
+.filter-chip[aria-pressed="true"] { /* Button wird farbig, wenn mit Maus drüber ODER wenn als aktiv gekennzeichnet */
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.filter-chip:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* Records-Grid */
+.record-group {
+    max-width: 60rem; /* damit Albumcover nicht wieder zu groß werden */
+}
+
+
+.record-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.record-group-header {
+    display: flex;
+    flex-direction: column; /* damit Überschrift über Link See all steht */
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 1rem;
+}
+
+.record-group-header h3 {
+    margin: 0;
+}
+
+.record-see-all {
+    align-self: flex-end;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.record-see-all:hover {
+    text-decoration: underline;
+}
+
+.record-see-all:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.record-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    padding: 0.65rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+.record-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.65rem;
+}
+
+
+.button--compact {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8125rem;
+}
+
+.record-card .button--compact {
+    align-self: center;
+    width: fit-content;
+    box-sizing: border-box;
+
+    min-height: 44px;
+    margin-top: 0.6rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.record-card h4,
+.record-card p {
+    margin: 0; /* damit wieder keine unnötig großen Abstände zwischen Beschreibungen */
+}
+
+.record-group + .record-group { /* durch + wird direkt folgendes Geschwisterelement angesprochen --> betrifft also nur Amma & Absolutely, nicht RAYE */
+    margin-top: 3rem;
+}
 
 /* Desktop Navigation */
 @media (min-width: 768px) {
@@ -336,9 +462,18 @@ img {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* How to Explore-Section*/
+    /* How to Explore-Section */
     .steps-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Explore the Records-Section */
+    .record-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-group + .record-group {
+        margin-top: 5rem;
     }
 }
 
@@ -349,6 +484,10 @@ img {
 
     .steps-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .record-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 

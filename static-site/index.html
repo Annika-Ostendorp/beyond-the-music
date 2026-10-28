@@ -77,7 +77,10 @@
 
             <h3>RAYE</h3>
             <p class="artist-tagline">The one who gained her independence.</p>
-            <p>From a SoundCloud EP at 17 to the Mercury Prize.</p>
+            <p>
+              From a SoundCloud EP at 17 to her recent Royal Albert Hall
+              performance.
+            </p>
             <a class="button button--secondary" href="raye.html"
               >Enter RAYE's world</a
             >
@@ -94,7 +97,7 @@
 
             <h3>Amma</h3>
             <p class="artist-tagline">
-              The one who recently published her own music.
+              The one who publishes her own music now.
             </p>
             <p>The middle sister - from the writing room to her own debut.</p>
             <a class="button button--secondary" href="amma.html"
@@ -128,7 +131,8 @@
 
         <ol class="steps-grid">
           <li class="step-card">
-            <span class="step-number" aria-hidden="true">01</span> <!-- aria-hidden="true" -> damit Screenreader Nummer nicht vorliest -->
+            <span class="step-number" aria-hidden="true">01</span>
+            <!-- aria-hidden="true" -> damit Screenreader Nummer nicht vorliest -->
             <h3>Pick a sister</h3>
             <p>Each artist has her own world, with her own colours and mood.</p>
           </li>
@@ -162,118 +166,177 @@
         </ol>
       </section>
 
-      <section>
-        <h2>Explore the Records</h2>
-        <button type="button">All</button>
-        <button type="button">RAYE</button>
-        <button type="button">Amma</button>
-        <button type="button">Absolutely</button>
+      <section class="records-section" aria-labelledby="records-title">
+        <h2 id="records-title">Explore the Records</h2>
 
-        <section>
-          <h3>RAYE</h3>
+        <div
+          class="record-filters"
+          role="group"
+          aria-label="Filter records by artist"
+        >
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All
+          </button>
+          <!-- data-filter speichert, welche Kategorie der Button auswählen soll; aria-presse="true" heißt, dass "All" gerade ausgewählt ist -->
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="raye"
+            aria-pressed="false"
+          >
+            RAYE
+          </button>
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="amma"
+            aria-pressed="false"
+          >
+            Amma
+          </button>
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="absolutely"
+            aria-pressed="false"
+          >
+            Absolutely
+          </button>
+        </div>
 
-          <div>
-            <article>
+        <section class="record-group" data-category="raye">
+          <div class="record-group-header">
+            <h3>RAYE</h3>
+            <a class="record-see-all" href="raye.html">See all →</a>
+          </div>
+
+          <div class="record-grid">
+            <article class="record-card" data-category="raye">
               <img
+                class="record-cover"
                 src="images/raye-winter.png"
                 alt="Cover of RAYE's Welcome to the Winter EP, showing an ice cream van under a cloudy sky"
                 width="180"
                 height="180"
               />
               <h4>Welcome to the Winter</h4>
-              <p>EP · 2014</p>
+              <p class="record-meta">EP · 2014</p>
             </article>
 
-            <article>
+            <article class="record-card" data-category="raye">
               <img
+                class="record-cover"
                 src="images/raye-blues.png"
                 alt="Cover of RAYE's My 21st Century Blues album, showing RAYE standing on white musical instruments"
                 width="180"
                 height="180"
               />
               <h4>My 21st Century Blues</h4>
-              <p>Studio Album · 2023</p>
+              <p class="record-meta">Studio Album · 2023</p>
             </article>
 
-            <article>
+            <article class="record-card" data-category="raye">
               <img
+                class="record-cover"
                 src="images/raye-hope.png"
                 alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
                 width="180"
                 height="180"
               />
               <h4>THIS MUSIC MAY CONTAIN HOPE.</h4>
-              <p>Studio Album · 2026</p>
-              <a href="items/raye-album-hope.html">Explore the Record</a>
+              <p class="record-meta">Studio Album · 2026</p>
+              <a
+                class="button button--secondary button--compact"
+                href="items/raye-album-hope.html"
+                >Explore the Record →</a
+              >
             </article>
           </div>
         </section>
 
-        <section>
-          <h3>Amma</h3>
+        <section class="record-group" data-category="amma">
+          <div class="record-group-header">
+            <h3>Amma</h3>
+            <a class="record-see-all" href="amma.html">See all →</a>
+          </div>
 
-          <div>
-            <article>
+          <div class="record-grid">
+            <article class="record-card" data-category="amma">
               <img
+                class="record-cover"
                 src="images/amma-middle-child-ep.png"
                 alt="Cover of Amma's Middle Child EP, featuring a black line-drawn portrait"
                 width="180"
                 height="180"
               />
               <h4>Middle Child</h4>
-              <p>EP · 2025</p>
+              <p class="record-meta">EP · 2025</p>
             </article>
 
-            <article>
+            <article class="record-card" data-category="amma">
               <img
+                class="record-cover"
                 src="images/amma-blame-game.png"
                 alt="Cover of Amma's Blame Game EP, featuring an illustrated portrait with curly brown hair"
                 width="180"
                 height="180"
               />
               <h4>Blame Game</h4>
-              <p>EP · 2025</p>
+              <p class="record-meta">EP · 2025</p>
             </article>
 
-            <article>
+            <article class="record-card" data-category="amma">
               <img
+                class="record-cover"
                 src="images/amma-middle-child-album.png"
                 alt="Cover of Amma's Middle Child Album, featuring an illustrated family portrait in blue clothing"
                 width="180"
                 height="180"
               />
               <h4>Middle Child</h4>
-              <p>Studio Album · 2026</p>
+              <p class="record-meta">Studio Album · 2026</p>
             </article>
           </div>
         </section>
 
-        <section>
-          <h3>Absolutely</h3>
+        <section class="record-group" data-category="absolutely">
+          <div class="record-group-header">
+            <h3>Absolutely</h3>
+            <a class="record-see-all" href="absolutely.html">See all →</a>
+          </div>
 
-          <div>
-            <article>
+          <div class="record-grid">
+            <article class="record-card" data-category="absolutely">
               <img
+                class="record-cover"
                 src="images/absolutely-cerebrum.png"
                 alt="Cover of Absolutely's Cerebrum album, showing a surreal building under a stormy sky"
                 width="180"
                 height="180"
               />
               <h4>CEREBRUM</h4>
-              <p>Studio Album · 2023</p>
+              <p class="record-meta">Studio Album · 2023</p>
             </article>
 
-            <article>
+            <article class="record-card" data-category="absolutely">
               <img
+                class="record-cover"
                 src="images/absolutely-paracosm.png"
                 alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
                 width="180"
                 height="180"
               />
               <h4>Paracosm</h4>
-              <p>Studio Album · 2026</p>
-              <a href="items/absolutely-album-paracosm.html"
-                >Explore the Record</a
+              <p class="record-meta">Studio Album · 2026</p>
+              <a
+                class="button button--secondary button--compact"
+                href="items/absolutely-album-paracosm.html"
+                >Explore the Record →</a
               >
             </article>
           </div>

@@ -162,7 +162,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
 
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Homepage
   
   **Header:**
   - margin: 0
@@ -182,5 +182,8 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - transition
   - object-fit & object-position
 
-  **How-to-Explore-Section:**
-  
+  **Explore the Records-Section:**
+  - Verstehen & Programmierung von Code für 4 Filterbuttons (mit data-filter, aria-pressed) --> noch ohne Veränderung der Ansicht nach Klicken
+  - .filter-chip[aria-pressed="true"]
+  - flex-direction: column
+  - .record-group + .record-group
