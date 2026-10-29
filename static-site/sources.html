@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sources & Credits | Beyond the Music</title>
     <link rel="icon" href="images/favicon_BTM.png" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
     <main>
       <section class="coming-soon">
-        <p>Beyond the Music</p>
+        <img
+          class="coming-soon__icon"
+          src="images/favicon_BTM.png"
+          alt=""
+          width="64"
+          height="64"
+        />
+
+        <p class="coming-soon__brand">Beyond <em>the</em> Music</p>
 
         <h1>More stories are on their way.</h1>
 
@@ -18,30 +27,39 @@
           This chapter is still taking shape. There's more to discover soon.
         </p>
 
-        <a href="index.html">← Back to the collection</a>
+        <a class="button button--secondary" href="index.html"
+          >← Back to homepage</a
+        >
       </section>
     </main>
 
-    <footer>
-      <p><strong>Beyond the Music</strong></p>
-      <p>
-        An independent, non-commercial student concept. This is not an official
-        website of RAYE, Amma or Absolutely and is not affiliated with them,
-        their labels or management. Names, images and facts are drawn from
-        public sources. No audio is hosted here, and the contact messages are
-        not processed or stored.
-      </p>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <a class="site-brand footer-brand" href="index.html">
+            Beyond <em>the</em> Music
+          </a>
 
-      <nav aria-label="Footer navigation">
-        <ul>
-          <li><a href="raye.html">RAYE</a></li>
-          <li><a href="amma.html">Amma</a></li>
-          <li><a href="absolutely.html">Absolutely</a></li>
-          <li><a href="my-collection.html">My Collection</a></li>
-          <li><a href="sources.html">Sources</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          <p class="footer-disclaimer">
+            An independent, non-commercial student concept. This is not an
+            official website of RAYE, Amma or Absolutely and is not affiliated
+            with them, their labels or management. Names, images and facts are
+            drawn from public sources. No audio is hosted here, and the contact
+            messages are not processed or stored.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="raye.html">RAYE</a></li>
+            <li><a href="amma.html">Amma</a></li>
+            <li><a href="absolutely.html">Absolutely</a></li>
+            <li><a href="my-collection.html">My Collection</a></li>
+            <li><a href="sources.html">Sources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

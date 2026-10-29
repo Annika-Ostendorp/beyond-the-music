@@ -216,3 +216,8 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
   **Timeline-Section:**
   - Wie Richtungspfeile je Timeline Event gestalten --> mit article:first-of-type p::before bzw. article:last-of-type p::after
+
+
+- **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Coming-Soon-Seiten
+
+  - min-height: 65vh --> damit Inhalt großzügigen Bereich bekommt und nicht direkt unter oberem Seitenrand steht
