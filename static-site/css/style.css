@@ -1213,7 +1213,7 @@ img {
 .page-absolutely .artist-preview__link:hover,
 .page-absolutely .artist-preview__link:focus-visible {
     background-color: var(--color-detail-card);
-    border-color: #bb2522;
+    border-color: var(--color-button-accent);
 }
 
 
