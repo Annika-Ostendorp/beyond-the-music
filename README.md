@@ -222,3 +222,10 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
   - min-height: 65vh --> damit Inhalt großzügigen Bereich bekommt und nicht direkt unter oberem Seitenrand steht
   - wie focus-visible zentral an einer Stelle gestalten für Tastaturbedienung? --> mit :where(a, button, input, select, textarea, summary):focus-visible
+
+
+- **ChatGPT:** Hilfe bei der Umsetzung des JavaScript-Kategoriefilters
+
+  - verstehen, wie ich nach Kategoriebegriffen aus index.html gezielt suchen kann für JavaScript -> diese Sektion soll ja gestaltet werden (mit document.querySelectorAll())
+
+  - Erklärung, wie JavaScript erkennt, welcher Button angeklickt wurde --> Filterlogik (mit addEventListener, button.dataset.filter, shouldShow etc.)
