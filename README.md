@@ -221,3 +221,4 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Coming-Soon-Seiten
 
   - min-height: 65vh --> damit Inhalt großzügigen Bereich bekommt und nicht direkt unter oberem Seitenrand steht
+  - wie focus-visible zentral an einer Stelle gestalten für Tastaturbedienung? --> mit :where(a, button, input, select, textarea, summary):focus-visible

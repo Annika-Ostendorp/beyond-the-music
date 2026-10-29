@@ -46,6 +46,12 @@
 /* HOMEPAGE DESIGN - Mobile First */
 /*--------------------------------*/
 
+/* Focus Visible für Tastaturnavigation - zentral */
+:where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
 /* Body-Styling */
 body {
     /* margin: 0 --> entfernt voreingestellten äußeren Seitenabstand von Browser */
@@ -151,7 +157,7 @@ img {
 
 .mobile-menu nav {
     position: absolute; /* damit Menü unter Navigation erscheint, aber nicht gesamte Seite damit nach untern verschiebt */
-    top: calc(100% + 0,5rem); /* Menü beginnt unterhalb Hamburger-Symbol */
+    top: calc(100% + 0.5rem); /* Menü beginnt unterhalb Hamburger-Symbol */
     right: 0;
     z-index: 10; /* damit Dropdown-Menü über Seitenhintergrund steht --> höhere Stapelpriorität */
 
@@ -177,11 +183,6 @@ img {
     color: var(--color-accent);
 }
 
-.site-header a:focus-visible,
-.mobile-menu summary:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
 
 
 /* Homepage Hero - Mobile First */
@@ -195,7 +196,7 @@ img {
     font-size: clamp(2.6rem, 6.5vw, 5rem); /* Minimum, flexibler Wert, Maximum --> damit Schriftgröße flexibel anpassen zwischen Desktop & Mobile-Version*/
     font-weight: 600;
     line-height: 1.05;
-    letter-spacing: -0,03em;
+    letter-spacing: -0.03em;
     margin: 0;
 }
 
@@ -345,10 +346,6 @@ img {
     color: var(--color-bg);
 }
 
-.filter-chip:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
 
 /* Records-Grid */
 .record-group {
@@ -389,10 +386,6 @@ img {
     text-decoration: underline;
 }
 
-.record-see-all:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
 
 .record-card {
     display: flex;
@@ -492,10 +485,6 @@ img {
     color: var(--color-accent);
 }
 
-.footer-nav a:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
 
 
 /*----------------------------------------------*/
@@ -657,11 +646,6 @@ img {
 .button--secondary:focus-visible { /* mit focus-visible auch bei Tastaturnavigation Button = Rahmen */
     background-color: var(--color-accent);
     color: var(--color-bg);
-}
-
-.button:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
 }
 
 
@@ -968,10 +952,6 @@ img {
     border-color: var(--color-accent);
 }
 
-.artist-preview__link:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
 
 
 /* Sources Section */
@@ -1016,10 +996,6 @@ img {
     content: "-";
 }
 
-.album-sources summary:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-}
 
 .album-sources ul {
     margin: 0;
@@ -1047,10 +1023,6 @@ img {
     color: var(--color-accent);
 }
 
-.album-sources a:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-}
 
 
 /* Timeline Navigation Section */
@@ -1275,7 +1247,7 @@ img {
 .coming-soon__brand {
     margin: 0;
     color: var(--color-heading);
-    font-family: var(--color-heading);
+    font-family: var(--font-heading);
     font-size: 1.15rem;
 }
 
@@ -1376,13 +1348,6 @@ img {
 
 .contact-form textarea {
     resize: vertical; /* Textfeld nur nach untern vergrößern & Layout nicht verschieben */
-}
-
-.contact-form input:focus-visible,
-.contact-form select:focus-visible,
-.contact-form textarea:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
 }
 
 
