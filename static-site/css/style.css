@@ -39,6 +39,7 @@
     --color-detail-card: #211517;
     --color-divider: rgb(214 214 214 / 25%);
     --color-pill-border: rgb(245 245 245 / 35%);
+    --color-button-accent: #bb2522;
 }
 
 
@@ -534,7 +535,7 @@ img {
 } 
 
 .album-hero .button--compact {
-    align-self: left;
+    align-self: flex-start;
     width: fit-content;
     box-sizing: border-box;
 
@@ -819,7 +820,7 @@ img {
     position: relative;
     padding: 0.85rem 0.65rem;
     border: none;
-    border-radius: none;
+    border-radius: 0;
     border-bottom: 1px solid rgb(255 240 221 / 12%);
 }
 
@@ -1083,7 +1084,7 @@ img {
 
 /* Hero Section */
 .page-absolutely .nav-collection {
-    background-color: #bb2522;
+    background-color: var(--color-button-accent);
     color: #ffffff;
 }
 
@@ -1094,8 +1095,8 @@ img {
 }
 
 .page-absolutely .button--primary {
-    background-color: #bb2522;
-    border-color: #bb2522;
+    background-color: var(--color-button-accent);
+    border-color: var(--color-button-accent);
     color: #ffffff;
 }
 
@@ -1106,8 +1107,8 @@ img {
 
 .page-absolutely .button--secondary:hover,
 .page-absolutely .button--secondary:focus-visible {
-    background-color: #bb2522;
-    border-color: #bb2522;
+    background-color: var(--color-button-accent);
+    border-color: var(--color-button-accent);
     color: #ffffff;
 }
 
