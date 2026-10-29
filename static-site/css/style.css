@@ -1,0 +1,1528 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,600;1,600&display=swap");
+
+/* Homepage theme */
+:root {
+    --color-bg: #0b090d;
+    --color-surface: #1d171d;
+    --color-heading: #f3e8da;
+    --color-text: #d2c6c8;
+    --color-accent: #ddb66f;
+    --color-border: #40363d;
+
+    --font-heading: "Fraunces", Georgia, serif;
+    --font-body: "DM Sans", Arial, sans-serif;
+}
+
+/* RAYE album detail page theme */
+.page-raye {
+    --color-bg: #581517;
+    --color-surface: #301110;
+    --color-heading: #fff0dd;
+    --color-text: #ebd5c9;
+    --color-accent: #f4b004;
+    --color-border: #831e24;
+
+    --color-detail-card: #6c181c;
+    --color-pill-border: rgb(255 240 221 / 35%);
+    --color-divider: rgb(235 213 201 / 26%);
+}
+
+/* Absolutely album detail page theme */
+.page-absolutely {
+    --color-bg: #000000;
+    --color-surface: #131013;
+    --color-heading: #f5f5f5;
+    --color-text: #d6d6d6;
+    --color-accent: #e82924;
+    --color-border: #41282b;
+
+    --color-detail-card: #211517;
+    --color-divider: rgb(214 214 214 / 25%);
+    --color-pill-border: rgb(245 245 245 / 35%);
+    --color-button-accent: #bb2522;
+}
+
+
+/*--------------------------------*/
+/* HOMEPAGE DESIGN - Mobile First */
+/*--------------------------------*/
+
+/* Focus Visible für Tastaturnavigation - zentral */
+:where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+/* Body-Styling */
+body {
+    /* margin: 0 --> entfernt voreingestellten äußeren Seitenabstand von Browser */
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    line-height: 1.1;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto; /* Seitenverhältnisse bleiben erhalten */
+}
+
+
+/* Header - Mobile First */
+.site-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: calc(100% - 2rem); /* 100% gesamte verfügbare Breite - 2rem (32px bei Standardschriftgröße 16px) --> vefügbare Breite minus 32 px --> mehr Platz zum Bildschirmrand*/
+    max-width: 70rem;
+    box-sizing: border-box;
+    margin: 1rem auto;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    position: relative;
+}
+
+.site-brand {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-heading);
+    text-decoration: none; /* so kein unterstrichener Text */
+    white-space: nowrap; /* bricht Text nicht automatisch um mehrere Zeilen um --> Logo soll auf einer Zeile bleiben */
+}
+.site-brand em {
+    color: var(--color-accent);
+}
+.site-nav {
+    display: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Collection Button - Mobile First */
+.nav-collection {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.collection-label {
+    display: none;
+}
+
+/* Mobile Dropdown Menü */
+.mobile-menu summary {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--color-heading);
+    font-size: 1.7rem;
+    cursor: pointer; /* über Links hoovern */
+    list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker { /* damit standardmäßig spezifisches Dreieck vor summary weg kommt*/
+    display: none;
+}
+
+.mobile-menu nav {
+    position: absolute; /* damit Menü unter Navigation erscheint, aber nicht gesamte Seite damit nach untern verschiebt */
+    top: calc(100% + 0.5rem); /* Menü beginnt unterhalb Hamburger-Symbol */
+    right: 0;
+    z-index: 10; /* damit Dropdown-Menü über Seitenhintergrund steht --> höhere Stapelpriorität */
+
+    display: grid;
+    gap: 1rem;
+
+    min-width: 180px;
+    padding: 1rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+.mobile-menu nav a {
+    color: var(--color-heading);
+    text-decoration: none;
+}
+
+/* Navigation Interaktion */
+.nav-list a:hover, /* mit Komma getrennt, damit diesselbe CSS-Regel auf beide Selektoren angewendet wird --> sowohl in Mobile als auch Desktop Version */
+.mobile-menu nav a:hover {
+    color: var(--color-accent);
+}
+
+
+
+/* Homepage Hero - Mobile First */
+.home-hero {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 3rem 1rem 4rem;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 5rem); /* Minimum, flexibler Wert, Maximum --> damit Schriftgröße flexibel anpassen zwischen Desktop & Mobile-Version*/
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+/* damit three sisters im Hero separat ansprechen und Farbe ändern */
+.home-hero h1 em {
+    display: block; /* damit beginnt three sisters dann in neuer Zeile */
+    color: var(--color-accent);
+}
+
+.hero-description {
+    max-width: 42rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* Artists Section - Mobile First */
+.artists-section {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* genau 1 Spalte für Grid in Mobile Version */
+    gap: 1.5rem;
+}
+
+.artist-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.artist-card h3, /* damit kein unnötiger Abstand mehr zwischen Titel und einzelnen Beschreibungen d. Sängerinnen besteht */
+.artist-card p {
+    margin: 0;
+    align-self: center;
+}
+
+.artist-card__image {
+    width: 100%;
+    height: 25rem;
+    object-fit: cover; /* füllt Bildfläche ohne Foto zu verzerren */
+    object-position: center 20%; /* verschiebt sichtbaren Bildausschnitt etwas nach oben, damit Gesichter im Fokus bleiben */
+    border-radius: 0.75rem;
+}
+
+.artist-tagline {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-accent);
+    font-size: 1.0rem;
+    line-height: 1.4;
+}
+
+.artist-card .button {
+    align-self: center;
+    margin-top: auto; /* damit Button in Flexbox nach unten geschoben wird */
+    margin-top: 0.6rem;
+    padding: 0.25rem 0.75rem;
+    
+}
+
+
+/* How to Explore-Section Mobile First*/
+.artists-section,
+.explore-section,
+.records-section {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+.step-card {
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.step-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.step-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.step-card p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+
+/* Explore the Records Section - Mobile First */
+/* Kategorienfilter */
+.record-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.filter-chip {
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+
+    background-color: transparent;
+    color: var(--color-heading);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter-chip:hover,
+.filter-chip[aria-pressed="true"] { /* Button wird farbig, wenn mit Maus drüber ODER wenn als aktiv gekennzeichnet */
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+
+/* Records-Grid */
+.record-group {
+    max-width: 60rem; /* damit Albumcover nicht wieder zu groß werden */
+}
+
+
+.record-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.record-group-header {
+    display: flex;
+    flex-direction: column; /* damit Überschrift über Link See all steht */
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 1rem;
+}
+
+.record-group-header h3 {
+    margin: 0;
+}
+
+.record-see-all {
+    align-self: flex-end;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.record-see-all:hover {
+    text-decoration: underline;
+}
+
+
+.record-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    padding: 0.85rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+.record-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.65rem;
+}
+
+
+.button--compact {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8125rem;
+}
+
+.record-card .button--compact {
+    align-self: center;
+    width: fit-content;
+    box-sizing: border-box;
+
+    min-height: 40px;
+    margin-top: 0.6rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.record-card h4,
+.record-card p {
+    margin: 0; /* damit wieder keine unnötig großen Abstände zwischen Beschreibungen */
+}
+
+.record-card h4 {
+    margin-top: 1rem; /* damit mehr Abstand zwischen Cover und Titel */
+}
+
+.record-group + .record-group { /* durch + wird direkt folgendes Geschwisterelement angesprochen --> betrifft also nur Amma & Absolutely, nicht RAYE */
+    margin-top: 3rem;
+}
+
+
+/* Footer - Mobile First */
+.site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 0 2rem;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+}
+
+.footer-disclaimer {
+    max-width: 38rem;
+    margin: 1rem 0 0;
+
+    color: var(--color-text);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.footer-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.5rem;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-nav a {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: var(--color-accent);
+}
+
+
+
+/*----------------------------------------------*/
+/* RAYE Album detail page Design - Mobile First */
+/*----------------------------------------------*/
+
+/* Hero-Section */
+.text-link {
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.album-back {
+    max-width: 70rem;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+}
+
+.album-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 3rem 1rem 5rem;
+}
+
+.album-hero__media img {
+    width: 100%;
+    max-width: 24rem;
+    height: auto;
+    border-radius: 1rem;
+}
+
+.album-hero__media {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+} 
+
+.album-hero .button--compact {
+    align-self: flex-start;
+    width: fit-content;
+    box-sizing: border-box;
+
+    min-height: 40px;
+    margin-top: 0.6rem;
+    padding: 0.15rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.album-facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem 1.25rem;
+
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.album-fact {
+    display: flex;
+    flex-direction: column; /* damit <dt> oberhalb von <dd> steht */
+    align-items: flex-start;
+    gap: 0.4rem;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.album-fact dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.album-fact dd {
+    margin: 0;
+    padding: 0.5rem 1rem;
+
+    background-color: transparent;
+    border: 1px solid var(--color-pill-border);
+    border-radius: 999px;
+
+    color: var(--color-heading);
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    box-sizing: border-box;
+    max-width: min(22rem, 100%);
+    overflow-wrap: anywhere; /* bei wenig Platz umbrechen */
+}
+
+.album-fact--wide {
+    flex: 0 0 100%; /* eigene Zeile für Musikstil-Gruppe oder Collaborator-Gruppe */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.album-fact--wide > dt {
+    flex: 0 0 100%;
+}
+
+.button--primary {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    padding: 0.4rem;
+}
+
+.save-action {
+    display: inline-flex; /* Container nur so breit wie Text --> währe nur flex, dann Seitenbreite */
+    padding: 0.4rem;
+    background-color: var(--color-detail-card);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+}
+
+
+/* Button Design */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.button--secondary {
+    background-color: transparent;
+    color: var(--color-heading);
+    border: 1px solid var(--color-accent);
+
+    transition: background-color 0.2s ease, color 0.2s ease; /* damit Farbänderung nicht plötzlich passiert -> sondern weich */
+}
+
+.button--secondary:hover,
+.button--secondary:focus-visible { /* mit focus-visible auch bei Tastaturnavigation Button = Rahmen */
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+
+/* Album Story Section */
+.album-story {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 5rem;
+}
+
+.story-text {
+    min-width: 0;
+    padding: 1.5rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.story-text cite {
+    color: var(--color-accent);
+}
+
+.story-details cite {
+    color: var(--color-accent);
+}
+
+.story-details {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    min-width: 0;
+}
+
+.story-details h3 {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 0.75rem;
+}
+
+.story-details > section { /* damit nur <section>-Elemente auswählen, die direkte Kinder von .story-details sind  --> gezielt Why It Matters & The Sound gestalten */
+    min-width: 0;
+    padding: 1.5rem;
+
+    background-color: var(--color-detail-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.album-story h2,
+.album-story h3 {
+    margin: 0 0 1rem;
+}
+
+.story-text > p,
+.story-details > section > p {
+    margin: 0;
+    line-height: 1.75;
+}
+
+.story-text > p + p, /* wieder wie bei Records -> nur auf aufeinanderfolgende Absätze Abstand erzeugen */
+.story-details > section > p + p {
+    margin-top: 1rem;
+}
+
+.story-text blockquote {
+    margin: 2rem 0 0;
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 3px solid var(--color-accent);
+}
+
+.story-text blockquote p {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.story-text blockquote footer {
+    margin-top: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.8rem;
+}
+
+
+/* Tracklist-Section */
+.album-tracklist {
+    counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
+    max-width: 70rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 3rem 1rem 5rem;
+    border-top: 1px solid var(--color-divider);
+}
+
+.album-tracklist > h2 {
+    margin: 0 0 0.5rem;
+}
+
+.album-tracklist > p {
+    margin: 0 0 2rem;
+    max-width: 42rem;
+    line-height: 1.7;
+}
+
+.season {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    padding: 1.25rem;
+
+    border: 1px solid rgb(255 240 221 / 18%);
+    border-radius: 1.25rem;
+}
+
+.season + .season {
+    margin-top: 1rem;
+}
+
+.season.autumn {
+    background-color: #67412d;
+}
+
+.season.winter {
+    background-color: #1b304a;
+}
+
+.season.spring {
+    background-color: #54283f;
+}
+
+.season.summer {
+    background-color: #80501e;
+}
+
+
+.season h3 {
+    font-size: 1.6rem;
+    font-style: italic;
+}
+
+.season > p {
+    margin: 0;
+    align-self: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+
+.season ol {
+    grid-column: 1 / -1; /* Songliste soll über beide Grid-Spalten laufen */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.season li {
+    counter-increment: track;
+    
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto 1.25rem; /* Trackzahl bekommt festen Platz in Grid */
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+    align-items: baseline;
+
+    position: relative;
+    padding: 0.85rem 0.65rem;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(255 240 221 / 12%);
+}
+
+.season li::before {
+    content: counter(track, decimal-leading-zero); /* damit 01, 02, 03 statt 1, 2, 3 */
+    grid-column: 1;
+    grid-row: 1;
+
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text);
+}
+
+.season li > cite {
+    grid-column: 2;
+    grid-row: 1;
+    font-style: normal;
+    font-family: var(--font-heading);
+}
+
+.track-duration {
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+
+    white-space: nowrap;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums; /* damit Laufzeiten optisch sauber untereinander stehen --> Ziffern bekommen einheitliche Breite */
+}
+
+.track-feature {
+    grid-column: 2;
+    grid-row: 2;
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+
+.season li::after { /* damit Andeutung von Verlinkung von jedem Song */
+    content: "↗";
+    grid-column: 4;
+    grid-row: 1;
+
+    color: var(--color-heading);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+
+.season li:hover, /* damit Songzeile leicht aufhellen, wenn man drübergeht --> Pfeil erscheint dann rechts neben Laufzeit */
+.season li:focus-within { /* focus-within für Tastaturbedienung später */
+    background-color: rgb(255 240 221 / 10%);
+    border-radius: 1.2rem;
+}
+
+.season li:hover::after,
+.season li:focus-within::after {
+    opacity: 1;
+}
+
+
+/* Keep Going-Section */
+.keep-going {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 5rem;
+}
+
+.keep-going > h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 0.5rem;
+}
+
+
+.artist-preview__link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+
+    color: var(--color-heading);
+    text-decoration: none;
+}
+
+.artist-preview__link img {
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: cover; /* Kreis ausfüllen, ohne zu verzerren */
+    border-radius: 50%; /* damit Bilder rund */
+    flex-shrink: 0;
+    object-position: center 15%;
+}
+
+.artist-preview__copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.artist-preview__copy h3,
+.artist-preview__copy p {
+    margin: 0;
+}
+
+.artist-preview__copy p {
+    margin-top: 0.25rem;
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+.artist-preview__arrow {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.artist-preview__link:hover {
+    border-color: var(--color-accent);
+}
+
+
+
+/* Sources Section */
+.album-sources {
+    width: calc(100% - 2rem);
+    max-width: 68rem;
+    box-sizing: border-box;
+
+    margin: 0 auto 3rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+.album-sources summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 44px;
+    padding: 1rem 1.25rem;
+
+    color: var(--color-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+}
+
+.album-sources summary::-webkit-details-marker {
+    display: none;
+}
+
+.album-sources summary::after {
+    content: "+";
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.album-sources[open] summary::after {
+    content: "-";
+}
+
+
+.album-sources ul {
+    margin: 0;
+    padding: 1.25rem 1.5rem 1.5rem 2.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.album-sources li + li {
+    margin-top: 0.75rem;
+}
+
+.album-sources li::marker { /* damit für jeden Stichpunkt Akzentfarbe */
+    color: var(--color-accent);
+}
+
+
+.album-sources a {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+}
+
+.album-sources a:hover {
+    color: var(--color-accent);
+}
+
+
+
+/* Timeline Navigation Section */
+.timeline-neighbors {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+
+    max-width: 70rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 2rem 1rem 5rem;
+}
+
+.timeline-neighbors > h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 0.5rem;
+}
+
+.timeline-neighbors > article {
+    min-width: 0;
+    padding: 1.5rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.timeline-neighbors article > p {
+    margin: 0 0 0.75rem;
+
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.timeline-neighbors article > h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.25;
+}
+
+.timeline-neighbors article:first-of-type p::before {
+    content: "← ";
+}
+
+.timeline-neighbors article:last-of-type p::after {
+    content: " →";
+}
+
+
+
+/*----------------------------------------------------*/
+/* Absolutely Album detail page Design - Mobile First */
+/*----------------------------------------------------*/
+
+/* Hero Section */
+.page-absolutely .nav-collection {
+    background-color: var(--color-button-accent);
+    color: #ffffff;
+}
+
+.page-absolutely .album-hero__media img {
+    border: 1px solid rgb(245 245 245 / 20%);
+    border-radius: 1.25rem;
+    box-sizing: border-box;
+}
+
+.page-absolutely .button--primary {
+    background-color: var(--color-button-accent);
+    border-color: var(--color-button-accent);
+    color: #ffffff;
+}
+
+.page-absolutely .button--secondary {
+    border-color: var(--color-heading);
+    color: var(--color-heading);
+}
+
+.page-absolutely .button--secondary:hover,
+.page-absolutely .button--secondary:focus-visible {
+    background-color: var(--color-button-accent);
+    border-color: var(--color-button-accent);
+    color: #ffffff;
+}
+
+/* Story-Section */
+.page-absolutely .story-text {
+    border-color: #383035;
+}
+
+.page-absolutely .story-details > section {
+    background-color: var(--color-detail-card);
+    border-color: rgb(187 37 34 / 55%);
+}
+
+.page-absolutely .story-details h3 {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 0.75rem;
+}
+
+/* Tracklist-Section */
+.album-tracklist--single ol {
+    counter-reset: paracosm-track;
+    list-style: none;
+
+    margin: 0;
+    padding: 1rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.album-tracklist--single li {
+    counter-increment: paracosm-track;
+
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr) auto 1.25rem;
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+
+    padding: 0.85rem 0.75rem;
+    border-radius: 0;
+}
+
+.album-tracklist--single li + li {
+    border-top: 1px solid rgb(245 245 245 / 14%);
+}
+
+.album-tracklist--single li::before {
+    content: counter(paracosm-track, decimal-leading-zero);
+    grid-column: 1;
+    grid-row: 1;
+
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.album-tracklist--single li > cite {
+    grid-column: 2;
+    grid-row: 1;
+
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-style: normal;
+}
+
+.album-tracklist--single .track-duration {
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+
+    color: var(--color-text);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.album-tracklist--single li::after {
+    content: "↗";
+    grid-column: 4;
+    grid-row: 1;
+
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.album-tracklist--single li:hover,
+.album-tracklist--single li:focus-within {
+    background-color: rgb(187 37 34 / 18%);
+    border-radius: 0.65rem;
+}
+
+.album-tracklist--single li:hover::after,
+.album-tracklist--single li:focus-within::after {
+    opacity: 1;
+}
+
+.page-absolutely .artist-preview__link:hover,
+.page-absolutely .artist-preview__link:focus-visible {
+    background-color: var(--color-detail-card);
+    border-color: var(--color-button-accent);
+}
+
+
+
+/*-----------------------------------------*/
+/* Coming Soon Pages Design - Mobile First */
+/*-----------------------------------------*/
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+
+    min-height: 65vh; /* damit Inhalt nicht direkt unter oberem Seitenrand --> mehr Platz */
+    max-width: 42rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 4rem 1.25rem;
+
+    text-align: center;
+}
+
+.coming-soon__icon {
+    display: block;
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.coming-soon__brand {
+    margin: 0;
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+}
+
+.coming-soon__brand em {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+}
+
+.coming-soon h1 {
+    margin: 0;
+    font-size: clamp(2.25rem, 6vw, 3.5rem);
+    line-height: 1.1;
+}
+
+.coming-soon > p:not(.coming-soon__brand) {
+    margin: 0;
+    max-width: 32rem;
+}
+
+.coming-soon .button {
+    margin-top: 0.75rem;
+}
+
+
+/*-------------------------------------*/
+/* Contact Page Design - Mobile First */
+/*-----------------------------------*/
+.contact-intro .contact-info-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: fit-content;
+
+    margin: 0;
+    padding: 0.5rem 1rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+
+    color: var(--color-accent);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+.contact-intro,
+.contact-form-section {
+    width: min(42rem, calc(100% - 2rem));
+    margin-inline: auto;
+}
+
+.contact-intro {
+    padding: 4rem 0 1.5rem;
+}
+
+.contact-intro h1 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.contact-intro h1 em {
+    color: var(--color-accent);
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.25rem;
+
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.85rem 1rem;
+
+    background-color: var(--color-bg);
+    color: var(--color-heading);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+
+    font: inherit;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Textfeld nur nach untern vergrößern & Layout nicht verschieben */
+}
+
+
+.contact-form .button {
+    justify-self: start;
+}
+
+.contact-form-section > p {
+    margin-top: 2rem;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.contact-form-section {
+    padding-bottom: 6rem;
+}
+
+
+/* Desktop Navigation */
+@media (min-width: 768px) {
+    /*------------------*/
+    /* Homepage Design */
+    /*-----------------*/
+
+    /* Header */
+    .site-brand {
+        flex: 1;
+    }
+
+    .site-nav {
+        display: flex;
+    }
+
+    .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-list a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .header-actions {
+        flex: 1;
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+
+    .collection-label {
+        display: inline;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    /* Hero-Section */
+    .home-hero {
+        padding-top: 6rem;
+        padding-bottom: 7rem;
+    }
+
+    .hero-description {
+        font-size: 1.125rem;
+    }
+
+    /* Artists-Section */
+    .artist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* How to Explore-Section */
+    .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Explore the Records-Section */
+    .record-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-group + .record-group {
+        margin-top: 5rem;
+    }
+
+    /* Footer-Section */
+    .footer-inner {
+        flex-direction: row; /* bringt Logo und Navigation nebeneinander */
+        justify-content: space-between; /* Verteilung von beiden Bereichen über verfügbare Breite */
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .footer-about {
+        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigatoin aber feste Breite beibehält */
+        min-width: 0;
+    }
+
+    .footer-nav {
+        width: 17rem;
+        margin-top: 3rem;
+    }
+
+    /*-------------------------------*/
+    /* RAYE album detail page Design */
+    /*-------------------------------*/
+    .season {
+        padding: 2rem 2.5rem;
+    }
+
+    .season h3 {
+        font-size: 2rem;
+    }
+
+    .keep-going {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline-neighbors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline-neighbors > article:last-of-type {
+        text-align: right;
+    }
+
+    /*-------------------------------------*/
+    /* Absolutely album detail page Design */
+    /*------------------------------------*/
+    .album-tracklist--single ol {
+        padding: 1.75rem 2rem;
+    }
+}
+
+
+
+@media (min-width: 1100px) {
+    /*------------------*/
+    /* Homepage Design */
+    /*-----------------*/
+    .artist-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .record-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /*-------------------------------*/
+    /* RAYE album detail page Design */
+    /*-------------------------------*/
+    .album-hero {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); /* zweispaltiges Raster, das den Platz im flexiblen Verhältnis von 45% zu 55% aufteilt */
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .album-story {
+        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+        align-items: start;
+        gap: 1.5rem;
+    }
+}

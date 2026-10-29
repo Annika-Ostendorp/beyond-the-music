@@ -5,60 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>THIS MUSIC MAY CONTAIN HOPE. | Beyond The Music</title>
     <link rel="icon" href="../images/favicon_BTM.png" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="../index.html">Beyond the Music</a></li>
+  <body class="page-raye">
+    <header class="site-header">
+      <a class="site-brand" href="../index.html"> Beyond <em>the</em> Music </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
           <li><a href="../raye.html">RAYE</a></li>
           <li><a href="../amma.html">Amma</a></li>
           <li><a href="../absolutely.html">Absolutely</a></li>
-          <li><a href="../my-collection.html">My collection</a></li>
         </ul>
       </nav>
+
+      <div class="header-actions">
+        <a
+          class="nav-collection"
+          href="../my-collection.html"
+          aria-label="My Collection"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M6 4h12v17l-6-4-6 4z" />
+          </svg>
+
+          <span class="collection-label">My Collection</span>
+        </a>
+
+        <details class="mobile-menu">
+          <summary aria-label="Navigation">☰</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="../raye.html">RAYE</a>
+            <a href="../amma.html">Amma</a>
+            <a href="../absolutely.html">Absolutely</a>
+          </nav>
+        </details>
+      </div>
     </header>
 
     <main>
-      <a href="../raye.html">Back to RAYE's story</a>
+      <div class="album-back">
+        <a href="../raye.html" class="text-link">← Back to RAYE's story</a>
+      </div>
 
-      <section>
-        <img
-          src="../images/raye-hope.png"
-          alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
-          width="180"
-          height="180"
-        />
+      <section class="album-hero">
+        <div class="album-hero__media">
+          <img
+            src="../images/raye-hope.png"
+            alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
+            width="180"
+            height="180"
+          />
 
-        <a href="https://open.spotify.com/album/3ZN01xzenGMhWHdC5kfAe9"
-          >Listen on Spotify</a
-        >
+          <a
+            class="button button--secondary button--compact"
+            href="https://open.spotify.com/album/3ZN01xzenGMhWHdC5kfAe9"
+            >Listen on Spotify ↗</a
+          >
+        </div>
 
-        <h1>THIS MUSIC MAY CONTAIN HOPE.</h1>
-        <!-- umfasst gesamte Faktenliste -->
-        <dl>
-          <!-- bezeichnet jew. Fakt -->
-          <dt>Artist</dt>
-          <!-- enthält zugehörigen Wert -->
-          <dd>RAYE</dd>
+        <div class="album-hero__content">
+          <h1>THIS MUSIC MAY CONTAIN HOPE.</h1>
+          <!-- umfasst gesamte Faktenliste -->
+          <dl class="album-facts">
+            <div class="album-fact">
+              <!-- bezeichnet jew. Fakt -->
+              <dt>Artist</dt>
+              <!-- enthält zugehörigen Wert -->
+              <dd>RAYE</dd>
+            </div>
 
-          <dt>Release type</dt>
-          <dd>Studio album</dd>
+            <div class="album-fact">
+              <dt>Release type</dt>
+              <dd>Studio album</dd>
+            </div>
 
-          <dt>Release date</dt>
-          <dd>27 March 2026</dd>
+            <div class="album-fact">
+              <dt>Release date</dt>
+              <dd>27 March 2026</dd>
+            </div>
 
-          <dt>Scope</dt>
-          <dd>17 tracks</dd>
+            <div class="album-fact">
+              <dt>Scope</dt>
+              <dd>17 tracks</dd>
+            </div>
 
-          <dt>Musical style</dt>
-          <dd>Cinematic pop, retro soul, blues, big-band jazz, R&amp;B</dd>
+            <div class="album-fact album-fact--wide">
+              <dt>Musical style</dt>
+              <dd>Cinematic pop</dd>
+              <dd>Retro soul</dd>
+              <dd>Blues</dd>
+              <dd>Big-band jazz</dd>
+              <dd>R&amp;B</dd>
+            </div>
 
-          <dt>Collaborators</dt>
-          <dd>Hans Zimmer, Al Green, Grandad Michael, Amma, Absolutely</dd>
-        </dl>
+            <div class="album-fact album-fact--wide">
+              <dt>Collaborators</dt>
+              <dd>Hans Zimmer</dd>
+              <dd>Al Green</dd>
+              <dd>Grandad Michael</dd>
+              <dd>Amma</dd>
+              <dd>Absolutely</dd>
+            </div>
+          </dl>
 
-        <button type="button" disabled>Save this record</button>
+          <div class="save-action">
+            <button type="button" class="button button--primary" disabled>
+              Save this record
+            </button>
+          </div>
+        </div>
       </section>
 
       <section class="album-story">
@@ -293,15 +357,39 @@
         <h2>Keep Going</h2>
 
         <article class="artist-preview">
-          <h3>Meet Amma</h3>
-          <p>Discover the middle sister and her own musical journey.</p>
-          <a href="../amma.html">Explore Amma's world</a>
+          <a class="artist-preview__link" href="../amma.html">
+            <img
+              src="../images/amma-portrait.png"
+              alt="Portrait of Amma with curly hair against an orange background"
+              width="96"
+              height="96"
+            />
+
+            <div class="artist-preview__copy">
+              <h3>Meet Amma</h3>
+              <p>Discover the middle sister and her own musical journey.</p>
+            </div>
+
+            <span class="artist-preview__arrow" aria-hidden="true">→</span>
+          </a>
         </article>
 
         <article class="artist-preview">
-          <h3>Meet Absolutely</h3>
-          <p>Step into the youngest sister's imaginative world.</p>
-          <a href="../absolutely.html">Explore Absolutely's world</a>
+          <a class="artist-preview__link" href="../absolutely.html">
+            <img
+              src="../images/absolutely-portrait.png"
+              alt="Portrait of Absolutely with red curls and a black corset"
+              width="96"
+              height="96"
+            />
+
+            <div class="artist-preview__copy">
+              <h3>Meet Absolutely</h3>
+              <p>Step into the youngest sister's imaginative world.</p>
+            </div>
+
+            <span class="artist-preview__arrow" aria-hidden="true">→</span>
+          </a>
         </article>
       </section>
 
@@ -360,31 +448,38 @@
 
         <article>
           <p>Later · 2026</p>
-          <h3>The Mercury Prize</h3>
+          <h3>Her second Royal Albert Hall performance</h3>
         </article>
       </section>
     </main>
 
-    <footer>
-      <p><strong>Beyond the Music</strong></p>
-      <p>
-        An independent, non-commercial student concept. This is not an official
-        website of RAYE, Amma or Absolutely and is not affiliated with them,
-        their labels or management. Names, images and facts are drawn from
-        public sources. No audio is hosted here, and the contact messages are
-        not processed or stored.
-      </p>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <a class="site-brand footer-brand" href="../index.html">
+            Beyond <em>the</em> Music
+          </a>
 
-      <nav aria-label="Footer navigation">
-        <ul>
-          <li><a href="../raye.html">RAYE</a></li>
-          <li><a href="../amma.html">Amma</a></li>
-          <li><a href="../absolutely.html">Absolutely</a></li>
-          <li><a href="../my-collection.html">My Collection</a></li>
-          <li><a href="../sources.html">Sources</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          <p class="footer-disclaimer">
+            An independent, non-commercial student concept. This is not an
+            official website of RAYE, Amma or Absolutely and is not affiliated
+            with them, their labels or management. Names, images and facts are
+            drawn from public sources. No audio is hosted here, and the contact
+            messages are not processed or stored.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="../raye.html">RAYE</a></li>
+            <li><a href="../amma.html">Amma</a></li>
+            <li><a href="../absolutely.html">Absolutely</a></li>
+            <li><a href="../my-collection.html">My Collection</a></li>
+            <li><a href="../sources.html">Sources</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>
