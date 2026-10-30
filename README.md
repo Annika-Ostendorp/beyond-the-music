@@ -143,7 +143,7 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 **Amma**
 
-- **Middle Child (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/5KfhyZmRRUfQuiJB1aZVlV
+- **Middle Child (Single, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/5KfhyZmRRUfQuiJB1aZVlV
 
 - **Blame Game (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/3n7Vjwe7Jm5PiEdYYpgrih
 
@@ -227,7 +227,6 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   **Tracklist-Section:**
   - grid-column: 1 / -1
   - font-variant-numeric: tabular-nums für Track-Duration
-  - width: 5ch und font-feature-settings: "tnum" 1 für einheitliche Darstellung der Laufzeit-Ziffern
   - Tracklist-Nummerierung anpassen mit counter-reset: track, counter-increment: track, content: counter(track, decimal-leading-zero)
 
   **Page Sources-Section:**

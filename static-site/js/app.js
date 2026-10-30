@@ -19,7 +19,7 @@ filterButtons.forEach((button) => {
         });
 
         filterButtons.forEach((filterButton) => { // jeden Filterbutton einzeln durchgehen
-            const isActive = filterButton === button; // Vergleichen --> hat ursprünglich angeklickter Button aus äußerem Event-Listener dieselbe HTML-Struktur wie filterButton, der gerade untersucht wird?
+            const isActive = filterButton === button; // Vergleichen --> verweist ursprünglich angeklickter Button aus äußerem Event-Listener auf dasselbe HTML-Element wie filterButton, der gerade untersucht wird?
 
             filterButton.setAttribute("aria-pressed", String(isActive)); // mit setAttribute() HTML-Attribut aktualisieren --> boolescher Wert wird in "true" oder "false" umgewandelt --> CSS-Regel anwenden 
         })
