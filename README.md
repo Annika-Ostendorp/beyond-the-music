@@ -97,7 +97,24 @@ Dort können Nutzer dann ihre Lieblingswerke _(sei es Song, Album oder Karriere-
 
 ## Seitenstruktur
 
-_Wird im Verlauf der Umsetzung ergänzt._
+Die **Startseite (index.html)** stellt RAYE, Amma und Absolutely vor und enthält eine Übersicht ihrer ausgewählten Musikveröffentlichungen. Ein Kategoriefilter ermöglicht es außerdem, entweder alle Veröffentlichungen oder nur die Einträge einer bestimmten Künstlerin anzuzeigen.
+
+**Album-Detailseiten im Ordner items/:**
+- raye-album-hope.html - Detailseite zu RAYEs THIS MUSIC MAY CONTAIN HOPE. mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
+
+- absolutely-album-paracosm.html - Detailseite zu Absolutelys Paracosm mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
+
+**Kontaktformular-Seite:**
+- contact.html - Kontaktseite mit Demo-Formular (da noch kein Backend für das tatsächliche Absenden/ Speichern von Nachrichten)
+
+**Weitere Seiten:**
+- raye.html, amma.html und absolutely.html - derzeit als Coming-Soon-Seiten gestaltet; künftig für musikalische Karrierewege der drei Schwestern vorgesehen
+
+- my-collection.html - Platzhalter für spätere persönliche Gedankensammlung zu gespeicherten Records/ Chapters
+
+- sources.html - Platzhalter für zukünftige zentrale Quellenübersicht
+
+Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb der Seiten miteinander verbunden (z.B. Explore the Record etc.). 
 
 ## Bildquellen
 
