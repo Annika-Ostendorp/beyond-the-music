@@ -286,4 +286,15 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - Vermeidung doppelter Deklarationen und Vereinheitlichung der Einrückungen innerhalb von Media Queries.
 
 - **ChatGPT:** Unterstützung bei der übersichtlicheren Strukturierung der KI-Nutzungsdokumentation im README mithilfe der HTML-Elemente `<details>` und `<summary>`.
+
+  **Neue HTML- und CSS-Techniken für Meet the Artists-Section:**
+  - Zusätzlicher HTML-Container `.artist-card__image-frame` um die jeweiligen Künstlerinnenporträts, damit sich die Fotografien unabhängig vom Kartenlayout animieren lassen.
+  - `overflow: hidden` und `border-radius`, damit der Bild-Zoom innerhalb des abgerundeten Bildrahmens bleibt.
+  - `transform: scale(1.045)` für eine minimale Vergrößerung der Porträts beim Hover.
+  - `filter: saturate()` und `contrast()` für eine dezente Verstärkung der Bildfarben und Kontraste.
+  - `transition` mit unterschiedlichen Animationsdauern und `cubic-bezier()` für sanfte, individuell gesteuerte Bewegungen.
+  - `transform: translateY(-5px)` für eine leichte Anhebung der Karten beim Hover, kombiniert mit einem weichen Schatten und einer dezenten Veränderung der Rahmenfarbe.
+  - `@media (hover: hover) and (pointer: fine)`, um Hover-Animationen gezielt auf Geräte mit präziser Zeigersteuerung anzuwenden.
+  - `:focus-within`, um die Hervorhebung der Karten auch bei der Tastaturnavigation sichtbar zu machen.
+  - `::before` und `linear-gradient()` zur Gestaltung einer feinen Trennlinie zwischen der Hero-Section und „Meet the Artists“, ohne zusätzliches HTML zu benötigen.
 </details>
