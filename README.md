@@ -293,6 +293,20 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 - **ChatGPT:** Unterstützung bei der übersichtlicheren Strukturierung der KI-Nutzungsdokumentation im README mithilfe der HTML-Elemente `<details>` und `<summary>`.
 
+- **ChatGPT:** Unterstützung bei der Erweiterung der bereits neu gestalteten Hero-Section um einen dezenten, animierten „Scroll to discover“-Button. Ziel war es, den großzügigen Freiraum unterhalb des Hero-Textes sinnvoll zu nutzen und Besucher intuitiv darauf hinzuweisen, dass unterhalb der Konzertcollage weitere Inhalte entdeckt werden können.
+
+- **ChatGPT:** Erstellung eines HTML-Ankerlinks (`<a href="#artists">`), der direkt zur „Meet the Artists“-Section führt. Hierfür wurde die Ziel-Section um `id="artists"` ergänzt. Der Button besteht aus einem kurzen Beschreibungstext und einem dekorativen Pfeil, der mithilfe von `aria-hidden="true"` vor Screenreadern verborgen wird.
+
+  **Neue CSS-Techniken:**
+  - `display: inline-flex` und `align-items: center`, um Beschriftung und Pfeil horizontal auszurichten.
+  - `clamp()` in Verbindung mit `vh`, um den Abstand unterhalb der Hero-Beschreibung an unterschiedliche Bildschirmhöhen anzupassen.
+  - Halbtransparente `rgb()`-Hintergrundfarben, abgerundete Rahmen und die bestehenden Cremeweiß- und Goldtöne für eine harmonische Einbindung in das Design.
+  - `@keyframes hero-scroll-arrow` und `transform: translateY(5px)`, um ausschließlich den Pfeil langsam nach unten und wieder zurückzubewegen.
+  - `animation-delay`, `ease-in-out` und `infinite`, um die Bewegung zeitlich auf die bereits vorhandenen Hero-Fade-ins abzustimmen und anschließend kontinuierlich zu wiederholen.
+  - `scroll-behavior: smooth`, um beim Anklicken des Ankerlinks sanft zur nächsten Section zu scrollen.
+
+- **ChatGPT:** Berücksichtigung von Barrierefreiheit und Tastaturbedienung durch `:focus-visible` sowie `@media (prefers-reduced-motion: reduce)`. Bei reduzierter Bewegung wird die Pfeilanimation deaktiviert und das sanfte Scrollen durch das normale Sprungverhalten ersetzt.
+
 ### Weiterentwicklung der „Meet the Artists“-Section
 
 **Neue HTML- und CSS-Techniken:**
@@ -318,4 +332,20 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **ChatGPT:** Stylen von dezenten vertikalen Kapitelmarkierungen mit `border-left`. Die Schriftgrößen wurden angepasst und die Überschrift mit `clamp()` an die bestehende „Meet the Artists“-Section angeglichen. Die nicht mehr benötigten HTML-Elemente und CSS-Regeln wurden entfernt.
 
 - **ChatGPT:** Erklärung und Überprüfung der verwendeten HTML- und CSS-Techniken, insbesondere `radial-gradient()`, `linear-gradient()`, `::before`, `@keyframes`, `infinite alternate`, `opacity`, responsive CSS-Grids, `clamp()`, `border-left` und `prefers-reduced-motion`.
+
+
+### Weiterentwicklung der „Explore the Records“-Section
+ 
+- **ChatGPT:** Erstellung und Anpassung neuer HTML- und CSS-Codeabschnitte für die beiden Alben mit bereits vorhandenen Detailseiten: RAYEs „THIS MUSIC MAY CONTAIN HOPE.“ und Absolutelys „Paracosm“. Mithilfe der zusätzlichen Klasse `.record-card--featured` wurden diese Karten von den übrigen Albumkarten unterschieden. Ein neuer Bildcontainer `.record-card__media` und ein Overlay `.record-card__overlay` ermöglichen eine gezielte Darstellung zusätzlicher Informationen.
+
+- **ChatGPT:** Implementierung eines cineastischen Hover-Reveals für die beiden Featured-Cards. Bei der Interaktion wird das Albumcover durch `transform: scale(1.045)` minimal vergrößert und durch `filter: brightness()` und `saturate()` dezent verändert. Gleichzeitig erscheint mit `opacity`, `transform` und `transition` eine dunkle Informationsebene mit der Beschriftung „Inside the Record“ und dem Link „Explore the Record“. Die Übergänge werden mit `cubic-bezier()` zeitlich abgestimmt.
+
+- **ChatGPT:** Unterstützung bei der responsiven Umsetzung der neuen Albuminteraktionen. Auf Desktop wird der vorhandene Detailseiten-Link mithilfe von CSS Grid (`grid-column`, `grid-row`) und `z-index` über dem Albumcover positioniert. Auf Mobile bleibt derselbe Link dauerhaft unter dem Albumtitel und den Metadaten sichtbar. Für die Desktop-Interaktion werden Media Queries mit `hover: hover` und `pointer: fine` verwendet. Durch `:focus-within` ist das Reveal außerdem über die Tastaturnavigation erreichbar.
+
+- **ChatGPT:** Überarbeitung der visuellen Gestaltung der Record Cards. Die Albencover erhielten ein einheitliches quadratisches Seitenverhältnis mit `aspect-ratio: 1 / 1`, `object-fit: cover`, dezente Schatten und abgerundete Bildrahmen. Die Karten wurden durch angepasste Hintergründe, Rahmen, Typografie und Abstände stärker an das Editorial-Design der Homepage angeglichen. Mithilfe von `align-items: stretch` im CSS-Grid wurden unterschiedliche Kartenhöhen auf Desktop ausgeglichen.
+
+- **ChatGPT:** Gestalterische Aufwertung der Kategorie-Filter. Die vorhandenen Buttons wurden in einer gemeinsamen, dezent abgesetzten Filterleiste zusammengefasst. Für aktive und inaktive Filter wurden unterschiedliche Hintergrund-, Rahmen- und Schattenwerte definiert. Die bereits vorhandenen `aria-pressed`-Attribute werden weiterhin zur Darstellung des ausgewählten Filters verwendet; die JavaScript-Filterlogik wurde nicht verändert.
+
+- **ChatGPT:** Entwicklung eines einheitlichen warmweißen Hover-Glows für alle Albumkarten mit Detailseiten. Hierfür wurden die CSS-Variablen `--album-light` und `--album-light-soft` eingeführt. Die Lichtwirkung basiert auf der bereits vorhandenen cremeweißen Homepage-Farbe `#F3E8DA` und wird durch mehrere unterschiedlich große `box-shadow`-Effekte erzeugt. 
+
 </details>

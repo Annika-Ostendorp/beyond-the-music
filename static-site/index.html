@@ -79,10 +79,19 @@
             follows each of them through their musical careers, records and
             songs that shaped them.
           </p>
+
+          <a class="home-hero__scroll" href="#artists">
+            <span>Scroll to discover</span>
+            <span class="home-hero__scroll-arrow" aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
 
-      <section class="artists-section" aria-labelledby="artists-title">
+      <section
+        class="artists-section"
+        id="artists"
+        aria-labelledby="artists-title"
+      >
         <!-- aria-labelledby verknüpft Section mit Überschrift -->
         <h2 id="artists-title">Meet the Artists</h2>
 
@@ -273,21 +282,34 @@
               <p class="record-meta">Studio Album · 2023</p>
             </article>
 
-            <article class="record-card" data-category="raye">
-              <img
-                class="record-cover"
-                src="images/raye-hope.jpg"
-                alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
-                width="180"
-                height="180"
-              />
+            <article
+              class="record-card record-card--featured"
+              data-category="raye"
+            >
+              <div class="record-card__media">
+                <img
+                  class="record-cover"
+                  src="images/raye-hope.jpg"
+                  alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
+                  width="180"
+                  height="180"
+                />
+
+                <div class="record-card__overlay">
+                  <span class="record-card__overlay-label" aria-hidden="true">
+                    Inside the Record
+                  </span>
+                </div>
+              </div>
+
               <h4>THIS MUSIC MAY CONTAIN HOPE.</h4>
               <p class="record-meta">Studio Album · 2026</p>
               <a
-                class="button button--secondary button--compact"
+                class="button button--secondary button--compact record-card__link"
                 href="items/raye-album-hope.html"
-                >Explore the Record →</a
               >
+                Explore the Record →
+              </a>
             </article>
           </div>
         </section>
@@ -358,21 +380,34 @@
               <p class="record-meta">Studio Album · 2023</p>
             </article>
 
-            <article class="record-card" data-category="absolutely">
-              <img
-                class="record-cover"
-                src="images/absolutely-paracosm.jpg"
-                alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
-                width="180"
-                height="180"
-              />
+            <article
+              class="record-card record-card--featured"
+              data-category="absolutely"
+            >
+              <div class="record-card__media">
+                <img
+                  class="record-cover"
+                  src="images/absolutely-paracosm.jpg"
+                  alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
+                  width="180"
+                  height="180"
+                />
+
+                <div class="record-card__overlay">
+                  <span class="record-card__overlay-label" aria-hidden="true">
+                    Inside the Record
+                  </span>
+                </div>
+              </div>
+
               <h4>Paracosm</h4>
               <p class="record-meta">Studio Album · 2026</p>
               <a
-                class="button button--secondary button--compact"
+                class="button button--secondary button--compact record-card__link"
                 href="items/absolutely-album-paracosm.html"
-                >Explore the Record →</a
               >
+                Explore the Record →
+              </a>
             </article>
           </div>
         </section>
