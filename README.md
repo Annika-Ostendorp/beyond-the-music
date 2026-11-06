@@ -100,21 +100,24 @@ Dort können Nutzer dann ihre Lieblingswerke _(sei es Song, Album oder Karriere-
 Die **Startseite (index.html)** stellt RAYE, Amma und Absolutely vor und enthält eine Übersicht ihrer ausgewählten Musikveröffentlichungen. Ein Kategoriefilter ermöglicht es außerdem, entweder alle Veröffentlichungen oder nur die Einträge einer bestimmten Künstlerin anzuzeigen.
 
 **Album-Detailseiten im Ordner items/:**
+
 - raye-album-hope.html - Detailseite zu RAYEs THIS MUSIC MAY CONTAIN HOPE. mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
 
 - absolutely-album-paracosm.html - Detailseite zu Absolutelys Paracosm mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
 
 **Kontaktformular-Seite:**
+
 - contact.html - Kontaktseite mit Demo-Formular (da noch kein Backend für das tatsächliche Absenden/ Speichern von Nachrichten)
 
 **Weitere Seiten:**
+
 - raye.html, amma.html und absolutely.html - derzeit als Coming-Soon-Seiten gestaltet; künftig für musikalische Karrierewege der drei Schwestern vorgesehen
 
 - my-collection.html - Platzhalter für spätere persönliche Gedankensammlung zu gespeicherten Records/ Chapters
 
 - sources.html - Platzhalter für zukünftige zentrale Quellenübersicht
 
-Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb der Seiten miteinander verbunden (z.B. Explore the Record etc.). 
+Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb der Seiten miteinander verbunden (z.B. Explore the Record etc.).
 
 ## Bildquellen
 
@@ -156,6 +159,7 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **Paracosm (Album, 2026):** Offizielles Albumcover, Quelle: https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25
 
 ## KI-Nutzung
+
 <details>
 <summary><strong>Modularbeit 1</strong></summary>
 
@@ -245,11 +249,14 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - verstehen, wie ich nach Kategoriebegriffen aus index.html gezielt suchen kann für JavaScript -> diese Sektion soll ja gestaltet werden (mit document.querySelectorAll())
 
   - Erklärung, wie JavaScript erkennt, welcher Button angeklickt wurde --> Filterlogik (mit addEventListener, button.dataset.filter, shouldShow, isActive etc.)
-</details>
+  </details>
 
 <details>
 <summary><strong>Modularbeit 2</strong></summary>
-### Teil 1 – KI-gestützte Aufwertung der statischen Website
+
+**Teil 1 – KI-gestützte Aufwertung der statischen Website**
+
+### Weiterentwicklung der Hero-Section
 
 - **ChatGPT:** Brainstorming zur gestalterischen Weiterentwicklung meiner bestehenden Homepage -> Ziel = hochwertigere, musikalischere und atmosphärischere Gestaltung, die die unterschiedlichen künstlerischen Welten von RAYE, Amma und Absolutely stärker widerspiegelt, ohne das ursprüngliche Designkonzept aus MA1 zu verändern.
 
@@ -280,21 +287,35 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **ChatGPT:** Unterstützung bei der responsiven Anpassung des neuen Hero-Bereichs. Während die Konzertbilder auf Desktop rechts neben bzw. hinter der großen Überschrift standen, erscheinen sie auf Mobile oberhalb des Textes. Die unterschiedlichen Layouts wurden mit bestehenden Media Queries umgesetzt, ohne zusätzliche HTML-Strukturen für die Smartphone-Ansicht anzulegen.
 
 - **ChatGPT:** Unterstützung bei der Überprüfung und Bereinigung meiner `style.css`.
-
   - Verstehen und Beheben von Fehlern bei CSS-Bildpfaden, fehlenden `background-image`-Eigenschaften sowie nicht übereinstimmenden Namen von Animationen und `@keyframes`.
   - Entfernen nicht mehr benötigter CSS-Regeln aus dem ursprünglichen Vinyl-Entwurf.
   - Vermeidung doppelter Deklarationen und Vereinheitlichung der Einrückungen innerhalb von Media Queries.
 
 - **ChatGPT:** Unterstützung bei der übersichtlicheren Strukturierung der KI-Nutzungsdokumentation im README mithilfe der HTML-Elemente `<details>` und `<summary>`.
 
-  **Neue HTML- und CSS-Techniken für Meet the Artists-Section:**
-  - Zusätzlicher HTML-Container `.artist-card__image-frame` um die jeweiligen Künstlerinnenporträts, damit sich die Fotografien unabhängig vom Kartenlayout animieren lassen.
-  - `overflow: hidden` und `border-radius`, damit der Bild-Zoom innerhalb des abgerundeten Bildrahmens bleibt.
-  - `transform: scale(1.045)` für eine minimale Vergrößerung der Porträts beim Hover.
-  - `filter: saturate()` und `contrast()` für eine dezente Verstärkung der Bildfarben und Kontraste.
-  - `transition` mit unterschiedlichen Animationsdauern und `cubic-bezier()` für sanfte, individuell gesteuerte Bewegungen.
-  - `transform: translateY(-5px)` für eine leichte Anhebung der Karten beim Hover, kombiniert mit einem weichen Schatten und einer dezenten Veränderung der Rahmenfarbe.
-  - `@media (hover: hover) and (pointer: fine)`, um Hover-Animationen gezielt auf Geräte mit präziser Zeigersteuerung anzuwenden.
-  - `:focus-within`, um die Hervorhebung der Karten auch bei der Tastaturnavigation sichtbar zu machen.
-  - `::before` und `linear-gradient()` zur Gestaltung einer feinen Trennlinie zwischen der Hero-Section und „Meet the Artists“, ohne zusätzliches HTML zu benötigen.
+### Weiterentwicklung der „Meet the Artists“-Section
+
+**Neue HTML- und CSS-Techniken:**
+
+- Zusätzlicher HTML-Container `.artist-card__image-frame` um die jeweiligen Künstlerinnenporträts, damit sich die Fotografien unabhängig vom Kartenlayout animieren lassen.
+- `overflow: hidden` und `border-radius`, damit der Bild-Zoom innerhalb des abgerundeten Bildrahmens bleibt.
+- `transform: scale(1.045)` für eine minimale Vergrößerung der Porträts beim Hover.
+- `filter: saturate()` und `contrast()` für eine dezente Verstärkung der Bildfarben und Kontraste.
+- `transition` mit unterschiedlichen Animationsdauern und `cubic-bezier()` für sanfte, individuell gesteuerte Bewegungen.
+- `transform: translateY(-5px)` für eine leichte Anhebung der Karten beim Hover, kombiniert mit einem weichen Schatten und einer dezenten Veränderung der Rahmenfarbe.
+- `@media (hover: hover) and (pointer: fine)`, um Hover-Animationen gezielt auf Geräte mit präziser Zeigersteuerung anzuwenden.
+- `:focus-within`, um die Hervorhebung der Karten auch bei der Tastaturnavigation sichtbar zu machen.
+- `::before` und `linear-gradient()` zur Gestaltung einer feinen Trennlinie zwischen der Hero-Section und „Meet the Artists“, ohne zusätzliches HTML zu benötigen.
+
+### Weiterentwicklung der „How to Explore“-Section
+
+- **ChatGPT:** Unterstützung bei der Erweiterung der HTML-Struktur um `.explore-section__inner` und `.explore-section__heading`. Der innere Container begrenzt die Inhalte auf die bestehende maximale Breite von `70rem`, während sich der Hintergrund über die gesamte Bildschirmbreite erstreckt. Die Section wurde außerdem über `aria-labelledby` mit ihrer Überschrift verknüpft.
+
+- **ChatGPT:** Erstellung eines atmosphärischen Hintergrunds aus mehreren übereinanderliegenden `radial-gradient()`- und `linear-gradient()`-Verläufen.
+
+- **ChatGPT:** Implementierung eines dezenten, langsam wechselnden Hintergrundlichts mit dem Pseudoelement `::before` und einer eigenen `@keyframes`-Animation. Durch `animation: ... infinite alternate` entsteht eine ruhige, wiederkehrende Lichtveränderung, ohne dass sich die Inhalte bewegen. Mit `prefers-reduced-motion` wird die Animation bei entsprechender Systemeinstellung deaktiviert.
+
+- **ChatGPT:** Stylen von dezenten vertikalen Kapitelmarkierungen mit `border-left`. Die Schriftgrößen wurden angepasst und die Überschrift mit `clamp()` an die bestehende „Meet the Artists“-Section angeglichen. Die nicht mehr benötigten HTML-Elemente und CSS-Regeln wurden entfernt.
+
+- **ChatGPT:** Erklärung und Überprüfung der verwendeten HTML- und CSS-Techniken, insbesondere `radial-gradient()`, `linear-gradient()`, `::before`, `@keyframes`, `infinite alternate`, `opacity`, responsive CSS-Grids, `clamp()`, `border-left` und `prefers-reduced-motion`.
 </details>
