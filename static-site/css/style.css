@@ -187,41 +187,184 @@ img {
 
 
 /* Homepage Hero - Mobile First */
+/* ========================================
+   MA2 - HOMEPAGE HERO ENHANCEMENT
+   Cinematic concert collage
+   ======================================== */
+
 .home-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+
+    margin: 0;
+    padding: 18rem 0 4rem;
+
+    background-color: var(--color-bg);
+}
+
+/* Full-width background layer */
+.home-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+
+/* Shared styling for the concert photographs */
+.home-hero__image {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    height: 20rem;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 25%;
+
+    opacity: 0;
+    filter: saturate(0.98) brightness(1);
+
+    /* Soft edges on all four sides */
+    -webkit-mask-image: radial-gradient(
+        ellipse 62% 62% at center,
+        black 0%,
+        black 43%,
+        transparent 80%
+    );
+
+    mask-image: radial-gradient(
+        ellipse 62% 62% at center,
+        black 0%,
+        black 43%,
+        transparent 80%
+    );
+
+    animation: hero-image-fade 4.2s ease-out both;
+}
+
+
+/* Absolutely – links, eher atmosphärisch im Hintergrund */
+.home-hero__image--absolutely {
+    background-image: url("../images/hero-absolutely.webp");
+    left: -8%;
+    width: 56%;
+    --photo-opacity: 0.85;
+    animation-delay: 0.1s;
+}
+
+/* RAYE – Hauptfokus in der Mitte */
+.home-hero__image--raye {
+    background-image: url("../images/hero-raye.jpg");
+    left: 24%;
+    width: 56%;
+    --photo-opacity: 1;
+    animation-delay: 0.35s;
+}
+
+/* Amma – rechts, gut sichtbar aber nicht am Rand abgeschnitten */
+.home-hero__image--amma {
+    background-image: url("../images/hero-amma.jpg");
+    left: 67%;
+    width: 40%;
+    --photo-opacity: 0.9;
+    animation-delay: 0.6s;
+}
+
+/* Dark gradients for readability */
+.home-hero__shade {
+    position: absolute;
+    inset: 0;
+    z-index: 4; /* damit Verlauf über allen Bildern sicher liegt */
+    
+    background: linear-gradient(
+        to bottom,
+        rgb(11 9 13 / 10%) 0%,
+        rgb(11 9 13 / 15%) 28%,
+        rgb(11 9 13 / 80%) 47%,
+        var(--color-bg) 65%,
+        var(--color-bg) 100%
+    );
+}
+
+/* Hero text above background */
+.home-hero__copy {
+    position: relative;
+    z-index: 2;
+
+    width: calc(100% - 2rem);
     max-width: 70rem;
     margin: 0 auto;
-    padding: 3rem 1rem 4rem;
+
+    animation: hero-text-fade 3.5s ease-out 0.6s both;
 }
 
-.home-hero h1 {
-    font-size: clamp(2.6rem, 6.5vw, 5rem); /* Minimum, flexibler Wert, Maximum --> damit Schriftgröße flexibel anpassen zwischen Desktop & Mobile-Version*/
+/* Small editorial label */
+.home-hero__eyebrow {
+    margin: 0 0 1.25rem;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
     font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin: 0;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
 }
 
-/* damit three sisters im Hero separat ansprechen und Farbe ändern */
+/* Main typography */
+.home-hero h1 {
+    max-width: 46rem;
+    margin: 0;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+}
+
 .home-hero h1 em {
-    display: block; /* damit beginnt three sisters dann in neuer Zeile */
+    display: block;
     color: var(--color-accent);
 }
 
-.hero-description {
-    max-width: 42rem;
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    line-height: 1.7;
+.home-hero .hero-description {
+    max-width: 39rem;
+    margin-top: 1.75rem;
+    line-height: 1.75;
+}
+
+/* Slow image fade - no zoom */
+@keyframes hero-image-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: var(--photo-opacity, 0.8);
+    }
+}
+
+/* Slow text fade - no movement */
+@keyframes hero-text-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 
 /* Artists Section - Mobile First */
-.artists-section {
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 2rem 1rem 4rem;
-}
-
 .artist-grid {
     display: grid;
     grid-template-columns: 1fr; /* genau 1 Spalte für Grid in Mobile Version */
@@ -266,7 +409,6 @@ img {
     align-self: center;
     margin-top: auto; /* damit Button in Flexbox nach unten geschoben wird */
     padding: 0.25rem 0.75rem;
-    
 }
 
 
@@ -1414,11 +1556,75 @@ img {
         display: none;
     }
 
-    /* Hero-Section */
+    
+    /* Homepage Hero - Desktop */
     .home-hero {
-        padding-top: 6rem;
-        padding-bottom: 7rem;
+        min-height: 89svh;
+        padding: 7rem 0 8rem;
     }
+
+
+    /* Full-height desktop collage */
+    .home-hero__image {
+        top: -6%;
+        bottom: -6%;
+        height: auto;
+    }
+
+    /* Absolutely - atmospheric left layer */
+    .home-hero__image--absolutely {
+        left: 34%;
+        width: 38%;
+        background-position: 50% 23%;
+        --photo-opacity: 0.95;
+    }
+
+    /* RAYE - central focal point */
+    .home-hero__image--raye {
+        left: 50%;
+        width: 40%;
+        background-position: 50% 22%;
+        --photo-opacity: 1;
+    }
+
+    /* Amma - softer right layer */
+    .home-hero__image--amma {
+        left: 72%;
+        width: 28%;
+        background-position: 50% 20%;
+        --photo-opacity: 0.95;
+    }
+
+
+    /* Dark gradient for readable typography */
+    .home-hero__shade {   
+        background:
+            linear-gradient(
+                90deg,
+                rgb(11 9 13 / 98%) 0%,
+                rgb(11 9 13 / 88%) 30%,
+                rgb(11 9 13 / 62%) 44%,
+                rgb(11 9 13 / 25%) 65%,
+                rgb(11 9 13 / 12%) 100%
+            ),
+            linear-gradient(
+                to bottom,
+                var(--color-bg) 0%,
+                transparent 16%,
+                transparent 72%,
+                var(--color-bg) 100%
+            );
+    }
+
+    /* Keep the editorial text on the left */
+    .home-hero h1 {
+        max-width: 40rem;
+    }
+
+    .home-hero .hero-description {
+        max-width: 35rem;
+    }
+
 
     .hero-description {
         font-size: 1.125rem;
@@ -1523,5 +1729,23 @@ img {
         grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
         align-items: start;
         gap: 1.5rem;
+    }
+}
+
+
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .home-hero__image,
+    .home-hero__copy {
+        animation: none;
+    }
+
+    .home-hero__image {
+        opacity: var(--photo-opacity, 0.8);
+    }
+
+    .home-hero__copy {
+        opacity: 1;
     }
 }

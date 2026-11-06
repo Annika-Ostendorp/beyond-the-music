@@ -37,7 +37,8 @@
             stroke-width="2"
             aria-hidden="true"
           >
-            <path d="M6 4h12v17l-6-4-6 4z" /> <!-- Lesezeichen Icon Pfad -->
+            <path d="M6 4h12v17l-6-4-6 4z" />
+            <!-- Lesezeichen Icon Pfad -->
           </svg>
 
           <span class="collection-label">My Collection</span>
@@ -55,13 +56,30 @@
     </header>
 
     <main>
-      <section class="home-hero">
-        <h1>Beyond the music, <em>three sisters.</em></h1>
-        <p class="hero-description">
-          RAYE, Amma and Absolutely make very different music. This site follows
-          each of them through their musical careers, records and songs that
-          shaped them.
-        </p>
+      <section class="home-hero" aria-labelledby="home-hero-title">
+        <!-- Decorative concert collage -->
+        <div class="home-hero__media" aria-hidden="true">
+          <div class="home-hero__image home-hero__image--raye"></div>
+          <div class="home-hero__image home-hero__image--absolutely"></div>
+          <div class="home-hero__image home-hero__image--amma"></div>
+          <div class="home-hero__shade"></div>
+        </div>
+
+        <!-- Editorial hero content -->
+        <div class="home-hero__copy">
+          <p class="home-hero__eyebrow">A story-first music archive</p>
+
+          <h1 id="home-hero-title">
+            Beyond the music,
+            <em>three sisters.</em>
+          </h1>
+
+          <p class="hero-description">
+            RAYE, Amma and Absolutely make very different music. This site
+            follows each of them through their musical careers, records and
+            songs that shaped them.
+          </p>
+        </div>
       </section>
 
       <section class="artists-section" aria-labelledby="artists-title">

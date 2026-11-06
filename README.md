@@ -156,6 +156,8 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **Paracosm (Album, 2026):** Offizielles Albumcover, Quelle: https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25
 
 ## KI-Nutzung
+<details>
+<summary><strong>Modularbeit 1</strong></summary>
 
 - **ChatGPT:** Brainstorming und Weiterentwicklung meiner ursprünglichen Projektidee zu einer Entdeckungsseite für RAYE, Amma und Absolutely mit deren Karrieren und Musik.
 
@@ -243,3 +245,45 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - verstehen, wie ich nach Kategoriebegriffen aus index.html gezielt suchen kann für JavaScript -> diese Sektion soll ja gestaltet werden (mit document.querySelectorAll())
 
   - Erklärung, wie JavaScript erkennt, welcher Button angeklickt wurde --> Filterlogik (mit addEventListener, button.dataset.filter, shouldShow, isActive etc.)
+</details>
+
+<details>
+<summary><strong>Modularbeit 2</strong></summary>
+### Teil 1 – KI-gestützte Aufwertung der statischen Website
+
+- **ChatGPT:** Brainstorming zur gestalterischen Weiterentwicklung meiner bestehenden Homepage -> Ziel = hochwertigere, musikalischere und atmosphärischere Gestaltung, die die unterschiedlichen künstlerischen Welten von RAYE, Amma und Absolutely stärker widerspiegelt, ohne das ursprüngliche Designkonzept aus MA1 zu verändern.
+
+- **ChatGPT:** Erstellung eines ersten HTML- und CSS-Vorschlags für eine langsam rotierende Vinyl-Schallplatte als dekoratives Element im Hero-Bereich. Diesen Entwurf habe ich nach der Umsetzung bewusst verworfen, da er mir zu generisch erschien und die persönliche Geschichte der drei Künstlerinnen nicht ausreichend visualisierte.
+
+- **ChatGPT:** Unterstützung bei der Entwicklung und Programmierung einer neuen, vollflächigen Hero-Collage aus drei von mir ausgewählten Bildern. Dabei sollte RAYE als zentraler visueller Fokus erscheinen, Absolutely links und Amma rechts. Die Bilder sollten ohne harte Übergänge ineinander übergehen und den Hero insgesamt lebendiger gestalten.
+
+  **Neue HTML- und CSS-Techniken:**
+  - `aria-hidden="true"` für die dekorative Bildcollage, damit diese nicht unnötig von Screenreadern vorgelesen wird.
+  - `position: relative` und `position: absolute` mit `inset: 0`, um die Fotografien über die gesamte Hero-Section zu positionieren.
+  - `isolation: isolate` und `z-index`, um Bild-, Overlay- und Textebenen kontrolliert übereinander anzuordnen.
+  - `pointer-events: none`, damit dekorativer Hintergrund keine Interaktionen blockiert.
+  - `background-image`, `background-size`, `background-position` und relative Bildpfade für die Einbindung und Positionierung der Bilder.
+  - `mask-image: radial-gradient(...)` und `-webkit-mask-image`, um die Bildränder auf allen Seiten weich auszublenden und eine harmonische Collage zu erzeugen.
+  - Mehrere `linear-gradient()`-Verläufe als dunkles Overlay, um die Lesbarkeit des Hero-Textes sicherzustellen.
+  - Individuelle CSS-Variablen wie `--photo-opacity`, um die Transparenz der einzelnen Fotografien gezielt innerhalb ihrer Animationen zu steuern.
+
+- **ChatGPT:** Unterstützung bei der Programmierung langsamer Fade-in-Animationen für die Konzertbilder und den Hero-Text beim erstmaligen Laden der Homepage.
+
+  **Neue Animationstechniken:**
+  - `@keyframes` zur Definition von Animationen mit unterschiedlichen Anfangs- und Endzuständen.
+  - `opacity` für das schrittweise Einblenden von Bildern und Text ohne Zoom oder Positionsveränderung.
+  - `animation-duration`, `animation-delay`, `ease-out` und `animation-fill-mode: both` für langsamere und zeitlich abgestimmte Übergänge.
+  - Unterschiedliche Startverzögerungen für die drei Fotografien, um die Collage harmonisch erscheinen zu lassen.
+
+- **ChatGPT:** Mehrfache Überarbeitung der generierten HTML- und CSS-Vorschläge anhand meiner eigenen Desktop- und Mobile-Screenshots. Insbesondere wurden die Bildpositionen, die Bildgrößen, die Transparenz, die Maskierungen und die Overlay-Verläufe wiederholt angepasst. Frühere Ergebnisse wirkten teilweise zu dunkel, gequetscht oder zeigten harte Bildkanten. Außerdem waren einzelne Künstlerinnen zunächst kaum sichtbar. Die abschließende Bildkomposition wurde entsprechend meiner gestalterischen Vorstellungen überarbeitet.
+
+- **ChatGPT:** Unterstützung bei der responsiven Anpassung des neuen Hero-Bereichs. Während die Konzertbilder auf Desktop rechts neben bzw. hinter der großen Überschrift standen, erscheinen sie auf Mobile oberhalb des Textes. Die unterschiedlichen Layouts wurden mit bestehenden Media Queries umgesetzt, ohne zusätzliche HTML-Strukturen für die Smartphone-Ansicht anzulegen.
+
+- **ChatGPT:** Unterstützung bei der Überprüfung und Bereinigung meiner `style.css`.
+
+  - Verstehen und Beheben von Fehlern bei CSS-Bildpfaden, fehlenden `background-image`-Eigenschaften sowie nicht übereinstimmenden Namen von Animationen und `@keyframes`.
+  - Entfernen nicht mehr benötigter CSS-Regeln aus dem ursprünglichen Vinyl-Entwurf.
+  - Vermeidung doppelter Deklarationen und Vereinheitlichung der Einrückungen innerhalb von Media Queries.
+
+- **ChatGPT:** Unterstützung bei der übersichtlicheren Strukturierung der KI-Nutzungsdokumentation im README mithilfe der HTML-Elemente `<details>` und `<summary>`.
+</details>
