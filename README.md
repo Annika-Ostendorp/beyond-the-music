@@ -97,7 +97,24 @@ Dort können Nutzer dann ihre Lieblingswerke _(sei es Song, Album oder Karriere-
 
 ## Seitenstruktur
 
-_Wird im Verlauf der Umsetzung ergänzt._
+Die **Startseite (index.html)** stellt RAYE, Amma und Absolutely vor und enthält eine Übersicht ihrer ausgewählten Musikveröffentlichungen. Ein Kategoriefilter ermöglicht es außerdem, entweder alle Veröffentlichungen oder nur die Einträge einer bestimmten Künstlerin anzuzeigen.
+
+**Album-Detailseiten im Ordner items/:**
+- raye-album-hope.html - Detailseite zu RAYEs THIS MUSIC MAY CONTAIN HOPE. mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
+
+- absolutely-album-paracosm.html - Detailseite zu Absolutelys Paracosm mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
+
+**Kontaktformular-Seite:**
+- contact.html - Kontaktseite mit Demo-Formular (da noch kein Backend für das tatsächliche Absenden/ Speichern von Nachrichten)
+
+**Weitere Seiten:**
+- raye.html, amma.html und absolutely.html - derzeit als Coming-Soon-Seiten gestaltet; künftig für musikalische Karrierewege der drei Schwestern vorgesehen
+
+- my-collection.html - Platzhalter für spätere persönliche Gedankensammlung zu gespeicherten Records/ Chapters
+
+- sources.html - Platzhalter für zukünftige zentrale Quellenübersicht
+
+Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb der Seiten miteinander verbunden (z.B. Explore the Record etc.). 
 
 ## Bildquellen
 
@@ -126,7 +143,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 **Amma**
 
-- **Middle Child (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/5KfhyZmRRUfQuiJB1aZVlV
+- **Middle Child (Single, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/5KfhyZmRRUfQuiJB1aZVlV
 
 - **Blame Game (EP, 2025):** Cover-Artwork, Quelle: https://open.spotify.com/album/3n7Vjwe7Jm5PiEdYYpgrih
 
@@ -152,6 +169,8 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
 - **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags **dl**, **dt** und **dd** verstehen
 
+- **ChatGPT:** Verstehen, wie ich Lesezeichen-Icon einfügen kann für My-Collection Button im Header -> mit M6 4h12v17l-6-4-6 4z
+
 - **ChatGPT:** Hilfe bei der Erstellung der Infotexte auf den Album-Detailseiten.
 
 - **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit **cite** Titel korrekter kennzeichnen statt nur mit **i**.
@@ -163,7 +182,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 - **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
 
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Homepage
-  
+
   **Header:**
   - margin: 0
   - :root
@@ -193,7 +212,6 @@ _Wird im Verlauf der Umsetzung ergänzt._
   - flex: 1
   - flex-shrink
 
-
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen für RAYE Album Detailseite
 
   **Hero-Section:**
@@ -208,7 +226,7 @@ _Wird im Verlauf der Umsetzung ergänzt._
 
   **Tracklist-Section:**
   - grid-column: 1 / -1
-  - font-variant-numeric: tabular-nums für Track-Duration 
+  - font-variant-numeric: tabular-nums für Track-Duration
   - Tracklist-Nummerierung anpassen mit counter-reset: track, counter-increment: track, content: counter(track, decimal-leading-zero)
 
   **Page Sources-Section:**
@@ -217,8 +235,11 @@ _Wird im Verlauf der Umsetzung ergänzt._
   **Timeline-Section:**
   - Wie Richtungspfeile je Timeline Event gestalten --> mit article:first-of-type p::before bzw. article:last-of-type p::after
 
-
 - **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Coming-Soon-Seiten
-
   - min-height: 65vh --> damit Inhalt großzügigen Bereich bekommt und nicht direkt unter oberem Seitenrand steht
   - wie focus-visible zentral an einer Stelle gestalten für Tastaturbedienung? --> mit :where(a, button, input, select, textarea, summary):focus-visible
+
+- **ChatGPT:** Hilfe bei der Umsetzung des JavaScript-Kategoriefilters
+  - verstehen, wie ich nach Kategoriebegriffen aus index.html gezielt suchen kann für JavaScript -> diese Sektion soll ja gestaltet werden (mit document.querySelectorAll())
+
+  - Erklärung, wie JavaScript erkennt, welcher Button angeklickt wurde --> Filterlogik (mit addEventListener, button.dataset.filter, shouldShow, isActive etc.)

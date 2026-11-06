@@ -84,7 +84,7 @@ img {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    width: calc(100% - 2rem); /* 100% gesamte verfügbare Breite - 2rem (32px bei Standardschriftgröße 16px) --> vefügbare Breite minus 32 px --> mehr Platz zum Bildschirmrand*/
+    width: calc(100% - 2rem); /* 100% gesamte verfügbare Breite - 2rem (32px bei Standardschriftgröße 16px) --> verfügbare Breite minus 32 px --> mehr Platz zum Bildschirmrand*/
     max-width: 70rem;
     box-sizing: border-box;
     margin: 1rem auto;
@@ -179,7 +179,7 @@ img {
 }
 
 /* Navigation Interaktion */
-.nav-list a:hover, /* mit Komma getrennt, damit diesselbe CSS-Regel auf beide Selektoren angewendet wird --> sowohl in Mobile als auch Desktop Version */
+.nav-list a:hover, /* mit Komma getrennt, damit dieselbe CSS-Regel auf beide Selektoren angewendet wird --> sowohl in Mobile als auch Desktop Version */
 .mobile-menu nav a:hover {
     color: var(--color-accent);
 }
@@ -265,7 +265,6 @@ img {
 .artist-card .button {
     align-self: center;
     margin-top: auto; /* damit Button in Flexbox nach unten geschoben wird */
-    margin-top: 0.6rem;
     padding: 0.25rem 0.75rem;
     
 }
@@ -611,7 +610,7 @@ img {
 }
 
 .save-action {
-    display: inline-flex; /* Container nur so breit wie Text --> währe nur flex, dann Seitenbreite */
+    display: inline-flex; /* Container nur so breit wie Text --> wäre nur flex, dann Seitenbreite */
     padding: 0.4rem;
     background-color: var(--color-detail-card);
     border: 1px solid var(--color-border);
@@ -1453,7 +1452,7 @@ img {
     }
 
     .footer-about {
-        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigatoin aber feste Breite beibehält */
+        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigation aber feste Breite beibehält */
         min-width: 0;
     }
 
