@@ -321,6 +321,22 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - `:focus-within`, um die Hervorhebung der Karten auch bei der Tastaturnavigation sichtbar zu machen.
 - `::before` und `linear-gradient()` zur Gestaltung einer feinen Trennlinie zwischen der Hero-Section und „Meet the Artists“, ohne zusätzliches HTML zu benötigen.
 
+
+- **ChatGPT:** Unterstützung bei der gestalterischen und technischen Neuentwicklung der Homepage-Section „Meet the Artists“. Die ursprünglichen drei nebeneinanderstehenden Künstlerinnenkarten wurden zunächst in großflächige Cinematic Artist Stages umgestaltet und anschließend zu einem interaktiven Carousel zusammengeführt.
+
+- **ChatGPT:** Umsetzung weicher Fotoübergänge durch CSS-Gradients, Pseudoelemente, Unschärfefilter und Maskierungen. Die Porträts werden in ihre jeweiligen Hintergrundfarben eingebettet, statt als rechteckige Einzelbilder dargestellt zu werden.
+
+- **ChatGPT:** Entwicklung eines einheitlichen schwebenden 3D-Effekts durch einen dezenten cremeweißen Kartenrahmen, mehrschichtige `box-shadow`-Effekte und eine leichte Anhebung bei Hover beziehungsweise Tastaturfokus. Die Effekte wurden unter Berücksichtigung von `prefers-reduced-motion` gestaltet.
+
+- **ChatGPT:** Umsetzung des interaktiven Carousels mit HTML, CSS und Vanilla JavaScript ohne externe Frameworks. Die drei bestehenden Bühnen werden mittels CSS Grid übereinander positioniert. JavaScript steuert die aktive Künstlerin über `is-active`, navigiert zwischen den drei Karten und aktualisiert die Positionsanzeige.
+
+- **ChatGPT:** Gestaltung der Carousel-Navigation mit Vorwärts- und Rückwärtspfeilen, drei Positionsindikatoren und einem Zähler. Auf Desktop befinden sich die Pfeile seitlich außerhalb der Bühne; auf Mobile stehen sie auf Höhe der vertikalen Kartenmitte. Das Carousel unterstützt außerdem horizontale Wischgesten auf Touchgeräten und die Navigation über die Tastatur.
+
+- **ChatGPT:** Entwicklung sanfter Übergangsanimationen beim Wechsel der Künstlerinnen. Dabei werden Porträt, Hintergrundwelt und Informationen ineinander überblendet beziehungsweise gestaffelt eingeblendet. Die Animationen werden beim Künstlerinnenwechsel ausgelöst, nicht beim Scrollen.
+
+- **ChatGPT:** Berücksichtigung von Accessibility durch beschriftete Navigationsbuttons, `aria-pressed` für die Positionsindikatoren, eine `aria-live`-Statusmeldung und `inert` für nicht aktive Künstlerinnenkarten. Bei deaktiviertem JavaScript bleiben alle drei Bühnen als reguläre Inhalte sichtbar.
+
+
 ### Weiterentwicklung der „How to Explore“-Section
 
 - **ChatGPT:** Unterstützung bei der Erweiterung der HTML-Struktur um `.explore-section__inner` und `.explore-section__heading`. Der innere Container begrenzt die Inhalte auf die bestehende maximale Breite von `70rem`, während sich der Hintergrund über die gesamte Bildschirmbreite erstreckt. Die Section wurde außerdem über `aria-labelledby` mit ihrer Überschrift verknüpft.

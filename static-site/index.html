@@ -9,6 +9,7 @@
     <!-- defer -> damit JavaScript-Datei laden, aber erst ausführen, wenn HTML vollständig eingelesen wurde
          JavaScript muss ja auf Filterbuttons & Albumgruppen aus HTML zugreifen -->
     <script src="js/app.js" defer></script>
+    <script src="js/artist-carousel.js" defer></script>
   </head>
   <body class="page-home">
     <header class="site-header">
@@ -95,71 +96,193 @@
         <!-- aria-labelledby verknüpft Section mit Überschrift -->
         <h2 id="artists-title">Meet the Artists</h2>
 
-        <div class="artist-grid">
-          <article class="artist-card">
-            <div class="artist-card__image-frame">
-              <img
-                class="artist-card__image"
-                src="images/raye-portrait.jpg"
-                alt="RAYE smiling on stage in a red dress"
-                width="240"
-                height="360"
-              />
+        <div
+          class="artist-carousel"
+          role="region"
+          aria-label="Meet the artists"
+        >
+          <div class="artist-carousel__stage">
+            <div class="artist-grid">
+              <article
+                class="artist-card artist-card--cinematic artist-card--cinematic--raye"
+              >
+                <div class="artist-card__image-frame">
+                  <img
+                    class="artist-card__image"
+                    src="images/raye-portrait.jpg"
+                    alt="RAYE smiling on stage in a red dress"
+                    width="240"
+                    height="360"
+                  />
+                </div>
+
+                <div class="artist-card__content">
+                  <h3>RAYE</h3>
+                  <p class="artist-tagline">
+                    The one who gained her independence.
+                  </p>
+                  <p>
+                    From a SoundCloud EP at 17 to her recent Royal Albert Hall
+                    performance.
+                  </p>
+                  <a class="button button--secondary" href="raye.html"
+                    >Enter RAYE's world</a
+                  >
+                </div>
+              </article>
+
+              <article
+                class="artist-card artist-card--cinematic artist-card--cinematic--amma"
+              >
+                <div class="artist-card__image-frame">
+                  <img
+                    class="artist-card__image"
+                    src="images/amma-portrait.jpg"
+                    alt="Portrait of Amma with curly hair against an orange background"
+                    width="240"
+                    height="360"
+                  />
+                </div>
+
+                <div class="artist-card__content">
+                  <h3>Amma</h3>
+                  <p class="artist-tagline">
+                    The one who publishes her own music now.
+                  </p>
+                  <p>
+                    The middle sister - from the writing room to her own debut.
+                  </p>
+                  <a class="button button--secondary" href="amma.html"
+                    >Enter Amma's world</a
+                  >
+                </div>
+              </article>
+
+              <article
+                class="artist-card artist-card--cinematic artist-card--cinematic--absolutely"
+              >
+                <div class="artist-card__image-frame">
+                  <img
+                    class="artist-card__image"
+                    src="images/absolutely-portrait.jpg"
+                    alt="Portrait of Absolutely with red curls and a black corset"
+                    width="240"
+                    height="360"
+                  />
+                </div>
+
+                <div class="artist-card__content">
+                  <h3>Absolutely</h3>
+                  <p class="artist-tagline">The one who built her own world.</p>
+                  <p>
+                    The youngest sister - from viral videos to a world of her
+                    own.
+                  </p>
+                  <a class="button button--secondary" href="absolutely.html"
+                    >Enter Absolutely's world</a
+                  >
+                </div>
+              </article>
             </div>
+            <!-- End artist-grid -->
 
-            <h3>RAYE</h3>
-            <p class="artist-tagline">The one who gained her independence.</p>
-            <p>
-              From a SoundCloud EP at 17 to her recent Royal Albert Hall
-              performance.
-            </p>
-            <a class="button button--secondary" href="raye.html"
-              >Enter RAYE's world</a
+            <!-- Arrows positioned beside the artist stage -->
+            <button
+              class="artist-carousel__arrow artist-carousel__arrow--prev"
+              type="button"
+              data-artist-prev
+              aria-label="Previous artist"
             >
-          </article>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 12H5" />
+                <path d="m12 19-7-7 7-7" />
+              </svg>
+            </button>
 
-          <article class="artist-card">
-            <div class="artist-card__image-frame">
-              <img
-                class="artist-card__image"
-                src="images/amma-portrait.jpg"
-                alt="Portrait of Amma with curly hair against an orange background"
-                width="240"
-                height="360"
-              />
+            <button
+              class="artist-carousel__arrow artist-carousel__arrow--next"
+              type="button"
+              data-artist-next
+              aria-label="Next artist"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          <!-- End artist-carousel__stage -->
+
+          <!-- Artist carousel navigation -->
+          <div
+            class="artist-carousel__controls"
+            role="group"
+            aria-label="Artist carousel navigation"
+          >
+            <div class="artist-carousel__progress">
+              <div
+                class="artist-carousel__dots"
+                role="group"
+                aria-label="Choose an artist"
+              >
+                <button
+                  class="artist-carousel__dot"
+                  type="button"
+                  data-artist-index="0"
+                  aria-label="Show RAYE"
+                  aria-pressed="true"
+                ></button>
+
+                <button
+                  class="artist-carousel__dot"
+                  type="button"
+                  data-artist-index="1"
+                  aria-label="Show Amma"
+                  aria-pressed="false"
+                ></button>
+
+                <button
+                  class="artist-carousel__dot"
+                  type="button"
+                  data-artist-index="2"
+                  aria-label="Show Absolutely"
+                  aria-pressed="false"
+                ></button>
+              </div>
+
+              <span class="artist-carousel__count" aria-hidden="true">
+                01 / 03
+              </span>
             </div>
+          </div>
 
-            <h3>Amma</h3>
-            <p class="artist-tagline">
-              The one who publishes her own music now.
-            </p>
-            <p>The middle sister - from the writing room to her own debut.</p>
-            <a class="button button--secondary" href="amma.html"
-              >Enter Amma's world</a
-            >
-          </article>
-
-          <article class="artist-card">
-            <div class="artist-card__image-frame">
-              <img
-                class="artist-card__image"
-                src="images/absolutely-portrait.jpg"
-                alt="Portrait of Absolutely with red curls and a black corset"
-                width="240"
-                height="360"
-              />
-            </div>
-
-            <h3>Absolutely</h3>
-            <p class="artist-tagline">The one who built her own world.</p>
-            <p>
-              The youngest sister - from viral videos to a world of her own.
-            </p>
-            <a class="button button--secondary" href="absolutely.html"
-              >Enter Absolutely's world</a
-            >
-          </article>
+          <p
+            class="artist-carousel__announcement"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
         </div>
+        <!-- End artist-carousel -->
       </section>
 
       <section class="explore-section" aria-labelledby="explore-title">

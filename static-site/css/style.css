@@ -549,6 +549,673 @@ img {
 }
 
 
+/* ========================================
+   MA2 - CINEMATIC ARTIST STAGES
+   Shared layout, photograph blending and floating effect
+   ======================================== */
+
+/* Shared stage frame. Each artist defines her own background below. */
+.artist-card--cinematic {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgb(243 232 218 / 20%);
+    border-radius: 1.25rem;
+    background-color: var(--color-surface);
+
+    /* The same pearl-white 3D effect for all three artists */
+    box-shadow:
+        0 14px 28px -10px rgb(208 193 190 / 25%),
+        0 32px 72px -18px rgb(0 0 0 / 85%),
+        0 0 40px rgb(243 232 218 / 12%),
+        inset 0 1px 0 rgb(255 255 255 / 12%);
+}
+
+/* The blurred version of the same photo fills the background. */
+.artist-card--cinematic .artist-card__image-frame {
+    position: relative;
+    isolation: isolate;
+
+    height: clamp(17rem, 65vw, 23rem);
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.artist-card--cinematic .artist-card__image-frame::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    background: var(--stage-photo) center 24% / cover no-repeat;
+
+    filter: blur(48px) brightness(0.55) saturate(1.15);
+    transform: scale(1.12);
+    opacity: 0.7;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 22%,
+        black 78%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 22%,
+        black 78%,
+        transparent 100%
+    );
+}
+
+/* Sharp foreground portrait dissolves softly at the edges. */
+.artist-card--cinematic .artist-card__image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+
+    -webkit-mask-image: radial-gradient(
+        ellipse 60% 84% at 50% 46%,
+        black 0%,
+        black 42%,
+        transparent 78%
+    );
+    mask-image: radial-gradient(
+        ellipse 60% 84% at 50% 46%,
+        black 0%,
+        black 42%,
+        transparent 78%
+    );
+}
+
+/* Text column and global homepage accent colours. */
+.artist-card--cinematic .artist-card__content {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.85rem;
+
+    min-width: 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.artist-card--cinematic .artist-card__content > * {
+    align-self: flex-start;
+    margin: 0;
+}
+
+.artist-card--cinematic h3 {
+    color: var(--color-heading);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    letter-spacing: -0.035em;
+    line-height: 1;
+}
+
+.artist-card--cinematic .artist-tagline {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+.artist-card--cinematic .artist-card__content > p:not(.artist-tagline) {
+    max-width: 28rem;
+    line-height: 1.7;
+}
+
+.artist-card--cinematic .artist-card__content .button {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+/* Preserve the shared 3D lighting on hover and keyboard focus. */
+.artist-card--cinematic:focus-within {
+    transform: translateY(-7px);
+    border-color: rgb(243 232 218 / 38%);
+    box-shadow:
+        0 18px 30px -10px rgb(243 232 218 / 28%),
+        0 38px 65px -18px rgb(208 193 190 / 35%),
+        0 55px 100px -24px rgb(0 0 0 / 85%),
+        0 0 60px rgb(243 232 218 / 20%),
+        inset 0 1px 0 rgb(255 255 255 / 18%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .artist-card--cinematic:hover {
+        transform: translateY(-7px);
+        border-color: rgb(243 232 218 / 38%);
+        box-shadow:
+            0 18px 30px -10px rgb(243 232 218 / 28%),
+            0 38px 65px -18px rgb(208 193 190 / 35%),
+            0 55px 100px -24px rgb(0 0 0 / 85%),
+            0 0 60px rgb(243 232 218 / 20%),
+            inset 0 1px 0 rgb(255 255 255 / 18%);
+    }
+}
+
+/* No additional zoom on the large cinematic portrait. */
+.artist-card--cinematic:hover .artist-card__image,
+.artist-card--cinematic:focus-within .artist-card__image {
+    transform: none;
+    filter: none;
+}
+
+/* Desktop: photo on the right, editorial text on the left. */
+@media (min-width: 768px) {
+    .artist-card--cinematic {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        height: clamp(26rem, 42vw, 33rem);
+    }
+
+    
+    /* All three portraits softly dissolve into the text background */
+    .artist-card--cinematic .artist-card__image-frame {
+        grid-column: 2;
+        grid-row: 1;
+
+        width: calc(100% + 4rem);
+        height: 100%;
+        margin-left: -4rem;
+
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 28%,
+            black 100%
+        );
+
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 28%,
+            black 100%
+        );
+    }
+
+
+    .artist-card--cinematic .artist-card__content {
+        grid-column: 1;
+        grid-row: 1;
+        padding: clamp(2rem, 4vw, 3.5rem);
+    }
+}
+
+/* ========================================
+   RAYE - BURGUNDY & STAGE GOLD
+   ======================================== */
+
+.artist-card--cinematic--raye {
+    --stage-photo: url("../images/raye-portrait.jpg");
+
+    background:
+        radial-gradient(
+            ellipse 55% 90% at 12% 12%,
+            rgb(230 161 73 / 45%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 58% 85% at 30% 80%,
+            rgb(169 33 48 / 62%),
+            transparent 74%
+        ),
+        radial-gradient(
+            ellipse 65% 100% at 85% 45%,
+            rgb(110 27 40 / 35%),
+            transparent 80%
+        ),
+        linear-gradient(
+            105deg,
+            #47251c 0%,
+            #42151e 48%,
+            #160c13 100%
+        );
+}
+
+/* ========================================
+   AMMA - COFFEE & TERRACOTTA
+   ======================================== */
+
+.artist-card--cinematic--amma {
+    --stage-photo: url("../images/amma-portrait.jpg");
+
+    background:
+        radial-gradient(
+            ellipse 65% 90% at 10% 5%,
+            rgb(239 193 139 / 38%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 65% 85% at 38% 95%,
+            rgb(206 96 15 / 39%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 65% 95% at 88% 35%,
+            rgb(177 105 65 / 24%),
+            transparent 80%
+        ),
+        linear-gradient(
+            108deg,
+            #72503d 0%,
+            #955a3d 50%,
+            #2b1b19 100%
+        );
+}
+
+/* Amma's portrait has a brighter, warmer haze. */
+.artist-card--cinematic--amma .artist-card__image-frame::before {
+    filter: blur(55px) brightness(0.72) saturate(1.08);
+    opacity: 0.8;
+}
+
+/* ========================================
+   ABSOLUTELY - CHERRY RED & BLACK
+   ======================================== */
+
+.artist-card--cinematic--absolutely {
+    --stage-photo: url("../images/absolutely-portrait.jpg");
+
+    background:
+        radial-gradient(
+            ellipse 55% 100% at 12% 16%,
+            rgb(232 41 36 / 38%),
+            transparent 73%
+        ),
+        radial-gradient(
+            ellipse 70% 80% at 38% 95%,
+            rgb(111 9 25 / 65%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 70% 110% at 94% 48%,
+            rgb(92 16 28 / 45%),
+            transparent 75%
+        ),
+        linear-gradient(
+            108deg,
+            #2b0b13 0%,
+            #430e1c 48%,
+            #0b090d 100%
+        );
+}
+
+/* Override the shared portrait blur. This rule must come AFTER it. */
+.artist-card--cinematic--absolutely .artist-card__image-frame::before {
+    filter: blur(52px) brightness(0.4) saturate(1.2);
+    opacity: 0.72;
+}
+
+.artist-card--cinematic--absolutely .artist-card__image-frame {
+    background: radial-gradient(
+        ellipse 80% 100% at 55% 45%,
+        #571c2a 0%,
+        #2d101c 65%,
+        #140b12 100%
+    );
+}
+
+/* The brighter studio photograph needs a wider transparent edge. */
+.artist-card--cinematic--absolutely .artist-card__image {
+    -webkit-mask-image: radial-gradient(
+        ellipse 75% 100% at 57% 45%,
+        black 30%,
+        black 47%,
+        transparent 85%
+    );
+    mask-image: radial-gradient(
+        ellipse 75% 100% at 57% 45%,
+        black 30%,
+        black 47%,
+        transparent 85%
+    );
+}
+
+/* Darken only the edges, leaving the face bright. */
+.artist-card--cinematic--absolutely .artist-card__image-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to right,
+            rgb(79 13 25 / 96%) 0%,
+            rgb(79 13 25 / 75%) 12%,
+            rgb(79 13 25 / 10%) 40%,
+            transparent 65%
+        ),
+        linear-gradient(
+            to left,
+            rgb(20 11 18 / 65%),
+            transparent 27%
+        ),
+        linear-gradient(
+            to top,
+            rgb(20 11 18 / 70%),
+            transparent 30%
+        );
+}
+
+
+/* ========================================
+   MA2 - CINEMATIC ARTIST CAROUSEL
+   ======================================== */
+
+.artist-carousel {
+    position: relative;
+}
+
+
+/* Stage provides the positioning reference for the arrows */
+.artist-carousel__stage {
+    position: relative;
+}
+
+/* Only activated when JavaScript is available */
+.artist-carousel--ready .artist-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    isolation: isolate;
+}
+
+/* All three stages occupy the same grid position */
+.artist-carousel--ready .artist-grid > .artist-card {
+    grid-area: 1 / 1;
+    position: relative;
+    z-index: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0s linear 0.7s,
+        transform 0.5s ease,
+        border-color 0.4s ease,
+        box-shadow 0.5s ease;
+}
+
+/* Selected artist becomes visible */
+.artist-carousel--ready .artist-grid > .artist-card.is-active {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+}
+
+
+/* Only the dots and counter remain below the stage */
+.artist-carousel__controls {
+    display: none;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.artist-carousel--ready .artist-carousel__controls {
+    display: flex;
+}
+
+
+/* Floating arrows next to the artist stage */
+.artist-carousel__arrow {
+    position: absolute;
+    z-index: 3;
+
+    display: none;
+    place-items: center;
+
+    /* Centre arrows vertically on the entire card */    
+    top: 50%;
+
+    box-sizing: border-box;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+
+    border: 1px solid rgb(243 232 218 / 30%);
+    border-radius: 50%;
+
+    background-color: rgb(29 23 29 / 90%);
+    color: var(--color-heading);
+
+    line-height: 1;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+/* Controls are visible only when JS activates the carousel */
+.artist-carousel--ready .artist-carousel__arrow {
+    display: grid;
+}
+
+/* SVG fills the centre of the circular button */
+.artist-carousel__arrow svg {
+    display: block;
+    width: 1.375rem;
+    height: 1.375rem;
+    flex-shrink: 0;
+}
+
+
+/* Small screens: arrows stay inside the stage edges */
+.artist-carousel__arrow--prev {
+    left: 0.5rem;
+}
+
+.artist-carousel__arrow--next {
+    right: 0.5rem;
+}
+
+
+/* Tablet and smaller desktop:
+   Reserve space beside the artist card for the arrows */
+@media (min-width: 768px) {
+    .artist-carousel__stage {
+        padding-inline: 3.75rem;
+    }
+
+    .artist-carousel__arrow--prev {
+        left: 0;
+    }
+
+    .artist-carousel__arrow--next {
+        right: 0;
+    }
+}
+
+/* Wide desktop:
+   Keep the card full-width and float arrows outside */
+@media (min-width: 1280px) {
+    .artist-carousel__stage {
+        padding-inline: 0;
+    }
+
+    .artist-carousel__arrow--prev {
+        left: -3.75rem;
+        transform: translateY(-50%);
+    }
+
+    .artist-carousel__arrow--next {
+        right: -3.75rem;
+        transform: translateY(-50%);
+    }
+}
+
+
+.artist-carousel__progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.artist-carousel__dots {
+    display: flex;
+    align-items: center;
+}
+
+/* Large touch target, small visible dot */
+.artist-carousel__dot {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.artist-carousel__dot::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+
+    border-radius: 999px;
+    background-color: rgb(243 232 218 / 40%);
+
+    transition:
+        width 0.3s ease,
+        background-color 0.3s ease;
+}
+
+/* Active dot becomes a golden line */
+.artist-carousel__dot[aria-pressed="true"]::before {
+    width: 1.75rem;
+    background-color: var(--color-accent);
+}
+
+.artist-carousel__count {
+    color: var(--color-text);
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.16em;
+}
+
+/* Accessible announcement without visible text */
+.artist-carousel__announcement {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* Subtle navigation hover */
+@media (hover: hover) and (pointer: fine) {
+    .artist-carousel__arrow:hover {
+        border-color: var(--color-accent);
+        background-color: rgb(221 182 111 / 15%);
+    }
+}
+
+/* Animation happens only when changing artists */
+@media (prefers-reduced-motion: no-preference) {
+    .artist-carousel--ready
+    .artist-card.is-active.is-changing
+    .artist-card__image-frame {
+        animation: artist-carousel-image-in
+            0.85s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .artist-carousel--ready
+    .artist-card.is-active.is-changing
+    .artist-card__content > * {
+        animation: artist-carousel-copy-in
+            0.65s ease-out both;
+    }
+
+    .artist-carousel--ready
+    .artist-card.is-active.is-changing h3 {
+        animation-delay: 0.15s;
+    }
+
+    .artist-carousel--ready
+    .artist-card.is-active.is-changing .artist-tagline {
+        animation-delay: 0.27s;
+    }
+
+    .artist-carousel--ready
+    .artist-card.is-active.is-changing
+    .artist-card__content > p:not(.artist-tagline) {
+        animation-delay: 0.39s;
+    }
+
+    .artist-carousel--ready
+    .artist-card.is-active.is-changing
+    .artist-card__content > .button {
+        animation-delay: 0.5s;
+    }
+}
+
+/* Portrait emerges from the new colour atmosphere */
+@keyframes artist-carousel-image-in {
+    from {
+        opacity: 0.3;
+        filter: blur(8px);
+        transform: translateX(18px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: none;
+    }
+}
+
+/* Information follows after the portrait */
+@keyframes artist-carousel-copy-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* No movement for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .artist-carousel--ready .artist-grid > .artist-card,
+    .artist-carousel--ready .artist-grid > .artist-card.is-active,
+    .artist-carousel__arrow,
+    .artist-carousel__dot::before {
+        transition: none;
+    }
+}
+
+
 /* How to Explore-Section Mobile First*/
 .artists-section,
 .records-section {
