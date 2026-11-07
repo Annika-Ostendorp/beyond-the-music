@@ -256,6 +256,8 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 **Teil 1 – KI-gestützte Aufwertung der statischen Website**
 
+### Weiterentwicklung der Homepage
+
 ### Weiterentwicklung der Hero-Section
 
 - **ChatGPT:** Brainstorming zur gestalterischen Weiterentwicklung meiner bestehenden Homepage -> Ziel = hochwertigere, musikalischere und atmosphärischere Gestaltung, die die unterschiedlichen künstlerischen Welten von RAYE, Amma und Absolutely stärker widerspiegelt, ohne das ursprüngliche Designkonzept aus MA1 zu verändern.
@@ -321,7 +323,6 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - `:focus-within`, um die Hervorhebung der Karten auch bei der Tastaturnavigation sichtbar zu machen.
 - `::before` und `linear-gradient()` zur Gestaltung einer feinen Trennlinie zwischen der Hero-Section und „Meet the Artists“, ohne zusätzliches HTML zu benötigen.
 
-
 - **ChatGPT:** Unterstützung bei der gestalterischen und technischen Neuentwicklung der Homepage-Section „Meet the Artists“. Die ursprünglichen drei nebeneinanderstehenden Künstlerinnenkarten wurden zunächst in großflächige Cinematic Artist Stages umgestaltet und anschließend zu einem interaktiven Carousel zusammengeführt.
 
 - **ChatGPT:** Umsetzung weicher Fotoübergänge durch CSS-Gradients, Pseudoelemente, Unschärfefilter und Maskierungen. Die Porträts werden in ihre jeweiligen Hintergrundfarben eingebettet, statt als rechteckige Einzelbilder dargestellt zu werden.
@@ -336,7 +337,6 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 - **ChatGPT:** Berücksichtigung von Accessibility durch beschriftete Navigationsbuttons, `aria-pressed` für die Positionsindikatoren, eine `aria-live`-Statusmeldung und `inert` für nicht aktive Künstlerinnenkarten. Bei deaktiviertem JavaScript bleiben alle drei Bühnen als reguläre Inhalte sichtbar.
 
-
 ### Weiterentwicklung der „How to Explore“-Section
 
 - **ChatGPT:** Unterstützung bei der Erweiterung der HTML-Struktur um `.explore-section__inner` und `.explore-section__heading`. Der innere Container begrenzt die Inhalte auf die bestehende maximale Breite von `70rem`, während sich der Hintergrund über die gesamte Bildschirmbreite erstreckt. Die Section wurde außerdem über `aria-labelledby` mit ihrer Überschrift verknüpft.
@@ -349,9 +349,8 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 - **ChatGPT:** Erklärung und Überprüfung der verwendeten HTML- und CSS-Techniken, insbesondere `radial-gradient()`, `linear-gradient()`, `::before`, `@keyframes`, `infinite alternate`, `opacity`, responsive CSS-Grids, `clamp()`, `border-left` und `prefers-reduced-motion`.
 
-
 ### Weiterentwicklung der „Explore the Records“-Section
- 
+
 - **ChatGPT:** Erstellung und Anpassung neuer HTML- und CSS-Codeabschnitte für die beiden Alben mit bereits vorhandenen Detailseiten: RAYEs „THIS MUSIC MAY CONTAIN HOPE.“ und Absolutelys „Paracosm“. Mithilfe der zusätzlichen Klasse `.record-card--featured` wurden diese Karten von den übrigen Albumkarten unterschieden. Ein neuer Bildcontainer `.record-card__media` und ein Overlay `.record-card__overlay` ermöglichen eine gezielte Darstellung zusätzlicher Informationen.
 
 - **ChatGPT:** Implementierung eines cineastischen Hover-Reveals für die beiden Featured-Cards. Bei der Interaktion wird das Albumcover durch `transform: scale(1.045)` minimal vergrößert und durch `filter: brightness()` und `saturate()` dezent verändert. Gleichzeitig erscheint mit `opacity`, `transform` und `transition` eine dunkle Informationsebene mit der Beschriftung „Inside the Record“ und dem Link „Explore the Record“. Die Übergänge werden mit `cubic-bezier()` zeitlich abgestimmt.
@@ -362,7 +361,7 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 - **ChatGPT:** Gestalterische Aufwertung der Kategorie-Filter. Die vorhandenen Buttons wurden in einer gemeinsamen, dezent abgesetzten Filterleiste zusammengefasst. Für aktive und inaktive Filter wurden unterschiedliche Hintergrund-, Rahmen- und Schattenwerte definiert. Die bereits vorhandenen `aria-pressed`-Attribute werden weiterhin zur Darstellung des ausgewählten Filters verwendet; die JavaScript-Filterlogik wurde nicht verändert.
 
-- **ChatGPT:** Entwicklung eines einheitlichen warmweißen Hover-Glows für alle Albumkarten mit Detailseiten. Hierfür wurden die CSS-Variablen `--album-light` und `--album-light-soft` eingeführt. Die Lichtwirkung basiert auf der bereits vorhandenen cremeweißen Homepage-Farbe `#F3E8DA` und wird durch mehrere unterschiedlich große `box-shadow`-Effekte erzeugt. 
+- **ChatGPT:** Entwicklung eines einheitlichen warmweißen Hover-Glows für alle Albumkarten mit Detailseiten. Hierfür wurden die CSS-Variablen `--album-light` und `--album-light-soft` eingeführt. Die Lichtwirkung basiert auf der bereits vorhandenen cremeweißen Homepage-Farbe `#F3E8DA` und wird durch mehrere unterschiedlich große `box-shadow`-Effekte erzeugt.
 
 - **ChatGPT:** Überarbeitung der Albumkarten mit einheitlichem quadratischem Bildformat (`aspect-ratio: 1 / 1`), angepassten Abständen, abgerundeten Bildrahmen, subtilen cremeweißen Konturen und mehrschichtigen `box-shadow`-Effekten. Die Originalcover bleiben der visuelle Mittelpunkt.
 
@@ -374,4 +373,26 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 - **ChatGPT:** Berücksichtigung von Tastaturbedienung, ausreichenden Button-Klickflächen und `prefers-reduced-motion`, damit die wesentlichen Inhalte und Links auch ohne Animationen zugänglich bleiben.
 
+### Weiterentwicklung der RAYE-Albumdetailseite
+
+### Weiterentwicklung der Hero-Section
+
+- **ChatGPT:** Entwicklung einer atmosphärischen Wolkenkulisse auf Basis des bereits vorhandenen Albumcovers. Das Cover wird zusätzlich als weichgezeichnetes Hintergrundbild eingebunden und mit mehreren Farb- und Lichtverläufen kombiniert. Das eigentliche Albumcover bleibt im Vordergrund scharf sichtbar und erhält durch dezente Rahmen und mehrschichtige Schatten einen schwebenden Effekt.
+
+- **ChatGPT:** Unterstützung bei der Überarbeitung der HTML-Struktur. Die umfangreiche Faktenliste wurde aus dem ursprünglichen Hero in eine eigene Section „The record at a glance“ unterhalb des Albumcovers verschoben. Die Fakten und der bereits vorhandene deaktivierte Speicherbutton blieben dabei erhalten. Ergänzend wurden ein kurzer Einführungstext sowie zwei Links zu Spotify und zur bestehenden Tracklist eingefügt.
+
+- **ChatGPT:** Umsetzung eines responsiven Hero-Layouts mithilfe von CSS Grid. Auf Desktop stehen der großformatige Albumtitel und die Aktionsbuttons links neben dem Albumcover. Auf Mobile werden die Inhalte in der Reihenfolge Text, Albumcover und darunter zentrierte Buttons angeordnet. 
+
+- **ChatGPT:** Unterstützung bei der Entwicklung eines durchgehenden Hintergrundbereichs mit `.raye-atmosphere`, der den Header, den Hero und die Albumfakten umfasst. Die Hintergrundfotografie wurde durch Transparenzmasken und Verläufe so angepasst, dass sie ohne harte Bildkanten nach unten in die bestehende Bordeaux-Farbwelt übergeht. Dabei wurden unterschiedliche Positionierungen, Unschärfegrade und Fade-out-Verläufe ausprobiert.
+
+  **Neue HTML- und CSS-Techniken:**
+  - `grid-template-areas` und `grid-area`, um die Positionen von Text, Cover und Buttons für Mobile und Desktop gezielt festzulegen.
+  - `::before` und `::after`, um dekorative Bild- und Lichtebenen ohne zusätzliche HTML-Bildelemente zu erzeugen.
+  - `filter: blur()`, `brightness()` und `saturate()`, um das Albumcover als atmosphärischen Wolkenhintergrund darzustellen.
+  - `mask-image: linear-gradient()` und `-webkit-mask-image`, um die Hintergrundfotografie weich auszublenden und sichtbare Bildkanten zu vermeiden.
+  - `radial-gradient()` und `linear-gradient()` zur Kombination mehrerer Licht-, Farb- und Dunkelverläufe.
+  - `position: relative`, `position: absolute`, `isolation: isolate` und `z-index`, um die Hintergrundebenen hinter den eigentlichen Seiteninhalten anzuordnen.
+  - `box-shadow` mit mehreren Schattenebenen für eine räumliche Wirkung des Albumcovers.
+  - `max-width`, `min()`, `clamp()` und Media Queries für die responsive Anpassung der Bildgrößen, Abstände und Faktenkarte.
+  - HTML-Ankerlink mit `href="#seasons"` und `id="seasons"`, um ohne zusätzliches JavaScript direkt zur Tracklist zu navigieren.
 </details>

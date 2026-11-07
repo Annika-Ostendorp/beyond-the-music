@@ -1953,6 +1953,351 @@ img {
     font-size: 0.8rem;
 }
 
+
+/* ========================================
+   MA2 - RAYE CINEMATIC ALBUM HERO
+   ======================================== */
+
+.page-raye main {
+    background: transparent;
+}
+
+
+
+/* Shared background behind header and album content */
+.page-raye .raye-atmosphere {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background: linear-gradient(
+        to bottom,
+        #171019 0,
+        #1b111a 14rem,
+        #24131e 28rem,
+        #40151c 43rem,
+        var(--color-bg) 57rem
+    );
+}
+
+
+/* The back link belongs to the same dark atmosphere */
+.page-raye .album-back {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 1.75rem 1rem 0;
+}
+
+
+/* Mobile: text, artwork, then buttons */
+.page-raye .album-hero--hope {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "content"
+        "media"
+        "actions";
+
+    align-content: center;
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 2rem);
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+
+    padding:
+        clamp(2.75rem, 6vw, 5.5rem)
+        max(1rem, calc((100vw - 70rem) / 2));
+
+    background: transparent;
+}
+
+
+.page-raye .album-hero--hope .album-hero__content {
+    grid-area: content;
+}
+
+.page-raye .album-hero--hope .album-hero__media {
+    grid-area: media;
+}
+
+
+/* Buttons centered below the cover on mobile */
+.page-raye .album-hero--hope .album-hero__actions {
+    grid-area: actions;
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+
+    width: min(100%, 23rem);
+    justify-self: center;
+    margin: 0;
+}
+
+/* Compact, equally styled hero buttons */
+.page-raye .album-hero--hope .album-hero__actions .button {
+    min-height: 44px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.84rem;
+    white-space: nowrap;
+}
+
+
+
+/* Blurred storm clouds across the whole atmosphere */
+.page-raye .raye-atmosphere::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0rem;
+    bottom: auto;
+    height: 76rem;
+
+    z-index: -2;
+    pointer-events: none;
+
+    background:
+        url("../images/raye-hope.jpg")
+        center 38% / cover no-repeat;
+
+    filter: blur(20px) brightness(0.56) saturate(0.8);
+    transform: scale(1.08);
+    opacity: 0.86;
+    
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 45%,
+        transparent 83%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 45%,
+        transparent 83%,
+        transparent 100%
+    );
+
+}
+
+
+
+/* Warm cinematic light, also fading at both edges */
+.page-raye .raye-atmosphere::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: auto;
+    height: 76rem;
+
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse 54% 68% at 76% 34%,
+            rgb(242 232 220 / 11%),
+            transparent 76%
+        ),
+        linear-gradient(
+            to right,
+            rgb(16 10 18 / 94%) 0%,
+            rgb(24 12 22 / 82%) 35%,
+            rgb(33 15 24 / 52%) 68%,
+            rgb(51 18 24 / 24%) 100%
+        );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 72%,
+        transparent 92%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 72%,
+        transparent 92%,
+        transparent 100%
+    );
+}
+
+
+
+/* Content above the atmospheric background */
+.page-raye .album-hero--hope .album-hero__content,
+.page-raye .album-hero--hope .album-hero__media {
+    position: relative;
+    z-index: 1;
+}
+
+/* Small editorial heading */
+.page-raye .album-hero--hope .album-hero__eyebrow {
+    margin: 0 0 1.25rem;
+
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+}
+
+/* Large cinematic album title */
+.page-raye .album-hero--hope h1 {
+    max-width: 44rem;
+    margin: 0;
+
+    font-size: clamp(2.8rem, 5.5vw, 5.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+}
+
+.page-raye .album-hero--hope h1 em {
+    display: block;
+    color: var(--color-accent);
+}
+
+/* Emotional introduction */
+.page-raye .album-hero--hope .album-hero__lead {
+    max-width: 33rem;
+    margin: 1.6rem 0 0;
+
+    color: var(--color-heading);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.7;
+}
+
+
+/* Floating album sleeve */
+.page-raye .album-hero--hope .album-hero__media {
+    display: block;
+    width: min(100%, 23rem);
+
+    justify-self: center;
+    align-self: center;
+}
+
+.page-raye .album-hero--hope .album-hero__media img {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+
+    box-sizing: border-box;
+    border: 1px solid rgb(255 240 221 / 22%);
+    border-radius: 1rem;
+
+    box-shadow:
+        0 30px 65px rgb(0 0 0 / 62%),
+        0 0 65px rgb(243 232 218 / 13%);
+}
+
+
+/* Quiet information section below the cinematic hero */
+.page-raye .album-overview {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
+    max-width: 48rem;
+
+    margin: 1.75rem auto 0;
+    padding: clamp(1.35rem, 3vw, 2rem);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgb(255 240 221 / 5%),
+            transparent 50%
+        ),
+        var(--color-surface);
+
+    border: 1px solid rgb(255 240 221 / 18%);
+    border-radius: 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .page-raye .album-overview {
+        width: min(calc(100% - 2rem), 48rem);
+        margin-top: 1.75rem;
+        margin-right: auto;
+        margin-left: max(1rem, calc((100vw - 70rem) / 2));
+    }
+}
+
+.page-raye .album-overview h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.page-raye .album-overview .album-facts {
+    margin: 1.5rem 0 0;
+}
+
+.page-raye .album-overview .save-action {
+    width: fit-content;
+    margin-top: 1.5rem;
+}
+
+.page-raye .album-tracklist {
+    scroll-margin-top: 2rem;
+}
+
+
+/* Desktop: text and buttons left, album artwork right */
+@media (min-width: 900px) {
+    .page-raye .album-hero--hope {
+        grid-template-columns:
+            minmax(0, 1.18fr)
+            minmax(0, 0.82fr);
+
+        grid-template-areas:
+            "content media"
+            "actions media";
+
+        grid-template-rows: auto auto;
+        align-content: center;
+
+        column-gap: clamp(2rem, 4vw, 5rem);
+        row-gap: 1.35rem;
+
+        min-height: min(78svh, 48rem);
+    }
+
+    /* Buttons directly below the introduction */
+    .page-raye .album-hero--hope .album-hero__actions {
+        justify-self: start;
+        justify-content: flex-start;
+        width: auto;
+    }
+
+    /* Floating album cover on the right */
+    .page-raye .album-hero--hope .album-hero__media {
+        width: min(100%, 28rem);
+    }
+}
+
+
 .album-facts {
     display: flex;
     flex-wrap: wrap;
