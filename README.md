@@ -364,4 +364,14 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 - **ChatGPT:** Entwicklung eines einheitlichen warmweißen Hover-Glows für alle Albumkarten mit Detailseiten. Hierfür wurden die CSS-Variablen `--album-light` und `--album-light-soft` eingeführt. Die Lichtwirkung basiert auf der bereits vorhandenen cremeweißen Homepage-Farbe `#F3E8DA` und wird durch mehrere unterschiedlich große `box-shadow`-Effekte erzeugt. 
 
+- **ChatGPT:** Überarbeitung der Albumkarten mit einheitlichem quadratischem Bildformat (`aspect-ratio: 1 / 1`), angepassten Abständen, abgerundeten Bildrahmen, subtilen cremeweißen Konturen und mehrschichtigen `box-shadow`-Effekten. Die Originalcover bleiben der visuelle Mittelpunkt.
+
+- **ChatGPT:** Entwicklung sanfter Hover- und Fokus-Effekte mit `transform`, `transition` und Schattenveränderungen. Normale Albumcover werden leicht vergrößert; bei Alben mit Detailseiten wird stattdessen der vollständige Bildrahmen skaliert, damit der Vergrößerungseffekt einheitlich wirkt.
+
+- **ChatGPT:** Weiterentwicklung der interaktiven Detailseiten-Karten für „THIS MUSIC MAY CONTAIN HOPE.“ und „Paracosm“. Auf geeigneten Desktopgeräten erscheinen beim Hover ein abgedunkeltes Bild-Overlay, die Beschriftung „Inside the Record“ und ein Link zur jeweiligen Albumdetailseite. Auf Mobile bleibt der Detailseiten-Link unterhalb des Covers zugänglich.
+
+- **ChatGPT:** Umsetzung einer horizontal durchstöberbaren Albumgalerie auf Mobile mit CSS Grid, `grid-auto-flow: column`, `overflow-x: auto`, `scroll-snap-type` und `scroll-snap-align`. Das nächste Album bleibt teilweise sichtbar, um die horizontale Navigation anzudeuten. Auf Desktop werden die Veröffentlichungen weiterhin in einem zweispaltigen beziehungsweise dreispaltigen Grid dargestellt.
+
+- **ChatGPT:** Berücksichtigung von Tastaturbedienung, ausreichenden Button-Klickflächen und `prefers-reduced-motion`, damit die wesentlichen Inhalte und Links auch ohne Animationen zugänglich bleiben.
+
 </details>
