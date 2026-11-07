@@ -8,74 +8,105 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body class="page-absolutely">
-    <header class="site-header">
-      <a class="site-brand" href="../index.html"> Beyond <em>the</em> Music </a>
-
-      <nav class="site-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="../raye.html">RAYE</a></li>
-          <li><a href="../amma.html">Amma</a></li>
-          <li><a href="../absolutely.html">Absolutely</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <a
-          class="nav-collection"
-          href="../my-collection.html"
-          aria-label="My Collection"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <path d="M6 4h12v17l-6-4-6 4z" />
-          </svg>
-
-          <span class="collection-label">My Collection</span>
+    <!-- Shared atmosphere for header and album content -->
+    <div class="absolutely-atmosphere">
+      <header class="site-header">
+        <a class="site-brand" href="../index.html">
+          Beyond <em>the</em> Music
         </a>
 
-        <details class="mobile-menu">
-          <summary aria-label="Navigation">☰</summary>
-          <nav aria-label="Mobile navigation">
-            <a href="../raye.html">RAYE</a>
-            <a href="../amma.html">Amma</a>
-            <a href="../absolutely.html">Absolutely</a>
-          </nav>
-        </details>
-      </div>
-    </header>
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="../raye.html">RAYE</a></li>
+            <li><a href="../amma.html">Amma</a></li>
+            <li><a href="../absolutely.html">Absolutely</a></li>
+          </ul>
+        </nav>
 
-    <main>
-      <div class="album-back">
-        <a class="text-link" href="../absolutely.html"
-          >← Back to Absolutely's story</a
-        >
-      </div>
-
-      <section class="album-hero">
-        <div class="album-hero__media">
-          <img
-            src="../images/absolutely-paracosm.jpg"
-            alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
-            width="180"
-            height="180"
-          />
-
+        <div class="header-actions">
           <a
-            class="button button--secondary button--compact"
-            href="https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25"
-            >Listen on Spotify ↗</a
+            class="nav-collection"
+            href="../my-collection.html"
+            aria-label="My Collection"
           >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M6 4h12v17l-6-4-6 4z" />
+            </svg>
+
+            <span class="collection-label">My Collection</span>
+          </a>
+
+          <details class="mobile-menu">
+            <summary aria-label="Navigation">☰</summary>
+            <nav aria-label="Mobile navigation">
+              <a href="../raye.html">RAYE</a>
+              <a href="../amma.html">Amma</a>
+              <a href="../absolutely.html">Absolutely</a>
+            </nav>
+          </details>
+        </div>
+      </header>
+
+      <main>
+        <!-- Absolutely - Cinematic album introduction -->
+        <div class="album-back">
+          <a class="text-link" href="../absolutely.html">
+            ← Back to Absolutely's story
+          </a>
         </div>
 
-        <div class="album-hero__content">
-          <h1>Paracosm</h1>
+        <section
+          class="album-hero album-hero--paracosm"
+          aria-labelledby="paracosm-title"
+        >
+          <div class="album-hero__content">
+            <p class="album-hero__eyebrow">
+              ABSOLUTELY · THE SECOND STUDIO ALBUM
+            </p>
+
+            <h1 id="paracosm-title">PARACOSM</h1>
+
+            <p class="album-hero__lead">
+              Thirteen tracks. One imaginary universe. A journey through
+              childhood wonder, vulnerability and creative freedom.
+            </p>
+          </div>
+
+          <div class="album-hero__media">
+            <img
+              src="../images/absolutely-paracosm.jpg"
+              alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
+              width="550"
+              height="550"
+            />
+          </div>
+
+          <div class="album-hero__actions">
+            <a
+              class="button button--secondary"
+              href="https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25"
+            >
+              Listen on Spotify ↗
+            </a>
+
+            <a class="button button--secondary" href="#paracosm-tracks">
+              Explore the tracks ↓
+            </a>
+          </div>
+        </section>
+
+        <!-- Album facts in a separate overview panel -->
+        <section class="album-overview" aria-labelledby="paracosm-facts-title">
+          <h2 id="paracosm-facts-title">The record at a glance</h2>
+
           <dl class="album-facts">
             <div class="album-fact">
               <dt>Artist</dt>
@@ -111,300 +142,374 @@
               Save this record
             </button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="album-story">
-        <div class="story-text">
-          <h2>The Story</h2>
-          <p>
-            Released on 20 February 2026, <cite>Paracosm</cite> is Absolutely's
-            second studio album, following her 2023 debut <cite>CEREBRUM</cite>.
-            Across 13 tracks, she invites listeners into an imaginary universe
-            where childhood wonder meets the complicated emotions of adult life.
-            The title refers to a detailed fictional world, often created during
-            childhood and carried into adulthood. For Absolutely, this idea
-            became the foundation of an album about imagination, vulnerability
-            and the freedom to create without limits.
-          </p>
-
-          <p>
-            The journey towards <cite>Paracosm</cite> was anything but
-            straightforward. In an interview with NYLON, Absolutely revealed
-            that she had spent almost two years working on the record. During
-            that time, her hard drive broke twice, forcing her to rebuild
-            several songs from scratch. She also struggled with creative
-            pressure, trying to imagine what a successful single should sound
-            like instead of following her own instincts. Eventually, she
-            realised that the way forward was to reconnect with the curiosity
-            and playfulness that first made her fall in love with music.
-          </p>
-
-          <p>
-            Interestingly, the album's title came from an unexpected place: a
-            fan's YouTube comment. After discovering the meaning of the word
-            <em>paracosm</em>, Absolutely recognised something deeply personal
-            in it. She began approaching her music as a world she could build
-            freely, rather than a product that needed to meet other people's
-            expectations. The song <cite>No Audience</cite> reflects this change
-            in perspective, exploring what it means to create for yourself
-            instead of performing for the approval of others.
-          </p>
-
-          <p>
-            The finished album explores different sides of her imagination and
-            personal experiences. <cite>Goodbye Glitter</cite> reflects on
-            letting go of superficial attachments, while
-            <cite>I Just Don't Know You Yet</cite> brings emotional
-            vulnerability to the foreground. The title track,
-            <cite>Paracosm</cite>, was the final song she created for the
-            project and draws inspiration from the magical atmosphere of
-            childhood fantasy films. Together, these songs form a musical
-            universe that feels both deeply personal and wonderfully surreal.
-          </p>
-
-          <blockquote>
+        <!-- Editorial story -->
+        <section class="album-story" aria-labelledby="paracosm-story-title">
+          <div class="story-text">
+            <span class="story-kicker">01 / BEHIND THE RECORD</span>
+            <h2 id="paracosm-story-title">The Story</h2>
             <p>
-              "I had to relearn how to create the way I did as a child - without
-              rules, without fear."
-            </p>
-            <footer>— Absolutely, official album statement, 2026</footer>
-          </blockquote>
-        </div>
-
-        <aside class="story-details">
-          <section>
-            <h3>Why It Matters</h3>
-            <p>
-              With <cite>CEREBRUM</cite>, Absolutely began establishing her own
-              identity as a solo artist. <cite>Paracosm</cite> takes that
-              identity further by placing her imagination at the centre of the
-              entire project. Rather than adapting her creativity to
-              conventional expectations, she builds an album around the freedom
-              to experiment, tell personal stories and create something entirely
-              her own.
+              Released on 20 February 2026, <cite>Paracosm</cite> is
+              Absolutely's second studio album, following her 2023 debut
+              <cite>CEREBRUM</cite>. Across 13 tracks, she invites listeners
+              into an imaginary universe where childhood wonder meets the
+              complicated emotions of adult life. The title refers to a detailed
+              fictional world, often created during childhood and carried into
+              adulthood. For Absolutely, this idea became the foundation of an
+              album about imagination, vulnerability and the freedom to create
+              without limits.
             </p>
 
             <p>
-              The album also represents a meaningful moment in her artistic
-              journey. After years of writing and collaborating with other
-              musicians, Absolutely demonstrates how much of her creative world
-              extends beyond individual songs. Music, visual storytelling,
-              fashion and fantasy become different parts of one artistic vision.
+              The journey towards <cite>Paracosm</cite> was anything but
+              straightforward. In an interview with NYLON, Absolutely revealed
+              that she had spent almost two years working on the record. During
+              that time, her hard drive broke twice, forcing her to rebuild
+              several songs from scratch. She also struggled with creative
+              pressure, trying to imagine what a successful single should sound
+              like instead of following her own instincts. Eventually, she
+              realised that the way forward was to reconnect with the curiosity
+              and playfulness that first made her fall in love with music.
             </p>
 
             <p>
-              At its heart, <cite>Paracosm</cite> suggests that growing up does
-              not have to mean leaving imagination behind. Instead,
-              rediscovering that sense of wonder can become a source of
-              creativity, self-expression and emotional freedom.
-            </p>
-          </section>
-
-          <section>
-            <h3>The Sound</h3>
-            <p>
-              <cite>Paracosm</cite> blends alternative pop, electronica, jazz
-              and R&amp;B into a richly layered, cinematic sound. Atmospheric
-              electronic textures, expressive vocals and unusual production
-              choices create a feeling of entering different imagined
-              environments. Rather than following one consistent musical
-              formula, Absolutely allows each song to reveal another side of her
-              artistic universe.
+              Interestingly, the album's title came from an unexpected place: a
+              fan's YouTube comment. After discovering the meaning of the word
+              <em>paracosm</em>, Absolutely recognised something deeply personal
+              in it. She began approaching her music as a world she could build
+              freely, rather than a product that needed to meet other people's
+              expectations. The song <cite>No Audience</cite> reflects this
+              change in perspective, exploring what it means to create for
+              yourself instead of performing for the approval of others.
             </p>
 
             <p>
-              Her approach is particularly noticeable in the contrast between
-              tracks. <cite>I Just Don't Know You Yet</cite> places emotional
-              vulnerability at the centre of its piano-led arrangement, while
-              <cite>Prototype</cite>
-              explores a more futuristic, assertive sound with an unusual 5/8
-              time signature. The title track draws on the magical atmosphere of
-              fantasy films, using delicate, almost otherworldly sounds to evoke
-              the imagination of childhood.
+              The finished album explores different sides of her imagination and
+              personal experiences. <cite>Goodbye Glitter</cite> reflects on
+              letting go of superficial attachments, while
+              <cite>I Just Don't Know You Yet</cite> brings emotional
+              vulnerability to the foreground. The title track,
+              <cite>Paracosm</cite>, was the final song she created for the
+              project and draws inspiration from the magical atmosphere of
+              childhood fantasy films. Together, these songs form a musical
+              universe that feels both deeply personal and wonderfully surreal.
             </p>
 
-            <p>
-              Absolutely has spoken about visualising sounds as she creates
-              music and her interest in film scores and animation. That
-              connection between sound and imagery runs throughout
-              <cite>Paracosm</cite>: its production does more than accompany the
-              lyrics. It helps construct the imaginative world that gives the
-              album its name.
-            </p>
-          </section>
-        </aside>
-      </section>
-
-      <section class="album-tracklist album-tracklist--single">
-        <!-- da hier keine 4 season-Bereiche, sondern eine durchgängige Tracklist -->
-        <h2>Tracklist</h2>
-        <p>
-          Explore the 13 tracks that bring Absolutely's imaginary world to life.
-        </p>
-
-        <ol>
-          <li>
-            <cite>Natural Disaster</cite>
-            <span class="track-duration">3:22</span>
-          </li>
-
-          <li>
-            <cite>Nowhere to Hide</cite>
-            <span class="track-duration">3:38</span>
-          </li>
-
-          <li>
-            <cite>Painting by Numbers</cite>
-            <span class="track-duration">3:41</span>
-          </li>
-
-          <li>
-            <cite>Helium</cite>
-            <span class="track-duration">3:11</span>
-          </li>
-
-          <li>
-            <cite>Simple Things</cite>
-            <span class="track-duration">3:20</span>
-          </li>
-
-          <li>
-            <cite>No Audience</cite>
-            <span class="track-duration">2:48</span>
-          </li>
-
-          <li>
-            <cite>Prototype</cite>
-            <span class="track-duration">2:26</span>
-          </li>
-
-          <li>
-            <cite>No Furniture</cite>
-            <span class="track-duration">2:54</span>
-          </li>
-
-          <li>
-            <cite>Elevator</cite>
-            <span class="track-duration">3:30</span>
-          </li>
-
-          <li>
-            <cite>Trojan Horse</cite>
-            <span class="track-duration">1:42</span>
-          </li>
-
-          <li>
-            <cite>Paracosm</cite>
-            <span class="track-duration">3:23</span>
-          </li>
-
-          <li>
-            <cite>I Just Don't Know You Yet</cite>
-            <span class="track-duration">3:19</span>
-          </li>
-
-          <li>
-            <cite>Goodbye Glitter</cite>
-            <span class="track-duration">3:53</span>
-          </li>
-        </ol>
-      </section>
-
-      <section class="keep-going">
-        <h2>Keep Going</h2>
-
-        <article class="artist-preview">
-          <a class="artist-preview__link" href="../raye.html">
-            <img
-              src="../images/raye-portrait.jpg"
-              alt="RAYE smiling on stage in a red dress"
-              width="96"
-              height="96"
-            />
-
-            <div class="artist-preview__copy">
-              <h3>Meet RAYE</h3>
+            <blockquote>
               <p>
-                Step into RAYE's world of powerful storytelling and musical
-                freedom.
+                "I had to relearn how to create the way I did as a child -
+                without rules, without fear."
               </p>
+              <footer>— Absolutely, official album statement, 2026</footer>
+            </blockquote>
+          </div>
+
+          <aside class="story-details" aria-label="More about Paracosm">
+            <section aria-labelledby="paracosm-meaning-title">
+              <span class="story-kicker">02 / THE MEANING</span>
+              <h3 id="paracosm-meaning-title">Why It Matters</h3>
+              <p>
+                With <cite>CEREBRUM</cite>, Absolutely began establishing her
+                own identity as a solo artist. <cite>Paracosm</cite> takes that
+                identity further by placing her imagination at the centre of the
+                entire project. Rather than adapting her creativity to
+                conventional expectations, she builds an album around the
+                freedom to experiment, tell personal stories and create
+                something entirely her own.
+              </p>
+
+              <p>
+                The album also represents a meaningful moment in her artistic
+                journey. After years of writing and collaborating with other
+                musicians, Absolutely demonstrates how much of her creative
+                world extends beyond individual songs. Music, visual
+                storytelling, fashion and fantasy become different parts of one
+                artistic vision.
+              </p>
+
+              <p>
+                At its heart, <cite>Paracosm</cite> suggests that growing up
+                does not have to mean leaving imagination behind. Instead,
+                rediscovering that sense of wonder can become a source of
+                creativity, self-expression and emotional freedom.
+              </p>
+            </section>
+
+            <section aria-labelledby="paracosm-sound-title">
+              <span class="story-kicker">03 / THE MUSIC</span>
+              <h3 id="paracosm-sound-title">The Sound</h3>
+              <p>
+                <cite>Paracosm</cite> blends alternative pop, electronica, jazz
+                and R&amp;B into a richly layered, cinematic sound. Atmospheric
+                electronic textures, expressive vocals and unusual production
+                choices create a feeling of entering different imagined
+                environments. Rather than following one consistent musical
+                formula, Absolutely allows each song to reveal another side of
+                her artistic universe.
+              </p>
+
+              <p>
+                Her approach is particularly noticeable in the contrast between
+                tracks. <cite>I Just Don't Know You Yet</cite> places emotional
+                vulnerability at the centre of its piano-led arrangement, while
+                <cite>Prototype</cite>
+                explores a more futuristic, assertive sound with an unusual 5/8
+                time signature. The title track draws on the magical atmosphere
+                of fantasy films, using delicate, almost otherworldly sounds to
+                evoke the imagination of childhood.
+              </p>
+
+              <p>
+                Absolutely has spoken about visualising sounds as she creates
+                music and her interest in film scores and animation. That
+                connection between sound and imagery runs throughout
+                <cite>Paracosm</cite>: its production does more than accompany
+                the lyrics. It helps construct the imaginative world that gives
+                the album its name.
+              </p>
+            </section>
+          </aside>
+        </section>
+
+        <!-- Paracosm - Thirteen tracks in one imagined world -->
+        <section
+          id="paracosm-tracks"
+          class="album-tracklist album-tracklist--single album-tracklist--paracosm"
+          aria-labelledby="paracosm-tracks-title"
+        >
+          <!-- Eine durchgängige Tracklist statt vier Jahreszeiten -->
+          <span class="album-tracklist__eyebrow">
+            THE TRACKLIST / AN IMAGINARY UNIVERSE
+          </span>
+
+          <h2 id="paracosm-tracks-title">Inside the Paracosm</h2>
+
+          <p>
+            Explore the 13 tracks that bring Absolutely's imaginary world to
+            life.
+          </p>
+
+          <p class="album-tracklist__hint">
+            Individual track stories are coming soon.
+          </p>
+
+          <div class="paracosm-tracklist__stage">
+            <div class="paracosm-tracklist__intro">
+              <span class="paracosm-tracklist__chapter">
+                THIRTEEN TRACKS / ONE WORLD
+              </span>
+
+              <h3>Every track, another door.</h3>
+
+              <p>A musical journey through imagination, emotion and wonder.</p>
             </div>
 
-            <span class="artist-preview__arrow" aria-hidden="true">→</span>
-          </a>
-        </article>
+            <ol>
+              <li>
+                <cite>Natural Disaster</cite>
+                <span class="track-duration">3:22</span>
+              </li>
 
-        <article class="artist-preview">
-          <a class="artist-preview__link" href="../amma.html">
-            <img
-              src="../images/amma-portrait.jpg"
-              alt="Portrait of Amma with curly hair against an orange background"
-              width="96"
-              height="96"
-            />
-            <div class="artist-preview__copy">
-              <h3>Meet Amma</h3>
-              <p>Discover the middle sister and her own musical journey.</p>
-            </div>
+              <li>
+                <cite>Nowhere to Hide</cite>
+                <span class="track-duration">3:38</span>
+              </li>
 
-            <span class="artist-preview__arrow" aria-hidden="true">→</span>
-          </a>
-        </article>
-      </section>
+              <li>
+                <cite>Painting by Numbers</cite>
+                <span class="track-duration">3:41</span>
+              </li>
 
-      <details class="album-sources">
-        <summary>Sources for this page</summary>
+              <li>
+                <cite>Helium</cite>
+                <span class="track-duration">3:11</span>
+              </li>
 
-        <ul>
-          <li>
-            <a
-              href="https://www.sonymusic.ca/press_release/absolutely-releases-new-album-paracosm"
-              >Sony Music - Absolutely Releases New Album Paracosm</a
-            >
-          </li>
+              <li>
+                <cite>Simple Things</cite>
+                <span class="track-duration">3:20</span>
+              </li>
 
-          <li>
-            <a
-              href="https://www.nylon.com/entertainment/absolutely-paracosm-interview"
-              >NYLON - Absolutely on Paracosm &amp; Touring With RAYE</a
-            >
-          </li>
+              <li>
+                <cite>No Audience</cite>
+                <span class="track-duration">2:48</span>
+              </li>
 
-          <li>
-            <a
-              href="https://floodmagazine.com/220249/absolutely-paracosm-breaking/"
-              >FLOOD - Absolutely on Building a World of Her Own</a
-            >
-          </li>
+              <li>
+                <cite>Prototype</cite>
+                <span class="track-duration">2:26</span>
+              </li>
 
-          <li>
-            <a href="https://readdork.com/features/absolutely-interview-mar26/"
-              >Dork - Absolutely's Album Is Rooted in Childhood Imagination</a
-            >
-          </li>
+              <li>
+                <cite>No Furniture</cite>
+                <span class="track-duration">2:54</span>
+              </li>
 
-          <li>
-            <a href="https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25"
-              >Spotify - Official Album Release</a
-            >
-          </li>
-        </ul>
-      </details>
+              <li>
+                <cite>Elevator</cite>
+                <span class="track-duration">3:30</span>
+              </li>
 
-      <section class="timeline-neighbors">
-        <h2>Explore Absolutely's Journey</h2>
-        <article>
-          <p>Earlier · 2025</p>
-          <h3>Pressure, and a reset</h3>
-        </article>
+              <li>
+                <cite>Trojan Horse</cite>
+                <span class="track-duration">1:42</span>
+              </li>
 
-        <article>
-          <p>Later · 2026</p>
-          <h3>On the road, and on 'Joy.'</h3>
-        </article>
-      </section>
-    </main>
+              <li>
+                <cite>Paracosm</cite>
+                <span class="track-duration">3:23</span>
+              </li>
+
+              <li>
+                <cite>I Just Don't Know You Yet</cite>
+                <span class="track-duration">3:19</span>
+              </li>
+
+              <li>
+                <cite>Goodbye Glitter</cite>
+                <span class="track-duration">3:53</span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="keep-going" aria-labelledby="paracosm-keep-going-title">
+          <h2 id="paracosm-keep-going-title">Keep Going</h2>
+
+          <p class="keep-going__intro">
+            The music continues beyond this imaginary world. Discover the
+            stories of RAYE and Amma.
+          </p>
+
+          <article class="artist-preview artist-preview--raye">
+            <a class="artist-preview__link" href="../raye.html">
+              <img
+                src="../images/raye-portrait.jpg"
+                alt="RAYE smiling on stage in a red dress"
+                width="96"
+                height="96"
+              />
+
+              <div class="artist-preview__copy">
+                <h3>Meet RAYE</h3>
+                <p>
+                  Step into RAYE's world of powerful storytelling and musical
+                  freedom.
+                </p>
+              </div>
+
+              <span class="artist-preview__arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="artist-preview artist-preview--amma">
+            <a class="artist-preview__link" href="../amma.html">
+              <img
+                src="../images/amma-portrait.jpg"
+                alt="Portrait of Amma with curly hair against an orange background"
+                width="96"
+                height="96"
+              />
+              <div class="artist-preview__copy">
+                <h3>Meet Amma</h3>
+                <p>Discover the middle sister and her own musical journey.</p>
+              </div>
+
+              <span class="artist-preview__arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+        </section>
+
+        <details class="album-sources">
+          <summary>Sources for this page</summary>
+
+          <ul>
+            <li>
+              <a
+                href="https://www.sonymusic.ca/press_release/absolutely-releases-new-album-paracosm"
+                >Sony Music - Absolutely Releases New Album Paracosm</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="https://www.nylon.com/entertainment/absolutely-paracosm-interview"
+                >NYLON - Absolutely on Paracosm &amp; Touring With RAYE</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="https://floodmagazine.com/220249/absolutely-paracosm-breaking/"
+                >FLOOD - Absolutely on Building a World of Her Own</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="https://readdork.com/features/absolutely-interview-mar26/"
+                >Dork - Absolutely's Album Is Rooted in Childhood Imagination</a
+              >
+            </li>
+
+            <li>
+              <a href="https://open.spotify.com/album/6LifnNApEGwyRpFHMKNW25"
+                >Spotify - Official Album Release</a
+              >
+            </li>
+          </ul>
+        </details>
+
+        <!-- Absolutely - Musical Journey Timeline -->
+        <section
+          class="timeline-neighbors"
+          aria-labelledby="paracosm-journey-title"
+        >
+          <span class="timeline-neighbors__eyebrow">
+            BEYOND THE RECORD / THE JOURNEY CONTINUES
+          </span>
+
+          <h2 id="paracosm-journey-title">Explore Absolutely's Journey</h2>
+
+          <p class="timeline-neighbors__intro">
+            Paracosm is one chapter in Absolutely's musical story. Explore the
+            moments before and after its release.
+          </p>
+
+          <div class="timeline-neighbors__path">
+            <article class="timeline-neighbors__event">
+              <span class="timeline-neighbors__label">
+                EARLIER / BEFORE PARACOSM
+              </span>
+
+              <time class="timeline-neighbors__year" datetime="2025">
+                2025
+              </time>
+
+              <h3>Pressure, and a reset</h3>
+            </article>
+
+            <article class="timeline-neighbors__event">
+              <span class="timeline-neighbors__label">
+                LATER / THE NEXT CHAPTER
+              </span>
+
+              <time class="timeline-neighbors__year" datetime="2026">
+                2026
+              </time>
+
+              <h3>On the road, and on 'Joy.'</h3>
+            </article>
+          </div>
+
+          <p class="timeline-neighbors__note">
+            More chapters of Absolutely's journey are coming soon.
+          </p>
+        </section>
+      </main>
+    </div>
+    <!-- Ende der Absolutely-Atmosphäre -->
 
     <footer class="site-footer">
       <div class="footer-inner">

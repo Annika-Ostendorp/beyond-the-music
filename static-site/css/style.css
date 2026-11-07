@@ -2054,9 +2054,10 @@ img {
 
 /* Compact, equally styled hero buttons */
 .page-raye .album-hero--hope .album-hero__actions .button {
-    min-height: 44px;
-    padding: 0.55rem 0.85rem;
-    font-size: 0.84rem;
+    min-height: 46px;
+    box-sizing: border-box;
+    padding: 0.62rem 1.1rem;
+    font-size: 0.9rem;
     white-space: nowrap;
 }
 
@@ -3690,16 +3691,296 @@ img {
 /* Absolutely Album detail page Design - Mobile First */
 /*----------------------------------------------------*/
 
+
+/* ========================================
+   MA2 - PARACOSM CINEMATIC ALBUM HERO
+   Burnt Red, Copper Orange & Dark Aubergine
+   ======================================== */
+
+/* Der Header und der Hero teilen sich denselben Hintergrund */
+.page-absolutely main {
+    background: transparent;
+}
+
+.page-absolutely .absolutely-atmosphere {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background: linear-gradient(
+        to bottom,
+        #21131f 0,
+        #351c26 14rem,
+        #3c202c 29rem,
+        #241426 48rem,
+        var(--color-bg) 64rem
+    );
+}
+
+/* Albumcover als weichgezeichneter atmosphärischer Hintergrund */
+.page-absolutely .absolutely-atmosphere::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 78rem;
+    z-index: -2;
+    pointer-events: none;
+
+    background:
+        url("../images/absolutely-paracosm.jpg")
+        center 30% / cover no-repeat;
+
+    filter: blur(28px) brightness(0.48) saturate(1.16);
+    transform: scale(1.12);
+    opacity: 0.92;
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 44%,
+        rgb(0 0 0 / 92%) 58%,
+        rgb(0 0 0 / 55%) 72%,
+        transparent 88%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 44%,
+        rgb(0 0 0 / 92%) 58%,
+        rgb(0 0 0 / 55%) 72%,
+        transparent 88%,
+        transparent 100%
+    );
+}
+
+/* Kupferoranges Bühnenlicht und dunkle Ebenen für lesbare Texte */
+.page-absolutely .absolutely-atmosphere::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 78rem;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse 58% 76% at 16% 22%,
+            rgb(239 156 88 / 0.28),
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 48% 74% at 84% 34%,
+            rgb(169 56 50 / 0.22),
+            transparent 76%
+        ),
+        radial-gradient(
+            ellipse 42% 64% at 70% 58%,
+            rgb(90 39 86 / 0.26),
+            transparent 78%
+        ),
+        linear-gradient(
+            to right,
+            rgb(20 13 28 / 0.9) 0%,
+            rgb(43 19 34 / 0.68) 40%,
+            rgb(20 13 28 / 0.26) 100%
+        );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 66%,
+        rgb(0 0 0 / 55%) 82%,
+        transparent 96%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 66%,
+        rgb(0 0 0 / 55%) 82%,
+        transparent 96%,
+        transparent 100%
+    );
+}
+
+
 /* Hero Section */
+
+/* Zurück-Link liegt vor der atmosphärischen Bildebene */
+.page-absolutely .album-back {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 1.75rem 1rem 0;
+}
+
+/* Mobile First: Titel, Albumcover, anschließend Buttons */
+.page-absolutely .album-hero--paracosm {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "content"
+        "media"
+        "actions";
+
+    align-content: center;
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 2rem);
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+
+    padding:
+        clamp(2.75rem, 6vw, 5.5rem)
+        max(1rem, calc((100vw - 70rem) / 2));
+
+    background: transparent;
+}
+
+/* Text und Cover liegen vor der Hintergrundatmosphäre */
+.page-absolutely .album-hero--paracosm .album-hero__content {
+    position: relative;
+    z-index: 1;
+    grid-area: content;
+    min-width: 0;
+}
+
+.page-absolutely .album-hero--paracosm .album-hero__media {
+    position: relative;
+    z-index: 1;
+    grid-area: media;
+
+    display: block;
+    width: min(100%, 23rem);
+    justify-self: center;
+    align-self: center;
+}
+
+/* Das Originalcover bleibt klar und schwebt vor dem Hintergrund */
+.page-absolutely .album-hero--paracosm .album-hero__media img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-sizing: border-box;
+
+    border: 1px solid rgb(255 240 229 / 25%);
+    border-radius: 1rem;
+
+    box-shadow:
+        0 30px 70px rgb(0 0 0 / 65%),
+        0 0 70px rgb(239 156 88 / 14%);
+}
+
+/* Kleine redaktionelle Überschrift über dem Albumnamen */
+.page-absolutely .album-hero--paracosm .album-hero__eyebrow {
+    margin: 0 0 1.25rem;
+
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+}
+
+/* Albumtitel */
+.page-absolutely .album-hero--paracosm h1 {
+    max-width: 12ch;
+    margin: 0;
+
+    font-size: clamp(4.4rem, 8.6vw, 7.2rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+}
+
+
+/* Einleitung in die Fantasiewelt des Albums */
+.page-absolutely .album-hero--paracosm .album-hero__lead {
+    max-width: 34rem;
+    margin: 1.6rem 0 0;
+
+    color: var(--color-heading);
+    font-size: clamp(1.06rem, 1.45vw, 1.24rem);
+    line-height: 1.72;
+}
+
+/* Mobile: beide Hero-Buttons mittig unter dem Albumcover */
+.page-absolutely .album-hero--paracosm .album-hero__actions {
+    position: relative;
+    z-index: 1;
+    grid-area: actions;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+
+    width: min(100%, 23rem);
+    justify-self: center;
+    margin: 0;
+}
+
+.page-absolutely .album-hero--paracosm .album-hero__actions .button {
+    min-height: 46px;
+    box-sizing: border-box;
+    padding: 0.62rem 1.1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+
+/* Albumfakten in einer eigenen ruhigen Kachel */
+.page-absolutely .album-overview {
+    position: relative;
+    z-index: 1;
+
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
+    max-width: 48rem;
+
+    margin: 1.75rem auto 0;
+    padding: clamp(1.35rem, 3vw, 2rem);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgb(255 240 229 / 6%),
+            transparent 55%
+        ),
+        var(--color-surface);
+
+    border: 1px solid rgb(255 240 229 / 20%);
+    border-radius: 1.5rem;
+
+    box-shadow: 0 18px 42px rgb(0 0 0 / 17%);
+}
+
+.page-absolutely .album-overview h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.page-absolutely .album-overview .album-facts {
+    margin: 1.5rem 0 0;
+}
+
+.page-absolutely .album-overview .save-action {
+    width: fit-content;
+    margin-top: 1.5rem;
+}
+
+
+/* Buttons in Absolutelys Rot-Orange-Aubergine-Farbwelt */
 .page-absolutely .nav-collection {
     background-color: var(--color-button-accent);
     color: #ffffff;
-}
-
-.page-absolutely .album-hero__media img {
-    border: 1px solid rgb(245 245 245 / 20%);
-    border-radius: 1.25rem;
-    box-sizing: border-box;
 }
 
 .page-absolutely .button--primary {
@@ -3715,10 +3996,56 @@ img {
 
 .page-absolutely .button--secondary:hover,
 .page-absolutely .button--secondary:focus-visible {
-    background-color: var(--color-button-accent);
-    border-color: var(--color-button-accent);
-    color: #ffffff;
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
 }
+
+
+/* Desktop: Text und Buttons links, Albumcover rechts */
+@media (min-width: 900px) {
+    .page-absolutely .album-hero--paracosm {
+        grid-template-columns:
+            minmax(0, 1.18fr)
+            minmax(0, 0.82fr);
+
+        grid-template-areas:
+            "content media"
+            "actions media";
+
+        grid-template-rows: auto auto;
+        column-gap: clamp(2rem, 4vw, 5rem);
+        row-gap: 1.35rem;
+
+        min-height: min(78svh, 48rem);
+    }
+
+    /* Albumcover auf Desktop etwas größer */
+    .page-absolutely .album-hero--paracosm .album-hero__media {
+        width: min(100%, 28rem);
+    }
+
+    /* Buttons stehen direkt unter dem Einleitungstext */
+    .page-absolutely .album-hero--paracosm .album-hero__actions {
+        width: auto;
+        justify-self: start;
+        justify-content: flex-start;
+    }
+
+    /* Facts-Kachel linksbündig zur übrigen Seite */
+    .page-absolutely .album-overview {
+        width: min(calc(100% - 2rem), 48rem);
+        margin-left: max(1rem, calc((100vw - 70rem) / 2));
+        margin-right: auto;
+    }
+
+    /* Die Hintergrundatmosphäre läuft zum Ende des Heros aus */
+    .page-absolutely .absolutely-atmosphere::before,
+    .page-absolutely .absolutely-atmosphere::after {
+        height: calc(min(78svh, 48rem) + 11rem);
+    }
+}
+
 
 /* Story-Section */
 .page-absolutely .story-text {
@@ -3823,7 +4150,6 @@ img {
     background-color: var(--color-detail-card);
     border-color: var(--color-button-accent);
 }
-
 
 
 /*-----------------------------------------*/
