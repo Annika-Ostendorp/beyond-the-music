@@ -4047,20 +4047,162 @@ img {
 }
 
 
-/* Story-Section */
+
+/* ========================================
+   MA2 - ABSOLUTELY EDITORIAL STORY
+   Copper Orange & Dark Aubergine
+   ======================================== */
+
+/* Großzügiger Lesebereich wie bei RAYE */
+.page-absolutely .album-story {
+    box-sizing: border-box;
+    max-width: 70rem;
+
+    padding: clamp(4rem, 7vw, 6rem) 1rem;
+    gap: clamp(2.5rem, 4vw, 4rem);
+    align-items: start;
+}
+
+/* Die Hauptgeschichte steht frei auf dem Seitenhintergrund */
 .page-absolutely .story-text {
-    border-color: #383035;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
 }
 
+/* Kleine redaktionelle Kapitelmarkierungen */
+.page-absolutely .story-kicker {
+    display: inline-block;
+
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+}
+
+/* Große Magazinüberschrift */
+.page-absolutely .story-text h2 {
+    margin: 0.75rem 0 2rem;
+
+    font-size: clamp(2.7rem, 4.5vw, 4.3rem);
+    letter-spacing: -0.035em;
+}
+
+/* Angenehme Textbreite und großzügiger Zeilenabstand */
+.page-absolutely .story-text > p {
+    max-width: 62ch;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+/* Der erste Absatz wirkt wie eine redaktionelle Einleitung */
+.page-absolutely .story-text > p:first-of-type {
+    color: var(--color-heading);
+    font-size: clamp(1.1rem, 1.25vw, 1.2rem);
+    line-height: 1.8;
+}
+
+/* Deutliche Trennung zwischen den einzelnen Absätzen */
+.page-absolutely .story-text > p + p {
+    margin-top: 1.65rem;
+}
+
+/* Album- und Songtitel in Absolutelys Kupferorange */
+.page-absolutely .album-story cite {
+    color: var(--color-accent);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Großes, redaktionelles Zitat als Abschluss */
+.page-absolutely .story-text blockquote {
+    max-width: 36rem;
+
+    margin: 2.75rem 0 0;
+    padding: 1.75rem 0 0;
+
+    border-left: 0;
+    border-top: 1px solid rgb(239 156 88 / 38%);
+}
+
+.page-absolutely .story-text blockquote p {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    line-height: 1.4;
+}
+
+.page-absolutely .story-text blockquote footer {
+    margin-top: 1rem;
+
+    color: var(--color-text);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+}
+
+
+/* Why It Matters und The Sound als unterstützende Kapitel */
+.page-absolutely .story-details {
+    gap: 1.5rem;
+    align-content: start;
+}
+
+/* Dunkle Aubergine-Karten mit sanfter Rot-Violett-Atmosphäre */
 .page-absolutely .story-details > section {
-    background-color: var(--color-detail-card);
-    border-color: var(--color-border);
+    padding: clamp(1.5rem, 2.3vw, 2rem);
+
+    background: linear-gradient(
+        145deg,
+        rgb(32 18 38 / 94%),
+        rgb(65 29 43 / 78%)
+    );
+
+    border: 1px solid rgb(255 240 229 / 17%);
+    border-radius: 1.25rem;
+
+    box-shadow: 0 18px 40px rgb(0 0 0 / 17%);
 }
 
+/* Überschriften ohne den bisherigen dicken Seitenrahmen */
 .page-absolutely .story-details h3 {
-    border-left: 3px solid var(--color-accent);
-    padding-left: 0.75rem;
+    margin: 0.75rem 0 1.35rem;
+    padding: 0;
+
+    border: 0;
+    font-size: clamp(1.6rem, 2vw, 2rem);
 }
+
+/* Gut lesbare Texte in den beiden Karten */
+.page-absolutely .story-details > section > p {
+    max-width: 46ch;
+
+    color: var(--color-text);
+    font-size: 0.98rem;
+    line-height: 1.8;
+}
+
+.page-absolutely .story-details > section > p + p {
+    margin-top: 1.25rem;
+}
+
+
+/* Desktop: Hauptgeschichte links, ergänzende Kapitel rechts */
+@media (min-width: 1000px) {
+    .page-absolutely .album-story {
+        grid-template-columns:
+            minmax(0, 1.55fr)
+            minmax(19rem, 1fr);
+
+        column-gap: clamp(2.5rem, 4vw, 4rem);
+    }
+}
+
 
 /* Tracklist-Section */
 .album-tracklist--single ol {
