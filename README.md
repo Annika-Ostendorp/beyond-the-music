@@ -429,4 +429,23 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - `prefers-reduced-motion` zur Reduzierung der Animationen bei entsprechender Systemeinstellung.
   - `aria-labelledby` zur Verbindung der Jahreszeiten-Abschnitte mit ihren Überschriften.
 
+### Weiterentwicklung der "Keep Going"-Section
+
+- **ChatGPT:** Unterstützung bei der Übertragung der bereits entwickelten Farbwelten aus der „Meet the Artists“-Section der Homepage. Für Amma wurden warme Coffee- und Terrakottatöne verwendet, während Absolutely ihre charakteristische Farbwelt aus dunklem Kirschrot, Bordeaux und Schwarz erhielt. Die Creme- und Goldtöne der RAYE-Detailseite blieben für die Texte und Navigationselemente erhalten, um ein einheitliches Erscheinungsbild zu gewährleisten.
+
+- **ChatGPT:** Umsetzung eines weichen Bildübergangs auf größeren Bildschirmen. Die Porträtbilder wurden rechts innerhalb der Karten positioniert und mithilfe von CSS-Maskierungen mit dem jeweiligen Hintergrundverlauf verbunden. Zusätzlich wurde über ein `::before`-Pseudoelement eine weichgezeichnete Version des Porträts als atmosphärische Hintergrundebene eingebunden. Auf kleineren Bildschirmen bleiben die Karten kompakt mit quadratischem Porträt, Text und Navigationspfeil.
+
+- **ChatGPT:** Ergänzung dezenter Hover- und Fokuszustände für die vollständig verlinkten Karten. Durch kleine Verschiebungen mit `transform`, veränderte Rahmenfarben und mehrschichtige `box-shadow`-Effekte entsteht eine leicht schwebende Wirkung. Mithilfe von `prefers-reduced-motion` werden die Bewegungsanimationen für Nutzer*innen mit entsprechender Systemeinstellung deaktiviert.
+
+  **Neue HTML- und CSS-Techniken:**
+  - CSS Grid mit `minmax()` und Media Queries zur responsiven Anordnung der Künstlerkarten.
+  - CSS Custom Properties zur Definition unterschiedlicher Hintergrundverläufe innerhalb einer gemeinsamen Kartenstruktur.
+  - Kombination von `radial-gradient()` und `linear-gradient()` zur Gestaltung mehrschichtiger Farbatmosphären.
+  - `::before`-Pseudoelemente und `filter: blur()` zur Erzeugung weichgezeichneter Bildhintergründe.
+  - `mask-image` und `-webkit-mask-image` zum weichen Überblenden der Porträtbilder in den Hintergrund.
+  - `isolation: isolate` und `z-index` zur gezielten Anordnung der verschiedenen Bildebenen.
+  - Mehrschichtige `box-shadow`-Effekte für eine dezente räumliche Wirkung der Karten.
+  - `:hover`, `:focus-visible`, `transform` und `transition` für Maus- und Tastaturinteraktionen.
+  - `prefers-reduced-motion` zur Berücksichtigung reduzierter Bewegung.
+
 </details>
