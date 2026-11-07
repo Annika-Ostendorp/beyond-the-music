@@ -159,9 +159,13 @@
           </section>
         </section>
 
-        <section class="album-story">
+        <section class="album-story" aria-labelledby="raye-story-title">
           <div class="story-text">
-            <h2>The Story</h2>
+            <span class="story-kicker" aria-hidden="true">
+              01 / BEHIND THE RECORD
+            </span>
+
+            <h2 id="raye-story-title">The Story</h2>
             <p>
               Released on 27 March 2026,
               <cite>THIS MUSIC MAY CONTAIN HOPE.</cite> is RAYE's second studio
@@ -211,8 +215,15 @@
           </div>
 
           <!-- Enthält ergänzende Infos für die Seite -> später für Grid -->
-          <aside class="story-details">
+          <aside
+            class="story-details"
+            aria-label="Further insights about the album"
+          >
             <section>
+              <span class="story-kicker" aria-hidden="true">
+                02 / THE MEANING
+              </span>
+
               <h3>Why It Matters</h3>
               <p>
                 <cite>My 21st Century Blues</cite> introduced RAYE's voice as an
@@ -236,6 +247,10 @@
             </section>
 
             <section>
+              <span class="story-kicker" aria-hidden="true">
+                03 / THE MUSIC
+              </span>
+
               <h3>The Sound</h3>
               <p>
                 Big-band jazz, retro soul, blues, R&amp;B and orchestral pop
@@ -263,16 +278,37 @@
           </aside>
         </section>
 
-        <section class="album-tracklist" id="seasons">
-          <h2>Tracklist</h2>
+        <section
+          class="album-tracklist"
+          id="seasons"
+          aria-labelledby="seasons-title"
+        >
+          <span class="album-tracklist__eyebrow">
+            THE TRACKLIST / A JOURNEY IN FOUR ACTS
+          </span>
+
+          <h2 id="seasons-title">The Four Seasons</h2>
+
           <p>
-            Discover the four seasons: Open any track of your choice and learn
-            more about its story.
+            Seventeen songs unfold across four chapters. Follow the record from
+            its stormiest moments towards the possibility of hope.
           </p>
 
-          <section class="season autumn">
-            <h3>Autumn</h3>
-            <p>Tracks 1-4</p>
+          <p class="album-tracklist__hint">
+            Hover over each track to begin exploring its story.
+          </p>
+
+          <section
+            class="season autumn"
+            id="autumn"
+            aria-labelledby="autumn-title"
+          >
+            <div class="season__intro">
+              <span class="season__chapter">CHAPTER 01 / 04</span>
+              <h3 id="autumn-title">Autumn</h3>
+              <p class="season__mood">When everything begins to change.</p>
+              <p class="season__range">TRACKS 01–04</p>
+            </div>
 
             <ol>
               <li>
@@ -297,9 +333,19 @@
             </ol>
           </section>
 
-          <section class="season winter">
-            <h3>Winter</h3>
-            <p>Tracks 5-8</p>
+          <section
+            class="season winter"
+            id="winter"
+            aria-labelledby="winter-title"
+          >
+            <div class="season__intro">
+              <span class="season__chapter">CHAPTER 02 / 04</span>
+              <h3 id="winter-title">Winter</h3>
+              <p class="season__mood">
+                Finding a way through the darkest days.
+              </p>
+              <p class="season__range">TRACKS 05–08</p>
+            </div>
 
             <ol start="5">
               <li>
@@ -325,9 +371,17 @@
             </ol>
           </section>
 
-          <section class="season spring">
-            <h3>Spring</h3>
-            <p>Tracks 9-12</p>
+          <section
+            class="season spring"
+            id="spring"
+            aria-labelledby="spring-title"
+          >
+            <div class="season__intro">
+              <span class="season__chapter">CHAPTER 03 / 04</span>
+              <h3 id="spring-title">Spring</h3>
+              <p class="season__mood">A quieter hope begins to return.</p>
+              <p class="season__range">TRACKS 09–12</p>
+            </div>
 
             <ol start="9">
               <li>
@@ -353,9 +407,17 @@
             </ol>
           </section>
 
-          <section class="season summer">
-            <h3>Summer</h3>
-            <p>Tracks 13-17</p>
+          <section
+            class="season summer"
+            id="summer"
+            aria-labelledby="summer-title"
+          >
+            <div class="season__intro">
+              <span class="season__chapter">CHAPTER 04 / 04</span>
+              <h3 id="summer-title">Summer</h3>
+              <p class="season__mood">The light ahead, and room for joy.</p>
+              <p class="season__range">TRACKS 13–17</p>
+            </div>
 
             <ol start="13">
               <li>

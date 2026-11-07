@@ -1962,8 +1962,6 @@ img {
     background: transparent;
 }
 
-
-
 /* Shared background behind header and album content */
 .page-raye .raye-atmosphere {
     position: relative;
@@ -2489,154 +2487,516 @@ img {
 }
 
 
-/* Tracklist-Section */
-.album-tracklist {
+/* ========================================
+   MA2 - RAYE EDITORIAL STORY
+   ======================================== */
+
+/* Spacious reading section */
+.page-raye .album-story {
+    box-sizing: border-box;
+    max-width: 70rem;
+
+    padding:
+        clamp(4rem, 7vw, 6rem)
+        1rem
+        clamp(4rem, 7vw, 6rem);
+
+    gap: clamp(2.5rem, 4vw, 4rem);
+    align-items: start;
+}
+
+/* The main story is no longer a heavy card */
+.page-raye .story-text {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
+
+/* Editorial chapter labels */
+.page-raye .story-kicker {
+    display: inline-block;
+
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+}
+
+/* Large magazine-style story heading */
+.page-raye .story-text h2 {
+    margin: 0.75rem 0 2rem;
+
+    font-size: clamp(2.7rem, 4.5vw, 4.3rem);
+    letter-spacing: -0.035em;
+}
+
+/* Comfortable reading width and line spacing */
+.page-raye .story-text > p {
+    max-width: 62ch;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+/* First paragraph acts as an editorial introduction */
+.page-raye .story-text > p:first-of-type {
+    color: var(--color-heading);
+    font-size: clamp(1.1rem, 1.25vw, 1.2rem);
+    line-height: 1.8;
+}
+
+/* Clear separation between paragraphs */
+.page-raye .story-text > p + p {
+    margin-top: 1.65rem;
+}
+
+/* Album and song titles remain emphasized */
+.page-raye .album-story cite {
+    color: var(--color-accent);
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+/* Editorial pull quote */
+.page-raye .story-text blockquote {
+    max-width: 36rem;
+
+    margin: 2.75rem 0 0;
+    padding: 1.75rem 0 0;
+
+    border-left: 0;
+    border-top: 1px solid rgb(243 179 34 / 35%);
+}
+
+.page-raye .story-text blockquote p {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    line-height: 1.4;
+}
+
+.page-raye .story-text blockquote footer {
+    margin-top: 1rem;
+
+    color: var(--color-text);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+}
+
+
+/* Supporting editorial chapters */
+.page-raye .story-details {
+    gap: 1.5rem;
+    align-content: start;
+}
+
+/* Quiet supporting panels */
+.page-raye .story-details > section {
+    padding: clamp(1.5rem, 2.3vw, 2rem);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgb(20 10 18 / 65%),
+            rgb(48 17 22 / 70%)
+        );
+
+    border: 1px solid rgb(255 240 221 / 16%);
+    border-radius: 1.25rem;
+
+    box-shadow: 0 18px 40px rgb(0 0 0 / 15%);
+}
+
+/* Headings without the previous thick side border */
+.page-raye .story-details h3 {
+    margin: 0.75rem 0 1.35rem;
+    padding: 0;
+
+    border: 0;
+
+    font-size: clamp(1.6rem, 2vw, 2rem);
+}
+
+/* Supporting text remains easy to read */
+.page-raye .story-details > section > p {
+    max-width: 46ch;
+
+    color: var(--color-text);
+    font-size: 0.98rem;
+    line-height: 1.8;
+}
+
+.page-raye .story-details > section > p + p {
+    margin-top: 1.25rem;
+}
+
+
+/* Desktop: main article and supporting editorial rail */
+@media (min-width: 1000px) {
+    .page-raye .album-story {
+        grid-template-columns:
+            minmax(0, 1.55fr)
+            minmax(19rem, 1fr);
+
+        column-gap: clamp(2.5rem, 4vw, 4rem);
+    }
+}
+
+
+/*-------------------------------------------*/
+/* RAYE Tracklist-Section - The Four Seasons */
+/*-------------------------------------------*/
+
+/* Einleitung der musikalischen Reise */
+.page-raye .album-tracklist {
     counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
     max-width: 70rem;
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 3rem 1rem 5rem;
+    padding: clamp(4rem, 7vw, 6rem) 1rem;
     border-top: 1px solid var(--color-divider);
 }
 
-.album-tracklist > h2 {
-    margin: 0 0 0.5rem;
+/* Kleine Kapitelüberschrift oberhalb des Titels */
+.page-raye .album-tracklist__eyebrow {
+    display: block;
+    margin-bottom: 0.75rem;
+
+    color: var(--color-accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
-.album-tracklist > p {
+.page-raye .album-tracklist > h2 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    letter-spacing: -0.035em;
+}
+
+.page-raye .album-tracklist > p {
     margin: 0 0 2rem;
     max-width: 42rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.page-raye .album-tracklist > .album-tracklist__hint {
+    margin: -0.5rem 0 2.5rem;
+    max-width: 38rem;
+
+    color: rgb(255 240 221 / 78%);
+    font-size: 0.95rem;
     line-height: 1.7;
 }
 
-.season {
+/* Gemeinsames Design für alle vier Jahreszeiten */
+.page-raye .season {
+    /* Farbvariablen werden unten für jede Jahreszeit angepasst */
+    --season-light: rgb(197 114 56 / 34%);
+    --season-start: #553027;
+    --season-end: #21141d;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 1rem;
-    padding: 1.25rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.7rem, 4vw, 3rem);
+    align-items: center;
 
-    border: 1px solid rgb(255 240 221 / 18%);
-    border-radius: 1.25rem;
+    box-sizing: border-box;
+    padding: clamp(1.5rem, 4vw, 3.25rem);
+
+    border: 1px solid rgb(255 240 221 / 21%);
+    border-radius: 1.7rem;
+
+    /* Jede Jahreszeit erhält einen individuellen Lichtverlauf */
+    background:
+        radial-gradient(
+            ellipse 85% 110% at 8% 30%,
+            var(--season-light),
+            transparent 75%
+        ),
+        linear-gradient(
+            115deg,
+            var(--season-start),
+            var(--season-end)
+        );
+
+    /* Leichter 3D-Effekt wie bei den Artist-Karten */
+    box-shadow:
+        0 26px 55px rgb(0 0 0 / 19%),
+        inset 0 1px 0 rgb(255 240 221 / 9%);
+
+    scroll-margin-top: 2rem;
 }
 
-.season + .season {
-    margin-top: 1rem;
+/* Zusätzlicher weicher Lichtschein im Hintergrund */
+.page-raye .season::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse 60% 60% at 12% 0%,
+        rgb(255 240 221 / 10%),
+        transparent 78%
+    );
 }
 
-.season.autumn {
-    background-color: #67412d;
-}
-
-.season.winter {
-    background-color: #1b304a;
-}
-
-.season.spring {
-    background-color: #54283f;
-}
-
-.season.summer {
-    background-color: #80501e;
+.page-raye .season + .season {
+    margin-top: 2rem;
 }
 
 
-.season h3 {
-    font-size: 1.6rem;
+/* Autumn - warme Bronze- und Terrakottatöne */
+.page-raye .season.autumn {
+    --season-light: rgb(206 119 63 / 38%);
+    --season-start: #5b352b;
+    --season-end: #24151e;
+}
+
+/* Winter - dunkles Blau und kühle Lichtstimmung */
+.page-raye .season.winter {
+    --season-light: rgb(116 150 182 / 27%);
+    --season-start: #273a4b;
+    --season-end: #161b29;
+}
+
+/* Spring - sanfte Rosé- und Bordeauxfarben */
+.page-raye .season.spring {
+    --season-light: rgb(211 145 166 / 30%);
+    --season-start: #60384c;
+    --season-end: #251923;
+}
+
+/* Summer - warmes Gold und Amber */
+.page-raye .season.summer {
+    --season-light: rgb(244 189 93 / 35%);
+    --season-start: #785022;
+    --season-end: #302018;
+}
+
+
+/* Editorial-Intro innerhalb jeder Jahreszeit */
+.page-raye .season__intro {
+    min-width: 0;
+}
+
+.page-raye .season__chapter {
+    color: var(--color-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.page-raye .season h3 {
+    margin: 1rem 0;
+    font-size: clamp(2.9rem, 5.4vw, 4.6rem);
     font-style: italic;
+    letter-spacing: -0.035em;
 }
 
-.season > p {
+.page-raye .season__mood {
+    max-width: 24ch;
     margin: 0;
-    align-self: center;
-    font-size: 0.75rem;
-    letter-spacing: 0.1rem;
+
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    line-height: 1.5;
+}
+
+.page-raye .season__range {
+    margin: 1.3rem 0 0;
+
+    color: var(--color-text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
 
-.season ol {
-    grid-column: 1 / -1; /* Songliste soll über beide Grid-Spalten laufen */
+/* Songliste innerhalb der jeweiligen Jahreszeit */
+.page-raye .season ol {
+    grid-column: 1 / -1; /* Songliste nutzt auf Mobile die gesamte Breite --> auf Desktop später die rechte Grid-Spalte */
+    min-width: 0;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.season li {
+.page-raye .season li {
     counter-increment: track;
-    
+
     display: grid;
-    grid-template-columns: 2.25rem minmax(0, 1fr) auto 1.25rem; /* Trackzahl bekommt festen Platz in Grid */
-    column-gap: 0.75rem;
-    row-gap: 0.25rem;
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto 1rem; /* Trackzahl, Songtitel, Laufzeit und schmale Pfeilspalte */
+    column-gap: 0.5rem;
+    row-gap: 0.15rem;
     align-items: baseline;
 
-    position: relative;
-    padding: 0.85rem 0.65rem;
+    min-width: 0;
+    padding: 1rem 0.35rem;
+
     border: none;
-    border-radius: 0;
-    border-bottom: 1px solid rgb(255 240 221 / 12%);
+    border-radius: 0.95rem;
+    border-bottom: 1px solid rgb(255 240 221 / 17%);
+
+    cursor: pointer; /* Songs sollen schon andeuten, dass man sie später erkunden kann */
+    transition: background-color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
 }
 
-.season li::before {
+/* Letzter Song einer Jahreszeit benötigt keine Trennlinie */
+.page-raye .season li:last-child {
+    border-bottom: none;
+}
+
+.page-raye .season li::before {
     content: counter(track, decimal-leading-zero); /* damit 01, 02, 03 statt 1, 2, 3 */
     grid-column: 1;
     grid-row: 1;
 
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
     font-variant-numeric: tabular-nums;
-    color: var(--color-text);
+    color: rgb(255 240 221 / 67%);
 }
 
-.season li > cite {
+/* Songtitel mit eigener Serifenschrift hervorheben */
+.page-raye .season li > cite {
     grid-column: 2;
     grid-row: 1;
-    font-style: normal;
+
+    min-width: 0;
+    color: var(--color-heading);
     font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+
+    transition: transform 0.25s ease,
+        color 0.25s ease;
 }
 
-.track-duration {
+.page-raye .season li:hover > cite,
+.page-raye .season li:focus-within > cite {
+    transform: translateX(0.2rem);
+    color: #fff7ec;
+}
+
+
+.page-raye .season .track-duration {
     position: static;
     grid-column: 3;
     grid-row: 1;
     justify-self: end;
 
     white-space: nowrap;
-    font-size: 0.85rem;
+    color: var(--color-text);
+    font-size: 0.8rem;
     font-variant-numeric: tabular-nums; /* damit Laufzeiten optisch sauber untereinander stehen --> Ziffern bekommen einheitliche Breite */
+    transition: color 0.25s ease,
+        opacity 0.25s ease;
 }
 
-.track-feature {
+.page-raye .season li:hover .track-duration,
+.page-raye .season li:focus-within .track-duration {
+    color: var(--color-heading);
+    opacity: 1;
+}
+
+/* Gastmusiker erscheinen unterhalb des Songtitels */
+.page-raye .season .track-feature {
     grid-column: 2;
     grid-row: 2;
     display: block;
-    font-size: 0.8rem;
+
+    color: var(--color-text);
+    font-size: 0.78rem;
     opacity: 0.85;
 }
 
-
-.season li::after { /* damit Andeutung von Verlinkung von jedem Song */
+.page-raye .season li::after { /* kleine visuelle Andeutung, dass jeder Song weiter erkundet werden kann */
     content: "↗";
     grid-column: 4;
     grid-row: 1;
 
-    color: var(--color-heading);
-    font-size: 1.2rem;
+    align-self: center;
+    justify-self: start;
+
+    color: var(--color-accent);
+    font-size: 1rem;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transform: translateX(-0.35rem);
+    transition: opacity 0.25s ease,
+                transform 0.25s ease;
 }
 
-
-.season li:hover, /* damit Songzeile leicht aufhellen, wenn man drübergeht --> Pfeil erscheint dann rechts neben Laufzeit */
-.season li:focus-within { /* focus-within für Tastaturbedienung später */
-    background-color: rgb(255 240 221 / 10%);
-    border-radius: 1.2rem;
+.page-raye .season li:hover, /* damit Songzeile leicht aufhellt --> wirkt wie Einstieg in eine spätere Detailansicht */
+.page-raye .season li:focus-within { /* focus-within für Tastaturbedienung später */
+    background-color: rgb(255 240 221 / 8%);
+    transform: translateX(0.2rem);
+    box-shadow: inset 0 0 0 1px rgb(255 240 221 / 8%);
 }
 
-.season li:hover::after,
-.season li:focus-within::after {
+.page-raye .season li:hover::after,
+.page-raye .season li:focus-within::after {
     opacity: 1;
+    transform: translateX(0);
+}
+
+/* Desktop: Jahreszeiten-Intro links, Songliste rechts */
+@media (min-width: 880px) {
+    .page-raye .season {
+        grid-template-columns:
+            minmax(0, 0.8fr)
+            minmax(0, 1.2fr);
+    }
+
+    .page-raye .season__intro {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .page-raye .season ol {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+/* Accessibility: Animationen bei reduzierter Bewegung deaktivieren */
+@media (prefers-reduced-motion: reduce) {
+    .page-raye .season li,
+    .page-raye .season li > cite,
+    .page-raye .season .track-duration,
+    .page-raye .season li::after {
+        transition: none;
+    }
+
+    .page-raye .season li:hover,
+    .page-raye .season li:focus-within,
+    .page-raye .season li:hover > cite,
+    .page-raye .season li:focus-within > cite {
+        transform: none;
+    }
 }
 
 
