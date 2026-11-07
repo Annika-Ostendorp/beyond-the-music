@@ -448,4 +448,32 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - `:hover`, `:focus-visible`, `transform` und `transition` für Maus- und Tastaturinteraktionen.
   - `prefers-reduced-motion` zur Berücksichtigung reduzierter Bewegung.
 
+### Weiterentwicklung der Timeline-Section
+
+- **ChatGPT:** Entwicklung einer visuellen Verbindung zwischen den beiden bereits vorhandenen Ereignissen „The long wait“ (2025) und „Her second Royal Albert Hall performance“ (2026). Die Ereignisse wurden um große Jahreszahlen, kleine Kapitelmarkierungen und eine goldene Verbindungslinie ergänzt. Die goldenen Punkte stehen als Markierungen für einzelne Momente in RAYEs musikalischer Laufbahn.
+
+- **ChatGPT:** Umsetzung eines responsiven Timeline-Layouts mit CSS Grid. Auf Desktop werden die beiden Ereignisse nebeneinander unter einer horizontalen Linie dargestellt. Auf Mobile verläuft die Zeitachse vertikal, sodass die Ereignisse untereinander gelesen werden können. Die bestehende Farbwelt aus Bordeaux, Cremeweiß und Gold wurde beibehalten.
+
+- **ChatGPT:** Unterstützung bei der semantischen Überarbeitung der HTML-Struktur. Die einzelnen Ereignisse werden weiterhin mit `<article>` ausgezeichnet. Die Jahreszahlen erhielten das HTML-Element `<time>` mit dem Attribut `datetime`. Zusätzlich wurde die Section mithilfe von `aria-labelledby` mit ihrer Überschrift verbunden.
+
+  **Neue HTML- und CSS-Techniken:**
+  - `<time>` mit `datetime` für die semantische Auszeichnung von Jahreszahlen.
+  - CSS Grid mit `repeat()` und `minmax()` zur responsiven Anordnung der Timeline-Ereignisse.
+  - `::before`-Pseudoelemente zur Darstellung der Verbindungslinie und der goldenen Ereignispunkte.
+  - `position: relative` und `position: absolute` zur genauen Positionierung der Timeline-Elemente.
+  - `linear-gradient()` zur Gestaltung einer weich auslaufenden Verbindungslinie und dezenter Kartenhintergründe.
+  - `box-shadow` für die Lichtwirkung der goldenen Punkte und die räumliche Tiefe der Ereigniskarten.
+  - Media Queries zur Umstellung zwischen horizontaler und vertikaler Zeitachse.
+  - `font-variant-numeric: tabular-nums` zur einheitlichen Darstellung der Jahreszahlen.
+  - `aria-labelledby` für die semantische Verbindung von Section und Überschrift.
+
+### Weiterentwicklung der Absolutely-Farbwelt und Bereinigung gemeinsamer Albumdetailseiten-Styles
+
+- **ChatGPT:** Unterstützung bei der erneuten gestalterischen Abstimmung von Absolutelys Farbwelt auf Grundlage meiner ausgewählten Referenzbilder. Die zunächst verwendete Rot-Schwarz-Palette und anschließend ergänzte blaue Farbkomponente wurden überarbeitet, da Absolutelys künstlerische Welt stärker von warmen Rot- und Orangetönen sowie sehr dunklem Aubergine-Lila geprägt sein soll.
+
+- **ChatGPT:** Entwicklung eines neuen, mehrschichtigen Hintergrundverlaufs mit warmem Rot-Orange, dunklem Violett und fast schwarzem Aubergine. Hierfür wurde die gemeinsame CSS Custom Property `--absolutely-stage` im `:root`-Bereich eingeführt. Diese wird sowohl für die große Absolutely-Karte in der „Meet the Artists“-Section als auch für die Absolutely-Vorschau in RAYEs „Keep Going“-Section wiederverwendet.
+
+- **ChatGPT:** Unterstützung bei der Anpassung der Bildhintergründe und weichen Überblendungen von Absolutelys Porträt. Die zuvor eingeführten bläulichen Hintergrundfarben wurden durch Aubergine- und Rottöne ersetzt. Die Bildkanten werden weiterhin mithilfe von Farbverläufen, CSS-Maskierungen und weichgezeichneten Bildebenen in die Hintergrundatmosphäre eingebettet.
+
+- **ChatGPT:** Anpassung der zentralen Farbvariablen für Absolutelys Albumdetailseite. Die Klasse `.page-absolutely` erhielt passende Werte für Seitenhintergrund, Kartenflächen, Überschriften, Fließtext, Rahmen, Akzentfarben und Buttons. Als Hauptakzent wurde ein warmes Kupferorange gewählt. Bestehende einzelne Rahmen- und Hover-Farben wurden an die neue Palette angeglichen.
 </details>
