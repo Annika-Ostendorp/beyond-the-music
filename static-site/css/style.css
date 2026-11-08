@@ -4574,154 +4574,530 @@ img {
 }
 
 
-/*-----------------------------------------*/
-/* Coming Soon Pages Design - Mobile First */
-/*-----------------------------------------*/
-.coming-soon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
 
-    min-height: 65vh; /* damit Inhalt nicht direkt unter oberem Seitenrand --> mehr Platz */
-    max-width: 42rem;
+/*---------------------------------------------*/
+/* Coming Soon Pages - Cinematic Editorial Hero */
+/*---------------------------------------------*/
+
+/* Shared page theme */
+.page-coming-soon {
+    min-height: 100svh;
+    margin: 0;
+    padding: 0;
+    background-color: #120b15;
+}
+
+/* One continuous image background - Mobile First */
+.page-coming-soon .coming-page {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: max(34rem, calc(100svh - 5rem));
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    background-color: #160914;
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgb(14 6 18 / 78%) 0%,
+            rgb(14 6 18 / 48%) 30%,
+            rgb(14 6 18 / 12%) 65%,
+            rgb(14 6 18 / 6%) 100%
+        ),
+        url("../images/coming-soon-turntable-mobile.png");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center, center bottom;
+}
+
+/* Editorial content - no card */
+.page-coming-soon .coming-hero {
+    display: flex;
+    align-items: flex-start;
+
+    width: calc(100% - 2rem);
+    max-width: 96rem;
+    min-height: max(34rem, calc(100svh - 5rem));
+    box-sizing: border-box;
+
     margin: 0 auto;
-    padding: 4rem 1.25rem;
-
-    text-align: center;
+    padding: 10rem 0 4rem;
 }
 
-.coming-soon__icon {
-    display: block;
-    width: 4.5rem;
-    height: 4.5rem;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-.coming-soon__brand {
+/* Narrow gold line instead of a heavy background card */
+.page-coming-soon .coming-hero__content {
+    width: 100%;
+    max-width: 33rem;
+    min-width: 0;
     margin: 0;
-    color: var(--color-heading);
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
+    padding: 0 0 0 1.1rem;
+
+    background: transparent;
+    border: 0;
+    border-left: 1px solid rgb(221 182 111 / 60%);
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+
+    text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
 }
 
-.coming-soon__brand em {
-    color: var(--color-accent);
-    font-family: var(--font-heading);
-}
-
-.coming-soon h1 {
-    margin: 0;
-    font-size: clamp(2.25rem, 6vw, 3.5rem);
-    line-height: 1.1;
-}
-
-.coming-soon > p:not(.coming-soon__brand) {
-    margin: 0;
-    max-width: 32rem;
-}
-
-.coming-soon .button {
-    margin-top: 0.75rem;
-}
-
-
-/*-------------------------------------*/
-/* Contact Page Design - Mobile First */
-/*-----------------------------------*/
-.contact-intro .contact-info-line {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    width: fit-content;
-
-    margin: 0;
-    padding: 0.5rem 1rem;
-
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
+/* Small editorial heading */
+.page-coming-soon .coming-hero__eyebrow {
+    margin: 0 0 1rem;
 
     color: var(--color-accent);
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
+/* Main heading */
+.page-coming-soon .coming-hero h1 {
+    margin: 0 0 1.2rem;
 
-.contact-intro,
-.contact-form-section {
-    width: min(42rem, calc(100% - 2rem));
-    margin-inline: auto;
+    color: var(--color-heading);
+    font-size: clamp(2.45rem, 9.2vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
 }
 
-.contact-intro {
-    padding: 4rem 0 1.5rem;
+/* Introduction */
+.page-coming-soon .coming-hero__lead {
+    max-width: 31rem;
+    margin: 0 0 0.85rem;
+
+    color: var(--color-heading);
+    font-size: 1rem;
+    line-height: 1.55;
 }
 
-.contact-intro h1 {
-    font-size: clamp(2.5rem, 7vw, 4rem);
+/* Supporting explanation */
+.page-coming-soon .coming-hero__text {
+    max-width: 31rem;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: 0.91rem;
+    line-height: 1.7;
 }
 
-.contact-intro h1 em {
+/* Compact navigation buttons */
+.page-coming-soon .coming-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+
+    margin-top: 1.45rem;
+}
+
+.page-coming-soon .coming-hero__actions .button {
+    width: auto;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 0.58rem 0.95rem;
+
+    font-size: 0.84rem;
+}
+
+/* Footer has its own background, without the photograph */
+.page-coming-soon .site-footer {
+    position: relative;
+    background-color: var(--color-bg);
+}
+
+
+/* ========================================
+   DESKTOP - WIDE CINEMATIC STAGE
+   ======================================== */
+
+@media (min-width: 48rem) {
+
+    /* A single full-bleed desktop image */
+    .page-coming-soon .coming-page {
+        background-image:
+            linear-gradient(
+                to right,
+                rgb(12 5 16 / 78%) 0%,
+                rgb(12 5 16 / 65%) 24%,
+                rgb(12 5 16 / 25%) 51%,
+                rgb(12 5 16 / 3%) 82%
+            ),
+            url("../images/coming-soon-turntable-desktop.png");
+
+        /* Show more of the upper scene and the lamp */
+        background-position: center, center top;
+    }
+
+    /* Wider layout places text further left */
+    .page-coming-soon .coming-hero {
+        align-items: center;
+
+        width: min(calc(100% - 3rem), 96rem);
+        padding: 3rem 0 4rem;
+    }
+
+    .page-coming-soon .coming-hero__content {
+        max-width: 34rem;
+        padding-left: 1.25rem;
+    }
+
+    .page-coming-soon .coming-hero h1 {
+        font-size: clamp(3.25rem, 4.75vw, 5rem);
+    }
+
+    .page-coming-soon .coming-hero__lead {
+        font-size: 1.14rem;
+    }
+
+    .page-coming-soon .coming-hero__text {
+        font-size: 0.98rem;
+    }
+}
+
+
+
+
+/*-------------------------------------*/
+/* Contact Page Design - Mobile First  */
+/*-------------------------------------*/
+
+/* ========================================
+   MA2 - CINEMATIC EDITORIAL CONTACT PAGE
+   Burgundy, Dark Plum & Warm Golden Light
+   ======================================== */
+
+/* Der Farbverlauf erstreckt sich über Header und Main */
+.page-contact {
+    background:
+        /* Warmer Bordeaux-Lichtschein auf der linken Seite */
+        radial-gradient(
+            ellipse 60% 60% at 8% 35%,
+            rgb(153 62 85 / 40%),
+            transparent 73%
+        ),
+
+        /* Dunkles Pflaumenlila auf der rechten Seite */
+        radial-gradient(
+            ellipse 50% 65% at 86% 22%,
+            rgb(112 54 104 / 29%),
+            transparent 76%
+        ),
+
+        /* Dezentes warmes Licht am unteren rechten Rand */
+        radial-gradient(
+            ellipse 48% 49% at 92% 68%,
+            rgb(197 123 65 / 18%),
+            transparent 78%
+        ),
+
+        /* Weicher Übergang zum normalen Seitenhintergrund */
+        linear-gradient(
+            to bottom,
+            #251520 0%,
+            #1b111b 60%,
+            var(--color-bg) 84%
+        );
+}
+
+/* Der Main-Bereich bleibt transparent */
+.page-contact .contact-page {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Der Footer bleibt bewusst dunkel und ruhig */
+.page-contact .site-footer {
+    background-color: var(--color-bg);
+}
+
+
+/* ========================================
+   CONTACT - EDITORIAL LAYOUT
+   ======================================== */
+
+/* Gleiche maximale Inhaltsbreite wie auf der Homepage */
+.page-contact .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+
+    gap: clamp(2.75rem, 6vw, 5rem);
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 70rem;
+    min-height: 68vh;
+
+    margin: 0 auto;
+    padding:
+        clamp(3.5rem, 7vw, 6rem)
+        1rem
+        clamp(5rem, 8vw, 7rem);
+}
+
+
+/* ========================================
+   CONTACT - EDITORIAL INTRODUCTION
+   ======================================== */
+
+/* Die linke Textspalte bleibt ohne eigene Hintergrundkarte */
+.page-contact .contact-intro {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Kleine redaktionelle Kapitelmarkierung */
+.page-contact .contact-info-line {
+    display: block;
+
+    margin: 0 0 1.2rem;
+    padding: 0;
+
+    background: none;
+    border: 0;
+    border-radius: 0;
+
+    color: var(--color-accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* Große cinematische Überschrift */
+.page-contact .contact-intro h1 {
+    margin: 0 0 1.75rem;
+
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+}
+
+/* Note. erscheint als eigene goldene Zeile */
+.page-contact .contact-intro h1 em {
+    display: block;
     color: var(--color-accent);
 }
 
-.contact-form {
+/* Lesefreundlicher Einleitungstext */
+.page-contact .contact-intro > p:not(.contact-info-line) {
+    max-width: 36ch;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.8;
+}
+
+/* Schmale goldene Linie als ruhiger Abschluss */
+.page-contact .contact-intro::after {
+    content: "";
+    display: block;
+
+    width: 4.5rem;
+    height: 1px;
+    margin-top: 2.5rem;
+
+    background: var(--color-accent);
+    opacity: 0.6;
+}
+
+
+/* ========================================
+   CONTACT - FORM CARD
+   ======================================== */
+
+/* Hochwertige dunkle Formularkarte */
+.page-contact .contact-form-section {
+    min-width: 0;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+
+    background:
+        linear-gradient(
+            155deg,
+            rgb(243 232 218 / 6%),
+            transparent 52%
+        ),
+        rgb(29 23 29 / 93%);
+
+    border: 1px solid rgb(243 232 218 / 20%);
+    border-radius: 1.5rem;
+
+    box-shadow: 0 26px 55px rgb(0 0 0 / 28%);
+}
+
+/* Formularüberschrift */
+.page-contact .contact-form-section h2 {
+    margin: 0;
+
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    letter-spacing: -0.025em;
+}
+
+/* Formularfelder innerhalb einer gemeinsamen Grid-Struktur */
+.page-contact .contact-form {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
 
-    margin-top: 1.5rem;
-    padding: 1.5rem;
+    margin: 1.8rem 0 0;
+    padding: 0;
 
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    background: transparent;
+    border: 0;
 }
 
-.form-field {
+
+/* ========================================
+   CONTACT - FORM FIELDS
+   ======================================== */
+
+/* Label steht jeweils oberhalb des Eingabefeldes */
+.page-contact .form-field {
     display: grid;
     gap: 0.5rem;
+    min-width: 0;
 }
 
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
+.page-contact .form-field label {
+    color: var(--color-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Einheitliches Styling aller Formularfelder */
+.page-contact .contact-form input,
+.page-contact .contact-form select,
+.page-contact .contact-form textarea {
     width: 100%;
+    min-width: 0;
     box-sizing: border-box;
+
     padding: 0.85rem 1rem;
 
-    background-color: var(--color-bg);
+    background-color: rgb(11 9 13 / 68%);
+    border: 1px solid rgb(243 232 218 / 22%);
+    border-radius: 0.8rem;
+
     color: var(--color-heading);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-
     font: inherit;
+
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease;
 }
 
-.contact-form textarea {
-    resize: vertical; /* Textfeld nur nach untern vergrößern & Layout nicht verschieben */
+/* Sichtbarer Tastaturfokus passend zum goldenen Akzent */
+.page-contact .contact-form :is(
+    input,
+    select,
+    textarea
+):focus-visible {
+    border-color: var(--color-accent);
+    background-color: var(--color-bg);
+}
+
+/* Dezente Platzhaltertexte */
+.page-contact .contact-form :is(
+    input,
+    textarea
+)::placeholder {
+    color: rgb(210 198 200 / 70%);
+}
+
+/* Nachricht darf nur vertikal vergrößert werden */
+.page-contact .contact-form textarea {
+    min-height: 9rem;
+    resize: vertical;
 }
 
 
-.contact-form .button {
+/* ========================================
+   CONTACT - DEMO BUTTON & DISCLAIMER
+   ======================================== */
+
+/* Kompakter Button wie bei den Albumdetailseiten */
+.page-contact .contact-form .button {
     justify-self: start;
-}
 
-.contact-form-section > p {
-    margin-top: 2rem;
-    color: var(--color-text);
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 0.7rem 1.5rem;
+
     font-size: 0.9rem;
-    line-height: 1.6;
 }
 
-.contact-form-section {
-    padding-bottom: 6rem;
+/* Deaktivierter Button signalisiert die Demo-Funktion */
+.page-contact .contact-form .button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
 }
+
+/* Transparenter Hinweis unter dem Formular */
+.page-contact .contact-disclaimer {
+    margin: 1.5rem 0 0;
+    padding-top: 1.25rem;
+
+    border-top: 1px solid rgb(243 232 218 / 15%);
+
+    color: var(--color-text);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   CONTACT - RESPONSIVE LAYOUT
+   ======================================== */
+
+/* Tablet: Name und E-Mail in zwei Spalten */
+@media (min-width: 640px) {
+    .page-contact .contact-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Themenauswahl, Textarea und Button bleiben breit */
+    .page-contact .contact-form > .form-field:nth-child(n + 3),
+    .page-contact .contact-form > .button {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Desktop: Editorial Text links, Formular rechts */
+@media (min-width: 1000px) {
+    .page-contact .contact-layout {
+        grid-template-columns:
+            minmax(0, 0.9fr)
+            minmax(0, 1.1fr);
+
+        gap: clamp(3rem, 7vw, 6.5rem);
+    }
+}
+
+/* Reduzierte Bewegung berücksichtigen */
+@media (prefers-reduced-motion: reduce) {
+    .page-contact .contact-form :is(
+        input,
+        select,
+        textarea
+    ) {
+        transition: none;
+    }
+}
+
 
 
 /* Desktop Navigation */

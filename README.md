@@ -500,4 +500,24 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - `prefers-reduced-motion` zur Deaktivierung von Bewegungsanimationen bei entsprechender Systemeinstellung.
   - Wiederverwendung der bereits bei RAYE dokumentierten Bildmaskierungs-, Blur- und Editorial-Layout-Techniken.
 
+### Weiterentwicklung der Contact Page & Coming Soon Pages
+
+- **ChatGPT:** Unterstützung bei der vollständigen gestalterischen Überarbeitung der Contact-Seite. Die ursprüngliche einfache Seitenstruktur wurde in ein responsives Editorial-Layout übertragen. Auf großen Bildschirmen stehen die Einleitung „Leave a Note.“ und das Formular nebeneinander, während beide Bereiche auf mobilen Geräten untereinander dargestellt werden. Die vorhandenen vier Formularfelder und ihre Inhalte wurden beibehalten.
+
+- **ChatGPT:** Unterstützung bei der Konzeption und Gestaltung der Coming-Soon-Seiten als eigenständiges cinematisches Seitenerlebnis. Anstelle eines gewöhnlichen Platzhalters wurde das Motiv eines stillstehenden Schallplattenspielers gewählt. Der angehobene Tonarm und die ruhende Schallplatte symbolisieren, dass ein weiterer musikalischer Abschnitt der Website noch nicht verfügbar ist.
+
+- **ChatGPT:** Unterstützung bei der Generierung und Einbindung zweier atmosphärischer Hintergrundbilder für Desktop und Mobile. Die Bildvarianten wurden an unterschiedliche Bildschirmformate angepasst und als PNG-Dateien eingebunden. Die Bilder werden über CSS als dekorative Hintergrundflächen verwendet; eine zusätzliche HTML-Bildstruktur oder JavaScript-Animation ist dafür nicht erforderlich.
+
+  **Neue HTML- und CSS-Techniken:**
+  - Responsive CSS-Grid-Layouts für die zweispaltige Contact-Seite und die Anordnung der Formularfelder.
+  - Kombination mehrerer `radial-gradient()`- und `linear-gradient()`-Ebenen für atmosphärische Seitenhintergründe.
+  - Verwendung von `max-width`, `minmax()` und Media Queries zur Anpassung an verschiedene Bildschirmgrößen.
+  - `background-image`, `background-size: cover` und `background-position` zur responsiven Darstellung unterschiedlicher Desktop- und Mobile-Hintergrundbilder.
+  - `min-height` mit `svh`-Einheiten zur Gestaltung einer möglichst bildschirmfüllenden Coming-Soon-Bühne.
+  - Seitenspezifische CSS-Klassen wie `.page-contact` und `.page-coming-soon`, um unterschiedliche Gestaltungswelten unabhängig voneinander zu definieren.
+  - `:focus-visible` zur visuellen Kennzeichnung fokussierter Formularelemente bei der Tastaturnavigation.
+  - `aria-labelledby` und `aria-describedby` zur semantischen Zuordnung von Überschriften und ergänzenden Beschreibungen.
+  - Deaktivierung eines Demo-Buttons mit dem HTML-Attribut `disabled`, da keine echte Nachrichtenübermittlung implementiert ist.
+  - Wiederverwendung bestehender Navigationselemente, Buttons, Typografie und CSS-Farbvariablen zur Sicherstellung eines konsistenten Gesamtdesigns.
+
 </details>
