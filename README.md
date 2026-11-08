@@ -476,4 +476,28 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **ChatGPT:** Unterstützung bei der Anpassung der Bildhintergründe und weichen Überblendungen von Absolutelys Porträt. Die zuvor eingeführten bläulichen Hintergrundfarben wurden durch Aubergine- und Rottöne ersetzt. Die Bildkanten werden weiterhin mithilfe von Farbverläufen, CSS-Maskierungen und weichgezeichneten Bildebenen in die Hintergrundatmosphäre eingebettet.
 
 - **ChatGPT:** Anpassung der zentralen Farbvariablen für Absolutelys Albumdetailseite. Die Klasse `.page-absolutely` erhielt passende Werte für Seitenhintergrund, Kartenflächen, Überschriften, Fließtext, Rahmen, Akzentfarben und Buttons. Als Hauptakzent wurde ein warmes Kupferorange gewählt. Bestehende einzelne Rahmen- und Hover-Farben wurden an die neue Palette angeglichen.
+
+### Weiterentwicklung der Absolutely-Albumdetailseite
+
+- **ChatGPT:** Entwicklung einer eigenständigen, cinematischen Tracklist-Bühne mit einer zweigeteilten Desktop-Gestaltung. Links befindet sich die große redaktionelle Einführung „Every track, another door.“, während rechts sämtliche Songs innerhalb einer dunklen, kontrastreichen Liste dargestellt werden. Auf mobilen Bildschirmen werden beide Bereiche untereinander angeordnet.
+
+- **ChatGPT:** Unterstützung bei der Vereinheitlichung der Hover-Animationen beider Albumdetailseiten. Beim Überfahren einer Songzeile verschieben sich die gesamte Zeile und der Songtitel leicht nach rechts, die Laufzeit wird deutlicher sichtbar und ein kleines Symbol erscheint. Während Absolutely einen ausgefüllten kupferfarbenen Stern verwendet, erhält RAYE einen goldenen Umrissstern. Die Zeilen bleiben zunächst nicht anklickbar, da noch keine eigenen Songdetailseiten existieren.
+
+- **ChatGPT:** Unterstützung bei der gestalterischen Verfeinerung von RAYEs Four-Seasons-Tracklist auf Basis von Absolutelys Tracklist-Design. Die Songlisten innerhalb der vier Jahreszeiten wurden durch dunklere, farblich abgestimmte Innenflächen ergänzt. Für Autumn, Winter, Spring und Summer wurden individuelle Farbverläufe und Hover-Hintergründe definiert, um die unterschiedlichen musikalischen Stimmungen stärker hervorzuheben.
+
+- **ChatGPT:** Unterstützung bei der Bereinigung gemeinsamer CSS-Regeln und der Korrektur fehlerhafter Klassenselektoren. Die Gestaltung von Keep Going wurde für beide Albumdetailseiten vereinheitlicht, ohne die individuellen Künstlerfarben aufzugeben. Hierfür wurden unter anderem die seitenspezifischen Klassen `.page-raye` und `.page-absolutely` über `:is()` zusammengefasst.
+
+  **Neue HTML- und CSS-Techniken:**
+  - CSS Grid mit `minmax()` zur responsiven Aufteilung der Paracosm-Tracklist.
+  - CSS Counters mit `counter-reset`, `counter-increment` und `decimal-leading-zero` zur automatischen Tracknummerierung.
+  - Kombination mehrerer `radial-gradient()`- und `linear-gradient()`-Ebenen für atmosphärische Hintergrundflächen.
+  - CSS Custom Properties zur Definition und Wiederverwendung individueller Jahreszeiten- und Künstlerfarben.
+  - `transform`, `transition` und Pseudoelemente für sanfte Hover-Animationen.
+  - `:is()` zur gemeinsamen Gestaltung wiederverwendeter Komponenten auf mehreren Albumdetailseiten.
+  - Seitenspezifische CSS-Selektoren zur Anpassung einzelner Farbwelten ohne Duplikation der gesamten Layoutregeln.
+  - Responsive Media Queries zur horizontalen und vertikalen Anordnung der Timeline.
+  - `clamp()` und Viewport-Einheiten zur Anpassung der Albumüberschrift an unterschiedliche Bildschirmbreiten.
+  - `prefers-reduced-motion` zur Deaktivierung von Bewegungsanimationen bei entsprechender Systemeinstellung.
+  - Wiederverwendung der bereits bei RAYE dokumentierten Bildmaskierungs-, Blur- und Editorial-Layout-Techniken.
+
 </details>
