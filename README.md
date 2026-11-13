@@ -121,6 +121,17 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 ## Bildquellen
 
+### Homepage-Hero-Bilder
+
+- **RAYE (`hero-raye.jpg`):** Konzertfotografie von RAYEs Auftritt in der Radio City Music Hall. Bildquelle: Instagram, „Never ever getting over seeing @raye live at Radio City!!!“.
+  Quelle: https://www.instagram.com/p/DXWpvZhjkzJ/
+
+- **Amma (`hero-amma.jpg`):** Konzertfotografie von Ammas Live-Debüt beim All Points East Festival. Bildquelle: Instagram, „amma making her live debut at @allpointseastuk“. 
+  Quelle: https://www.instagram.com/p/DNtEcMFUGkb/
+
+- **Absolutely (`hero-absolutely.webp`):** Konzertfotografie von Absolutelys Auftritt im Palladium in Köln am 15.03.2026. Foto: Laura Keimel, Frontstage Magazine, „Renee Rapp am 15. März im Palladium in Köln“ (16.03.2026).  
+  Quelle: https://frontstage-magazine.de/2026/03/16/renee-rapp-am-15-maerz-im-palladium-in-koeln/
+
 ### Künstlerinnenporträts
 
 - **RAYE:** Journal.hr, „Poslušali smo: This Music May Contain Hope, Raye“ (31.03.2026). Bildcredit: Profimedia.
@@ -133,6 +144,14 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **Absolutely:** The Independent, „The next big star in UK pop? Absolutely“ (11.01.2026).
   Bildcredit: Press; Fotograf nicht angegeben.
   Quelle: https://www.independent.co.uk/arts-entertainment/music/features/absolutely-singer-raye-sister-tour-b2897570.html
+
+### KI-generierte Bilder
+- **Favicon für Website (`favicon_BTM.png`):**
+Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Schallplatte).
+
+- **Coming-Soon-Hintergrundbilder (`coming-soon-turntable-desktop.png` und `coming-soon-turntable-mobile.png`):** Mit ChatGPT (OpenAI) generierte Bildmotive auf Grundlage meiner eigenen gestalterischen Idee. Dargestellt wird ein stillstehender Schallplattenspieler mit angehobenem Tonarm als visuelle Metapher für noch nicht verfügbare Seiten. Die beiden Varianten wurden für Desktop- und Mobile-Bildschirme unterschiedlich komponiert.
+
+  **Bildgenerierung:** ChatGPT (OpenAI), 2026.
 
 ### Record-Cover
 
