@@ -126,7 +126,7 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **RAYE (`hero-raye.jpg`):** Konzertfotografie von RAYEs Auftritt in der Radio City Music Hall. Bildquelle: Instagram, „Never ever getting over seeing @raye live at Radio City!!!“.
   Quelle: https://www.instagram.com/p/DXWpvZhjkzJ/
 
-- **Amma (`hero-amma.jpg`):** Konzertfotografie von Ammas Live-Debüt beim All Points East Festival. Bildquelle: Instagram, „amma making her live debut at @allpointseastuk“. 
+- **Amma (`hero-amma.jpg`):** Konzertfotografie von Ammas Live-Debüt beim All Points East Festival. Bildquelle: Instagram, „amma making her live debut at @allpointseastuk“.
   Quelle: https://www.instagram.com/p/DNtEcMFUGkb/
 
 - **Absolutely (`hero-absolutely.webp`):** Konzertfotografie von Absolutelys Auftritt im Palladium in Köln am 15.03.2026. Foto: Laura Keimel, Frontstage Magazine, „Renee Rapp am 15. März im Palladium in Köln“ (16.03.2026).  
@@ -146,8 +146,9 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   Quelle: https://www.independent.co.uk/arts-entertainment/music/features/absolutely-singer-raye-sister-tour-b2897570.html
 
 ### KI-generierte Bilder
+
 - **Favicon für Website (`favicon_BTM.png`):**
-Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Schallplatte).
+  Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Schallplatte).
 
 - **Coming-Soon-Hintergrundbilder (`coming-soon-turntable-desktop.png` und `coming-soon-turntable-mobile.png`):** Mit ChatGPT (OpenAI) generierte Bildmotive auf Grundlage meiner eigenen gestalterischen Idee. Dargestellt wird ein stillstehender Schallplattenspieler mit angehobenem Tonarm als visuelle Metapher für noch nicht verfügbare Seiten. Die beiden Varianten wurden für Desktop- und Mobile-Bildschirme unterschiedlich komponiert.
 
@@ -400,7 +401,7 @@ Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Sch
 
 - **ChatGPT:** Unterstützung bei der Überarbeitung der HTML-Struktur. Die umfangreiche Faktenliste wurde aus dem ursprünglichen Hero in eine eigene Section „The record at a glance“ unterhalb des Albumcovers verschoben. Die Fakten und der bereits vorhandene deaktivierte Speicherbutton blieben dabei erhalten. Ergänzend wurden ein kurzer Einführungstext sowie zwei Links zu Spotify und zur bestehenden Tracklist eingefügt.
 
-- **ChatGPT:** Umsetzung eines responsiven Hero-Layouts mithilfe von CSS Grid. Auf Desktop stehen der großformatige Albumtitel und die Aktionsbuttons links neben dem Albumcover. Auf Mobile werden die Inhalte in der Reihenfolge Text, Albumcover und darunter zentrierte Buttons angeordnet. 
+- **ChatGPT:** Umsetzung eines responsiven Hero-Layouts mithilfe von CSS Grid. Auf Desktop stehen der großformatige Albumtitel und die Aktionsbuttons links neben dem Albumcover. Auf Mobile werden die Inhalte in der Reihenfolge Text, Albumcover und darunter zentrierte Buttons angeordnet.
 
 - **ChatGPT:** Unterstützung bei der Entwicklung eines durchgehenden Hintergrundbereichs mit `.raye-atmosphere`, der den Header, den Hero und die Albumfakten umfasst. Die Hintergrundfotografie wurde durch Transparenzmasken und Verläufe so angepasst, dass sie ohne harte Bildkanten nach unten in die bestehende Bordeaux-Farbwelt übergeht. Dabei wurden unterschiedliche Positionierungen, Unschärfegrade und Fade-out-Verläufe ausprobiert.
 
@@ -432,7 +433,6 @@ Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Sch
   - `aria-labelledby` und `<aside>` zur semantischen Strukturierung ergänzender Inhalte.
   - Kombinierte `linear-gradient()`-Hintergründe, dezente `box-shadow`-Effekte und transparente Rahmen für zurückhaltende Editorial-Panels.
 
-
 ### Weiterentwicklung der Tracklist-Section
 
 - **ChatGPT:** Entwicklung eines gemeinsamen Designs für vier cineastische Jahreszeiten-Kapitel. Jede Jahreszeit erhielt eine eigene Farb- und Lichtstimmung: warme Bronze- und Terrakottatöne für Autumn, dunkle Blautöne für Winter, Rosé- und Bordeauxfarben für Spring sowie goldene und bernsteinfarbene Töne für Summer. Die individuellen Farben wurden über CSS Custom Properties definiert und innerhalb einer gemeinsamen `.season`-Regel verwendet.
@@ -454,7 +454,7 @@ Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Sch
 
 - **ChatGPT:** Umsetzung eines weichen Bildübergangs auf größeren Bildschirmen. Die Porträtbilder wurden rechts innerhalb der Karten positioniert und mithilfe von CSS-Maskierungen mit dem jeweiligen Hintergrundverlauf verbunden. Zusätzlich wurde über ein `::before`-Pseudoelement eine weichgezeichnete Version des Porträts als atmosphärische Hintergrundebene eingebunden. Auf kleineren Bildschirmen bleiben die Karten kompakt mit quadratischem Porträt, Text und Navigationspfeil.
 
-- **ChatGPT:** Ergänzung dezenter Hover- und Fokuszustände für die vollständig verlinkten Karten. Durch kleine Verschiebungen mit `transform`, veränderte Rahmenfarben und mehrschichtige `box-shadow`-Effekte entsteht eine leicht schwebende Wirkung. Mithilfe von `prefers-reduced-motion` werden die Bewegungsanimationen für Nutzer*innen mit entsprechender Systemeinstellung deaktiviert.
+- **ChatGPT:** Ergänzung dezenter Hover- und Fokuszustände für die vollständig verlinkten Karten. Durch kleine Verschiebungen mit `transform`, veränderte Rahmenfarben und mehrschichtige `box-shadow`-Effekte entsteht eine leicht schwebende Wirkung. Mithilfe von `prefers-reduced-motion` werden die Bewegungsanimationen für Nutzer\*innen mit entsprechender Systemeinstellung deaktiviert.
 
   **Neue HTML- und CSS-Techniken:**
   - CSS Grid mit `minmax()` und Media Queries zur responsiven Anordnung der Künstlerkarten.
@@ -602,4 +602,45 @@ Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Sch
   - Entfernung nicht mehr passender Selektoren nach Abgleich mit der aktuellen HTML-Struktur.
   - Wiederverwendung vorhandener Grundregeln anstelle mehrfacher Definitionen identischer Eigenschaften.
   - Organisation responsiver Layoutregeln nach ihren funktionalen Aufgaben statt nach einer möglichst geringen Anzahl von Media Queries.
-</details>
+
+  ### Vereinheitlichung und fachliche Überprüfung der CSS-Kommentare
+
+- **ChatGPT:** Unterstützung bei der systematischen Überprüfung und Vereinheitlichung sämtlicher Kommentare in der bestehenden `style.css`. Hierfür wurden die globalen Designvariablen, Header, Homepage, Albumdetailseiten, Contact, Coming Soon und die responsiven Anpassungen erneut Abschnitt für Abschnitt durchgegangen. Ziel war es, den bereits funktionierenden CSS-Code verständlicher und leichter nachvollziehbar zu dokumentieren, ohne die Gestaltung oder technische Funktionsweise zu verändern.
+
+- **ChatGPT:** Unterstützung bei der Strukturierung des Stylesheets in 24 nummerierte, thematisch zusammenhängende Bereiche. Hierfür wurden benannte `#region`- und `#endregion`-Kommentare ergänzt, die in Visual Studio Code das gezielte Navigieren und Einklappen größerer Codeabschnitte ermöglichen. Die vorhandenen guten Kommentare wurden beibehalten; uneinheitliche englische und deutsche Erklärungen wurden sprachlich vereinheitlicht.
+
+- **ChatGPT:** Ergänzung verständlicher deutscher Lernkommentare beim ersten relevanten Einsatz wichtiger CSS-Eigenschaften, Selektoren, Funktionen und Variablen. Insbesondere wurde zwischen fest definierten CSS-Eigenschaften und selbst definierten CSS Custom Properties unterschieden. Die Kommentare erklären unter anderem die Bedeutung globaler Variablen in `:root`, lokaler Theme-Overrides und komponentenspezifischer Variablen für Künstlerinnenporträts, Album-Atmosphären und Jahreszeiten. Bei späteren Wiederverwendungen wurden die Erklärungen bewusst nicht wiederholt.
+
+- **ChatGPT:** Fachliche Überprüfung und Korrektur ungenauer oder veralteter Kommentare. Dabei wurde beispielsweise der Unterschied zwischen `cursor: pointer` und tatsächlichen Hover-Effekten verdeutlicht. Außerdem wurden rein dekorative Tracklist-Symbole korrekt als solche beschrieben, da die zugehörigen Songs aktuell noch keine eigenen Detailseiten besitzen. Die Erklärungen zum Contact-Formular wurden an den aktiven Submit-Button und die noch fehlende serverseitige Verarbeitung angepasst.
+
+- **ChatGPT:** Unterstützung beim Verständnis komplexerer CSS-Techniken anhand des vorhandenen Codes. Dazu gehören die CSS-Kaskade, Selektorspezifität, Flexbox und Grid, benannte Grid-Bereiche, Pseudoelemente, Bildmasken, Transformationen, Animationen, CSS-Counter, responsive Media Queries sowie Zustände für Hover, Tastaturfokus und reduzierte Bewegung. Die Erläuterungen wurden an den jeweils passenden Stellen ergänzt, ohne die bestehenden CSS-Deklarationen zu verändern.
+
+### Vereinheitlichung und fachliche Überprüfung der HTML-Kommentare
+
+- **ChatGPT:** Unterstützung bei der Überprüfung und Kommentierung aller neun HTML-Dateien der statischen Website. Die umfangreicheren Seiten erhielten nummerierte Abschnittsmarkierungen für Header, Hero, Künstlerinnen-Carousel, Albuminformationen, Story, Tracklists, Keep Going, Quellen und Timeline. Die kleineren Coming-Soon-Seiten wurden zurückhaltender kommentiert, um unnötige Wiederholungen zu vermeiden.
+
+- **ChatGPT:** Ergänzung kurzer deutscher Erklärungen zu wichtigen semantischen HTML-Elementen und Attributen. Dazu gehören unter anderem `<header>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<nav>`, `<ol>`, `<dl>`, `<dt>`, `<dd>`, `<details>`, `<summary>` sowie die Verknüpfung von Formularfeldern mit `<label>`. Die Kommentare erläutern, warum diese Elemente verwendet werden und wie sie zur sinnvollen Strukturierung der Website beitragen.
+
+- **ChatGPT:** Unterstützung beim Verständnis der Barrierefreiheitsattribute `aria-labelledby`, `aria-hidden`, `aria-pressed` und `aria-live`. Zusätzlich wurde die Verbindung zwischen HTML und JavaScript dokumentiert, insbesondere die Bedeutung der `data-*`-Attribute im Records-Filter und Artist-Carousel. Auch das `defer`-Attribut der eingebundenen JavaScript-Dateien wurde präziser erklärt.
+
+### Vereinheitlichung der JavaScript-Kommentare und Verständnis der Programmabläufe
+
+- **ChatGPT:** Unterstützung bei der vollständigen Kommentierung und schrittweisen Erklärung der beiden JavaScript-Dateien `app.js` und `artist-carousel.js`. Die Dateien wurden durch nummerierte `#region`-Bereiche übersichtlicher gegliedert. Ergänzt wurden deutsche Kommentare, die wichtige Variablen, Funktionen, Bedingungen und Ereignisbehandlungen direkt an ihrer Verwendung erklären.
+
+- **ChatGPT:** Unterstützung beim Verständnis der Filterlogik in `app.js`. Hierbei wurden die DOM-Auswahl mit `querySelectorAll()`, die Verarbeitung von NodeLists mit `forEach()`, das Registrieren von Klickereignissen durch `addEventListener()`, das Auslesen von `data-filter` und `data-category` über `dataset`, die logischen Operatoren sowie die Sichtbarkeit der Albumgruppen mit `hidden` erläutert. Zusätzlich wurde erklärt, wie `aria-pressed` den ausgewählten Filter kennzeichnet.
+
+- **ChatGPT:** Unterstützung bei der Erklärung des Künstlerinnen-Carousels in `artist-carousel.js`. Die Kommentare behandeln die sofort ausgeführte Funktion zur Begrenzung des Variablenbereichs, die Auswahl und Prüfung benötigter DOM-Elemente sowie den zyklischen Kartenwechsel durch den Modulo-Operator `%`. Außerdem wurden die Zustandsverwaltung durch `classList.toggle()`, die Verwendung von `inert` und `aria-hidden`, die Aktualisierung der Navigationspunkte und des Zählers sowie die Screenreader-Ansage über eine Live-Region erklärt.
+
+- **ChatGPT:** Unterstützung beim Verständnis der verschiedenen Bedienmöglichkeiten des Carousels. Dazu gehören Klickereignisse für Navigationspfeile und Punkte, die Tastatursteuerung mit den Pfeiltasten, `event.preventDefault()`, das gezielte Setzen des Tastaturfokus mit `.focus()` sowie die Erkennung horizontaler Wischgesten über Touch-Events. Die Kommentare erklären insbesondere, wie horizontale Gesten von vertikalem Scrollen unterschieden werden.
+
+- **ChatGPT:** Korrektur einzelner unzutreffender JavaScript-Kommentare, beispielsweise zur Bedeutung von `dataset.filter`, zur Referenzgleichheit mit `===` und zur Aktivierung des Carousels erst nach der Initialisierung. Die vorhandene Programmlogik, Funktionsnamen, Variablen und Ereignisbehandlungen wurden dabei nicht verändert.
+
+  **Vertiefte HTML-, CSS- und JavaScript-Konzepte:**
+  - Unterschied zwischen CSS-Eigenschaften, globalen Custom Properties und lokal überschriebenen Variablen sowie deren Verwendung mit `var()`.
+  - CSS-Kaskade, Selektorspezifität, Vererbung und bewusste Überschreibungen zur Wiederverwendung gemeinsamer Komponenten.
+  - CSS Grid und Flexbox, Pseudoelemente, Maskierungen, Animationen und CSS-Counter im Zusammenhang mit dem vorhandenen Layout.
+  - Semantisches HTML sowie Barrierefreiheitsattribute zur verständlichen Strukturierung und Bedienbarkeit von Inhalten.
+  - DOM-Zugriffe, Event Listener, Arrays, Bedingungen, logische Operatoren und Zustandsänderungen im JavaScript-Code.
+  - Verbindung von HTML, CSS und JavaScript durch Klassen, `data-*`-Attribute und ARIA-Zustände.
+  - Einsatz verständlicher Codekommentare und benannter VS-Code-Regionen als Unterstützung beim Lernen, Debuggen und späteren Weiterentwickeln der Website.
+  </details>

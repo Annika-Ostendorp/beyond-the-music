@@ -6,12 +6,15 @@
     <title>Beyond The Music - the stories of RAYE, Amma and Absolutely</title>
     <link rel="icon" href="images/favicon_BTM.png" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- defer -> damit JavaScript-Datei laden, aber erst ausführen, wenn HTML vollständig eingelesen wurde
-         JavaScript muss ja auf Filterbuttons & Albumgruppen aus HTML zugreifen -->
+    <!-- defer: Beide Skripte werden parallel zum HTML geladen, aber erst nach
+         dem Parsen des Dokuments und in ihrer hier angegebenen Reihenfolge ausgeführt.
+         So können sie auf Filter, Albumgruppen und Carousel-Elemente zugreifen. -->
     <script src="js/app.js" defer></script>
     <script src="js/artist-carousel.js" defer></script>
   </head>
   <body class="page-home">
+    <!-- #region 01 · HOMEPAGE: HEADER UND NAVIGATION -->
+    <!-- Gemeinsamer Header mit Desktop-Navigation und nativem <details>-Menü für Mobilgeräte. -->
     <header class="site-header">
       <a class="site-brand" href="index.html"> Beyond <em>the</em> Music </a>
 
@@ -39,12 +42,13 @@
             aria-hidden="true"
           >
             <path d="M6 4h12v17l-6-4-6 4z" />
-            <!-- Lesezeichen Icon Pfad -->
+            <!-- Der SVG-Pfad zeichnet nur das Lesezeichen; aria-hidden verhindert eine zusätzliche Screenreader-Ansage. -->
           </svg>
 
           <span class="collection-label">My Collection</span>
         </a>
 
+        <!-- <summary> öffnet und schließt das native <details>-Menü ohne JavaScript. -->
         <details class="mobile-menu">
           <summary aria-label="Navigation">☰</summary>
           <nav aria-label="Mobile navigation">
@@ -56,9 +60,12 @@
       </div>
     </header>
 
+    <!-- #endregion -->
     <main>
+      <!-- #region 02 · HOMEPAGE: HERO -->
+      <!-- aria-labelledby verweist auf die ID der zugehörigen Überschrift und benennt so die Section. -->
       <section class="home-hero" aria-labelledby="home-hero-title">
-        <!-- Decorative concert collage -->
+        <!-- Rein dekorative Konzertcollage: aria-hidden blendet diese Bildebene für Screenreader aus. -->
         <div class="home-hero__media" aria-hidden="true">
           <div class="home-hero__image home-hero__image--raye"></div>
           <div class="home-hero__image home-hero__image--absolutely"></div>
@@ -66,7 +73,7 @@
           <div class="home-hero__shade"></div>
         </div>
 
-        <!-- Editorial hero content -->
+        <!-- Textinhalt liegt getrennt vor der Bildcollage; der Link führt zum Abschnitt #artists. -->
         <div class="home-hero__copy">
           <p class="home-hero__eyebrow">A story-first music archive</p>
 
@@ -88,12 +95,15 @@
         </div>
       </section>
 
+      <!-- #endregion -->
+      <!-- #region 03 · HOMEPAGE: ARTIST-CAROUSEL -->
+      <!-- Drei <article>-Karten; JavaScript steuert die aktive Karte, CSS deren Sichtbarkeit. -->
       <section
         class="artists-section"
         id="artists"
         aria-labelledby="artists-title"
       >
-        <!-- aria-labelledby verknüpft Section mit Überschrift -->
+        <!-- aria-labelledby="artists-title" verknüpft die Section mit dieser h2. -->
         <h2 id="artists-title">Meet the Artists</h2>
 
         <div
@@ -184,9 +194,9 @@
                 </div>
               </article>
             </div>
-            <!-- End artist-grid -->
+            <!-- Ende der drei Künstlerinnenkarten innerhalb der Carousel-Bühne. -->
 
-            <!-- Arrows positioned beside the artist stage -->
+            <!-- JS findet die Pfeile über data-artist-prev und data-artist-next; aria-label benennt sie. -->
             <button
               class="artist-carousel__arrow artist-carousel__arrow--prev"
               type="button"
@@ -231,9 +241,9 @@
               </svg>
             </button>
           </div>
-          <!-- End artist-carousel__stage -->
+          <!-- Ende der Bühne mit Künstlerinnenkarten und Pfeilen. -->
 
-          <!-- Artist carousel navigation -->
+          <!-- Die drei Punkte besitzen aria-pressed; JS aktualisiert den aktiven Zustand und den Zähler. -->
           <div
             class="artist-carousel__controls"
             role="group"
@@ -282,9 +292,12 @@
             aria-atomic="true"
           ></p>
         </div>
-        <!-- End artist-carousel -->
+        <!-- aria-live="polite" kündigt den Kartenwechsel für Screenreader an, ohne sofort zu unterbrechen. -->
       </section>
 
+      <!-- #endregion -->
+      <!-- #region 04 · HOMEPAGE: HOW TO EXPLORE -->
+      <!-- <ol> stellt die vier Schritte als geordnete Liste dar; CSS gestaltet sie als Kapitel. -->
       <section class="explore-section" aria-labelledby="explore-title">
         <div class="explore-section__inner">
           <div class="explore-section__heading">
@@ -294,7 +307,7 @@
           <ol class="steps-grid">
             <li class="step-card">
               <span class="step-number" aria-hidden="true">01</span>
-              <!-- aria-hidden="true" -> damit Screenreader Nummer nicht vorliest -->
+              <!-- Die dekorative Kapitelnummer wird nicht zusätzlich vorgelesen. -->
               <h3>Pick a sister</h3>
               <p>
                 Each artist has her own world, with her own colours and mood.
@@ -331,6 +344,9 @@
         </div>
       </section>
 
+      <!-- #endregion -->
+      <!-- #region 05 · HOMEPAGE: RECORDS UND FILTER -->
+      <!-- app.js liest data-filter der Buttons und vergleicht es mit data-category der Gruppen. -->
       <section class="records-section" aria-labelledby="records-title">
         <h2 id="records-title">Explore the Records</h2>
 
@@ -347,7 +363,7 @@
           >
             All
           </button>
-          <!-- data-filter speichert, welche Kategorie der Button auswählen soll; aria-pressed="true" heißt, dass "All" gerade ausgewählt ist -->
+          <!-- Jeder Filter besitzt eine Kategorie; aria-pressed zeigt den gewählten Zustand an. -->
           <button
             type="button"
             class="filter-chip"
@@ -374,6 +390,8 @@
           </button>
         </div>
 
+        <!-- data-category bezeichnet die ganze Künstlerinnengruppe; JS blendet bei Bedarf die Section aus.
+             Featured Records besitzen zusätzlich einen echten Link zur Albumdetailseite. -->
         <section class="record-group" data-category="raye">
           <div class="record-group-header">
             <h3>RAYE</h3>
@@ -535,8 +553,11 @@
           </div>
         </section>
       </section>
+    <!-- #endregion -->
     </main>
 
+    <!-- #region 06 · HOMEPAGE: FOOTER -->
+    <!-- Der Footer mit Projekt-Hinweis und Seitenlinks ist auf allen Hauptseiten wiederverwendet. -->
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-about">
@@ -565,5 +586,6 @@
         </nav>
       </div>
     </footer>
+  <!-- #endregion -->
   </body>
 </html>

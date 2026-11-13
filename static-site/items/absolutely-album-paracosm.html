@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body class="page-absolutely">
-    <!-- Shared atmosphere for header and album content -->
+    <!-- Die Atmosphäre umfasst Header und Hauptinhalt; CSS erzeugt die kupferfarbenen Hintergrundebenen. -->
     <div class="absolutely-atmosphere">
+      <!-- #region 01 · ABSOLUTELY: HEADER UND NAVIGATION -->
+      <!-- Gemeinsamer Header; relative Links beginnen mit ../, weil die Seite unter items/ liegt. -->
       <header class="site-header">
         <a class="site-brand" href="../index.html">
           Beyond <em>the</em> Music
@@ -55,8 +57,11 @@
         </div>
       </header>
 
+      <!-- #endregion -->
       <main>
-        <!-- Absolutely - Cinematic album introduction -->
+        <!-- Cover, Albumtitel und Links folgen mobil untereinander und auf Desktop nebeneinander. -->
+        <!-- #region 02 · ABSOLUTELY: HERO UND ALBUMFAKTEN -->
+        <!-- Der Zurück-Link führt zur Künstlerinnenseite; der Hero nutzt das gemeinsame Album-Grid. -->
         <div class="album-back">
           <a class="text-link" href="../absolutely.html">
             ← Back to Absolutely's story
@@ -103,7 +108,7 @@
           </div>
         </section>
 
-        <!-- Album facts in a separate overview panel -->
+        <!-- Fakten als <dl>: <dt> benennt den Begriff, <dd> seinen Wert. -->
         <section class="album-overview" aria-labelledby="paracosm-facts-title">
           <h2 id="paracosm-facts-title">The record at a glance</h2>
 
@@ -137,6 +142,7 @@
             </div>
           </dl>
 
+          <!-- Der als disabled markierte Speicherbutton hat in der statischen Version noch keine Funktion. -->
           <div class="save-action">
             <button type="button" class="button button--primary" disabled>
               Save this record
@@ -144,7 +150,10 @@
           </div>
         </section>
 
-        <!-- Editorial story -->
+        <!-- #endregion -->
+        <!-- #region 03 · ABSOLUTELY: EDITORIAL STORY -->
+        <!-- Geschichtentext und ergänzender <aside> nutzen dieselbe Grundstruktur wie bei RAYE. -->
+        <!-- Individuelle Geschichte zur musikalischen Welt von Paracosm. -->
         <section class="album-story" aria-labelledby="paracosm-story-title">
           <div class="story-text">
             <span class="story-kicker">01 / BEHIND THE RECORD</span>
@@ -272,13 +281,16 @@
           </aside>
         </section>
 
-        <!-- Paracosm - Thirteen tracks in one imagined world -->
+        <!-- #endregion -->
+        <!-- #region 04 · ABSOLUTELY: PARACOSM-TRACKLIST -->
+        <!-- Ein <ol> listet alle 13 Songs; CSS zeigt die Nummern und dekorative Hover-Rückmeldungen. -->
+        <!-- Anders als bei RAYE eine durchgehende Songliste, nicht vier Jahreszeiten. -->
         <section
           id="paracosm-tracks"
           class="album-tracklist album-tracklist--single album-tracklist--paracosm"
           aria-labelledby="paracosm-tracks-title"
         >
-          <!-- Eine durchgängige Tracklist statt vier Jahreszeiten -->
+          <!-- Die Sternsymbole dienen derzeit nur der Gestaltung; die Tracks besitzen keine Detail-Links. -->
           <span class="album-tracklist__eyebrow">
             THE TRACKLIST / AN IMAGINARY UNIVERSE
           </span>
@@ -374,6 +386,9 @@
           </div>
         </section>
 
+        <!-- #endregion -->
+        <!-- #region 05 · ABSOLUTELY: KEEP GOING -->
+        <!-- Verlinkte Vorschaukarten auf die anderen Künstlerinnenseiten. -->
         <section class="keep-going" aria-labelledby="paracosm-keep-going-title">
           <h2 id="paracosm-keep-going-title">Keep Going</h2>
 
@@ -421,6 +436,9 @@
           </article>
         </section>
 
+        <!-- #endregion -->
+        <!-- #region 06 · ABSOLUTELY: QUELLEN -->
+        <!-- Nativer, per Tastatur und Maus aufklappbarer Quellenbereich. -->
         <details class="album-sources">
           <summary>Sources for this page</summary>
 
@@ -461,7 +479,10 @@
           </ul>
         </details>
 
-        <!-- Absolutely - Musical Journey Timeline -->
+        <!-- #endregion -->
+        <!-- #region 07 · ABSOLUTELY: MUSIKALISCHE TIMELINE -->
+        <!-- Die beiden Artikel sind Ereignisse in .timeline-neighbors__path, nicht direkt unter der äußeren Section. -->
+        <!-- Je eine Station vor und nach Paracosm. -->
         <section
           class="timeline-neighbors"
           aria-labelledby="paracosm-journey-title"
@@ -499,10 +520,13 @@
             </article>
           </div>
         </section>
+      <!-- #endregion -->
       </main>
     </div>
-    <!-- Ende der Absolutely-Atmosphäre -->
+    <!-- Hier endet der atmosphärische Container; der Footer folgt außerhalb. -->
 
+    <!-- #region 08 · ABSOLUTELY: FOOTER -->
+    <!-- Gemeinsame Projektinformationen und Navigation. -->
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-about">
@@ -531,5 +555,6 @@
         </nav>
       </div>
     </footer>
+  <!-- #endregion -->
   </body>
 </html>

@@ -1,10 +1,15 @@
 
-/* MA2 Part 1 - Interactive artist carousel */
+/* Interaktiver Künstlerinnen-Carousel (statische Website, MA2 Teil 1).
+   Der Code ergänzt die auch ohne JavaScript sichtbare Künstlerinnenübersicht um eine steuerbare Einzelkarten-Ansicht. */
 
+// #region 01 · CAROUSEL: ELEMENTE UND SICHERHEITSPRÜFUNG
 (() => {
+    // IIFE: Die sofort ausgeführte Funktion hält Hilfsvariablen aus dem globalen Namensraum heraus.
     const carousel = document.querySelector(".artist-carousel");
     if (!carousel) return;
 
+    // Nur innerhalb des Carousels nach benötigten Elementen suchen.
+    // Array.from wandelt die NodeList in Arrays um, die wir mit forEach bearbeiten.
     const grid = carousel.querySelector(".artist-grid");
     const cards = Array.from(
         grid.querySelectorAll(".artist-card--cinematic")
@@ -20,6 +25,9 @@
         ".artist-carousel__announcement"
     );
 
+    // Abbrechen, falls die erwarteten drei Karten, Punkte oder Steuerelemente fehlen.
+    // Voraussetzung: .artist-grid existiert; dieser Zugriff erfolgt bereits davor.
+    // CSS aktiviert das Carousel erst später mit der Klasse artist-carousel--ready.
     if (
         cards.length !== 3 ||
         dots.length !== cards.length ||
@@ -28,12 +36,18 @@
         return;
     }
 
+    // #endregion
+    // #region 02 · CAROUSEL: AKTIVE KARTE ANZEIGEN
     let currentIndex = 0;
 
+    // currentIndex merkt sich die aktuell sichtbare Karte (0, 1 oder 2).
+    // showArtist bündelt den Wechsel: Sichtbarkeit, ARIA-Status, Punkte und Zähler.
     function showArtist(index, animate = true) {
-        // Wrap around from last to first artist and vice versa.
+        // Modulo (%) hält den Index im Bereich 0 bis 2: Nach der letzten folgt die erste Karte.
+        // + cards.length verhindert bei einem Schritt rückwärts einen negativen Rest.
         const newIndex = (index + cards.length) % cards.length;
 
+        // Wiederholtes Anwählen der bereits aktiven Karte löst keine erneute Animation aus.
         if (animate && newIndex === currentIndex) return;
 
         currentIndex = newIndex;
@@ -41,13 +55,15 @@
         cards.forEach((card, cardIndex) => {
             const isActive = cardIndex === currentIndex;
 
+            // toggle(Klasse, Boolean) setzt oder entfernt die CSS-Zustandsklasse gezielt.
             card.classList.toggle("is-active", isActive);
             card.classList.toggle(
                 "is-changing",
                 isActive && animate
             );
 
-            // Inactive links must not receive keyboard focus.
+            // inert macht inaktive Karten (inkl. Links) nicht bedienbar und nimmt sie
+            // aus der Tastaturnavigation; aria-hidden ergänzt den Zustand für Assistenztechnik.
             card.inert = !isActive;
             card.setAttribute(
                 "aria-hidden",
@@ -55,6 +71,7 @@
             );
         });
 
+        // aria-pressed macht den ausgewählten Navigationspunkt für Screenreader erkennbar.
         dots.forEach((dot, dotIndex) => {
             dot.setAttribute(
                 "aria-pressed",
@@ -62,10 +79,12 @@
             );
         });
 
+        // textContent ersetzt den sichtbaren Zähler; padStart ergänzt führende Nullen.
         count.textContent =
             `${String(currentIndex + 1).padStart(2, "0")} / ` +
             `${String(cards.length).padStart(2, "0")}`;
 
+        // Die Live-Region kündigt einen echten Wechsel an; beim ersten Aufbau nicht.
         if (animate) {
             const artistName = cards[currentIndex]
                 .querySelector("h3")
@@ -76,13 +95,15 @@
         }
     }
 
-    // Show RAYE immediately without an entrance animation.
+    // RAYE beim Laden ohne Eintrittsanimation anzeigen; danach JS-gesteuerte Darstellung aktivieren.
     showArtist(0, false);
 
     carousel.classList.add("artist-carousel--ready");
     carousel.setAttribute("aria-roledescription", "carousel");
 
-    // Previous and next buttons
+    // #endregion
+    // #region 03 · CAROUSEL: PFEILE UND DIREKTE AUSWAHL
+    // Die Pfeile verändern den Index; showArtist kümmert sich um alle weiteren Zustände.
     previous.addEventListener("click", () => {
         showArtist(currentIndex - 1);
     });
@@ -91,7 +112,7 @@
         showArtist(currentIndex + 1);
     });
 
-    // Navigation dots and arrow-key navigation
+    // Jeder Punkt kann eine Künstlerin direkt auswählen und reagiert auf Pfeiltasten.
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
             showArtist(index);
@@ -105,6 +126,7 @@
                 return;
             }
 
+            // Standardreaktion der Pfeiltaste verhindern, damit sie hier nur den Carousel steuert.
             event.preventDefault();
 
             const direction =
@@ -115,13 +137,17 @@
                 cards.length;
 
             showArtist(nextIndex);
+            // Den Tastaturfokus auf den neu ausgewählten Punkt mitbewegen.
             dots[nextIndex].focus();
         });
     });
 
-    // Swipe support for touch devices
+    // #endregion
+    // #region 04 · CAROUSEL: WISCHGESTEN AUF TOUCHGERÄTEN
+    // Wischgesten beginnen nur bei einem Finger und nicht auf Links/Buttons.
     let touchStart = null;
 
+    // passive: true bei touchstart und touchend erlaubt dem Browser, normal weiterzuscrollen.
     grid.addEventListener("touchstart", (event) => {
         if (
             event.touches.length !== 1 ||
@@ -149,18 +175,22 @@
 
         touchStart = null;
 
-        // Only a clear horizontal gesture changes the artist.
+        // Nur klare horizontale Bewegung zählt: mindestens 55px und
+        // 1,3-mal stärker horizontal als vertikal, damit vertikales Scrollen nicht stört.
         if (
             Math.abs(deltaX) > 55 &&
             Math.abs(deltaX) > Math.abs(deltaY) * 1.3
         ) {
+            // Nach links wischen: nächste Karte; nach rechts wischen: vorherige.
             showArtist(
                 currentIndex + (deltaX < 0 ? 1 : -1)
             );
         }
     }, { passive: true });
 
+    // Bei abgebrochener Berührung den gespeicherten Startpunkt zurücksetzen.
     grid.addEventListener("touchcancel", () => {
         touchStart = null;
     });
+    // #endregion
 })();
