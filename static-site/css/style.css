@@ -11,6 +11,10 @@
 
     --font-heading: "Fraunces", Georgia, serif;
     --font-body: "DM Sans", Arial, sans-serif;
+    
+    /* Iteration 2 - responsive editorial layout system */
+    --layout-stage: 92rem;
+    --layout-gutter: clamp(1rem, 3vw, 3rem);
 
 
     /* Absolutely - Burnt Red, Copper Orange & Dark Aubergine */
@@ -2734,6 +2738,10 @@ img {
     --season-end: #21141d;
     --season-hover: rgb(197 114 56 / 12%);
 
+    /* Individual chapter title and ambient lighting */
+    --season-title: #f1c59b;
+    --season-glow: rgb(206 119 63 / 13%);
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -2764,7 +2772,8 @@ img {
 
     /* Leichter 3D-Effekt wie bei den Artist-Karten */
     box-shadow:
-        0 26px 55px rgb(0 0 0 / 19%),
+        0 26px 55px rgb(0 0 0 / 25%),
+        0 0 95px var(--season-glow),
         inset 0 1px 0 rgb(255 240 221 / 9%);
 
     scroll-margin-top: 2rem;
@@ -2795,7 +2804,11 @@ img {
     --season-light: rgb(206 119 63 / 38%);
     --season-start: #5b352b;
     --season-end: #24151e;
-    --season-hover: rgb(206 119 63 / 16%)
+    --season-hover: rgb(206 119 63 / 16%);
+    
+    /* AUTUMN - Bronze & Terracotta */
+    --season-title: #f1c59b;
+    --season-glow: rgb(206 119 63 / 16%);
 }
 
 /* Winter - dunkles Blau und kühle Lichtstimmung */
@@ -2804,6 +2817,10 @@ img {
     --season-start: #273a4b;
     --season-end: #161b29;
     --season-hover: rgb(116 150 182 / 15%);
+
+    /* WINTER - Frosted Midnight Blue */
+    --season-title: #c0d6e8;
+    --season-glow: rgb(116 150 182 / 16%);
 }
 
 /* Spring - sanfte Rosé- und Bordeauxfarben */
@@ -2812,6 +2829,11 @@ img {
     --season-start: #60384c;
     --season-end: #251923;
     --season-hover: rgb(211 145 166 / 15%);
+
+    /* SPRING - Rose & Burgundy */
+    --season-title: #edb6ce;
+    --season-glow: rgb(211 145 166 / 16%);
+
 }
 
 /* Summer - warmes Gold und Amber */
@@ -2820,6 +2842,10 @@ img {
     --season-start: #785022;
     --season-end: #302018;
     --season-hover: rgb(244 189 93 / 16%);
+
+    /* SUMMER - Champagne & Golden Light */
+    --season-title: #f7d18b;
+    --season-glow: rgb(244 189 93 / 16%);
 }
 
 
@@ -2841,6 +2867,7 @@ img {
     font-size: clamp(2.9rem, 5.4vw, 4.6rem);
     font-style: italic;
     letter-spacing: -0.035em;
+    color: var(--season-title);
 }
 
 .page-raye .season__mood {
@@ -4385,7 +4412,9 @@ img {
     border-radius: 1.65rem;
 
     box-shadow:
-        0 26px 55px rgb(0 0 0 / 22%),
+        0 26px 55px rgb(0 0 0 / 29%),
+        0 0 110px rgb(211 85 59 / 13%),
+        0 0 125px rgb(99 56 116 / 11%),
         inset 0 1px 0 rgb(255 240 229 / 10%);
 }
 
@@ -4428,7 +4457,18 @@ img {
     margin: 0;
     padding: 0.5rem clamp(0.5rem, 1.5vw, 1.25rem);
 
-    background: rgb(18 12 25 / 64%);
+    background:
+    radial-gradient(
+        ellipse 85% 55% at 95% 5%,
+        rgb(117 51 88 / 12%),
+        transparent 76%
+    ),
+    linear-gradient(
+        130deg,
+        rgb(26 14 32 / 85%),
+        rgb(15 10 23 / 90%)
+    );
+
     border: 1px solid rgb(255 240 229 / 15%);
     border-radius: 1.2rem;
 }
@@ -4626,7 +4666,7 @@ img {
     box-sizing: border-box;
 
     margin: 0 auto;
-    padding: 10rem 0 4rem;
+    padding: 5rem 0 4rem;
 }
 
 /* Narrow gold line instead of a heavy background card */
@@ -5345,7 +5385,176 @@ img {
     }
 }
 
+/* ========================================
+   MA2 PART 1 - ITERATION 2
+   EXPANSIVE DESKTOP LAYOUTS
+   ======================================== */
 
+@media (min-width: 1280px) {
+    /* Gemeinsame linke Inhaltsachse der Albumdetailseiten */
+    :is(.page-raye, .page-absolutely) {
+        --album-stage-inset: max(
+            calc(1rem + var(--layout-gutter)),
+            calc((100vw - var(--layout-stage)) / 2 + var(--layout-gutter))
+        );
+    }
+
+    /* Gemeinsame breite Ausstellungsfläche */
+    .page-home .site-header,
+    .page-home .home-hero__copy,
+    .page-home .artists-section,
+    .page-home .explore-section__inner,
+    .page-home .records-section,
+    .page-home .footer-inner {
+        box-sizing: border-box;
+        max-width: var(--layout-stage);
+    }
+
+    /* Gleiche Innenabstände für alle Homepage-Kapitel */
+    .page-home .home-hero__copy,
+    .page-home .artists-section,
+    .page-home .explore-section__inner,
+    .page-home .records-section,
+    .page-home .footer-inner {
+        width: calc(100% - 2rem);
+        padding-inline: var(--layout-gutter);
+    }
+
+    /* Navigation an der breiteren Bühne ausrichten */
+    .page-home .site-header {
+        padding-inline: var(--layout-gutter);
+    }
+
+    /* Hintergrund bleibt über die gesamte Bildschirmbreite */
+    .page-home .explore-section {
+        padding-inline: 0;
+    }
+
+    /* Größere redaktionelle Kapitelüberschriften */
+    .page-home .artists-section > h2,
+    .page-home .explore-section h2,
+    .page-home .records-section > h2 {
+        font-size: clamp(2.75rem, 3.6vw, 4rem);
+    }
+
+
+    /* ========================================
+       ITERATION 2 - EXPANSIVE ALBUM HEROES
+       RAYE & ABSOLUTELY
+       ======================================== */
+
+    /* Navigation und Zurück-Link an der breiten Bühne ausrichten */
+    :is(.page-raye, .page-absolutely) .site-header,
+    :is(.page-raye, .page-absolutely) .album-back {
+        box-sizing: border-box;
+        width: calc(100% - 2rem);
+        max-width: var(--layout-stage);
+        padding-inline: var(--layout-gutter);
+    }
+
+    .page-raye .album-hero--hope,
+    .page-absolutely .album-hero--paracosm {
+        padding-inline: var(--album-stage-inset);
+    }
+
+    .page-raye .album-overview,
+    .page-absolutely .album-overview {
+        margin-left: var(--album-stage-inset);
+    }
+
+    /* Albumcover erhalten etwas mehr visuelle Präsenz */
+    .page-raye .album-hero--hope .album-hero__media,
+    .page-absolutely .album-hero--paracosm .album-hero__media {
+        width: min(100%, 30rem);
+    }
+
+
+    /* ========================================
+       ITERATION 2 - SHARED EDITORIAL AXIS
+       RAYE & ABSOLUTELY
+       ======================================== */
+
+    /* Große redaktionelle und musikalische Kapitel */
+    :is(.page-raye, .page-absolutely) .album-story,
+    .page-raye .album-tracklist,
+    .page-absolutely .album-tracklist--paracosm {
+        box-sizing: border-box;
+
+        width: 100%;
+        max-width: none;
+
+        margin-inline: 0;
+        padding-inline: var(--album-stage-inset);
+    }
+
+    /* Mehr Raum zwischen Hauptgeschichte und Zusatzkapiteln */
+    :is(.page-raye, .page-absolutely) .album-story {
+        grid-template-columns:
+            minmax(0, 1.45fr)
+            minmax(24rem, 1fr);
+
+        column-gap: clamp(4rem, 7vw, 7rem);
+        align-items: start;
+    }
+
+    
+    /* ========================================
+       ITERATION 2 - BALANCED SUPPORTING CHAPTERS
+       RAYE & ABSOLUTELY
+       ======================================== */
+
+    /* Keep Going und Timeline nutzen die breite Editorial-Bühne */
+    :is(.page-raye, .page-absolutely) .keep-going,
+    :is(.page-raye, .page-absolutely) .timeline-neighbors {
+        box-sizing: border-box;
+
+        width: calc(
+            100% -
+            var(--album-stage-inset) -
+            var(--album-stage-inset)
+        );
+
+        max-width: none;
+
+        /* Gleicher Abstand links und rechts */
+        margin-left: var(--album-stage-inset);
+        margin-right: var(--album-stage-inset);
+
+        padding-inline: 0;
+    }
+
+    /* Quellenbereich ebenfalls auf beiden Seiten ausbalancieren */
+    :is(.page-raye, .page-absolutely) .album-sources {
+        box-sizing: border-box;
+
+        width: calc(
+            100% -
+            var(--album-stage-inset) -
+            var(--album-stage-inset)
+        );
+
+        max-width: none;
+
+        margin-left: var(--album-stage-inset);
+        margin-right: var(--album-stage-inset);
+    }
+}
+
+/* Carousel-Pfeile bei mittleren Desktopgrößen im sichtbaren Bereich */
+@media (min-width: 1280px) and (max-width: 1599px) {
+
+    .page-home .artist-carousel__stage {
+        padding-inline: 3.75rem;
+    }
+
+    .page-home .artist-carousel__arrow--prev {
+        left: 0;
+    }
+
+    .page-home .artist-carousel__arrow--next {
+        right: 0;
+    }
+}
 
 /* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {

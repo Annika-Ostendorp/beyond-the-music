@@ -517,7 +517,27 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
   - Seitenspezifische CSS-Klassen wie `.page-contact` und `.page-coming-soon`, um unterschiedliche Gestaltungswelten unabhängig voneinander zu definieren.
   - `:focus-visible` zur visuellen Kennzeichnung fokussierter Formularelemente bei der Tastaturnavigation.
   - `aria-labelledby` und `aria-describedby` zur semantischen Zuordnung von Überschriften und ergänzenden Beschreibungen.
-  - Deaktivierung eines Demo-Buttons mit dem HTML-Attribut `disabled`, da keine echte Nachrichtenübermittlung implementiert ist.
   - Wiederverwendung bestehender Navigationselemente, Buttons, Typografie und CSS-Farbvariablen zur Sicherstellung eines konsistenten Gesamtdesigns.
 
+### Weiterentwicklung der responsiven Editorial-Layouts (Iteration 2)
+
+- **ChatGPT:** Unterstützung bei einer zweiten Layoutiteration der bestehenden Homepage und Albumdetailseiten. Ziel war es, die bisher relativ schmalen Inhaltsbereiche auf großen Desktop-Bildschirmen großzügiger zu gestalten und den vorhandenen Platz besser zu nutzen. Die ursprüngliche Mobile-First-Struktur und das visuelle Design sollten dabei unverändert bleiben.
+
+- **ChatGPT:** Einführung der zentralen CSS Custom Properties `--layout-stage` und `--layout-gutter` in `:root`. Mit einer maximalen Inhaltsbreite von `92rem` und responsiven Seitenabständen werden die Homepage-Abschnitte „Meet the Artists“, „How to Explore“ und „Explore the Records“ auf großen Bildschirmen breiter dargestellt. Auch Header und Footer wurden an dieser gemeinsamen Inhaltsbreite ausgerichtet.
+
+- **ChatGPT:** Unterstützung bei der Vereinheitlichung der horizontalen Inhaltsausrichtung auf den beiden Albumdetailseiten. Mithilfe der neuen Variable `--album-stage-inset` wurden Album-Hero, Faktenkarte, Story und Tracklists an einer gemeinsamen linken Inhaltsachse ausgerichtet. Gleichzeitig erhielten die Hauptgeschichte und die ergänzenden Kapitel „Why It Matters“ und „The Sound“ einen großzügigeren Spaltenabstand.
+
+- **ChatGPT:** Anpassung der Abschnitte „Keep Going“, „Sources“ und der Timeline, damit diese innerhalb der breiteren Editorial-Bühne wieder symmetrisch angeordnet sind. Hierfür wurden die verfügbare Breite und die seitlichen Abstände mithilfe von `calc()` und der gemeinsamen Layoutvariable berechnet. Zuvor wirkten einige Abschnitte auf großen Desktop-Bildschirmen zu stark linksbündig.
+
+- **ChatGPT:** Unterstützung bei der weiteren gestalterischen Verfeinerung von RAYEs „Four Seasons“-Tracklist. Die bereits vorhandenen individuellen Jahreszeitenfarben wurden um die CSS-Variablen `--season-title` und `--season-glow` ergänzt. Dadurch erhalten Autumn, Winter, Spring und Summer jeweils eine eigene Überschriftenfarbe und einen dezenten farblich abgestimmten Lichtschein, ohne dass die gemeinsame Kartenstruktur verändert werden musste.
+
+- **ChatGPT:** Feinabstimmung des responsiven Layouts durch kleinere Anpassungen am oberen Abstand der Coming-Soon-Seiten und an der Position der Carousel-Navigationspfeile auf mittleren Desktop-Bildschirmen. Die Pfeile bleiben dadurch auch bei Bildschirmbreiten zwischen `1280px` und `1599px` innerhalb des sichtbaren Bereichs.
+
+  **Neue beziehungsweise weiterführende CSS-Techniken:**
+  - `--layout-stage` und `--layout-gutter` als zentral verwaltete Custom Properties für eine wiederverwendbare Inhaltsbreite und responsive Seitenabstände.
+  - Kombination von `max()`, `calc()` und `var()`, um den linken Seitenabstand abhängig von der Bildschirmbreite und der maximalen Editorial-Bühne zu berechnen.
+  - `padding-inline` und `margin-inline` zur gemeinsamen Steuerung horizontaler Abstände ohne getrennte `left`- und `right`-Eigenschaften.
+  - `:is(.page-raye, .page-absolutely)` zur gemeinsamen Anwendung von Layoutregeln auf beide Albumdetailseiten, während die seitenspezifischen Farbwelten erhalten bleiben.
+  - Wiederverwendung eines gemeinsamen Tracklist-Designs mit individuellen CSS Custom Properties für die Überschriftenfarben und atmosphärischen Lichtreflexe der vier Jahreszeiten.
+  - Kombinierte Media Queries mit `min-width` und `max-width`, um die Carousel-Navigation nur innerhalb eines bestimmten Desktop-Breitenbereichs anzupassen.
 </details>
