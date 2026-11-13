@@ -559,4 +559,25 @@ Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Sch
   - `:is(.page-raye, .page-absolutely)` zur gemeinsamen Anwendung von Layoutregeln auf beide Albumdetailseiten, während die seitenspezifischen Farbwelten erhalten bleiben.
   - Wiederverwendung eines gemeinsamen Tracklist-Designs mit individuellen CSS Custom Properties für die Überschriftenfarben und atmosphärischen Lichtreflexe der vier Jahreszeiten.
   - Kombinierte Media Queries mit `min-width` und `max-width`, um die Carousel-Navigation nur innerhalb eines bestimmten Desktop-Breitenbereichs anzupassen.
+
+### Abschließendes CSS-Refactoring – Zentralisierung der Design-Variablen
+
+- **ChatGPT:** Unterstützung bei der systematischen Überprüfung der bestehenden `style.css` hinsichtlich wiederkehrender Farbverläufe, Layoutbreiten, Rundungen und weiterer fest definierter CSS-Werte. Ziel war es, die Wartbarkeit und Wiederverwendbarkeit des bestehenden Designs zu verbessern, ohne die visuelle Gestaltung der Website zu verändern.
+
+- **ChatGPT:** Zentralisierung der bisher mehrfach definierten Farbverläufe von RAYE und Amma. Die neuen CSS Custom Properties `--raye-stage` und `--amma-stage` wurden gemeinsam mit der bereits vorhandenen Variable `--absolutely-stage` im `:root`-Bereich definiert. Die jeweiligen Artist-Karten in „Meet the Artists“ und „Keep Going“ greifen nun auf dieselben Hintergrundvariablen zurück. Dadurch bleiben die Farbwelten konsistent und können künftig an einer zentralen Stelle angepasst werden.
+
+- **ChatGPT:** Einführung der gemeinsamen Layoutvariablen `--layout-content` (`70rem`) und `--layout-facts` (`48rem`). Wiederkehrende `max-width`-Angaben wurden durch `var()`-Referenzen ersetzt. Ergänzend wurden auch die entsprechenden Berechnungen mit `calc()` und `min()` angepasst. Die bereits in der zweiten Layoutiteration eingeführten Variablen `--layout-stage` und `--layout-gutter` blieben erhalten, sodass normale Inhaltsbereiche und breitere Desktop-Bühnen weiterhin unterschiedliche Aufgaben erfüllen.
+
+- **ChatGPT:** Unterstützung bei der Vereinheitlichung wiederkehrender Kartenrundungen. Hierfür wurden die Variablen `--radius-full`, `--radius-card` und `--radius-panel` ergänzt. Sie werden für vollständig gerundete Bedienelemente, normale Karten und größere Informationspanels verwendet. Individuelle Rundungen, die eine besondere gestalterische Funktion erfüllen, wurden bewusst beibehalten.
+
+- **ChatGPT:** Überprüfung der seitenspezifischen Farbvariablen und individuellen CSS-Werte. Die bestehenden Theme-Overrides in `.page-raye` und `.page-absolutely` sowie die lokalen Variablen der vier Jahreszeiten wurden unverändert beibehalten. Auch spezielle Schatten, Abstände und Grid-Verhältnisse wurden nicht pauschal zentralisiert, da diese unterschiedliche gestalterische Funktionen erfüllen.
+
+- **ChatGPT:** Technische Überprüfung der vorgenommenen Refactoring-Änderungen durch Vergleich mit dem vorherigen CSS-Stand. Dabei wurde kontrolliert, ob die ursprünglichen Deklarationswerte nach Auflösung der neuen Variablen erhalten bleiben. Zusätzlich wurden ausgewählte berechnete CSS-Eigenschaften auf verschiedenen Bildschirmbreiten verglichen, um unbeabsichtigte Layoutveränderungen auszuschließen.
+
+  **Neue beziehungsweise weiterführende CSS-Techniken:**
+  - Zentralisierte Design-Tokens für wiederkehrende Farbverläufe, Inhaltsbreiten und Kartenrundungen innerhalb von `:root`.
+  - Wiederverwendung mehrschichtiger Hintergrundverläufe durch `background: var(--raye-stage)` beziehungsweise `background: var(--amma-stage)`, anstatt identische Gradient-Definitionen mehrfach zu schreiben.
+  - Verwendung von `var()` innerhalb der CSS-Funktionen `calc()` und `min()`, sodass auch berechnete Breiten auf zentralen Layoutvariablen basieren.
+  - Unterscheidung zwischen globalen Designvariablen und lokalen Custom Properties zur Beibehaltung individueller Künstlerinnen- und Jahreszeitenfarben.
+  - Bewusster Verzicht auf die Zentralisierung komponentenspezifischer Werte, um unnötige Abhängigkeiten und eine übermäßig komplexe Variablenstruktur zu vermeiden.
 </details>

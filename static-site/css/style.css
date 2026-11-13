@@ -16,6 +16,67 @@
     --layout-stage: 92rem;
     --layout-gutter: clamp(1rem, 3vw, 3rem);
 
+    /* Normale Inhaltsbreite für übersichtliche, lesbare Seitenbereiche */
+    --layout-content: 70rem;
+
+    /* Maximale Breite der Faktenkarten auf Albumdetailseiten */
+    --layout-facts: 48rem;
+
+    /* Gemeinsame Rundungen für wiederkehrende Komponenten */
+    --radius-full: 999px;    /* Pillen, Buttons und runde Bedienelemente */
+    --radius-card: 1.25rem;  /* Normale Karten und Kapitel */
+    --radius-panel: 1.5rem;  /* Größere Panels und Faktenkarten */
+
+
+    /* Wiederverwendbare Bühnenfarben von RAYE:
+       Burgunderrot, warmes Gold und dunkle Rottöne */
+    --raye-stage:
+        radial-gradient(
+            ellipse 55% 90% at 12% 12%,
+            rgb(230 161 73 / 45%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 58% 85% at 30% 80%,
+            rgb(169 33 48 / 62%),
+            transparent 74%
+        ),
+        radial-gradient(
+            ellipse 65% 100% at 85% 45%,
+            rgb(110 27 40 / 35%),
+            transparent 80%
+        ),
+        linear-gradient(
+            105deg,
+            #47251c 0%,
+            #42151e 48%,
+            #160c13 100%
+        );
+
+    /* Wiederverwendbare Bühnenfarben von Amma:
+       warme Beige-, Kaffee- und Terrakottatöne */
+    --amma-stage:
+        radial-gradient(
+            ellipse 65% 90% at 10% 5%,
+            rgb(239 193 139 / 38%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 65% 85% at 38% 95%,
+            rgb(206 96 15 / 39%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 65% 95% at 88% 35%,
+            rgb(177 105 65 / 24%),
+            transparent 80%
+        ),
+        linear-gradient(
+            108deg,
+            #72503d 0%,
+            #955a3d 50%,
+            #2b1b19 100%
+        );
 
     /* Absolutely - Burnt Red, Copper Orange & Dark Aubergine */
     --absolutely-stage:
@@ -122,13 +183,13 @@ img {
     align-items: center;
     gap: 0.75rem;
     width: calc(100% - 2rem); /* 100% gesamte verfügbare Breite - 2rem (32px bei Standardschriftgröße 16px) --> verfügbare Breite minus 32 px --> mehr Platz zum Bildschirmrand*/
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 1rem auto;
     padding: 0.75rem 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     position: relative;
 }
 
@@ -167,7 +228,7 @@ img {
     padding: 0.5rem 0.75rem;
     background-color: var(--color-accent);
     color: var(--color-bg);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     text-decoration: none;
 }
 
@@ -341,7 +402,7 @@ img {
     z-index: 2;
 
     width: calc(100% - 2rem);
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
 
     animation: hero-text-fade 3.5s ease-out 0.6s both;
@@ -392,7 +453,7 @@ img {
 
     background-color: rgb(29 23 29 / 45%);
     border: 1px solid rgb(243 232 218 / 30%);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     color: var(--color-heading);
     font-family: var(--font-body);
@@ -505,7 +566,7 @@ img {
     padding: 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 
     transition:
         transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
@@ -598,7 +659,7 @@ img {
     padding: 0;
     overflow: hidden;
     border: 1px solid rgb(243 232 218 / 20%);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
     background-color: var(--color-surface);
 
     /* The same pearl-white 3D effect for all three artists */
@@ -794,28 +855,7 @@ img {
 .artist-card--cinematic--raye {
     --stage-photo: url("../images/raye-portrait.jpg");
 
-    background:
-        radial-gradient(
-            ellipse 55% 90% at 12% 12%,
-            rgb(230 161 73 / 45%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 58% 85% at 30% 80%,
-            rgb(169 33 48 / 62%),
-            transparent 74%
-        ),
-        radial-gradient(
-            ellipse 65% 100% at 85% 45%,
-            rgb(110 27 40 / 35%),
-            transparent 80%
-        ),
-        linear-gradient(
-            105deg,
-            #47251c 0%,
-            #42151e 48%,
-            #160c13 100%
-        );
+    background: var(--raye-stage);
 }
 
 /* ========================================
@@ -825,28 +865,7 @@ img {
 .artist-card--cinematic--amma {
     --stage-photo: url("../images/amma-portrait.jpg");
 
-    background:
-        radial-gradient(
-            ellipse 65% 90% at 10% 5%,
-            rgb(239 193 139 / 38%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 85% at 38% 95%,
-            rgb(206 96 15 / 39%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 95% at 88% 35%,
-            rgb(177 105 65 / 24%),
-            transparent 80%
-        ),
-        linear-gradient(
-            108deg,
-            #72503d 0%,
-            #955a3d 50%,
-            #2b1b19 100%
-        );
+    background: var(--amma-stage);
 }
 
 /* Amma's portrait has a brighter, warmer haze. */
@@ -1111,7 +1130,7 @@ img {
     width: 0.5rem;
     height: 0.5rem;
 
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     background-color: rgb(243 232 218 / 40%);
 
     transition:
@@ -1233,7 +1252,7 @@ img {
 /* How to Explore-Section Mobile First*/
 .artists-section,
 .records-section {
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
 }
@@ -1295,7 +1314,7 @@ img {
 .explore-section__inner {
     position: relative;
     z-index: 1;
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
 }
 
@@ -1425,7 +1444,7 @@ img {
     min-height: 44px;
     padding: 0.5rem 1.1rem;
     border: 1px solid rgb(221 182 111 / 45%);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     background-color: rgb(221 182 111 / 5%);
     color: var(--color-heading);
@@ -1870,7 +1889,7 @@ img {
     flex-direction: column;
     gap: 2.5rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -1927,7 +1946,7 @@ img {
 }
 
 .album-back {
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 2rem auto 0;
     padding: 0 1rem;
 }
@@ -1937,7 +1956,7 @@ img {
     grid-template-columns: 1fr;
     gap: 2rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 3rem 1rem 5rem;
 }
@@ -2024,7 +2043,7 @@ img {
 
     padding:
         clamp(2.75rem, 6vw, 5.5rem)
-        max(1rem, calc((100vw - 70rem) / 2));
+        max(1rem, calc((100vw - var(--layout-content)) / 2));
 
     background: transparent;
 }
@@ -2232,7 +2251,7 @@ img {
     z-index: 1;
     box-sizing: border-box;
     width: calc(100% - 2rem);
-    max-width: 48rem;
+    max-width: var(--layout-facts);
 
     margin: 1.75rem auto 0;
     padding: clamp(1.35rem, 3vw, 2rem);
@@ -2246,15 +2265,15 @@ img {
         var(--color-surface);
 
     border: 1px solid rgb(255 240 221 / 18%);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-panel);
 }
 
 @media (min-width: 900px) {
     .page-raye .album-overview {
-        width: min(calc(100% - 2rem), 48rem);
+        width: min(calc(100% - 2rem), var(--layout-facts));
         margin-top: 1.75rem;
         margin-right: auto;
-        margin-left: max(1rem, calc((100vw - 70rem) / 2));
+        margin-left: max(1rem, calc((100vw - var(--layout-content)) / 2));
     }
 }
 
@@ -2344,7 +2363,7 @@ img {
 
     background-color: transparent;
     border: 1px solid var(--color-pill-border);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     color: var(--color-heading);
     font-size: 0.9rem;
@@ -2372,7 +2391,7 @@ img {
     background-color: var(--color-accent);
     color: var(--color-surface);
     border: 1px solid var(--color-accent);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     padding: 0.4rem;
 }
 
@@ -2381,7 +2400,7 @@ img {
     padding: 0.4rem;
     background-color: var(--color-detail-card);
     border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 }
 
 
@@ -2393,7 +2412,7 @@ img {
 
     min-height: 44px;
     padding: 0.65rem 1.25rem;
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     font-family: var(--font-body);
     font-size: 0.9375rem;
@@ -2422,7 +2441,7 @@ img {
     grid-template-columns: 1fr;
     gap: 1.5rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 2rem 1rem 5rem;
 }
@@ -2433,7 +2452,7 @@ img {
 
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 }
 
 .story-text cite {
@@ -2462,7 +2481,7 @@ img {
 
     background-color: var(--color-detail-card);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 }
 
 .album-story h2,
@@ -2509,7 +2528,7 @@ img {
 /* Spacious reading section */
 .page-raye .album-story {
     box-sizing: border-box;
-    max-width: 70rem;
+    max-width: var(--layout-content);
 
     padding:
         clamp(4rem, 7vw, 6rem)
@@ -2623,7 +2642,7 @@ img {
         );
 
     border: 1px solid rgb(255 240 221 / 16%);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 
     box-shadow: 0 18px 40px rgb(0 0 0 / 15%);
 }
@@ -2669,7 +2688,7 @@ img {
 /*-------------------------------------------*/
 /* Tracklist-Section - gemeinsame Grundgestaltung aller Albumdetailseiten */
 .album-tracklist {
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 3rem 1rem 5rem;
@@ -2689,7 +2708,7 @@ img {
 /* Einleitung der musikalischen Reise */
 .page-raye .album-tracklist {
     counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: clamp(4rem, 7vw, 6rem) 1rem;
@@ -3097,7 +3116,7 @@ img {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 2rem 1rem 5rem;
@@ -3117,7 +3136,7 @@ img {
     padding: 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-panel);
 
     color: var(--color-heading);
     text-decoration: none;
@@ -3167,7 +3186,7 @@ img {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: clamp(3.5rem, 6vw, 5.5rem) 1rem 5rem;
@@ -3195,33 +3214,11 @@ img {
 }
 
 
-/* Amma - Coffee & Terracotta, wie in Meet the Artists */
+/* Amma: dieselbe Farbwelt wie bei Meet the Artists */
 .page-raye .artist-preview:first-of-type,
 .page-absolutely .artist-preview--amma {
     --preview-photo: url("../images/amma-portrait.jpg");
-
-    --preview-background:
-        radial-gradient(
-            ellipse 65% 90% at 10% 5%,
-            rgb(239 193 139 / 38%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 85% at 38% 95%,
-            rgb(206 96 15 / 39%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 95% at 88% 35%,
-            rgb(177 105 65 / 24%),
-            transparent 80%
-        ),
-        linear-gradient(
-            108deg,
-            #72503d 0%,
-            #955a3d 50%,
-            #2b1b19 100%
-        );
+    --preview-background: var(--amma-stage);
 }
 
 /* Absolutely - gleiche Farbwelt wie Meet the Artists */
@@ -3231,32 +3228,10 @@ img {
 }
 
 
-/* RAYE auf Absolutelys Detailseite - Burgundy & Stage Gold */
+/* RAYE: dieselbe Farbwelt wie bei Meet the Artists */
 .page-absolutely .artist-preview--raye {
     --preview-photo: url("../images/raye-portrait.jpg");
-
-    --preview-background:
-        radial-gradient(
-            ellipse 55% 90% at 12% 12%,
-            rgb(230 161 73 / 45%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 58% 85% at 30% 80%,
-            rgb(169 33 48 / 62%),
-            transparent 74%
-        ),
-        radial-gradient(
-            ellipse 65% 100% at 85% 45%,
-            rgb(110 27 40 / 35%),
-            transparent 80%
-        ),
-        linear-gradient(
-            105deg,
-            #47251c 0%,
-            #42151e 48%,
-            #160c13 100%
-        );
+    --preview-background: var(--raye-stage);
 }
 
 
@@ -3562,7 +3537,7 @@ img {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 2rem 1rem 5rem;
@@ -3579,7 +3554,7 @@ img {
 
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 }
 
 .timeline-neighbors article > p {
@@ -3614,7 +3589,7 @@ img {
 /* Zurückhaltender Abschluss der Albumgeschichte */
 :is(.page-raye, .page-absolutely) .timeline-neighbors {
     display: block;
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: clamp(3rem, 5vw, 4.5rem) 1rem 5rem;
 
@@ -3953,7 +3928,7 @@ img {
 
     padding:
         clamp(2.75rem, 6vw, 5.5rem)
-        max(1rem, calc((100vw - 70rem) / 2));
+        max(1rem, calc((100vw - var(--layout-content)) / 2));
 
     background: transparent;
 }
@@ -4059,7 +4034,7 @@ img {
 
     box-sizing: border-box;
     width: calc(100% - 2rem);
-    max-width: 48rem;
+    max-width: var(--layout-facts);
 
     margin: 1.75rem auto 0;
     padding: clamp(1.35rem, 3vw, 2rem);
@@ -4073,7 +4048,7 @@ img {
         var(--color-surface);
 
     border: 1px solid rgb(255 240 229 / 20%);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-panel);
 
     box-shadow: 0 18px 42px rgb(0 0 0 / 17%);
 }
@@ -4150,7 +4125,7 @@ img {
 
     /* Facts-Kachel linksbündig zur übrigen Seite */
     .page-absolutely .album-overview {
-        width: min(calc(100% - 2rem), 48rem);
+        width: min(calc(100% - 2rem), var(--layout-facts));
         margin-left: max(1rem, calc((100vw - 70rem) / 2));
         margin-right: auto;
     }
@@ -4177,7 +4152,7 @@ img {
 /* Großzügiger Lesebereich wie bei RAYE */
 .page-absolutely .album-story {
     box-sizing: border-box;
-    max-width: 70rem;
+    max-width: var(--layout-content);
 
     padding: clamp(4rem, 7vw, 6rem) 1rem;
     gap: clamp(2.5rem, 4vw, 4rem);
@@ -4285,7 +4260,7 @@ img {
     );
 
     border: 1px solid rgb(255 240 229 / 17%);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 
     box-shadow: 0 18px 40px rgb(0 0 0 / 17%);
 }
@@ -4334,7 +4309,7 @@ img {
 /* Section heading aligned with Hero and Story */
 .page-absolutely .album-tracklist--paracosm {
     box-sizing: border-box;
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: clamp(4rem, 7vw, 6rem) 1rem;
     border-top: 1px solid var(--color-divider);
@@ -4874,7 +4849,7 @@ img {
 
     box-sizing: border-box;
     width: 100%;
-    max-width: 70rem;
+    max-width: var(--layout-content);
     min-height: 68vh;
 
     margin: 0 auto;
@@ -4974,7 +4949,7 @@ img {
         rgb(29 23 29 / 93%);
 
     border: 1px solid rgb(243 232 218 / 20%);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-panel);
 
     box-shadow: 0 26px 55px rgb(0 0 0 / 28%);
 }
