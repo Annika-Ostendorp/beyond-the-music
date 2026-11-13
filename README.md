@@ -580,4 +580,26 @@ Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Sch
   - Verwendung von `var()` innerhalb der CSS-Funktionen `calc()` und `min()`, sodass auch berechnete Breiten auf zentralen Layoutvariablen basieren.
   - Unterscheidung zwischen globalen Designvariablen und lokalen Custom Properties zur Beibehaltung individueller Künstlerinnen- und Jahreszeitenfarben.
   - Bewusster Verzicht auf die Zentralisierung komponentenspezifischer Werte, um unnötige Abhängigkeiten und eine übermäßig komplexe Variablenstruktur zu vermeiden.
+
+### Abschließendes CSS-Refactoring – Struktur und Redundanzen
+
+- **ChatGPT:** Unterstützung bei der systematischen Überprüfung der bestehenden `style.css` hinsichtlich ihrer Struktur, wiederholter Deklarationen und möglicher Überschreibungen. Hierfür wurden die globalen Grundlagen, Header, Homepage, Albumdetailseiten, Contact, Coming Soon und die responsiven Anpassungen einzeln untersucht. Ziel war es, die Wartbarkeit und Übersichtlichkeit des Stylesheets zu verbessern, ohne weitere gestalterische Änderungen vorzunehmen.
+
+- **ChatGPT:** Unterstützung bei der Zusammenfassung identischer CSS-Regeln der beiden Albumdetailseiten. Gemeinsame Eigenschaften der Cinematic Album-Heroes, Album-Faktenkarten, Story-Typografie, Zitate und ergänzenden Kapitel wurden in wiederverwendbare Regelblöcke übertragen. Mithilfe von `:is(.page-raye, .page-absolutely)` beziehungsweise spezifischen kombinierten Selektoren können beide Seiten dieselben Layoutregeln verwenden. Individuelle Albumtitel, Cover-Schatten, Hintergrundverläufe, Rahmenfarben und Künstlerinnen-Themes blieben als seitenspezifische Anpassungen erhalten.
+
+- **ChatGPT:** Unterstützung bei der Bereinigung veralteter und redundanter CSS-Regeln. Dazu gehörten frühere Desktop-Definitionen, die durch das überarbeitete Layout nicht mehr wirksam waren, sowie Selektoren der ursprünglichen Timeline-Struktur. Nach der Weiterentwicklung der HTML-Timeline lagen die Ereigniskarten innerhalb von `.timeline-neighbors__path`, sodass die bisherigen Regeln für direkt untergeordnete `<article>`-Elemente nicht mehr benötigt wurden. Zusätzlich wurden doppelte Selektoren bei Albumcovern, Tracklists und einzelnen Layoutkomponenten zusammengeführt.
+
+- **ChatGPT:** Unterstützung bei der Unterscheidung zwischen unbeabsichtigten Duplikaten und bewusst eingesetzten CSS-Überschreibungen. Die allgemeinen Komponentenregeln wurden als gemeinsame Grundlage beibehalten, während spezifischere Selektoren gezielt individuelle Eigenschaften ergänzen oder ersetzen. Besonders die lokalen Farbvariablen, atmosphärischen Hintergrundebenen und die breiten Editorial-Anpassungen ab `1280px` sollten ihre bisherige Wirkung behalten.
+
+- **ChatGPT:** Unterstützung bei der Neuordnung der CSS-Hauptabschnitte. Die übergreifenden Responsive-Regeln für Header, Homepage und Footer wurden unmittelbar hinter den Footer verschoben. Die Contact- und Coming-Soon-Bereiche wurden getrennt und in eine nachvollziehbare Reihenfolge gebracht. Gemeinsame Album- und Keep-Going-Komponenten erhielten passendere Abschnittsüberschriften. Die breiten Editorial-Regeln blieben bewusst am Ende des Stylesheets, damit ihre vorgesehenen Überschreibungen durch die CSS-Kaskade erhalten bleiben.
+
+- **ChatGPT:** Überprüfung der vorhandenen Media Queries und ihrer jeweiligen Funktionen. Die Mobile-First-Grundregeln bilden weiterhin die Basis, während mittlere Bildschirmgrößen komponentenabhängige Layoutwechsel ermöglichen. Ab `1280px` werden die großzügigeren Editorial-Breiten angewendet. Separate Abfragen für `hover`, `pointer` und `prefers-reduced-motion` blieben erhalten. Die Anzahl der Media-Query-Blöcke wurde nicht künstlich auf drei reduziert, da die verschiedenen Komponenten unterschiedliche sinnvolle Breakpoints benötigen.
+
+  **Neue beziehungsweise weiterführende CSS-Techniken und Prinzipien:**
+  - Einsatz von `:is()` zur gemeinsamen Gestaltung identischer Komponenten auf unterschiedlichen Seiten, unter Berücksichtigung der Selektorspezifität.
+  - Trennung zwischen allgemeinen Komponentenregeln und seitenspezifischen Overrides, um gemeinsame Layoutstrukturen und individuelle Farbwelten unabhängig voneinander zu pflegen.
+  - Gezielte Anwendung der CSS-Kaskade: Reihenfolge, Spezifität und Vererbung bestimmen, welche Deklarationen wirksam sind.
+  - Entfernung nicht mehr passender Selektoren nach Abgleich mit der aktuellen HTML-Struktur.
+  - Wiederverwendung vorhandener Grundregeln anstelle mehrfacher Definitionen identischer Eigenschaften.
+  - Organisation responsiver Layoutregeln nach ihren funktionalen Aufgaben statt nach einer möglichst geringen Anzahl von Media Queries.
 </details>

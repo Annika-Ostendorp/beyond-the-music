@@ -139,7 +139,10 @@ html {
     --color-button-accent: #a93832;
 }
 
-
+/* Beide Albumdetailseiten nutzen eine durchgehende Hintergrundatmosphäre hinter Header und Hauptinhalt. */
+:is(.page-raye, .page-absolutely) main {
+    background: transparent;
+}
 
 /*--------------------------------*/
 /* HOMEPAGE DESIGN - Mobile First */
@@ -1687,9 +1690,19 @@ img {
         grid-template-columns: minmax(0, 1fr);
     }
 
+    /* Featured covers use the same square image area */
     .record-card--featured .record-card__media {
         grid-column: 1;
         grid-row: 1;
+        aspect-ratio: 1 / 1;
+    }
+
+    .record-card--featured .record-cover {
+        height: 100%;
+        object-fit: cover;
+        transition:
+            transform 0.85s cubic-bezier(0.2, 0.65, 0.25, 1),
+            filter 0.65s ease;
     }
 
     .record-card--featured h4 {
@@ -1722,16 +1735,6 @@ img {
         transition:
             opacity 0.55s ease,
             transform 0.55s ease;
-    }
-
-    /* Featured covers use the same square image area */
-    .record-card--featured .record-card__media {
-        aspect-ratio: 1 / 1;
-    }
-
-    .record-card--featured .record-cover {
-        height: 100%;
-        object-fit: cover;
     }
 
     .record-card--featured .record-card__overlay {
@@ -1772,12 +1775,6 @@ img {
         font-weight: 600;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-    }
-
-    .record-card--featured .record-cover {
-        transition:
-            transform 0.85s cubic-bezier(0.2, 0.65, 0.25, 1),
-            filter 0.65s ease;
     }
 
  
@@ -1927,11 +1924,216 @@ img {
     color: var(--color-accent);
 }
 
+/* Gemeinsame Responsive-Regeln für Header, Homepage und Footer */
+@media (min-width: 768px) {
+    /*------------------*/
+    /* Homepage Design */
+    /*-----------------*/
+
+    /* Header */
+    .site-brand {
+        flex: 1;
+    }
+
+    .site-nav {
+        display: flex;
+    }
+
+    .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-list a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .header-actions {
+        flex: 1;
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+
+    .collection-label {
+        display: inline;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    
+    /* Homepage Hero - Desktop */
+    .home-hero {
+        min-height: 89svh;
+        padding: 7rem 0 8rem;
+    }
 
 
-/*----------------------------------------------*/
-/* RAYE Album detail page Design - Mobile First */
-/*----------------------------------------------*/
+    /* Full-height desktop collage */
+    .home-hero__image {
+        top: -6%;
+        bottom: -6%;
+        height: auto;
+    }
+
+    /* Absolutely - atmospheric left layer */
+    .home-hero__image--absolutely {
+        left: 34%;
+        width: 38%;
+        background-position: 50% 23%;
+        --photo-opacity: 0.95;
+    }
+
+    /* RAYE - central focal point */
+    .home-hero__image--raye {
+        left: 50%;
+        width: 40%;
+        background-position: 50% 22%;
+        --photo-opacity: 1;
+    }
+
+    /* Amma - softer right layer */
+    .home-hero__image--amma {
+        left: 72%;
+        width: 28%;
+        background-position: 50% 20%;
+        --photo-opacity: 0.95;
+    }
+
+
+    /* Dark gradient for readable typography */
+    .home-hero__shade {   
+        background:
+            linear-gradient(
+                90deg,
+                rgb(11 9 13 / 98%) 0%,
+                rgb(11 9 13 / 88%) 30%,
+                rgb(11 9 13 / 62%) 44%,
+                rgb(11 9 13 / 25%) 65%,
+                rgb(11 9 13 / 12%) 100%
+            ),
+            linear-gradient(
+                to bottom,
+                var(--color-bg) 0%,
+                transparent 16%,
+                transparent 72%,
+                var(--color-bg) 100%
+            );
+    }
+
+    /* Keep the editorial text on the left */
+    .home-hero h1 {
+        max-width: 40rem;
+    }
+
+    .home-hero .hero-description {
+        max-width: 35rem;
+    }
+
+
+    .hero-description {
+        font-size: 1.125rem;
+    }
+
+    /* Artists-Section */
+    .artist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    
+    /* How to Explore - Desktop */
+    .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2rem;
+        row-gap: 1.25rem;
+    }
+
+    .step-card {
+        display: block;
+        padding: 0 0 0 1.25rem;
+    }
+
+    .step-number {
+        font-size: 3rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .step-card h3 {
+        margin-bottom: 0.75rem;
+    }
+
+
+    /* Explore the Records-Section */
+    .record-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+
+        overflow: visible;
+        scroll-snap-type: none;
+
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .record-group + .record-group {
+        margin-top: 5rem;
+    }
+
+    /* Footer-Section */
+    .footer-inner {
+        flex-direction: row; /* bringt Logo und Navigation nebeneinander */
+        justify-content: space-between; /* Verteilung von beiden Bereichen über verfügbare Breite */
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .footer-about {
+        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigation aber feste Breite beibehält */
+        min-width: 0;
+    }
+
+    .footer-nav {
+        width: 17rem;
+        margin-top: 3rem;
+    }
+}
+
+
+
+@media (min-width: 1100px) {
+    /*------------------*/
+    /* Homepage Design */
+    /*-----------------*/
+    .artist-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 1.75rem;
+        row-gap: 0;
+    }
+
+    .record-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/*------------------------------------------------------------*/
+/* Gemeinsame Grundlagen der Albumdetailseiten - Mobile First */
+/*------------------------------------------------------------*/
 
 /* Hero-Section */
 .text-link {
@@ -1949,6 +2151,15 @@ img {
     max-width: var(--layout-content);
     margin: 2rem auto 0;
     padding: 0 1rem;
+}
+
+/* Der Zurück-Link liegt auf beiden Albumdetailseiten
+   oberhalb der dekorativen Hintergrundebenen. */
+:is(.page-raye, .page-absolutely) .album-back {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 1.75rem 1rem 0;
 }
 
 .album-hero {
@@ -1987,44 +2198,14 @@ img {
 }
 
 
-/* ========================================
-   MA2 - RAYE CINEMATIC ALBUM HERO
-   ======================================== */
+/*---------------------------------------------*/
+/* GEMEINSAME CINEMATIC ALBUM-HEROES            */
+/* RAYE & Absolutely - Mobile First            */
+/*---------------------------------------------*/
 
-.page-raye main {
-    background: transparent;
-}
-
-/* Shared background behind header and album content */
-.page-raye .raye-atmosphere {
+/* Albumtitel, Cover und Buttons folgen mobil untereinander */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) {
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    background: linear-gradient(
-        to bottom,
-        #171019 0,
-        #1b111a 14rem,
-        #24131e 28rem,
-        #40151c 43rem,
-        var(--color-bg) 57rem
-    );
-}
-
-
-/* The back link belongs to the same dark atmosphere */
-.page-raye .album-back {
-    position: relative;
-    z-index: 1;
-    margin: 0 auto;
-    padding: 1.75rem 1rem 0;
-}
-
-
-/* Mobile: text, artwork, then buttons */
-.page-raye .album-hero--hope {
-    position: relative;
-
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
@@ -2048,18 +2229,57 @@ img {
     background: transparent;
 }
 
-
-.page-raye .album-hero--hope .album-hero__content {
+/* Inhalt und Cover liegen vor den dekorativen Hintergründen */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__content {
     grid-area: content;
+    position: relative;
+    z-index: 1;
 }
 
-.page-raye .album-hero--hope .album-hero__media {
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__media {
     grid-area: media;
+    position: relative;
+    z-index: 1;
+
+    display: block;
+    width: min(100%, 23rem);
+    justify-self: center;
+    align-self: center;
 }
 
+/* Beide Cover sind quadratisch, Schatten bleiben individuell */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__media img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 1rem;
+}
 
-/* Buttons centered below the cover on mobile */
-.page-raye .album-hero--hope .album-hero__actions {
+/* Kleine redaktionelle Titelzeile */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__eyebrow {
+    margin: 0 0 1.25rem;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+}
+
+/* Gemeinsame Eigenschaften der Albumtitel und Einleitungen */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) h1 {
+    margin: 0;
+    text-wrap: balance;
+}
+
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__lead {
+    margin: 1.6rem 0 0;
+    color: var(--color-heading);
+}
+
+/* Mobile: Beide Buttons stehen unter dem Albumcover */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__actions {
     grid-area: actions;
     position: relative;
     z-index: 1;
@@ -2075,8 +2295,7 @@ img {
     margin: 0;
 }
 
-/* Compact, equally styled hero buttons */
-.page-raye .album-hero--hope .album-hero__actions .button {
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__actions .button {
     min-height: 46px;
     box-sizing: border-box;
     padding: 0.62rem 1.1rem;
@@ -2084,7 +2303,91 @@ img {
     white-space: nowrap;
 }
 
+/* Gemeinsame Struktur der Album-Faktenkarten */
+:is(.page-raye, .page-absolutely) .album-overview {
+    position: relative;
+    z-index: 1;
 
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
+    max-width: var(--layout-facts);
+
+    margin: 1.75rem auto 0;
+    padding: clamp(1.35rem, 3vw, 2rem);
+
+    border-radius: var(--radius-panel);
+}
+
+:is(.page-raye, .page-absolutely) .album-overview h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+:is(.page-raye, .page-absolutely) .album-overview .album-facts {
+    margin: 1.5rem 0 0;
+}
+
+:is(.page-raye, .page-absolutely) .album-overview .save-action {
+    width: fit-content;
+    margin-top: 1.5rem;
+}
+
+/* Ab 900px: Intro und Buttons links, Albumcover rechts */
+@media (min-width: 900px) {
+    :is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) {
+        grid-template-columns:
+            minmax(0, 1.18fr)
+            minmax(0, 0.82fr);
+
+        grid-template-areas:
+            "content media"
+            "actions media";
+
+        grid-template-rows: auto auto;
+        column-gap: clamp(2rem, 4vw, 5rem);
+        row-gap: 1.35rem;
+
+        min-height: min(78svh, 48rem);
+    }
+
+    :is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__actions {
+        justify-self: start;
+        justify-content: flex-start;
+        width: auto;
+    }
+
+    :is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__media {
+        width: min(100%, 28rem);
+    }
+
+    :is(.page-raye, .page-absolutely) .album-overview {
+        width: min(calc(100% - 2rem), var(--layout-facts));
+        margin-right: auto;
+        margin-left: max(1rem, calc((100vw - var(--layout-content)) / 2));
+    }
+}
+
+
+
+/* ========================================
+   MA2 - RAYE CINEMATIC ALBUM HERO
+   ======================================== */
+
+/* Shared background behind header and album content */
+.page-raye .raye-atmosphere {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background: linear-gradient(
+        to bottom,
+        #171019 0,
+        #1b111a 14rem,
+        #24131e 28rem,
+        #40151c 43rem,
+        var(--color-bg) 57rem
+    );
+}
 
 /* Blurred storm clouds across the whole atmosphere */
 .page-raye .raye-atmosphere::before {
@@ -2124,8 +2427,6 @@ img {
     );
 
 }
-
-
 
 /* Warm cinematic light, also fading at both edges */
 .page-raye .raye-atmosphere::after {
@@ -2172,33 +2473,12 @@ img {
 }
 
 
-
-/* Content above the atmospheric background */
-.page-raye .album-hero--hope .album-hero__content,
-.page-raye .album-hero--hope .album-hero__media {
-    position: relative;
-    z-index: 1;
-}
-
-/* Small editorial heading */
-.page-raye .album-hero--hope .album-hero__eyebrow {
-    margin: 0 0 1.25rem;
-
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.17em;
-}
-
-/* Large cinematic album title */
+/* Individueller Albumtitel von RAYE */
 .page-raye .album-hero--hope h1 {
     max-width: 44rem;
-    margin: 0;
-
     font-size: clamp(2.8rem, 5.5vw, 5.6rem);
     line-height: 1.04;
     letter-spacing: -0.035em;
-    text-wrap: balance;
 }
 
 .page-raye .album-hero--hope h1 em {
@@ -2206,38 +2486,17 @@ img {
     color: var(--color-accent);
 }
 
-/* Emotional introduction */
+/* Individuelle Textbreite und Schriftgröße der Einleitung */
 .page-raye .album-hero--hope .album-hero__lead {
     max-width: 33rem;
-    margin: 1.6rem 0 0;
-
-    color: var(--color-heading);
     font-size: clamp(1rem, 1.5vw, 1.2rem);
     line-height: 1.7;
 }
 
-
-/* Floating album sleeve */
-.page-raye .album-hero--hope .album-hero__media {
-    display: block;
-    width: min(100%, 23rem);
-
-    justify-self: center;
-    align-self: center;
-}
-
+/* Individueller Schatten des schwebenden Albumcovers */
 .page-raye .album-hero--hope .album-hero__media img {
     position: relative;
-
-    width: 100%;
-    max-width: none;
-    height: auto;
-    aspect-ratio: 1;
-    object-fit: cover;
-
-    box-sizing: border-box;
     border: 1px solid rgb(255 240 221 / 22%);
-    border-radius: 1rem;
 
     box-shadow:
         0 30px 65px rgb(0 0 0 / 62%),
@@ -2245,17 +2504,8 @@ img {
 }
 
 
-/* Quiet information section below the cinematic hero */
+/* Dunkelrote Faktenkarte mit warmer Lichtreflexion */
 .page-raye .album-overview {
-    position: relative;
-    z-index: 1;
-    box-sizing: border-box;
-    width: calc(100% - 2rem);
-    max-width: var(--layout-facts);
-
-    margin: 1.75rem auto 0;
-    padding: clamp(1.35rem, 3vw, 2rem);
-
     background:
         linear-gradient(
             145deg,
@@ -2265,68 +2515,6 @@ img {
         var(--color-surface);
 
     border: 1px solid rgb(255 240 221 / 18%);
-    border-radius: var(--radius-panel);
-}
-
-@media (min-width: 900px) {
-    .page-raye .album-overview {
-        width: min(calc(100% - 2rem), var(--layout-facts));
-        margin-top: 1.75rem;
-        margin-right: auto;
-        margin-left: max(1rem, calc((100vw - var(--layout-content)) / 2));
-    }
-}
-
-.page-raye .album-overview h2 {
-    margin: 0;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-.page-raye .album-overview .album-facts {
-    margin: 1.5rem 0 0;
-}
-
-.page-raye .album-overview .save-action {
-    width: fit-content;
-    margin-top: 1.5rem;
-}
-
-.page-raye .album-tracklist {
-    scroll-margin-top: 2rem;
-}
-
-
-/* Desktop: text and buttons left, album artwork right */
-@media (min-width: 900px) {
-    .page-raye .album-hero--hope {
-        grid-template-columns:
-            minmax(0, 1.18fr)
-            minmax(0, 0.82fr);
-
-        grid-template-areas:
-            "content media"
-            "actions media";
-
-        grid-template-rows: auto auto;
-        align-content: center;
-
-        column-gap: clamp(2rem, 4vw, 5rem);
-        row-gap: 1.35rem;
-
-        min-height: min(78svh, 48rem);
-    }
-
-    /* Buttons directly below the introduction */
-    .page-raye .album-hero--hope .album-hero__actions {
-        justify-self: start;
-        justify-content: flex-start;
-        width: auto;
-    }
-
-    /* Floating album cover on the right */
-    .page-raye .album-hero--hope .album-hero__media {
-        width: min(100%, 28rem);
-    }
 }
 
 
@@ -2392,7 +2580,6 @@ img {
     color: var(--color-surface);
     border: 1px solid var(--color-accent);
     border-radius: var(--radius-full);
-    padding: 0.4rem;
 }
 
 .save-action {
@@ -2521,36 +2708,30 @@ img {
 }
 
 
-/* ========================================
-   MA2 - RAYE EDITORIAL STORY
-   ======================================== */
+/*---------------------------------------------*/
+/* Gemeinsame Editorial Story - RAYE & Absolutely */
+/*---------------------------------------------*/
 
-/* Spacious reading section */
-.page-raye .album-story {
+/* Großzügiger Lesebereich für beide Albumdetailseiten */
+:is(.page-raye, .page-absolutely) .album-story {
     box-sizing: border-box;
     max-width: var(--layout-content);
-
-    padding:
-        clamp(4rem, 7vw, 6rem)
-        1rem
-        clamp(4rem, 7vw, 6rem);
-
+    padding: clamp(4rem, 7vw, 6rem) 1rem;
     gap: clamp(2.5rem, 4vw, 4rem);
     align-items: start;
 }
 
-/* The main story is no longer a heavy card */
-.page-raye .story-text {
+/* Hauptgeschichte steht frei auf dem Seitenhintergrund */
+:is(.page-raye, .page-absolutely) .story-text {
     padding: 0;
     background: transparent;
     border: 0;
     border-radius: 0;
 }
 
-/* Editorial chapter labels */
-.page-raye .story-kicker {
+/* Kleine redaktionelle Kapitelmarkierung */
+:is(.page-raye, .page-absolutely) .story-kicker {
     display: inline-block;
-
     color: var(--color-accent);
     font-family: var(--font-body);
     font-size: 0.7rem;
@@ -2558,56 +2739,58 @@ img {
     letter-spacing: 0.16em;
 }
 
-/* Large magazine-style story heading */
-.page-raye .story-text h2 {
+/* Große Magazinüberschrift */
+:is(.page-raye, .page-absolutely) .story-text h2 {
     margin: 0.75rem 0 2rem;
-
     font-size: clamp(2.7rem, 4.5vw, 4.3rem);
     letter-spacing: -0.035em;
 }
 
-/* Comfortable reading width and line spacing */
-.page-raye .story-text > p {
+/* Angenehme Textbreite und großzügiger Zeilenabstand */
+:is(.page-raye, .page-absolutely) .story-text > p {
     max-width: 62ch;
     margin: 0;
-
     color: var(--color-text);
     font-size: 1.05rem;
     line-height: 1.85;
 }
 
-/* First paragraph acts as an editorial introduction */
-.page-raye .story-text > p:first-of-type {
+/* Erster Absatz als hervorgehobene Einleitung */
+:is(.page-raye, .page-absolutely) .story-text > p:first-of-type {
     color: var(--color-heading);
     font-size: clamp(1.1rem, 1.25vw, 1.2rem);
     line-height: 1.8;
 }
 
-/* Clear separation between paragraphs */
-.page-raye .story-text > p + p {
+/* Abstand nur zwischen aufeinanderfolgenden Absätzen */
+:is(.page-raye, .page-absolutely) .story-text > p + p {
     margin-top: 1.65rem;
 }
 
-/* Album and song titles remain emphasized */
-.page-raye .album-story cite {
+/* Album- und Songtitel behalten die jeweilige Akzentfarbe */
+:is(.page-raye, .page-absolutely) .album-story cite {
     color: var(--color-accent);
     font-style: italic;
     font-weight: 500;
 }
 
 
-/* Editorial pull quote */
-.page-raye .story-text blockquote {
-    max-width: 36rem;
+/*---------------------------------------------*/
+/* Gemeinsame Zitate und Zusatzkapitel         */
+/* RAYE & Absolutely                           */
+/*---------------------------------------------*/
 
+/* Editorial Pull Quote:
+   Gemeinsamer Aufbau, aber individuelle Trennlinienfarbe */
+:is(.page-raye, .page-absolutely) .story-text blockquote {
+    max-width: 36rem;
     margin: 2.75rem 0 0;
     padding: 1.75rem 0 0;
-
     border-left: 0;
-    border-top: 1px solid rgb(243 179 34 / 35%);
 }
 
-.page-raye .story-text blockquote p {
+/* Zitattext übernimmt automatisch die jeweilige Akzentfarbe */
+:is(.page-raye, .page-absolutely) .story-text blockquote p {
     color: var(--color-accent);
     font-family: var(--font-heading);
     font-style: italic;
@@ -2615,25 +2798,74 @@ img {
     line-height: 1.4;
 }
 
-.page-raye .story-text blockquote footer {
+/* Quellenangabe unterhalb des Zitats */
+:is(.page-raye, .page-absolutely) .story-text blockquote footer {
     margin-top: 1rem;
-
     color: var(--color-text);
     font-size: 0.8rem;
     letter-spacing: 0.03em;
 }
 
-
-/* Supporting editorial chapters */
-.page-raye .story-details {
+/* Supporting Chapters: gleiche Anordnung der Zusatzkapitel */
+:is(.page-raye, .page-absolutely) .story-details {
     gap: 1.5rem;
     align-content: start;
 }
 
-/* Quiet supporting panels */
-.page-raye .story-details > section {
+/* Gemeinsame Kartenform:
+   Hintergrund, Rahmen und Schatten bleiben individuell */
+:is(.page-raye, .page-absolutely) .story-details > section {
     padding: clamp(1.5rem, 2.3vw, 2rem);
+    border-radius: var(--radius-card);
+}
 
+/* Kapitelüberschriften ohne die ursprüngliche Seitenlinie */
+:is(.page-raye, .page-absolutely) .story-details h3 {
+    margin: 0.75rem 0 1.35rem;
+    padding: 0;
+    border: 0;
+    font-size: clamp(1.6rem, 2vw, 2rem);
+}
+
+/* Gute Lesbarkeit durch begrenzte Textbreite */
+:is(.page-raye, .page-absolutely) .story-details > section > p {
+    max-width: 46ch;
+    color: var(--color-text);
+    font-size: 0.98rem;
+    line-height: 1.8;
+}
+
+/* Zusätzlicher Abstand nur zwischen aufeinanderfolgenden Absätzen */
+:is(.page-raye, .page-absolutely) .story-details > section > p + p {
+    margin-top: 1.25rem;
+}
+
+/* Desktop: Hauptgeschichte links, Zusatzkapitel rechts */
+@media (min-width: 1000px) {
+    :is(.page-raye, .page-absolutely) .album-story {
+        grid-template-columns:
+            minmax(0, 1.55fr)
+            minmax(19rem, 1fr);
+
+        column-gap: clamp(2.5rem, 4vw, 4rem);
+    }
+}
+
+
+
+/* ========================================
+   MA2 - RAYE EDITORIAL STORY
+   ======================================== */
+
+/* Editorial Pull Quote:
+   Goldene Trennlinie als individueller Abschluss der Geschichte */
+.page-raye .story-text blockquote {
+    border-top: 1px solid rgb(243 179 34 / 35%);
+}
+
+/* Quiet Supporting Panels:
+   Dunkelrote Hintergrundatmosphäre für die Zusatzkapitel */
+.page-raye .story-details > section {
     background:
         linear-gradient(
             145deg,
@@ -2642,45 +2874,10 @@ img {
         );
 
     border: 1px solid rgb(255 240 221 / 16%);
-    border-radius: var(--radius-card);
 
     box-shadow: 0 18px 40px rgb(0 0 0 / 15%);
 }
 
-/* Headings without the previous thick side border */
-.page-raye .story-details h3 {
-    margin: 0.75rem 0 1.35rem;
-    padding: 0;
-
-    border: 0;
-
-    font-size: clamp(1.6rem, 2vw, 2rem);
-}
-
-/* Supporting text remains easy to read */
-.page-raye .story-details > section > p {
-    max-width: 46ch;
-
-    color: var(--color-text);
-    font-size: 0.98rem;
-    line-height: 1.8;
-}
-
-.page-raye .story-details > section > p + p {
-    margin-top: 1.25rem;
-}
-
-
-/* Desktop: main article and supporting editorial rail */
-@media (min-width: 1000px) {
-    .page-raye .album-story {
-        grid-template-columns:
-            minmax(0, 1.55fr)
-            minmax(19rem, 1fr);
-
-        column-gap: clamp(2.5rem, 4vw, 4rem);
-    }
-}
 
 
 /*-------------------------------------------*/
@@ -2707,12 +2904,9 @@ img {
 
 /* Einleitung der musikalischen Reise */
 .page-raye .album-tracklist {
-    counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
-    max-width: var(--layout-content);
-    box-sizing: border-box;
-    margin: 0 auto;
+    counter-reset: track; /* Nummerierung läuft über alle vier Jahreszeiten von 01 bis 17 */
     padding: clamp(4rem, 7vw, 6rem) 1rem;
-    border-top: 1px solid var(--color-divider);
+    scroll-margin-top: 2rem;
 }
 
 /* Kleine Kapitelüberschrift oberhalb des Titels */
@@ -2911,8 +3105,6 @@ img {
 
 
 /* Songliste innerhalb der jeweiligen Jahreszeit */
-
-/* Songliste innerhalb der jeweiligen Jahreszeit */
 .page-raye .season ol {
     grid-column: 1 / -1; /* Mobile volle Breite, Desktop rechte Grid-Spalte */
     min-width: 0;
@@ -3105,10 +3297,9 @@ img {
 }
 
 
-
-/*---------------------------------------------*/
-/* RAYE Keep Going - Cinematic Artist Previews  */
-/*---------------------------------------------*/
+/*--------------------------------------------------------*/
+/* Gemeinsame Keep-Going-Komponenten - RAYE & Absolutely */
+/*------------------------------------------------------*/
 
 /* Keep Going-Section - gemeinsame Grundgestaltung */
 .keep-going {
@@ -3182,15 +3373,7 @@ img {
 
 /* Ruhiger Übergang von der Tracklist zu den beiden Schwestern */
 :is(.page-raye, .page-absolutely) .keep-going {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-
-    max-width: var(--layout-content);
-    box-sizing: border-box;
-    margin: 0 auto;
     padding: clamp(3.5rem, 6vw, 5.5rem) 1rem 5rem;
-
     border-top: 1px solid var(--color-divider);
 }
 
@@ -3548,40 +3731,6 @@ img {
     margin: 0 0 0.5rem;
 }
 
-.timeline-neighbors > article {
-    min-width: 0;
-    padding: 1.5rem;
-
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-}
-
-.timeline-neighbors article > p {
-    margin: 0 0 0.75rem;
-
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-}
-
-.timeline-neighbors article > h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    line-height: 1.25;
-}
-
-.timeline-neighbors article:first-of-type p::before {
-    content: "← ";
-}
-
-.timeline-neighbors article:last-of-type p::after {
-    content: " →";
-}
-
-
 /*----------------------------------------------*/
 /* Shared - Cinematic Musical Journey Timeline    */
 /*----------------------------------------------*/
@@ -3589,10 +3738,7 @@ img {
 /* Zurückhaltender Abschluss der Albumgeschichte */
 :is(.page-raye, .page-absolutely) .timeline-neighbors {
     display: block;
-    max-width: var(--layout-content);
-    margin: 0 auto;
     padding: clamp(3rem, 5vw, 4.5rem) 1rem 5rem;
-
     border-top: 1px solid var(--color-divider);
 }
 
@@ -3788,11 +3934,6 @@ img {
    Burnt Red, Copper Orange & Dark Aubergine
    ======================================== */
 
-/* Der Header und der Hero teilen sich denselben Hintergrund */
-.page-absolutely main {
-    background: transparent;
-}
-
 .page-absolutely .absolutely-atmosphere {
     position: relative;
     isolation: isolate;
@@ -3898,147 +4039,41 @@ img {
 
 /* Hero Section */
 
-/* Zurück-Link liegt vor der atmosphärischen Bildebene */
-.page-absolutely .album-back {
-    position: relative;
-    z-index: 1;
-    margin: 0 auto;
-    padding: 1.75rem 1rem 0;
-}
-
 /* Mobile First: Titel, Albumcover, anschließend Buttons */
-.page-absolutely .album-hero--paracosm {
-    position: relative;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-        "content"
-        "media"
-        "actions";
-
-    align-content: center;
-    align-items: center;
-    gap: clamp(1.25rem, 3vw, 2rem);
-
-    box-sizing: border-box;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-
-    padding:
-        clamp(2.75rem, 6vw, 5.5rem)
-        max(1rem, calc((100vw - var(--layout-content)) / 2));
-
-    background: transparent;
-}
-
-/* Text und Cover liegen vor der Hintergrundatmosphäre */
+/* Der lange Paracosm-Text darf innerhalb des Grids schrumpfen */
 .page-absolutely .album-hero--paracosm .album-hero__content {
-    position: relative;
-    z-index: 1;
-    grid-area: content;
     min-width: 0;
 }
 
-.page-absolutely .album-hero--paracosm .album-hero__media {
-    position: relative;
-    z-index: 1;
-    grid-area: media;
-
-    display: block;
-    width: min(100%, 23rem);
-    justify-self: center;
-    align-self: center;
-}
-
-/* Das Originalcover bleibt klar und schwebt vor dem Hintergrund */
+/* Individueller kupferfarbener Lichtschein um das Albumcover */
 .page-absolutely .album-hero--paracosm .album-hero__media img {
-    width: 100%;
-    max-width: none;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    box-sizing: border-box;
-
     border: 1px solid rgb(255 240 229 / 25%);
-    border-radius: 1rem;
 
     box-shadow:
         0 30px 70px rgb(0 0 0 / 65%),
         0 0 70px rgb(239 156 88 / 14%);
 }
 
-/* Kleine redaktionelle Überschrift über dem Albumnamen */
-.page-absolutely .album-hero--paracosm .album-hero__eyebrow {
-    margin: 0 0 1.25rem;
-
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.17em;
-}
-
-/* Albumtitel */
+/* Individuelle Typografie des Paracosm-Titels */
 .page-absolutely .album-hero--paracosm h1 {
     max-width: 12ch;
-    margin: 0;
-
     font-size: clamp(3rem, 15vw, 5rem);
     line-height: 0.92;
     letter-spacing: -0.045em;
-    text-wrap: balance;
 }
 
 
-/* Einleitung in die Fantasiewelt des Albums */
+/* Individuelle Textbreite und Schriftgröße der Einleitung */
 .page-absolutely .album-hero--paracosm .album-hero__lead {
     max-width: 34rem;
-    margin: 1.6rem 0 0;
-
-    color: var(--color-heading);
     font-size: clamp(1.06rem, 1.45vw, 1.24rem);
     line-height: 1.72;
 }
 
-/* Mobile: beide Hero-Buttons mittig unter dem Albumcover */
-.page-absolutely .album-hero--paracosm .album-hero__actions {
-    position: relative;
-    z-index: 1;
-    grid-area: actions;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.65rem;
-
-    width: min(100%, 23rem);
-    justify-self: center;
-    margin: 0;
-}
-
-.page-absolutely .album-hero--paracosm .album-hero__actions .button {
-    min-height: 46px;
-    box-sizing: border-box;
-    padding: 0.62rem 1.1rem;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-
-/* Albumfakten in einer eigenen ruhigen Kachel */
+/* Dunkle Aubergine-Faktenkarte mit kupferfarbenem Licht */
 .page-absolutely .album-overview {
-    position: relative;
-    z-index: 1;
-
-    box-sizing: border-box;
-    width: calc(100% - 2rem);
-    max-width: var(--layout-facts);
-
-    margin: 1.75rem auto 0;
-    padding: clamp(1.35rem, 3vw, 2rem);
-
     background:
         linear-gradient(
             145deg,
@@ -4048,23 +4083,8 @@ img {
         var(--color-surface);
 
     border: 1px solid rgb(255 240 229 / 20%);
-    border-radius: var(--radius-panel);
 
     box-shadow: 0 18px 42px rgb(0 0 0 / 17%);
-}
-
-.page-absolutely .album-overview h2 {
-    margin: 0;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-.page-absolutely .album-overview .album-facts {
-    margin: 1.5rem 0 0;
-}
-
-.page-absolutely .album-overview .save-action {
-    width: fit-content;
-    margin-top: 1.5rem;
 }
 
 
@@ -4095,41 +4115,6 @@ img {
 
 /* Desktop: Text und Buttons links, Albumcover rechts */
 @media (min-width: 900px) {
-    .page-absolutely .album-hero--paracosm {
-        grid-template-columns:
-            minmax(0, 1.18fr)
-            minmax(0, 0.82fr);
-
-        grid-template-areas:
-            "content media"
-            "actions media";
-
-        grid-template-rows: auto auto;
-        column-gap: clamp(2rem, 4vw, 5rem);
-        row-gap: 1.35rem;
-
-        min-height: min(78svh, 48rem);
-    }
-
-    /* Albumcover auf Desktop etwas größer */
-    .page-absolutely .album-hero--paracosm .album-hero__media {
-        width: min(100%, 28rem);
-    }
-
-    /* Buttons stehen direkt unter dem Einleitungstext */
-    .page-absolutely .album-hero--paracosm .album-hero__actions {
-        width: auto;
-        justify-self: start;
-        justify-content: flex-start;
-    }
-
-    /* Facts-Kachel linksbündig zur übrigen Seite */
-    .page-absolutely .album-overview {
-        width: min(calc(100% - 2rem), var(--layout-facts));
-        margin-left: max(1rem, calc((100vw - 70rem) / 2));
-        margin-right: auto;
-    }
-
     /* Die Hintergrundatmosphäre läuft zum Ende des Heros aus */
     .page-absolutely .absolutely-atmosphere::before,
     .page-absolutely .absolutely-atmosphere::after {
@@ -4142,163 +4127,30 @@ img {
     }
 }
 
-
-
 /* ========================================
    MA2 - ABSOLUTELY EDITORIAL STORY
    Copper Orange & Dark Aubergine
    ======================================== */
 
-/* Großzügiger Lesebereich wie bei RAYE */
-.page-absolutely .album-story {
-    box-sizing: border-box;
-    max-width: var(--layout-content);
-
-    padding: clamp(4rem, 7vw, 6rem) 1rem;
-    gap: clamp(2.5rem, 4vw, 4rem);
-    align-items: start;
-}
-
-/* Die Hauptgeschichte steht frei auf dem Seitenhintergrund */
-.page-absolutely .story-text {
-    padding: 0;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-}
-
-/* Kleine redaktionelle Kapitelmarkierungen */
-.page-absolutely .story-kicker {
-    display: inline-block;
-
-    color: var(--color-accent);
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-}
-
-/* Große Magazinüberschrift */
-.page-absolutely .story-text h2 {
-    margin: 0.75rem 0 2rem;
-
-    font-size: clamp(2.7rem, 4.5vw, 4.3rem);
-    letter-spacing: -0.035em;
-}
-
-/* Angenehme Textbreite und großzügiger Zeilenabstand */
-.page-absolutely .story-text > p {
-    max-width: 62ch;
-    margin: 0;
-
-    color: var(--color-text);
-    font-size: 1.05rem;
-    line-height: 1.85;
-}
-
-/* Der erste Absatz wirkt wie eine redaktionelle Einleitung */
-.page-absolutely .story-text > p:first-of-type {
-    color: var(--color-heading);
-    font-size: clamp(1.1rem, 1.25vw, 1.2rem);
-    line-height: 1.8;
-}
-
-/* Deutliche Trennung zwischen den einzelnen Absätzen */
-.page-absolutely .story-text > p + p {
-    margin-top: 1.65rem;
-}
-
-/* Album- und Songtitel in Absolutelys Kupferorange */
-.page-absolutely .album-story cite {
-    color: var(--color-accent);
-    font-style: italic;
-    font-weight: 500;
-}
-
-/* Großes, redaktionelles Zitat als Abschluss */
+/* Großes redaktionelles Zitat:
+   Kupferorange Trennlinie als Abschluss der Geschichte */
 .page-absolutely .story-text blockquote {
-    max-width: 36rem;
-
-    margin: 2.75rem 0 0;
-    padding: 1.75rem 0 0;
-
-    border-left: 0;
     border-top: 1px solid rgb(239 156 88 / 38%);
-}
-
-.page-absolutely .story-text blockquote p {
-    color: var(--color-accent);
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-    line-height: 1.4;
-}
-
-.page-absolutely .story-text blockquote footer {
-    margin-top: 1rem;
-
-    color: var(--color-text);
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
-}
-
-
-/* Why It Matters und The Sound als unterstützende Kapitel */
-.page-absolutely .story-details {
-    gap: 1.5rem;
-    align-content: start;
 }
 
 /* Dunkle Aubergine-Karten mit sanfter Rot-Violett-Atmosphäre */
 .page-absolutely .story-details > section {
-    padding: clamp(1.5rem, 2.3vw, 2rem);
-
-    background: linear-gradient(
-        145deg,
-        rgb(32 18 38 / 94%),
-        rgb(65 29 43 / 78%)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            rgb(32 18 38 / 94%),
+            rgb(65 29 43 / 78%)
+        );
 
     border: 1px solid rgb(255 240 229 / 17%);
-    border-radius: var(--radius-card);
 
     box-shadow: 0 18px 40px rgb(0 0 0 / 17%);
 }
-
-/* Überschriften ohne den bisherigen dicken Seitenrahmen */
-.page-absolutely .story-details h3 {
-    margin: 0.75rem 0 1.35rem;
-    padding: 0;
-
-    border: 0;
-    font-size: clamp(1.6rem, 2vw, 2rem);
-}
-
-/* Gut lesbare Texte in den beiden Karten */
-.page-absolutely .story-details > section > p {
-    max-width: 46ch;
-
-    color: var(--color-text);
-    font-size: 0.98rem;
-    line-height: 1.8;
-}
-
-.page-absolutely .story-details > section > p + p {
-    margin-top: 1.25rem;
-}
-
-
-/* Desktop: Hauptgeschichte links, ergänzende Kapitel rechts */
-@media (min-width: 1000px) {
-    .page-absolutely .album-story {
-        grid-template-columns:
-            minmax(0, 1.55fr)
-            minmax(19rem, 1fr);
-
-        column-gap: clamp(2.5rem, 4vw, 4rem);
-    }
-}
-
 
 
 /* ========================================
@@ -4306,13 +4158,9 @@ img {
    One album, thirteen doors into the same world
    ======================================== */
 
-/* Section heading aligned with Hero and Story */
+/* Individueller Abstand der Paracosm-Tracklist */
 .page-absolutely .album-tracklist--paracosm {
-    box-sizing: border-box;
-    max-width: var(--layout-content);
-    margin: 0 auto;
     padding: clamp(4rem, 7vw, 6rem) 1rem;
-    border-top: 1px solid var(--color-divider);
     scroll-margin-top: 2rem;
 }
 
@@ -4588,199 +4436,6 @@ img {
     }
 }
 
-
-
-/*---------------------------------------------*/
-/* Coming Soon Pages - Cinematic Editorial Hero */
-/*---------------------------------------------*/
-
-/* Shared page theme */
-.page-coming-soon {
-    min-height: 100svh;
-    margin: 0;
-    padding: 0;
-    background-color: #120b15;
-}
-
-/* One continuous image background - Mobile First */
-.page-coming-soon .coming-page {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    width: 100%;
-    min-height: max(34rem, calc(100svh - 5rem));
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
-    background-color: #160914;
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgb(14 6 18 / 78%) 0%,
-            rgb(14 6 18 / 48%) 30%,
-            rgb(14 6 18 / 12%) 65%,
-            rgb(14 6 18 / 6%) 100%
-        ),
-        url("../images/coming-soon-turntable-mobile.png");
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center, center bottom;
-}
-
-/* Editorial content - no card */
-.page-coming-soon .coming-hero {
-    display: flex;
-    align-items: flex-start;
-
-    width: calc(100% - 2rem);
-    max-width: 96rem;
-    min-height: max(34rem, calc(100svh - 5rem));
-    box-sizing: border-box;
-
-    margin: 0 auto;
-    padding: 5rem 0 4rem;
-}
-
-/* Narrow gold line instead of a heavy background card */
-.page-coming-soon .coming-hero__content {
-    width: 100%;
-    max-width: 33rem;
-    min-width: 0;
-    margin: 0;
-    padding: 0 0 0 1.1rem;
-
-    background: transparent;
-    border: 0;
-    border-left: 1px solid rgb(221 182 111 / 60%);
-    border-radius: 0;
-    box-shadow: none;
-    backdrop-filter: none;
-
-    text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
-}
-
-/* Small editorial heading */
-.page-coming-soon .coming-hero__eyebrow {
-    margin: 0 0 1rem;
-
-    color: var(--color-accent);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-}
-
-/* Main heading */
-.page-coming-soon .coming-hero h1 {
-    margin: 0 0 1.2rem;
-
-    color: var(--color-heading);
-    font-size: clamp(2.45rem, 9.2vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    text-wrap: balance;
-}
-
-/* Introduction */
-.page-coming-soon .coming-hero__lead {
-    max-width: 31rem;
-    margin: 0 0 0.85rem;
-
-    color: var(--color-heading);
-    font-size: 1rem;
-    line-height: 1.55;
-}
-
-/* Supporting explanation */
-.page-coming-soon .coming-hero__text {
-    max-width: 31rem;
-    margin: 0;
-
-    color: var(--color-text);
-    font-size: 0.91rem;
-    line-height: 1.7;
-}
-
-/* Compact navigation buttons */
-.page-coming-soon .coming-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.65rem;
-
-    margin-top: 1.45rem;
-}
-
-.page-coming-soon .coming-hero__actions .button {
-    width: auto;
-    min-height: 44px;
-    box-sizing: border-box;
-    padding: 0.58rem 0.95rem;
-
-    font-size: 0.84rem;
-}
-
-/* Footer has its own background, without the photograph */
-.page-coming-soon .site-footer {
-    position: relative;
-    background-color: var(--color-bg);
-}
-
-
-/* ========================================
-   DESKTOP - WIDE CINEMATIC STAGE
-   ======================================== */
-
-@media (min-width: 48rem) {
-
-    /* A single full-bleed desktop image */
-    .page-coming-soon .coming-page {
-        background-image:
-            linear-gradient(
-                to right,
-                rgb(12 5 16 / 78%) 0%,
-                rgb(12 5 16 / 65%) 24%,
-                rgb(12 5 16 / 25%) 51%,
-                rgb(12 5 16 / 3%) 82%
-            ),
-            url("../images/coming-soon-turntable-desktop.png");
-
-        /* Show more of the upper scene and the lamp */
-        background-position: center, center top;
-    }
-
-    /* Wider layout places text further left */
-    .page-coming-soon .coming-hero {
-        align-items: center;
-
-        width: min(calc(100% - 3rem), 96rem);
-        padding: 3rem 0 4rem;
-    }
-
-    .page-coming-soon .coming-hero__content {
-        max-width: 34rem;
-        padding-left: 1.25rem;
-    }
-
-    .page-coming-soon .coming-hero h1 {
-        font-size: clamp(3.25rem, 4.75vw, 5rem);
-    }
-
-    .page-coming-soon .coming-hero__lead {
-        font-size: 1.14rem;
-    }
-
-    .page-coming-soon .coming-hero__text {
-        font-size: 0.98rem;
-    }
-}
-
-
-
-
 /*-------------------------------------*/
 /* Contact Page Design - Mobile First  */
 /*-------------------------------------*/
@@ -5055,12 +4710,6 @@ img {
     font-size: 0.9rem;
 }
 
-/* Deaktivierter Button signalisiert die Demo-Funktion */
-.page-contact .contact-form .button:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-}
-
 /* Transparenter Hinweis unter dem Formular */
 .page-contact .contact-disclaimer {
     margin: 1.5rem 0 0;
@@ -5113,252 +4762,194 @@ img {
     }
 }
 
+/*---------------------------------------------*/
+/* Coming Soon Pages - Cinematic Editorial Hero */
+/*---------------------------------------------*/
+
+/* Shared page theme */
+.page-coming-soon {
+    min-height: 100svh;
+    margin: 0;
+    padding: 0;
+    background-color: #120b15;
+}
+
+/* One continuous image background - Mobile First */
+.page-coming-soon .coming-page {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: max(34rem, calc(100svh - 5rem));
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    background-color: #160914;
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgb(14 6 18 / 78%) 0%,
+            rgb(14 6 18 / 48%) 30%,
+            rgb(14 6 18 / 12%) 65%,
+            rgb(14 6 18 / 6%) 100%
+        ),
+        url("../images/coming-soon-turntable-mobile.png");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center, center bottom;
+}
+
+/* Editorial content - no card */
+.page-coming-soon .coming-hero {
+    display: flex;
+    align-items: flex-start;
+
+    width: calc(100% - 2rem);
+    max-width: 96rem;
+    min-height: max(34rem, calc(100svh - 5rem));
+    box-sizing: border-box;
+
+    margin: 0 auto;
+    padding: 5rem 0 4rem;
+}
+
+/* Narrow gold line instead of a heavy background card */
+.page-coming-soon .coming-hero__content {
+    width: 100%;
+    max-width: 33rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+
+    background: transparent;
+    border: 0;
+    border-left: 1px solid rgb(221 182 111 / 60%);
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+
+    text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
+}
+
+/* Small editorial heading */
+.page-coming-soon .coming-hero__eyebrow {
+    margin: 0 0 1rem;
+
+    color: var(--color-accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+/* Main heading */
+.page-coming-soon .coming-hero h1 {
+    margin: 0 0 1.2rem;
+
+    color: var(--color-heading);
+    font-size: clamp(2.45rem, 9.2vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+}
+
+/* Introduction */
+.page-coming-soon .coming-hero__lead {
+    max-width: 31rem;
+    margin: 0 0 0.85rem;
+
+    color: var(--color-heading);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+/* Supporting explanation */
+.page-coming-soon .coming-hero__text {
+    max-width: 31rem;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: 0.91rem;
+    line-height: 1.7;
+}
+
+/* Compact navigation buttons */
+.page-coming-soon .coming-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+
+    margin-top: 1.45rem;
+}
+
+.page-coming-soon .coming-hero__actions .button {
+    width: auto;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 0.58rem 0.95rem;
+
+    font-size: 0.84rem;
+}
+
+/* Footer has its own background, without the photograph */
+.page-coming-soon .site-footer {
+    position: relative;
+    background-color: var(--color-bg);
+}
 
 
-/* Desktop Navigation */
-@media (min-width: 768px) {
-    /*------------------*/
-    /* Homepage Design */
-    /*-----------------*/
+/* ========================================
+   DESKTOP - WIDE CINEMATIC STAGE
+   ======================================== */
 
-    /* Header */
-    .site-brand {
-        flex: 1;
-    }
+@media (min-width: 48rem) {
 
-    .site-nav {
-        display: flex;
-    }
-
-    .nav-list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.25rem;
-
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-list a {
-        color: var(--color-text);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-
-    .header-actions {
-        flex: 1;
-        margin-left: 0;
-        justify-content: flex-end;
-    }
-
-    .collection-label {
-        display: inline;
-    }
-
-    .mobile-menu {
-        display: none;
-    }
-
-    
-    /* Homepage Hero - Desktop */
-    .home-hero {
-        min-height: 89svh;
-        padding: 7rem 0 8rem;
-    }
-
-
-    /* Full-height desktop collage */
-    .home-hero__image {
-        top: -6%;
-        bottom: -6%;
-        height: auto;
-    }
-
-    /* Absolutely - atmospheric left layer */
-    .home-hero__image--absolutely {
-        left: 34%;
-        width: 38%;
-        background-position: 50% 23%;
-        --photo-opacity: 0.95;
-    }
-
-    /* RAYE - central focal point */
-    .home-hero__image--raye {
-        left: 50%;
-        width: 40%;
-        background-position: 50% 22%;
-        --photo-opacity: 1;
-    }
-
-    /* Amma - softer right layer */
-    .home-hero__image--amma {
-        left: 72%;
-        width: 28%;
-        background-position: 50% 20%;
-        --photo-opacity: 0.95;
-    }
-
-
-    /* Dark gradient for readable typography */
-    .home-hero__shade {   
-        background:
+    /* A single full-bleed desktop image */
+    .page-coming-soon .coming-page {
+        background-image:
             linear-gradient(
-                90deg,
-                rgb(11 9 13 / 98%) 0%,
-                rgb(11 9 13 / 88%) 30%,
-                rgb(11 9 13 / 62%) 44%,
-                rgb(11 9 13 / 25%) 65%,
-                rgb(11 9 13 / 12%) 100%
+                to right,
+                rgb(12 5 16 / 78%) 0%,
+                rgb(12 5 16 / 65%) 24%,
+                rgb(12 5 16 / 25%) 51%,
+                rgb(12 5 16 / 3%) 82%
             ),
-            linear-gradient(
-                to bottom,
-                var(--color-bg) 0%,
-                transparent 16%,
-                transparent 72%,
-                var(--color-bg) 100%
-            );
+            url("../images/coming-soon-turntable-desktop.png");
+
+        /* Show more of the upper scene and the lamp */
+        background-position: center, center top;
     }
 
-    /* Keep the editorial text on the left */
-    .home-hero h1 {
-        max-width: 40rem;
-    }
-
-    .home-hero .hero-description {
-        max-width: 35rem;
-    }
-
-
-    .hero-description {
-        font-size: 1.125rem;
-    }
-
-    /* Artists-Section */
-    .artist-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    
-    /* How to Explore - Desktop */
-    .steps-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 2rem;
-        row-gap: 1.25rem;
-    }
-
-    .step-card {
-        display: block;
-        padding: 0 0 0 1.25rem;
-    }
-
-    .step-number {
-        font-size: 3rem;
-        margin-bottom: 1.1rem;
-    }
-
-    .step-card h3 {
-        margin-bottom: 0.75rem;
-    }
-
-
-    /* Explore the Records-Section */
-    .record-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-flow: row;
-        grid-auto-columns: auto;
-
-        overflow: visible;
-        scroll-snap-type: none;
-
-        margin: 0;
-        padding: 0;
-    }
-
-
-    .record-group + .record-group {
-        margin-top: 5rem;
-    }
-
-    /* Footer-Section */
-    .footer-inner {
-        flex-direction: row; /* bringt Logo und Navigation nebeneinander */
-        justify-content: space-between; /* Verteilung von beiden Bereichen über verfügbare Breite */
-        align-items: flex-start;
-        gap: 3rem;
-    }
-
-    .footer-about {
-        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigation aber feste Breite beibehält */
-        min-width: 0;
-    }
-
-    .footer-nav {
-        width: 17rem;
-        margin-top: 3rem;
-    }
-
-    /*-------------------------------*/
-    /* RAYE album detail page Design */
-    /*-------------------------------*/
-    .season {
-        padding: 2rem 2.5rem;
-    }
-
-    .season h3 {
-        font-size: 2rem;
-    }
-
-    .keep-going {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .timeline-neighbors {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .timeline-neighbors > article:last-of-type {
-        text-align: right;
-    }
-}
-
-
-
-@media (min-width: 1100px) {
-    /*------------------*/
-    /* Homepage Design */
-    /*-----------------*/
-    .artist-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .steps-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        column-gap: 1.75rem;
-        row-gap: 0;
-    }
-
-    .record-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    /*-------------------------------*/
-    /* RAYE album detail page Design */
-    /*-------------------------------*/
-    .album-hero {
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); /* zweispaltiges Raster, das den Platz im flexiblen Verhältnis von 45% zu 55% aufteilt */
+    /* Wider layout places text further left */
+    .page-coming-soon .coming-hero {
         align-items: center;
-        gap: 3rem;
+
+        width: min(calc(100% - 3rem), 96rem);
+        padding: 3rem 0 4rem;
     }
 
-    .album-story {
-        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-        align-items: start;
-        gap: 1.5rem;
+    .page-coming-soon .coming-hero__content {
+        max-width: 34rem;
+        padding-left: 1.25rem;
+    }
+
+    .page-coming-soon .coming-hero h1 {
+        font-size: clamp(3.25rem, 4.75vw, 5rem);
+    }
+
+    .page-coming-soon .coming-hero__lead {
+        font-size: 1.14rem;
+    }
+
+    .page-coming-soon .coming-hero__text {
+        font-size: 0.98rem;
     }
 }
+
 
 /* ========================================
    MA2 PART 1 - ITERATION 2
