@@ -188,7 +188,7 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **ChatGPT – HTML-Grundlagen:** Semantische Elemente (`<main>`, `<section>`, `<article>`, `<aside>`), Albumfakten mit `<dl>/<dt>/<dd>`, Zitate mit `<blockquote>/<cite>`, nummerierte Tracklists mit `<ol>`, Quellen mit `<details>/<summary>` und Formulare mit `<label>`, Eingabetypen und `method="post"` verstehen.
 - **ChatGPT – CSS-Grundlagen:** Selektoren und Kaskade, `:root` und `var()`, Box-Modell, Flexbox/Grid, `minmax()`, `clamp()`, `object-fit`, Hover-/Fokuszustände und Mobile-First-Media-Queries anhand der Homepage und Albumdetailseiten verstehen.
 - **ChatGPT – Bedienung und Navigation:** Unterstützung beim Lesezeichen-SVG, bei `aria-label`, `:focus-visible`, aufklappbarem Mobile-Menü sowie Ankerlinks und deren Gestaltung.
-- **ChatGPT – Kategoriefilter:** Erklärung von `data-filter`/`data-category`, `querySelectorAll()`, `addEventListener()`, `dataset`, Bedingungen, `hidden` und `aria-pressed`. 
+- **ChatGPT – Kategoriefilter:** Erklärung von `data-filter`/`data-category`, `querySelectorAll()`, `addEventListener()`, `dataset`, Bedingungen, `hidden` und `aria-pressed`.
 - **ChatGPT – Inhalte und Nachweise:** Unterstützung beim Bildquellenverzeichnis und bei einem zum Musikthema passenden KI-generierten Schallplatten-Favicon. Die Bildnachweise stehen separat unter „Bildquellen“.
 
 </details>
