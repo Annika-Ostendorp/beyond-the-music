@@ -100,23 +100,37 @@ Dort können Nutzer dann ihre Lieblingswerke _(sei es Song, Album oder Karriere-
 Die **Startseite (index.html)** stellt RAYE, Amma und Absolutely vor und enthält eine Übersicht ihrer ausgewählten Musikveröffentlichungen. Ein Kategoriefilter ermöglicht es außerdem, entweder alle Veröffentlichungen oder nur die Einträge einer bestimmten Künstlerin anzuzeigen.
 
 **Album-Detailseiten im Ordner items/:**
+
 - raye-album-hope.html - Detailseite zu RAYEs THIS MUSIC MAY CONTAIN HOPE. mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
 
 - absolutely-album-paracosm.html - Detailseite zu Absolutelys Paracosm mit Fakten, Hintergrundgeschichte, Tracklist und weiterführenden Informationen (Bedeutung, Sound, Quellen etc.)
 
 **Kontaktformular-Seite:**
-- contact.html - Kontaktseite mit Demo-Formular (da noch kein Backend für das tatsächliche Absenden/ Speichern von Nachrichten)
+
+- contact.html - Kontaktseite mit aktivem POST-Formular (`type="submit"`); ohne Backend werden die Angaben derzeit nicht verarbeitet oder gespeichert
 
 **Weitere Seiten:**
+
 - raye.html, amma.html und absolutely.html - derzeit als Coming-Soon-Seiten gestaltet; künftig für musikalische Karrierewege der drei Schwestern vorgesehen
 
 - my-collection.html - Platzhalter für spätere persönliche Gedankensammlung zu gespeicherten Records/ Chapters
 
 - sources.html - Platzhalter für zukünftige zentrale Quellenübersicht
 
-Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb der Seiten miteinander verbunden (z.B. Explore the Record etc.). 
+Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb der Seiten miteinander verbunden (z.B. Explore the Record etc.).
 
 ## Bildquellen
+
+### Homepage-Hero-Bilder
+
+- **RAYE (`hero-raye.jpg`):** Konzertfotografie von RAYEs Auftritt in der Radio City Music Hall. Bildquelle: Instagram, „Never ever getting over seeing @raye live at Radio City!!!“.
+  Quelle: https://www.instagram.com/p/DXWpvZhjkzJ/
+
+- **Amma (`hero-amma.jpg`):** Konzertfotografie von Ammas Live-Debüt beim All Points East Festival. Bildquelle: Instagram, „amma making her live debut at @allpointseastuk“.
+  Quelle: https://www.instagram.com/p/DNtEcMFUGkb/
+
+- **Absolutely (`hero-absolutely.webp`):** Konzertfotografie von Absolutelys Auftritt im Palladium in Köln am 15.03.2026. Foto: Laura Keimel, Frontstage Magazine, „Renee Rapp am 15. März im Palladium in Köln“ (16.03.2026).  
+  Quelle: https://frontstage-magazine.de/2026/03/16/renee-rapp-am-15-maerz-im-palladium-in-koeln/
 
 ### Künstlerinnenporträts
 
@@ -130,6 +144,15 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 - **Absolutely:** The Independent, „The next big star in UK pop? Absolutely“ (11.01.2026).
   Bildcredit: Press; Fotograf nicht angegeben.
   Quelle: https://www.independent.co.uk/arts-entertainment/music/features/absolutely-singer-raye-sister-tour-b2897570.html
+
+### KI-generierte Bilder
+
+- **Favicon für Website (`favicon_BTM.png`):**
+  Mit ChatGPT (OpenAI) generiertes Bild, abgestimmt auf meinen Websiteninhalt (Schallplatte).
+
+- **Coming-Soon-Hintergrundbilder (`coming-soon-turntable-desktop.png` und `coming-soon-turntable-mobile.png`):** Mit ChatGPT (OpenAI) generierte Bildmotive auf Grundlage meiner eigenen gestalterischen Idee. Dargestellt wird ein stillstehender Schallplattenspieler mit angehobenem Tonarm als visuelle Metapher für noch nicht verfügbare Seiten. Die beiden Varianten wurden für Desktop- und Mobile-Bildschirme unterschiedlich komponiert.
+
+  **Bildgenerierung:** ChatGPT (OpenAI), 2026.
 
 ### Record-Cover
 
@@ -157,89 +180,73 @@ Die Seiten sind durch Links in der Header-Navigation, im Footer und innerhalb de
 
 ## KI-Nutzung
 
-- **ChatGPT:** Brainstorming und Weiterentwicklung meiner ursprünglichen Projektidee zu einer Entdeckungsseite für RAYE, Amma und Absolutely mit deren Karrieren und Musik.
+<details>
+<summary><strong>Modularbeit 1 – Konzeption und statische Grundlage</strong></summary>
 
-- **ChatGPT:** Feedback zu meinen selbst skizzierten Wireframes, insbesondere zur semantischen HTML-Struktur und zu den Layoutentscheidungen (Flexbox vs. Grid).
+- **ChatGPT – Projektidee und Struktur:** Brainstorming zu „Beyond the Music“, Feedback zu meinen eigenen Wireframes, zur HTML-Seitenstruktur und zur Entscheidung zwischen Flexbox und Grid. Unterstützung bei der README-Tabelle und bei der Formulierung ausgewählter Albumtexte.
+- **Claude und v0 – Inspiration:** Visuelle und interaktive Prototypen zur Erkundung einer späteren Projektvision; die statische Abgabe habe ich eigenständig in HTML, CSS und JavaScript weiterentwickelt.
+- **ChatGPT – HTML-Grundlagen:** Semantische Elemente (`<main>`, `<section>`, `<article>`, `<aside>`), Albumfakten mit `<dl>/<dt>/<dd>`, Zitate mit `<blockquote>/<cite>`, nummerierte Tracklists mit `<ol>`, Quellen mit `<details>/<summary>` und Formulare mit `<label>`, Eingabetypen und `method="post"` verstehen.
+- **ChatGPT – CSS-Grundlagen:** Selektoren und Kaskade, `:root` und `var()`, Box-Modell, Flexbox/Grid, `minmax()`, `clamp()`, `object-fit`, Hover-/Fokuszustände und Mobile-First-Media-Queries anhand der Homepage und Albumdetailseiten verstehen.
+- **ChatGPT – Bedienung und Navigation:** Unterstützung beim Lesezeichen-SVG, bei `aria-label`, `:focus-visible`, aufklappbarem Mobile-Menü sowie Ankerlinks und deren Gestaltung.
+- **ChatGPT – Kategoriefilter:** Erklärung von `data-filter`/`data-category`, `querySelectorAll()`, `addEventListener()`, `dataset`, Bedingungen, `hidden` und `aria-pressed`.
+- **ChatGPT – Inhalte und Nachweise:** Unterstützung beim Bildquellenverzeichnis und bei einem zum Musikthema passenden KI-generierten Schallplatten-Favicon. Die Bildnachweise stehen separat unter „Bildquellen“.
 
-- **ChatGPT:** Unterstützung bei der Erstellung und Formatierung einer Markdown-Tabelle für das README.
+</details>
 
-- **Claude und v0:** Erstellung visueller, interaktiver Prototypen als Designinspiration für die langfristige Projektvision.
+<details>
+<summary><strong>Modularbeit 2 – Weiterentwicklung der statischen Website</strong></summary>
 
-- **ChatGPT:** Erstellung eines abgestimmten Favicons für meine Website & Footer-Inhalt (Unterscheidung zwischen Header-/Footer-Navigation mit aria-label)
+**Ausgangslage:** Aufbauend auf `collection-static` wurden vor allem die Homepage, beide Albumdetailseiten, Contact und Coming Soon gestalterisch überarbeitet. Für „Meet the Artists“ kam `artist-carousel.js` hinzu; der vorhandene Records-Filter blieb bestehen. Die späteren Refactoring- und Kommentierungsschritte dienten dagegen überwiegend der Wartbarkeit und meinem Codeverständnis.
 
-- **ChatGPT:** Bildquellen richtig zitieren für README & HTML-Tags **dl**, **dt** und **dd** verstehen
+### Homepage – Konzert-Hero und Navigation
 
-- **ChatGPT:** Verstehen, wie ich Lesezeichen-Icon einfügen kann für My-Collection Button im Header -> mit M6 4h12v17l-6-4-6 4z
+- **ChatGPT:** Unterstützung bei einer immersiven Collage aus drei Konzertfotografien, abgestimmt auf Sichtbarkeit, Bildpositionen, Helligkeit, weiche Bildkanten und die responsive Textlesbarkeit.
+- **ChatGPT:** Ergänzung des dezenten, animierten „Scroll to discover“-Links zu `#artists` und Abstimmung der mobilen und breiten Desktop-Darstellung.
+- **Neu vertieft:** gestaffelte Bildebenen mit `position`, `z-index` und `isolation`; `mask-image`/`-webkit-mask-image`, Gradients und `pointer-events: none`; Fade-ins mit `@keyframes`, `opacity` und `animation-delay`; Rücksicht auf `prefers-reduced-motion`.
 
-- **ChatGPT:** Hilfe bei der Erstellung der Infotexte auf den Album-Detailseiten.
+### Homepage – Cinematic Artist-Carousel
 
-- **ChatGPT:** Verstehen, wie man ein Zitat in HTML programmiert (blockquote) & wie man Zusatzinfos festhält (aside); mit **cite** Titel korrekter kennzeichnen statt nur mit **i**.
+- **ChatGPT:** Weiterentwicklung der drei Künstlerinnenkarten zu farblich getrennten, schwebenden Cinematic Stages mit Masken, weichgezeichneten Porträts und einem einheitlichen Lichteffekt.
+- **ChatGPT:** Unterstützung bei der Umsetzung eines Carousels mit Vanilla JavaScript: Pfeile, drei Positionspunkte, Zähler, Tastatursteuerung und horizontale Wischgesten. Ohne JavaScript bleiben die drei Karten als normale Inhalte sichtbar.
+- **Neu vertieft:** gemeinsame Grid-Position für wechselnde Karten; Aktivierung über `.artist-carousel--ready`, Zustandsklasse `is-active`, `inert`, `aria-hidden`, `aria-pressed` und `aria-live`; Navigation mit Modulo (`%`), Touch-Events sowie `:focus-within` und geräteabhängige Hover-Abfragen.
 
-- **ChatGPT:** Verstehen, wie ich eine Tracklist passend in HTML programmieren kann (mit geordneter Liste, Feature richtig schreiben und span-Tag für richtige Ausrichtung der Songdauer später mit CSS)
+### Homepage – How to Explore und Records
 
-- **ChatGPT:** Verstehen, wie ich die Quellen für die bereitgestellten Infos einer Seite in HTML passend darstellen kann zum Aufklappen (details, summary,...)
+- **ChatGPT:** Editorial-Überarbeitung der vier „How to Explore“-Kapitel mit nummerierten Schritten und ruhigem Hintergrundlicht. Record-Cards wurden mit Cover-Overlays, sanften Hover-/Fokuszuständen und einer auf Mobilgeräten horizontal scrollbaren Galerie verfeinert.
+- **Neu vertieft:** `scroll-snap-type`/`scroll-snap-align` für Albumkarten und bedingte Overlay-Effekte bei `(hover: hover) and (pointer: fine)`. Der Kategorienfilter aus MA1 wird weiterhin in `app.js` gesteuert.
 
-- **ChatGPT:** Verstehen, wie man ein Kontaktformular in HTML programmiert (mit label, POST, Email, Themenauswahl mit select etc.)
+### RAYE – Album-Hero, Story und Four Seasons
 
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Homepage
+- **ChatGPT:** Gestaltung einer bordeauxfarbenen Wolkenatmosphäre aus dem weichgezeichneten Albumcover; neue Anordnung von Hero, Cover, Buttons und Faktenkarte mittels benannter Grid-Bereiche. Die Story erhielt eine offenere Lesetypografie, ein Pull Quote und ergänzende Editorial-Kapitel.
+- **ChatGPT:** Entwicklung vier individuell abgestimmter Jahreszeiten-Karten für die 17 Tracks; der bestehende Quellen- und Timeline-Bereich wurde visuell verfeinert.
+- **Neu vertieft:** `grid-template-areas`, `:is()` für später gemeinsame Album-Komponenten, CSS-Counter mit durchgehender zweistelliger Nummerierung sowie lokale `--season-*`-Variablen für Licht und Farben. Die Track-Sterne sind derzeit dekorativ, keine Songlinks.
 
-  **Header:**
-  - margin: 0
-  - :root
-  - flex-wrap, flex-basis, :focus-visible,
-  - wie Lesezeichen-Symbol einfügen für My Collection Button im Header --> index.html class="header-action"
-  - width oder top: calc(100%-2rem)
-  - text-decoration & white-space: nowrap
-  - .mobile-menu summary::-webkit-details-marker
-  - z-index, .nav-list a:hover, .mobile-menu nav a:hover {color: var(--color-accent);}
+### Absolutely – Paracosm und gemeinsame Albumkomponenten
 
-  **Hero-Section:**
-  - clamp(..rem, ..vw,..rem)
+- **ChatGPT:** Ausarbeitung einer eigenständigen Farbwelt aus Rot, Kupferorange und Aubergine; cinematischer Hero und Story-Aufbau analog zu RAYE, jedoch mit eigenem Theme.
+- **ChatGPT:** Entwicklung einer zweigeteilten Paracosm-Tracklist (Einleitung links, 13 Songs rechts) sowie Abstimmung der Hover-Effekte beider Albumseiten. „Keep Going“ und die Timelines wurden hinsichtlich gemeinsam nutzbarer CSS-Grundlagen verglichen.
+- **Neu vertieft:** CSS-Variablen auf Seiten- und Komponentenebene, `counter-reset`/`counter-increment`, `minmax()` und bewusste seitenspezifische Überschreibungen. Die Songs sind aktuell nicht als Detailseiten verlinkt.
 
-  **Artists-Section:**
-  - aria-labelledby
-  - transition
-  - object-fit & object-position
+### Contact und Coming Soon
 
-  **Explore the Records-Section:**
-  - Verstehen & Programmierung von Code für 4 Filterbuttons (mit data-filter, aria-pressed) --> noch ohne Veränderung der Ansicht nach Klicken
-  - .filter-chip[aria-pressed="true"]
-  - flex-direction: column
-  - .record-group + .record-group
+- **ChatGPT:** Contact wurde in ein zweispaltiges Editorial-Layout überführt. Das **aktive** Formular verwendet `method="post"` und einen `type="submit"`-Button; ohne Backend erfolgt derzeit keine Speicherung. Der deaktivierte „Save this record“-Button gehört dagegen zur RAYE-Albumdetailseite.
+- **ChatGPT:** Gestaltung einer ruhigen Schallplattenspieler-Szene für die Coming-Soon-Seiten; zwei mit ChatGPT erstellte, unterschiedlich komponierte Desktop-/Mobile-Hintergründe werden rein über CSS eingebunden. Beide Dateien und ihre Urheberschaft stehen bereits unter „Bildquellen“.
+- **Neu vertieft:** responsive Formulargrids, `svh`, `background-size: cover`, `background-position` und ein bildabhängiger Hintergrundwechsel per Media Query.
 
-  **Footer-Section:**
-  - flex-direction: row
-  - flex: 1
-  - flex-shrink
+### Zweite Editorial-Layoutiteration – breite Desktop-Bühnen
 
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen für RAYE Album Detailseite
+- **ChatGPT:** Auf großen Bildschirmen wurden die Inhaltsbereiche verbreitert, ohne die mobile Grundanordnung zu verändern. `--layout-stage: 92rem` und `--layout-gutter` definieren die große Bühne mit responsiven Seitenabständen; später ergänzen `--layout-content: 70rem` und `--layout-facts: 48rem` die schmaleren Standard- und Faktenbreiten.
+- **ChatGPT:** `--album-stage-inset` sorgt ab `1280px` mit `max()`, `calc()` und `var()` für gemeinsame horizontale Inhaltsachsen von Album-Hero, Faktenkarte, Story und Tracklist. „Keep Going“, Quellen und Timeline wurden symmetrisch daran ausgerichtet; die Story-Spalten erhielten mehr Abstand.
+- **ChatGPT:** Die Carousel-Pfeile wurden für `1280px` bis `1599px` gesondert positioniert. RAYEs Jahreszeiten erhielten über `--season-title` und `--season-glow` zusätzliche individuelle Überschriftenfarben und Lichtreflexe.
 
-  **Hero-Section:**
-  - grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr)
-  - class="text-link"
-  - display: inline-flex
-  - overflow-wrap: anywhere
-  - mehrere Fakten-Pills nebeneinander anordnen (Musical Style & Collaborators) --> flex-direction: row
+### Abschließendes CSS-Refactoring – Design-Tokens und Redundanzen
 
-  **Story-Section:**
-  - .story-details > section
+- **ChatGPT:** Zentralisierung der RAYE-/Amma-Bühnenverläufe als `--raye-stage` und `--amma-stage` neben der bereits vorhandenen Variable `--absolutely-stage`, sodass Homepage-Karten und Keep-Going-Vorschauen dieselbe Künstlerinnenfarbwelt verwenden. Wiederkehrende Breiten und Kartenradien wurden ebenfalls zentralisiert; individuelle Schatten, Grid-Verhältnisse und Themes blieben bewusst lokal.
+- **ChatGPT:** Prüfung und Zusammenfassung gemeinsamer Hero-, Story-, Fakten-, Zitat-, Keep-Going- und Timeline-Regeln von RAYE und Absolutely mit `:is(.page-raye, .page-absolutely)`. Nicht mehr passende Timeline-Selektoren und überprüfte CSS-Duplikate wurden entfernt; die Datei wurde nach funktionalen Bereichen sortiert.
 
-  **Tracklist-Section:**
-  - grid-column: 1 / -1
-  - font-variant-numeric: tabular-nums für Track-Duration
-  - Tracklist-Nummerierung anpassen mit counter-reset: track, counter-increment: track, content: counter(track, decimal-leading-zero)
+### Kommentare vereinheitlichen und Code verstehen
 
-  **Page Sources-Section:**
-  - Wie bei aufklappbarer Liste Symbol von + zu - ändern --> mit [open]
+- **ChatGPT:** Deutsche, fachlich überprüfte Kommentare für die gesamte CSS sowie neun HTML- und zwei JavaScript-Dateien; 24 benannte CSS-Regionen und zusätzliche HTML-/JS-Regionen verbessern die Navigation in VS Code.
+- **ChatGPT:** Lernkommentare beim ersten relevanten Auftreten von CSS Custom Properties, Layouttechniken, semantischen HTML-Elementen und JavaScript-Abläufen; spätere Anwendungen bewusst kürzer kommentiert. Irrtümliche Erklärungen (etwa zu `dataset.filter`, `cursor: pointer` oder nicht verlinkten Songs) wurden korrigiert.
 
-  **Timeline-Section:**
-  - Wie Richtungspfeile je Timeline Event gestalten --> mit article:first-of-type p::before bzw. article:last-of-type p::after
-
-- **ChatGPT:** Erklärung von verwendeten CSS-Elementen für Coming-Soon-Seiten
-  - min-height: 65vh --> damit Inhalt großzügigen Bereich bekommt und nicht direkt unter oberem Seitenrand steht
-  - wie focus-visible zentral an einer Stelle gestalten für Tastaturbedienung? --> mit :where(a, button, input, select, textarea, summary):focus-visible
-
-- **ChatGPT:** Hilfe bei der Umsetzung des JavaScript-Kategoriefilters
-  - verstehen, wie ich nach Kategoriebegriffen aus index.html gezielt suchen kann für JavaScript -> diese Sektion soll ja gestaltet werden (mit document.querySelectorAll())
-
-  - Erklärung, wie JavaScript erkennt, welcher Button angeklickt wurde --> Filterlogik (mit addEventListener, button.dataset.filter, shouldShow, isActive etc.)
+</details>

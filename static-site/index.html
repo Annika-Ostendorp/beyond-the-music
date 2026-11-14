@@ -6,11 +6,15 @@
     <title>Beyond The Music - the stories of RAYE, Amma and Absolutely</title>
     <link rel="icon" href="images/favicon_BTM.png" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- defer -> damit JavaScript-Datei laden, aber erst ausführen, wenn HTML vollständig eingelesen wurde
-         JavaScript muss ja auf Filterbuttons & Albumgruppen aus HTML zugreifen -->
+    <!-- defer: Beide Skripte werden parallel zum HTML geladen, aber erst nach
+         dem Parsen des Dokuments und in ihrer hier angegebenen Reihenfolge ausgeführt.
+         So können sie auf Filter, Albumgruppen und Carousel-Elemente zugreifen. -->
     <script src="js/app.js" defer></script>
+    <script src="js/artist-carousel.js" defer></script>
   </head>
   <body class="page-home">
+    <!-- #region 01 · HOMEPAGE: HEADER UND NAVIGATION -->
+    <!-- Gemeinsamer Header mit Desktop-Navigation und nativem <details>-Menü für Mobilgeräte. -->
     <header class="site-header">
       <a class="site-brand" href="index.html"> Beyond <em>the</em> Music </a>
 
@@ -37,12 +41,14 @@
             stroke-width="2"
             aria-hidden="true"
           >
-            <path d="M6 4h12v17l-6-4-6 4z" /> <!-- Lesezeichen Icon Pfad -->
+            <path d="M6 4h12v17l-6-4-6 4z" />
+            <!-- Der SVG-Pfad zeichnet nur das Lesezeichen; aria-hidden verhindert eine zusätzliche Screenreader-Ansage. -->
           </svg>
 
           <span class="collection-label">My Collection</span>
         </a>
 
+        <!-- <summary> öffnet und schließt das native <details>-Menü ohne JavaScript. -->
         <details class="mobile-menu">
           <summary aria-label="Navigation">☰</summary>
           <nav aria-label="Mobile navigation">
@@ -54,121 +60,293 @@
       </div>
     </header>
 
+    <!-- #endregion -->
     <main>
-      <section class="home-hero">
-        <h1>Beyond the music, <em>three sisters.</em></h1>
-        <p class="hero-description">
-          RAYE, Amma and Absolutely make very different music. This site follows
-          each of them through their musical careers, records and songs that
-          shaped them.
-        </p>
-      </section>
+      <!-- #region 02 · HOMEPAGE: HERO -->
+      <!-- aria-labelledby verweist auf die ID der zugehörigen Überschrift und benennt so die Section. -->
+      <section class="home-hero" aria-labelledby="home-hero-title">
+        <!-- Rein dekorative Konzertcollage: aria-hidden blendet diese Bildebene für Screenreader aus. -->
+        <div class="home-hero__media" aria-hidden="true">
+          <div class="home-hero__image home-hero__image--raye"></div>
+          <div class="home-hero__image home-hero__image--absolutely"></div>
+          <div class="home-hero__image home-hero__image--amma"></div>
+          <div class="home-hero__shade"></div>
+        </div>
 
-      <section class="artists-section" aria-labelledby="artists-title">
-        <!-- aria-labelledby verknüpft Section mit Überschrift -->
-        <h2 id="artists-title">Meet the Artists</h2>
+        <!-- Textinhalt liegt getrennt vor der Bildcollage; der Link führt zum Abschnitt #artists. -->
+        <div class="home-hero__copy">
+          <p class="home-hero__eyebrow">A story-first music archive</p>
 
-        <div class="artist-grid">
-          <article class="artist-card">
-            <img
-              class="artist-card__image"
-              src="images/raye-portrait.jpg"
-              alt="RAYE smiling on stage in a red dress"
-              width="240"
-              height="360"
-            />
+          <h1 id="home-hero-title">
+            Beyond the music,
+            <em>three sisters.</em>
+          </h1>
 
-            <h3>RAYE</h3>
-            <p class="artist-tagline">The one who gained her independence.</p>
-            <p>
-              From a SoundCloud EP at 17 to her recent Royal Albert Hall
-              performance.
-            </p>
-            <a class="button button--secondary" href="raye.html"
-              >Enter RAYE's world</a
-            >
-          </article>
+          <p class="hero-description">
+            RAYE, Amma and Absolutely make very different music. This site
+            follows each of them through their musical careers, records and
+            songs that shaped them.
+          </p>
 
-          <article class="artist-card">
-            <img
-              class="artist-card__image"
-              src="images/amma-portrait.jpg"
-              alt="Portrait of Amma with curly hair against an orange background"
-              width="240"
-              height="360"
-            />
-
-            <h3>Amma</h3>
-            <p class="artist-tagline">
-              The one who publishes her own music now.
-            </p>
-            <p>The middle sister - from the writing room to her own debut.</p>
-            <a class="button button--secondary" href="amma.html"
-              >Enter Amma's world</a
-            >
-          </article>
-
-          <article class="artist-card">
-            <img
-              class="artist-card__image"
-              src="images/absolutely-portrait.jpg"
-              alt="Portrait of Absolutely with red curls and a black corset"
-              width="240"
-              height="360"
-            />
-
-            <h3>Absolutely</h3>
-            <p class="artist-tagline">The one who built her own world.</p>
-            <p>
-              The youngest sister - from viral videos to a world of her own.
-            </p>
-            <a class="button button--secondary" href="absolutely.html"
-              >Enter Absolutely's world</a
-            >
-          </article>
+          <a class="home-hero__scroll" href="#artists">
+            <span>Scroll to discover</span>
+            <span class="home-hero__scroll-arrow" aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
 
-      <section class="explore-section">
-        <h2>How to Explore</h2>
+      <!-- #endregion -->
+      <!-- #region 03 · HOMEPAGE: ARTIST-CAROUSEL -->
+      <!-- Drei <article>-Karten; JavaScript steuert die aktive Karte, CSS deren Sichtbarkeit. -->
+      <section
+        class="artists-section"
+        id="artists"
+        aria-labelledby="artists-title"
+      >
+        <!-- aria-labelledby="artists-title" verknüpft die Section mit dieser h2. -->
+        <h2 id="artists-title">Meet the Artists</h2>
 
-        <ol class="steps-grid">
-          <li class="step-card">
-            <span class="step-number" aria-hidden="true">01</span>
-            <!-- aria-hidden="true" -> damit Screenreader Nummer nicht vorliest -->
-            <h3>Pick a sister</h3>
-            <p>Each artist has her own world, with her own colours and mood.</p>
-          </li>
+        <div
+          class="artist-carousel"
+          role="region"
+          aria-label="Meet the artists"
+        >
+          <div class="artist-carousel__stage">
+            <div class="artist-grid">
+              <article
+                class="artist-card artist-card--cinematic artist-card--cinematic--raye"
+              >
+                <div class="artist-card__image-frame">
+                  <img
+                    class="artist-card__image"
+                    src="images/raye-portrait.jpg"
+                    alt="RAYE smiling on stage in a red dress"
+                    width="240"
+                    height="360"
+                  />
+                </div>
 
-          <li class="step-card">
-            <span class="step-number" aria-hidden="true">02</span>
-            <h3>Travel the timeline</h3>
-            <p>
-              Scroll through the key moments of their musical careers. From
-              their first uploads to their latest milestones.
-            </p>
-          </li>
+                <div class="artist-card__content">
+                  <h3>RAYE</h3>
+                  <p class="artist-tagline">
+                    The one who gained her independence.
+                  </p>
+                  <p>
+                    From a SoundCloud EP at 17 to her recent Royal Albert Hall
+                    performance.
+                  </p>
+                  <a class="button button--secondary" href="raye.html"
+                    >Enter RAYE's world</a
+                  >
+                </div>
+              </article>
 
-          <li class="step-card">
-            <span class="step-number" aria-hidden="true">03</span>
-            <h3>Open a record, then a song</h3>
-            <p>
-              Every album or EP opens into its tracks, and each track reveals
-              the story behind it.
-            </p>
-          </li>
+              <article
+                class="artist-card artist-card--cinematic artist-card--cinematic--amma"
+              >
+                <div class="artist-card__image-frame">
+                  <img
+                    class="artist-card__image"
+                    src="images/amma-portrait.jpg"
+                    alt="Portrait of Amma with curly hair against an orange background"
+                    width="240"
+                    height="360"
+                  />
+                </div>
 
-          <li class="step-card">
-            <span class="step-number" aria-hidden="true">04</span>
-            <h3>Keep what moves you</h3>
-            <p>
-              Save career chapters or songs from your favourite artist to "My
-              Collection" and add your own thoughts.
-            </p>
-          </li>
-        </ol>
+                <div class="artist-card__content">
+                  <h3>Amma</h3>
+                  <p class="artist-tagline">
+                    The one who publishes her own music now.
+                  </p>
+                  <p>
+                    The middle sister - from the writing room to her own debut.
+                  </p>
+                  <a class="button button--secondary" href="amma.html"
+                    >Enter Amma's world</a
+                  >
+                </div>
+              </article>
+
+              <article
+                class="artist-card artist-card--cinematic artist-card--cinematic--absolutely"
+              >
+                <div class="artist-card__image-frame">
+                  <img
+                    class="artist-card__image"
+                    src="images/absolutely-portrait.jpg"
+                    alt="Portrait of Absolutely with red curls and a black corset"
+                    width="240"
+                    height="360"
+                  />
+                </div>
+
+                <div class="artist-card__content">
+                  <h3>Absolutely</h3>
+                  <p class="artist-tagline">The one who built her own world.</p>
+                  <p>
+                    The youngest sister - from viral videos to a world of her
+                    own.
+                  </p>
+                  <a class="button button--secondary" href="absolutely.html"
+                    >Enter Absolutely's world</a
+                  >
+                </div>
+              </article>
+            </div>
+            <!-- Ende der drei Künstlerinnenkarten innerhalb der Carousel-Bühne. -->
+
+            <!-- JS findet die Pfeile über data-artist-prev und data-artist-next; aria-label benennt sie. -->
+            <button
+              class="artist-carousel__arrow artist-carousel__arrow--prev"
+              type="button"
+              data-artist-prev
+              aria-label="Previous artist"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 12H5" />
+                <path d="m12 19-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              class="artist-carousel__arrow artist-carousel__arrow--next"
+              type="button"
+              data-artist-next
+              aria-label="Next artist"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          <!-- Ende der Bühne mit Künstlerinnenkarten und Pfeilen. -->
+
+          <!-- Die drei Punkte besitzen aria-pressed; JS aktualisiert den aktiven Zustand und den Zähler. -->
+          <div
+            class="artist-carousel__controls"
+            role="group"
+            aria-label="Artist carousel navigation"
+          >
+            <div class="artist-carousel__progress">
+              <div
+                class="artist-carousel__dots"
+                role="group"
+                aria-label="Choose an artist"
+              >
+                <button
+                  class="artist-carousel__dot"
+                  type="button"
+                  data-artist-index="0"
+                  aria-label="Show RAYE"
+                  aria-pressed="true"
+                ></button>
+
+                <button
+                  class="artist-carousel__dot"
+                  type="button"
+                  data-artist-index="1"
+                  aria-label="Show Amma"
+                  aria-pressed="false"
+                ></button>
+
+                <button
+                  class="artist-carousel__dot"
+                  type="button"
+                  data-artist-index="2"
+                  aria-label="Show Absolutely"
+                  aria-pressed="false"
+                ></button>
+              </div>
+
+              <span class="artist-carousel__count" aria-hidden="true">
+                01 / 03
+              </span>
+            </div>
+          </div>
+
+          <p
+            class="artist-carousel__announcement"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+        </div>
+        <!-- aria-live="polite" kündigt den Kartenwechsel für Screenreader an, ohne sofort zu unterbrechen. -->
       </section>
 
+      <!-- #endregion -->
+      <!-- #region 04 · HOMEPAGE: HOW TO EXPLORE -->
+      <!-- <ol> stellt die vier Schritte als geordnete Liste dar; CSS gestaltet sie als Kapitel. -->
+      <section class="explore-section" aria-labelledby="explore-title">
+        <div class="explore-section__inner">
+          <div class="explore-section__heading">
+            <h2 id="explore-title">How to Explore</h2>
+          </div>
+
+          <ol class="steps-grid">
+            <li class="step-card">
+              <span class="step-number" aria-hidden="true">01</span>
+              <!-- Die dekorative Kapitelnummer wird nicht zusätzlich vorgelesen. -->
+              <h3>Pick a sister</h3>
+              <p>
+                Each artist has her own world, with her own colours and mood.
+              </p>
+            </li>
+
+            <li class="step-card">
+              <span class="step-number" aria-hidden="true">02</span>
+              <h3>Travel the timeline</h3>
+              <p>
+                Scroll through the key moments of their musical careers. From
+                their first uploads to their latest milestones.
+              </p>
+            </li>
+
+            <li class="step-card">
+              <span class="step-number" aria-hidden="true">03</span>
+              <h3>Open a record, then a song</h3>
+              <p>
+                Every album or EP opens into its tracks, and each track reveals
+                the story behind it.
+              </p>
+            </li>
+
+            <li class="step-card">
+              <span class="step-number" aria-hidden="true">04</span>
+              <h3>Keep what moves you</h3>
+              <p>
+                Save career chapters or songs from your favourite artist to "My
+                Collection" and add your own thoughts.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- #endregion -->
+      <!-- #region 05 · HOMEPAGE: RECORDS UND FILTER -->
+      <!-- app.js liest data-filter der Buttons und vergleicht es mit data-category der Gruppen. -->
       <section class="records-section" aria-labelledby="records-title">
         <h2 id="records-title">Explore the Records</h2>
 
@@ -185,7 +363,7 @@
           >
             All
           </button>
-          <!-- data-filter speichert, welche Kategorie der Button auswählen soll; aria-pressed="true" heißt, dass "All" gerade ausgewählt ist -->
+          <!-- Jeder Filter besitzt eine Kategorie; aria-pressed zeigt den gewählten Zustand an. -->
           <button
             type="button"
             class="filter-chip"
@@ -212,6 +390,8 @@
           </button>
         </div>
 
+        <!-- data-category bezeichnet die ganze Künstlerinnengruppe; JS blendet bei Bedarf die Section aus.
+             Featured Records besitzen zusätzlich einen echten Link zur Albumdetailseite. -->
         <section class="record-group" data-category="raye">
           <div class="record-group-header">
             <h3>RAYE</h3>
@@ -222,7 +402,7 @@
             <article class="record-card" data-category="raye">
               <img
                 class="record-cover"
-                src="images/raye-winter.png"
+                src="images/raye-winter.webp"
                 alt="Cover of RAYE's Welcome to the Winter EP, showing an ice cream van under a cloudy sky"
                 width="180"
                 height="180"
@@ -243,21 +423,34 @@
               <p class="record-meta">Studio Album · 2023</p>
             </article>
 
-            <article class="record-card" data-category="raye">
-              <img
-                class="record-cover"
-                src="images/raye-hope.jpg"
-                alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
-                width="180"
-                height="180"
-              />
+            <article
+              class="record-card record-card--featured"
+              data-category="raye"
+            >
+              <div class="record-card__media">
+                <img
+                  class="record-cover"
+                  src="images/raye-hope.jpg"
+                  alt="Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
+                  width="180"
+                  height="180"
+                />
+
+                <div class="record-card__overlay">
+                  <span class="record-card__overlay-label" aria-hidden="true">
+                    Inside the Record
+                  </span>
+                </div>
+              </div>
+
               <h4>THIS MUSIC MAY CONTAIN HOPE.</h4>
               <p class="record-meta">Studio Album · 2026</p>
               <a
-                class="button button--secondary button--compact"
+                class="button button--secondary button--compact record-card__link"
                 href="items/raye-album-hope.html"
-                >Explore the Record →</a
               >
+                Explore the Record →
+              </a>
             </article>
           </div>
         </section>
@@ -328,27 +521,43 @@
               <p class="record-meta">Studio Album · 2023</p>
             </article>
 
-            <article class="record-card" data-category="absolutely">
-              <img
-                class="record-cover"
-                src="images/absolutely-paracosm.jpg"
-                alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
-                width="180"
-                height="180"
-              />
+            <article
+              class="record-card record-card--featured"
+              data-category="absolutely"
+            >
+              <div class="record-card__media">
+                <img
+                  class="record-cover"
+                  src="images/absolutely-paracosm.jpg"
+                  alt="Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
+                  width="180"
+                  height="180"
+                />
+
+                <div class="record-card__overlay">
+                  <span class="record-card__overlay-label" aria-hidden="true">
+                    Inside the Record
+                  </span>
+                </div>
+              </div>
+
               <h4>Paracosm</h4>
               <p class="record-meta">Studio Album · 2026</p>
               <a
-                class="button button--secondary button--compact"
+                class="button button--secondary button--compact record-card__link"
                 href="items/absolutely-album-paracosm.html"
-                >Explore the Record →</a
               >
+                Explore the Record →
+              </a>
             </article>
           </div>
         </section>
       </section>
+      <!-- #endregion -->
     </main>
 
+    <!-- #region 06 · HOMEPAGE: FOOTER -->
+    <!-- Der Footer mit Projekt-Hinweis und Seitenlinks ist auf allen Hauptseiten wiederverwendet. -->
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-about">
@@ -377,5 +586,6 @@
         </nav>
       </div>
     </footer>
+    <!-- #endregion -->
   </body>
 </html>
