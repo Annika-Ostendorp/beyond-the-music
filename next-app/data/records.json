@@ -1,0 +1,124 @@
+[
+    {
+        "id": "raye-ep-winter",
+        "title": "Welcome to the Winter",
+        "artist": "RAYE",
+        "category": "raye",
+        "featured": false,
+        "releaseType": "EP",
+        "releaseDate": "2014-12-11",
+        "genres": ["R&B", "Alternative R&B", "Electronic pop", "Neo-soul", "Downtempo"],
+        "trackCount": 7,
+        "collaborators": [],
+        "coverImage": "/images/raye-winter.webp",
+        "coverAlt": "Cover of RAYE's Welcome to the Winter EP, showing an ice cream van under a cloudy sky"
+    },
+
+    {
+        "id": "raye-album-blues",
+        "title": "My 21st Century Blues",
+        "artist": "RAYE",
+        "category": "raye",
+        "featured": false,
+        "releaseType": "Studio Album",
+        "releaseDate": "2023-02-03",
+        "genres": ["R&B", "Blues", "Pop", "Dance-pop", "Soul"],
+        "trackCount": 15,
+        "collaborators": ["070 Shake", "Mahalia"],
+        "coverImage": "/images/raye-blues.jpg",
+        "coverAlt": "Cover of RAYE's My 21st Century Blues album, showing RAYE standing on white musical instruments"
+    },
+
+    {
+        "id": "raye-album-hope",
+        "title": "THIS MUSIC MAY CONTAIN HOPE.",
+        "artist": "RAYE",
+        "category": "raye",
+        "featured": true,
+        "releaseType": "Studio Album",
+        "releaseDate": "2026-03-27",
+        "genres": ["Cinematic pop", "Retro soul", "Blues", "Big-band jazz", "R&B"],
+        "trackCount": 17,
+        "collaborators": ["Hans Zimmer", "Al Green", "Grandad Michael", "Amma", "Absolutely"],
+        "coverImage": "/images/raye-hope.jpg",
+        "coverAlt": "Cover of RAYE's This Music May Contain Hope album, showing RAYE beneath storm clouds"
+    },
+
+    {
+        "id": "amma-single-middle-child",
+        "title": "Middle Child",
+        "artist": "Amma",
+        "category": "amma",
+        "featured": false,
+        "releaseType": "Single",
+        "releaseDate": "2025-08-22",
+        "genres": ["R&B", "Alternative R&B", "Pop", "Neo-soul"],
+        "trackCount": 3,
+        "totalDuration": "07:10",
+        "collaborators": [],
+        "coverImage": "/images/amma-middle-child-ep.jpg",
+        "coverAlt": "Cover of Amma's Middle Child Single, featuring a black line-drawn portrait"
+    },
+
+    {
+        "id": "amma-ep-blame-game",
+        "title": "Blame Game",
+        "artist": "Amma",
+        "category": "amma",
+        "featured": false,
+        "releaseType": "EP",
+        "releaseDate": "2025-12-05",
+        "genres": ["R&B", "Alternative R&B", "Pop", "Soul"],
+        "trackCount": 4,
+        "collaborators": [],
+        "coverImage": "/images/amma-blame-game.jpg",
+        "coverAlt": "Cover of Amma's Blame Game EP, featuring an illustrated portrait with curly brown hair"
+    },
+
+    {
+        "id": "amma-album-middle-child",
+        "title": "Middle Child",
+        "artist": "Amma",
+        "category": "amma",
+        "featured": false,
+        "releaseType": "Studio Album",
+        "releaseDate": "2026-04-15",
+        "genres": ["R&B", "Pop", "Alternative R&B", "Soul", "Electronic pop"],
+        "trackCount": 10,
+        "collaborators": [],
+        "coverImage": "/images/amma-middle-child-album.jpg",
+        "coverAlt": "Cover of Amma's Middle Child Album, featuring an illustrated family portrait in blue clothing"
+    },
+
+    {
+        "id": "absolutely-album-cerebrum",
+        "title": "CEREBRUM",
+        "artist": "Absolutely",
+        "category": "absolutely",
+        "featured": false,
+        "releaseType": "Studio Album",
+        "releaseDate": "2023-11-17",
+        "genres": ["Alternative pop", "Contemporary R&B", "Electronic pop", "Pop", "Soul"],
+        "trackCount": 13,
+        "collaborators": [],
+        "coverImage": "/images/absolutely-cerebrum.jpg",
+        "coverAlt": "Cover of Absolutely's Cerebrum album, showing a surreal building under a stormy sky"
+    },
+
+    {
+        "id": "absolutely-album-paracosm",
+        "title": "Paracosm",
+        "artist": "Absolutely",
+        "category": "absolutely",
+        "featured": true,
+        "releaseType": "Studio Album",
+        "releaseDate": "2026-02-20",
+        "genres": ["Pop", "Electronica", "Jazz", "R&B"],
+        "trackCount": 13,
+        "collaborators": [],
+        "coverImage": "/images/absolutely-paracosm.jpg",
+        "coverAlt": "Cover of Absolutely's Paracosm album, showing Absolutely in profile with a carousel above her head"
+    }
+]
+
+

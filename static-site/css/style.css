@@ -1,7 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,600;1,600&display=swap");
+/* Konzept: Externe Schriften: @import lädt Fraunces und DM Sans. Wenn das Netz fehlt, greifen die bei --font-* angegebenen Ersatzschriften. */
 
-/* Homepage theme */
+/* #region 01 · DESIGN SYSTEM UND SEITENTHEMES */
+
+/* ============================================================
+   01 · DESIGN SYSTEM UND SEITENTHEMES
+   ============================================================ */
+/* Zentrale Designvariablen – Standardfarbwelt der Homepage */
+/* Konzept: :root bezeichnet das HTML-Wurzelelement. Hier definierte --Variablen (Custom Properties) stehen allen untergeordneten Elementen zur Verfügung; var(--name) liest sie an der Verwendungsstelle. */
 :root {
+    /* CSS-Variable (erste Definition):
+       --color-bg = allgemeiner Seitenhintergrund
+       --color-surface = Flächenfarbe für Karten und Header
+       --color-heading = Farbe der Überschriften
+       --color-text = Farbe des Fließtexts
+       --color-accent = Akzentfarbe für Links, Fokus, Details und Markierungen
+       --color-border = Farbe neutraler Rahmen */
     --color-bg: #0b090d;
     --color-surface: #1d171d;
     --color-heading: #f3e8da;
@@ -9,11 +23,95 @@
     --color-accent: #ddb66f;
     --color-border: #40363d;
 
+    /* CSS-Variable (erste Definition):
+       --font-heading = Überschriftenschrift mit Ersatzschrift Georgia/serif
+       --font-body = Fließtextschrift mit Ersatzschrift Arial/sans-serif */
     --font-heading: "Fraunces", Georgia, serif;
     --font-body: "DM Sans", Arial, sans-serif;
+    
+    /* Responsives Layoutsystem: normale Inhaltsbreite und breite Editorial-Bühne */
+    /* CSS-Variable (erste Definition):
+       --layout-stage = maximale Breite der großen Editorial-Bühne (92rem)
+       --layout-gutter = flexibler Seitenabstand durch clamp(Minimum, Wunschwert, Maximum) */
+    --layout-stage: 92rem;
+    /* CSS-Funktion: clamp(min, bevorzugt, max) begrenzt einen fließenden Wert; nützlich für responsive Abstände und Schriftgrößen. */
+    --layout-gutter: clamp(1rem, 3vw, 3rem);
+
+    /* Normale Inhaltsbreite für übersichtliche, lesbare Seitenbereiche */
+    /* CSS-Variable (erste Definition): --layout-content = normale, gut lesbare Inhaltsbreite (70rem) */
+    --layout-content: 70rem;
+
+    /* Maximale Breite der Faktenkarten auf Albumdetailseiten */
+    /* CSS-Variable (erste Definition): --layout-facts = maximale Breite der Album-Faktenkarte (48rem) */
+    --layout-facts: 48rem;
+
+    /* Gemeinsame Rundungen für wiederkehrende Komponenten */
+    /* CSS-Variable (erste Definition):
+       --radius-full = stark gerundete Bedienelemente und Pills
+       --radius-card = Eckenradius für normale Karten
+       --radius-panel = Eckenradius für größere Panels */
+    --radius-full: 999px;    /* Pillen, Buttons und runde Bedienelemente */
+    --radius-card: 1.25rem;  /* Normale Karten und Kapitel */
+    --radius-panel: 1.5rem;  /* Größere Panels und Faktenkarten */
 
 
-    /* Absolutely - Burnt Red, Copper Orange & Dark Aubergine */
+    /* Wiederverwendbare Bühnenfarben von RAYE:
+       Burgunderrot, warmes Gold und dunkle Rottöne */
+    /* CSS-Variable (erste Definition): --raye-stage = mehrschichtiger roter/goldener Bühnenhintergrund für RAYE */
+    /* CSS-Funktion: rgb(ROT GRÜN BLAU / ALPHA) ist die moderne Farbschreibweise; / 45% bedeutet 45% Deckkraft. */
+    /* CSS-Funktion: radial-gradient() beschreibt kreis-/ellipsenförmiges Licht; mehrere Hintergründe werden als Schichten übereinandergelegt. */
+    /* CSS-Funktion: linear-gradient() erzeugt einen gerichteten Farbverlauf; Stopps geben die Verteilung an. */
+    --raye-stage:
+        radial-gradient(
+            ellipse 55% 90% at 12% 12%,
+            rgb(230 161 73 / 45%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 58% 85% at 30% 80%,
+            rgb(169 33 48 / 62%),
+            transparent 74%
+        ),
+        radial-gradient(
+            ellipse 65% 100% at 85% 45%,
+            rgb(110 27 40 / 35%),
+            transparent 80%
+        ),
+        linear-gradient(
+            105deg,
+            #47251c 0%,
+            #42151e 48%,
+            #160c13 100%
+        );
+
+    /* Wiederverwendbare Bühnenfarben von Amma:
+       warme Beige-, Kaffee- und Terrakottatöne */
+    /* CSS-Variable (erste Definition): --amma-stage = mehrschichtiger beiger/terrakottafarbener Hintergrund für Amma */
+    --amma-stage:
+        radial-gradient(
+            ellipse 65% 90% at 10% 5%,
+            rgb(239 193 139 / 38%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 65% 85% at 38% 95%,
+            rgb(206 96 15 / 39%),
+            transparent 78%
+        ),
+        radial-gradient(
+            ellipse 65% 95% at 88% 35%,
+            rgb(177 105 65 / 24%),
+            transparent 80%
+        ),
+        linear-gradient(
+            108deg,
+            #72503d 0%,
+            #955a3d 50%,
+            #2b1b19 100%
+        );
+
+    /* Absolutely: Kupferorange, Rot und dunkles Aubergine */
+    /* CSS-Variable (erste Definition): --absolutely-stage = mehrschichtiger kupfer-/auberginefarbener Hintergrund */
     --absolutely-stage:
         radial-gradient(
             ellipse 60% 90% at 10% 15%,
@@ -39,10 +137,12 @@
 }
 
 html {
+    /* CSS-Eigenschaften – erstmals hier: scroll-behavior = steuert den Scrollverlauf; smooth scrollt weich zu Ankern. */
     scroll-behavior: smooth;
 }
 
-/* RAYE album detail page theme */
+/* RAYE: lokale Farbvariablen der Albumdetailseite */
+/* Konzept: Themes durch Vererbung: Diese Seite überschreibt globale --color-Variablen nur für ihre eigenen Kinder. Gemeinsame CSS-Regeln bleiben dadurch wiederverwendbar. */
 .page-raye {
     --color-bg: #581517;
     --color-surface: #301110;
@@ -51,14 +151,19 @@ html {
     --color-accent: #f4b004;
     --color-border: #831e24;
 
+    /* CSS-Variable (erste Definition):
+       --color-detail-card = lokale Hintergrundfarbe der Albumfakten
+       --color-pill-border = lokale Rahmenfarbe kleiner Fakten-Pills
+       --color-divider = lokale Farbe feiner Abschnittstrennlinien */
     --color-detail-card: #6c181c;
     --color-pill-border: rgb(255 240 221 / 35%);
     --color-divider: rgb(235 213 201 / 26%);
 }
 
 
-/* Absolutely album detail page theme */
-/* Burnt Red, Copper Orange & Dark Aubergine */
+/* Absolutely: lokale Farbvariablen der Albumdetailseite */
+/* Kupferorange, dunkles Rot und Aubergine */
+/* Konzept: Dasselbe Prinzip für Absolutely: eigene Farbtöne ohne Kopie sämtlicher Komponentenregeln. */
 .page-absolutely {
     --color-bg: #140d1c;
     --color-surface: #211523;
@@ -71,24 +176,46 @@ html {
     --color-divider: rgb(255 240 229 / 23%);
     --color-pill-border: rgb(255 240 229 / 32%);
 
+    /* CSS-Variable (erste Definition): --color-button-accent = individuelle Button-Akzentfarbe auf Absolutelys Seite */
     --color-button-accent: #a93832;
 }
 
+/* Beide Albumdetailseiten nutzen eine durchgehende Hintergrundatmosphäre hinter Header und Hauptinhalt. */
+/* Konzept: :is() fasst Alternativ-Selektoren zusammen; beide Albumseiten erhalten diese Regel, die Homepage nicht. Die Spezifität richtet sich nach der spezifischsten Alternative. */
+:is(.page-raye, .page-absolutely) main {
+    /* CSS-Eigenschaften – erstmals hier: background = Kurzschreibweise für Hintergrundfarbe, Bild und/oder Verlauf. */
+    background: transparent;
+}
 
+/* #endregion */
 
-/*--------------------------------*/
-/* HOMEPAGE DESIGN - Mobile First */
-/*--------------------------------*/
+/* #region 02 · GLOBALE GRUNDREGELN */
 
-/* Focus Visible für Tastaturnavigation - zentral */
+/* ============================================================
+   02 · GLOBALE GRUNDREGELN
+   ============================================================ */
+/* Globale Grundlagen – Mobile First */
+
+/* Tastaturfokus: :focus-visible zeigt einen sichtbaren Rahmen; :where() hält die Spezifität niedrig. */
+/* Konzept: :where() hat selbst Spezifität 0. :focus-visible markiert insbesondere Tastaturfokus, damit Nutzer die aktuelle Position erkennen; mit :focus nicht verwechseln. */
 :where(a, button, input, select, textarea, summary):focus-visible {
+    /* CSS-Eigenschaften – erstmals hier:
+       outline = sichtbare Fokusmarkierung außerhalb des Rahmens, ohne das Layout zu verschieben.
+       outline-offset = Abstand zwischen Elementkante und Fokusmarkierung. */
+    /* CSS-Funktion: var(--name) liest den zur Laufzeit geltenden Variablenwert. Lokale .page-raye-/ .page-absolutely-Werte überschreiben :root nur innerhalb ihrer jeweiligen Seite. */
     outline: 3px solid var(--color-accent);
     outline-offset: 3px;
 }
 
-/* Body-Styling */
+/* Globale Grundgestaltung für alle Seiten */
 body {
     /* margin: 0 --> entfernt voreingestellten äußeren Seitenabstand von Browser */
+    /* CSS-Eigenschaften – erstmals hier:
+       margin = Außenabstand; margin: 0 entfernt hier den Browserstandard.
+       background-color = einfarbige Hintergrundfläche des Elements.
+       color = Textfarbe; Kinder übernehmen sie normalerweise durch Vererbung.
+       font-family = Schriftfamilie; weitere Namen dienen als Ersatz, wenn eine Schrift nicht lädt.
+       line-height = Abstand der Textzeilen; eine Zahl wie 1.6 bezieht sich auf die Schriftgröße. */
     margin: 0;
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -106,30 +233,56 @@ h4 {
 }
 
 img {
+    /* CSS-Eigenschaften – erstmals hier:
+       display = Layoutart: block für Zeilenblöcke; später flex/grid für Anordnungen.
+       max-width = obere Breitenbegrenzung; max-width: 100% verhindert zu breite Bilder.
+       height = Elementhöhe; auto hält bei Bildern das Seitenverhältnis ein. */
     display: block;
     max-width: 100%;
     height: auto; /* Seitenverhältnisse bleiben erhalten */
 }
 
 
-/* Header - Mobile First */
+/* #endregion */
+
+/* #region 03 · HEADER UND NAVIGATION */
+
+/* ============================================================
+   03 · HEADER UND NAVIGATION
+   ============================================================ */
+/* Header und Navigation – Mobile First */
+/* Konzept: Mobile First: Wir definieren zunächst das schmale Grundlayout. Spätere @media-Regeln erweitern es nur, wenn ausreichend Platz vorhanden ist. display: flex ordnet die Headerkinder entlang einer Hauptachse an. */
 .site-header {
     display: flex;
+    /* CSS-Eigenschaften – erstmals hier:
+       align-items = Ausrichtung der Kinder auf der Querachse eines Flex-/Grid-Containers.
+       gap = Abstand zwischen Flex-/Grid-Kindern, ohne zusätzliche Außenränder.
+       width = gewünschte Breite; Prozentwerte beziehen sich auf den umgebenden Bereich.
+       box-sizing = border-box zählt Innenabstand und Rahmen in die angegebene Breite mit ein.
+       padding = Innenabstand zwischen Inhalt und Elementrand.
+       border = Rahmen mit Dicke, Linienart und Farbe.
+       border-radius = Rundung der Ecken; 999px erzeugt bei flachen Elementen eine Pillenform. */
     align-items: center;
     gap: 0.75rem;
+    /* CSS-Funktion: calc() verrechnet CSS-Einheiten; z. B. 100% minus zwei Seitenabstände. */
     width: calc(100% - 2rem); /* 100% gesamte verfügbare Breite - 2rem (32px bei Standardschriftgröße 16px) --> verfügbare Breite minus 32 px --> mehr Platz zum Bildschirmrand*/
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 1rem auto;
     padding: 0.75rem 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
+    /* CSS-Eigenschaften – erstmals hier: position = relative bleibt im Layout und dient als Bezug für absolute Kindelemente. */
     position: relative;
 }
 
 .site-brand {
     font-family: var(--font-heading);
+    /* CSS-Eigenschaften – erstmals hier:
+       font-size = Schriftgröße; rem orientiert sich an der Schriftgröße des Wurzelelements.
+       text-decoration = Textverzierung, z. B. Unterstreichung bei Links.
+       white-space = steuert Umbrüche; nowrap hält die Wortfolge in einer Zeile. */
     font-size: 1.2rem;
     color: var(--color-heading);
     text-decoration: none; /* so kein unterstrichener Text */
@@ -146,13 +299,18 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    /* CSS-Eigenschaften – erstmals hier: margin-left = linker Außenabstand; auto schiebt ein Flex-Kind nach rechts. */
     margin-left: auto;
 }
 
-/* Collection Button - Mobile First */
+/* Collection-Button – Mobile First */
 .nav-collection {
     display: inline-flex;
     align-items: center;
+    /* CSS-Eigenschaften – erstmals hier:
+       justify-content = Ausrichtung der Kinder entlang der Hauptachse des Flex-/Grid-Containers.
+       min-width = Mindestbreite; bei Grid-Texten erlaubt min-width: 0 das Schrumpfen.
+       min-height = Mindesthöhe; 44px schafft eine gut treffbare Bedienfläche. */
     justify-content: center;
     gap: 0.5rem;
 
@@ -163,7 +321,7 @@ img {
     padding: 0.5rem 0.75rem;
     background-color: var(--color-accent);
     color: var(--color-bg);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     text-decoration: none;
 }
 
@@ -171,9 +329,14 @@ img {
     display: none;
 }
 
-/* Mobile Dropdown Menü */
+/* Mobiles Aufklappmenü mit dem HTML-Element <details> */
+/* Konzept: Das HTML-Element <details> öffnet/schließt nativ; <summary> ist sein anklickbarer Titel. display: grid zusammen mit place-items: center zentriert das Icon. */
 .mobile-menu summary {
     display: grid;
+    /* CSS-Eigenschaften – erstmals hier:
+       place-items = Kurzform für align-items und justify-items im Grid.
+       cursor = Mauszeiger; pointer signalisiert Klickbarkeit, erzeugt aber keinen Hover-Effekt.
+       list-style = Aufzählungszeichen oder Standardmarker, bei none ausgeschaltet. */
     place-items: center;
 
     width: 44px;
@@ -181,16 +344,22 @@ img {
 
     color: var(--color-heading);
     font-size: 1.7rem;
-    cursor: pointer; /* über Links hoovern */
+    cursor: pointer; /* Zeigt an, dass das Menü angeklickt werden kann. */
     list-style: none;
 }
 
-.mobile-menu summary::-webkit-details-marker { /* damit standardmäßig spezifisches Dreieck vor summary weg kommt*/
+/* Selektor/Technik: ::-webkit-details-marker betrifft den Standardpfeil des <summary> in WebKit-Browsern; display: none blendet nur dieses Symbol aus. */
+.mobile-menu summary::-webkit-details-marker { /* Versteckt das standardmäßige Aufklappdreieck in WebKit-Browsern. */
     display: none;
 }
 
+/* Konzept: position: absolute nimmt das Dropdown aus dem normalen Textfluss; .site-header mit position: relative dient als Bezug. Deshalb schiebt das Menü den Inhalt nicht nach unten. */
 .mobile-menu nav {
     position: absolute; /* damit Menü unter Navigation erscheint, aber nicht gesamte Seite damit nach untern verschiebt */
+    /* CSS-Eigenschaften – erstmals hier:
+       top = oberer Versatz eines positionierten Elements; calc() kann Werte verrechnen.
+       right = Abstand zur rechten Kante des Bezugselements.
+       z-index = Stapelreihenfolge innerhalb des jeweiligen Stacking-Contexts. */
     top: calc(100% + 0.5rem); /* Menü beginnt unterhalb Hamburger-Symbol */
     right: 0;
     z-index: 10; /* damit Dropdown-Menü über Seitenhintergrund steht --> höhere Stapelpriorität */
@@ -211,22 +380,30 @@ img {
     text-decoration: none;
 }
 
-/* Navigation Interaktion */
-.nav-list a:hover, /* mit Komma getrennt, damit dieselbe CSS-Regel auf beide Selektoren angewendet wird --> sowohl in Mobile als auch Desktop Version */
+/* Gleiche Hover-Farbe für Desktop- und Mobile-Navigation */
+.nav-list a:hover, /* Die Selektoren teilen sich dieselbe Hover-Farbe. */
 .mobile-menu nav a:hover {
     color: var(--color-accent);
 }
 
 
 
-/* Homepage Hero - Mobile First */
-/* ========================================
-   MA2 - HOMEPAGE HERO ENHANCEMENT
-   Cinematic concert collage
-   ======================================== */
+/* #endregion */
 
+/* #region 04 · HOMEPAGE: HERO */
+
+/* ============================================================
+   04 · HOMEPAGE: HERO
+   ============================================================ */
+/* Homepage-Hero – Mobile First */
+/* MA2: Konzertfotografien als cineastische Homepage-Collage */
+
+/* Konzept: Ebenenprinzip: position: relative und isolation: isolate bilden den Rahmen für Bilder, Verlauf und Vordergrundtext. overflow: hidden schneidet herausragende Bildteile ab. */
 .home-hero {
     position: relative;
+    /* CSS-Eigenschaften – erstmals hier:
+       isolation = isolate bildet einen eigenen Stacking-Context für die Hero-Ebenen.
+       overflow = versteckt oder erlaubt Inhalt außerhalb der Elementgrenzen. */
     isolation: isolate;
     overflow: hidden;
 
@@ -244,9 +421,13 @@ img {
     background-color: var(--color-bg);
 }
 
-/* Full-width background layer */
+/* Die Bildebene erstreckt sich über die volle Hero-Breite. */
+/* Konzept: inset: 0 spannt die absolute Hintergrundebene auf alle vier Containerseiten. pointer-events: none sorgt dafür, dass die Bilder keine Links überdecken. */
 .home-hero__media {
     position: absolute;
+    /* CSS-Eigenschaften – erstmals hier:
+       inset = Kurzform für top, right, bottom und left; 0 füllt das Bezugselement.
+       pointer-events = none lässt Maus-/Touch-Ereignisse durch eine Deko-Ebene hindurch. */
     inset: 0;
     z-index: 0;
     overflow: hidden;
@@ -255,10 +436,19 @@ img {
 
 
 
-/* Shared styling for the concert photographs */
+/* Gemeinsame Eigenschaften der drei Konzertfotografien. */
+/* Konzept: Das Hintergrundbild erhält eine weiche Transparenzmaske. Anders als object-fit: cover bei <img> ist background-size: cover für CSS-Hintergrundbilder gedacht. -webkit-mask-image ergänzt die Maskenunterstützung. */
 .home-hero__image {
     position: absolute;
     top: 0;
+    /* CSS-Eigenschaften – erstmals hier:
+       bottom = unterer Versatz eines positionierten Elements.
+       background-size = cover füllt die Fläche mit einem Bild, notfalls mit Beschnitt.
+       background-repeat = steuert, ob ein Hintergrundbild gekachelt wird.
+       background-position = legt den sichtbaren Bildausschnitt innerhalb der Fläche fest.
+       opacity = Deckkraft: 0 unsichtbar, 1 vollständig sichtbar.
+       filter = Bildfilter wie Helligkeit, Sättigung oder Unschärfe.
+       -webkit-mask-image = Herstellerpräfix für CSS-Masken, unter anderem für Safari. */
     bottom: auto;
     height: 20rem;
 
@@ -269,7 +459,7 @@ img {
     opacity: 0;
     filter: saturate(0.98) brightness(1);
 
-    /* Soft edges on all four sides */
+    /* Radiale Maske blendet harte Bildkanten aus; das -webkit-Präfix unterstützt unter anderem Safari. */
     -webkit-mask-image: radial-gradient(
         ellipse 62% 62% at center,
         black 0%,
@@ -277,6 +467,9 @@ img {
         transparent 80%
     );
 
+    /* CSS-Eigenschaften – erstmals hier:
+       mask-image = Maske bestimmt anhand der Transparenz, welche Bildbereiche sichtbar sind.
+       animation = ordnet Keyframes, Dauer, Timing und Wiederholung zu. */
     mask-image: radial-gradient(
         ellipse 62% 62% at center,
         black 0%,
@@ -289,10 +482,16 @@ img {
 
 
 /* Absolutely – links, eher atmosphärisch im Hintergrund */
+/* Konzept: --photo-opacity wird pro Foto gesetzt und in den gemeinsamen Hero-Keyframes mit var(--photo-opacity) ausgelesen. Dieselbe Animation kann dadurch unterschiedliche Zieldeckkräfte nutzen. */
 .home-hero__image--absolutely {
+    /* CSS-Eigenschaften – erstmals hier:
+       background-image = Hintergrundbild oder -verlauf; url(...) verweist auf Bilddateien.
+       left = Abstand zur linken Kante des positionierenden Bezugselements.
+       animation-delay = Wartezeit vor Beginn einer Animation; hier zeitversetzte Bilder. */
     background-image: url("../images/hero-absolutely.webp");
     left: -8%;
     width: 56%;
+    /* CSS-Variable (erste Definition): --photo-opacity = Zieldeckkraft des jeweiligen Homepage-Konzertfotos */
     --photo-opacity: 0.85;
     animation-delay: 0.1s;
 }
@@ -315,7 +514,7 @@ img {
     animation-delay: 0.6s;
 }
 
-/* Dark gradients for readability */
+/* Dunkle Verläufe verbessern den Kontrast zwischen Fotos und Text. */
 .home-hero__shade {
     position: absolute;
     inset: 0;
@@ -331,30 +530,35 @@ img {
     );
 }
 
-/* Hero text above background */
+/* Hero-Text als eigene Ebene vor der Fotocollage. */
 .home-hero__copy {
     position: relative;
     z-index: 2;
 
     width: calc(100% - 2rem);
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
 
     animation: hero-text-fade 3.5s ease-out 0.6s both;
 }
 
-/* Small editorial label */
+/* Kleine redaktionelle Kapitelmarkierung. */
 .home-hero__eyebrow {
     margin: 0 0 1.25rem;
     color: var(--color-accent);
     font-family: var(--font-body);
     font-size: 0.75rem;
+    /* CSS-Eigenschaften – erstmals hier:
+       font-weight = Schriftstärke, z. B. 600 für halbfett.
+       letter-spacing = zusätzlicher oder verringerter Abstand zwischen Buchstaben.
+       text-transform = optische Groß-/Kleinschreibung, ohne den HTML-Text zu ändern. */
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
 }
 
-/* Main typography */
+/* Typografie der Hauptüberschrift. */
+/* Konzept: clamp(Minimum, bevorzugt, Maximum) skaliert die Überschrift mit 7vw, aber nie unter/über die Grenzen. vw = 1% der Viewportbreite; rem bezieht sich auf die Wurzelschriftgröße. */
 .home-hero h1 {
     max-width: 46rem;
     margin: 0;
@@ -370,12 +574,13 @@ img {
 
 .home-hero .hero-description {
     max-width: 39rem;
+    /* CSS-Eigenschaften – erstmals hier: margin-top = oberer Außenabstand, unabhängig von anderen Seiten. */
     margin-top: 1.75rem;
     line-height: 1.75;
 }
 
 
-/* Hero - scroll invitation */
+/* Scroll-Hinweis als Link zum nächsten Homepage-Abschnitt. */
 .home-hero__scroll {
     display: inline-flex;
     align-items: center;
@@ -388,7 +593,7 @@ img {
 
     background-color: rgb(29 23 29 / 45%);
     border: 1px solid rgb(243 232 218 / 30%);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     color: var(--color-heading);
     font-family: var(--font-body);
@@ -398,12 +603,13 @@ img {
     text-decoration: none;
     text-transform: uppercase;
 
+    /* CSS-Eigenschaften – erstmals hier: transition = weicher Wechsel bestimmter CSS-Eigenschaften zwischen Zuständen. */
     transition:
         background-color 0.3s ease,
         border-color 0.3s ease;
 }
 
-/* Small moving arrow */
+/* Separater, leicht animierter Pfeil im Scroll-Hinweis. */
 .home-hero__scroll-arrow {
     display: grid;
     place-items: center;
@@ -420,17 +626,20 @@ img {
     animation: hero-scroll-arrow 2.7s ease-in-out 4.2s infinite;
 }
 
-/* Subtle interaction */
+/* Dezente Hervorhebung bei Hover und sichtbarem Tastaturfokus. */
 .home-hero__scroll:hover,
 .home-hero__scroll:focus-visible {
     background-color: rgb(29 23 29 / 85%);
+    /* CSS-Eigenschaften – erstmals hier: border-color = ändert nur die Rahmenfarbe, nicht die Rahmendicke. */
     border-color: var(--color-accent);
 }
 
 
-/* Gentle downward movement */
+/* Kleine Auf-und-ab-Bewegung des Pfeils. */
+/* Konzept: @keyframes beschreibt Animationszwischenstände. animation ordnet diese später mit Dauer, Timing und gegebenenfalls Endlosschleife zu. */
 @keyframes hero-scroll-arrow {
     0%, 100% {
+        /* CSS-Eigenschaften – erstmals hier: transform = visuelle Verschiebung/Skalierung/Drehung ohne Neuberechnung des Layouts. */
         transform: translateY(0);
     }
 
@@ -439,7 +648,7 @@ img {
     }
 }
 
-/* Slow image fade - no zoom */
+/* Konzertfotos werden nur eingeblendet, nicht vergrößert. */
 @keyframes hero-image-fade {
     from {
         opacity: 0;
@@ -450,7 +659,7 @@ img {
     }
 }
 
-/* Slow text fade - no movement */
+/* Hero-Text wird ohne Positionsänderung eingeblendet. */
 @keyframes hero-text-fade {
     from {
         opacity: 0;
@@ -462,10 +671,20 @@ img {
 }
 
 
-/* Artists Section - Mobile First */
+/* #endregion */
 
-/* Editorial transition from the homepage hero */
+/* #region 05 · HOMEPAGE: KÜNSTLERINNENKARTEN */
+
+/* ============================================================
+   05 · HOMEPAGE: KÜNSTLERINNENKARTEN
+   ============================================================ */
+/* Künstlerinnenbereich – Mobile First */
+
+/* Schmale Trennlinie für den Übergang vom Hero zum Künstlerinnenbereich. */
+/* Konzept: ::before und ::after sind vom CSS erzeugte Pseudoelemente. content: "" erzeugt eine rein dekorative Ebene, ohne zusätzliches HTML. */
+/* Selektor/Technik: ::before erzeugt mit content ein CSS-Pseudoelement; reine Dekoration ohne zusätzliches HTML. ::after funktioniert analog. */
 .artists-section::before {
+    /* CSS-Eigenschaften – erstmals hier: content = fügt Inhalt in ein ::before-/::after-Pseudoelement ein; '' erzeugt nur Deko. */
     content: "";
     position: absolute;
     top: 0;
@@ -482,26 +701,30 @@ img {
     );
 }
 
+/* Selektor/Technik: Der Kindselektor > erfasst nur direkte HTML-Kinder, nicht tiefere Nachfahren. */
 .artists-section > h2 {
     margin: 0 0 2rem;
     font-size: clamp(2rem, 4vw, 3rem);
 }
 
+/* Konzept: CSS Grid definiert zweidimensionale Spalten/Zeilen; 1fr ist ein Anteil des frei verfügbaren Platzes. Später werden die Spalten über Breakpoints angepasst. */
 .artist-grid {
     display: grid;
-    grid-template-columns: 1fr; /* genau 1 Spalte für Grid in Mobile Version */
+    /* CSS-Eigenschaften – erstmals hier: grid-template-columns = Anzahl/Breite der Grid-Spalten; 1fr ist ein Anteil des freien Platzes. */
+    grid-template-columns: 1fr; /* Mobile First: zunächst eine Spalte. */
     gap: 1.5rem;
 }
 
 .artist-card {
     display: flex;
+    /* CSS-Eigenschaften – erstmals hier: flex-direction = legt die Richtung der Flex-Kinder fest: row oder column. */
     flex-direction: column;
     gap: 0.75rem;
 
     padding: 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 
     transition:
         transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
@@ -510,12 +733,15 @@ img {
 }
 
 
-/* Subtle card interaction for mouse devices */
+/* Hover-Effekt nur für Geräte mit präzisem Zeiger. */
+/* Media Query: Geräteabfrage: hover: hover und pointer: fine bedeuten einen präzisen Zeiger mit Hover-Fähigkeit, typischerweise eine Maus. Touchgeräte erhalten nicht automatisch den Hover-Effekt. */
 @media (hover: hover) and (pointer: fine) {
+    /* Konzept: :hover bedeutet Maus darüber. :focus-within greift, sobald ein fokussierbares Kindelement Fokus hat, und bietet dadurch eine entsprechende Tastatur-Rückmeldung. */
     .artist-card:hover {
         transform: translateY(-5px);
         border-color: rgb(221 182 111 / 50%);
 
+        /* CSS-Eigenschaften – erstmals hier: box-shadow = Schatten hinter dem Element; verändert nicht die Layoutbreite. */
         box-shadow:
             0 18px 45px rgb(0 0 0 / 30%);
     }
@@ -526,7 +752,8 @@ img {
     }
 }
 
-/* Equivalent interaction for keyboard navigation */
+/* Tastatur: :focus-within wirkt auf die Karte, sobald ein Kind einen Fokus besitzt. */
+/* Selektor/Technik: :focus-within ist aktiv, sobald ein fokussierbares Kind den Fokus erhält; die Karte kann dann Tastaturfeedback zeigen. */
 .artist-card:focus-within {
     transform: translateY(-5px);
     border-color: rgb(221 182 111 / 50%);
@@ -541,10 +768,11 @@ img {
 .artist-card h3, /* damit kein unnötiger Abstand mehr zwischen Titel und einzelnen Beschreibungen d. Sängerinnen besteht */
 .artist-card p {
     margin: 0;
+    /* CSS-Eigenschaften – erstmals hier: align-self = Ausrichtung eines einzelnen Flex-/Grid-Kindes auf der Querachse. */
     align-self: center;
 }
 
-/* Image frame clips the zoomed photograph */
+/* Der Bildrahmen schneidet die beim Hover vergrößerte Fotografie ab. */
 .artist-card__image-frame {
     overflow: hidden;
     border-radius: 0.75rem;
@@ -554,6 +782,9 @@ img {
 .artist-card__image {
     width: 100%;
     height: 25rem;
+    /* CSS-Eigenschaften – erstmals hier:
+       object-fit = cover füllt das Bildfeld mit einem <img>, gegebenenfalls beschnitten.
+       object-position = bestimmt, welcher Bildbereich beim Beschneiden erhalten bleibt. */
     object-fit: cover; /* füllt Bildfläche ohne Foto zu verzerren */
     object-position: center 20%; /* verschiebt sichtbaren Bildausschnitt etwas nach oben, damit Gesichter im Fokus bleiben */
     
@@ -564,6 +795,7 @@ img {
 
 .artist-tagline {
     font-family: var(--font-heading);
+    /* CSS-Eigenschaften – erstmals hier: font-style = Schriftschnitt wie italic (kursiv). */
     font-style: italic;
     font-weight: 600;
     color: var(--color-accent);
@@ -578,13 +810,12 @@ img {
 }
 
 
-/* ========================================
-   MA2 - CINEMATIC ARTIST STAGES
-   Shared layout, photograph blending and floating effect
-   ======================================== */
+/* MA2: Gemeinsame Künstlerinnenbühnen mit Bildmasken und räumlichem Schatten */
 
-/* Shared stage frame. Each artist defines her own background below. */
+/* Gemeinsame Bühne; der Hintergrund wird je Künstlerin weiter unten festgelegt. */
+/* Konzept: BEM-Namensschema: .artist-card ist die Komponente; __media bezeichnet ein Unterelement; --cinematic eine Variante. Das ist eine Konvention, keine besondere CSS-Syntax. */
 .artist-card--cinematic {
+    /* CSS-Eigenschaften – erstmals hier: grid-column = Grid-Spaltenposition; 1 / -1 spannt von der ersten bis letzten Linie. */
     grid-column: 1 / -1;
 
     display: flex;
@@ -594,10 +825,10 @@ img {
     padding: 0;
     overflow: hidden;
     border: 1px solid rgb(243 232 218 / 20%);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
     background-color: var(--color-surface);
 
-    /* The same pearl-white 3D effect for all three artists */
+    /* Alle drei Künstlerinnenkarten verwenden denselben hellen, räumlichen Schatten. */
     box-shadow:
         0 14px 28px -10px rgb(208 193 190 / 25%),
         0 32px 72px -18px rgb(0 0 0 / 85%),
@@ -605,13 +836,14 @@ img {
         inset 0 1px 0 rgb(255 255 255 / 12%);
 }
 
-/* The blurred version of the same photo fills the background. */
+/* Das Pseudoelement zeigt dasselbe Porträt weichgezeichnet als Hintergrund. */
 .artist-card--cinematic .artist-card__image-frame {
     position: relative;
     isolation: isolate;
 
     height: clamp(17rem, 65vw, 23rem);
     overflow: hidden;
+    /* CSS-Eigenschaften – erstmals hier: flex-shrink = bestimmt, ob ein Flex-Kind bei Platzmangel schrumpfen darf. */
     flex-shrink: 0;
     border-radius: 0;
     background: transparent;
@@ -643,7 +875,7 @@ img {
     );
 }
 
-/* Sharp foreground portrait dissolves softly at the edges. */
+/* Die scharfe Fotografie im Vordergrund läuft durch eine Maske weich aus. */
 .artist-card--cinematic .artist-card__image {
     position: absolute;
     inset: 0;
@@ -668,7 +900,7 @@ img {
     );
 }
 
-/* Text column and global homepage accent colours. */
+/* Textbereich und Akzentfarben der Homepage. */
 .artist-card--cinematic .artist-card__content {
     position: relative;
     z-index: 3;
@@ -710,7 +942,7 @@ img {
     margin-top: 1rem;
 }
 
-/* Preserve the shared 3D lighting on hover and keyboard focus. */
+/* Der 3D-Lichteffekt wird auch bei Tastaturfokus sichtbar. */
 .artist-card--cinematic:focus-within {
     transform: translateY(-7px);
     border-color: rgb(243 232 218 / 38%);
@@ -735,14 +967,15 @@ img {
     }
 }
 
-/* No additional zoom on the large cinematic portrait. */
+/* Cinematische Porträts werden beim Hover nicht zusätzlich vergrößert. */
 .artist-card--cinematic:hover .artist-card__image,
 .artist-card--cinematic:focus-within .artist-card__image {
     transform: none;
     filter: none;
 }
 
-/* Desktop: photo on the right, editorial text on the left. */
+/* Ab 768 px: Porträt rechts, redaktioneller Text links. */
+/* Media Query: Mobile First: min-width ergänzt oder überschreibt die Grundregeln erst AB einer bestimmten Bildschirmbreite. Es gibt unterschiedliche Breakpoints je Komponente. */
 @media (min-width: 768px) {
     .artist-card--cinematic {
         display: grid;
@@ -751,9 +984,10 @@ img {
     }
 
     
-    /* All three portraits softly dissolve into the text background */
+    /* Alle drei Porträts gehen durch eine seitliche Maske in den Textbereich über. */
     .artist-card--cinematic .artist-card__image-frame {
         grid-column: 2;
+        /* CSS-Eigenschaften – erstmals hier: grid-row = ordnet ein Element einer Grid-Zeile zu. */
         grid-row: 1;
 
         width: calc(100% + 4rem);
@@ -788,30 +1022,10 @@ img {
    ======================================== */
 
 .artist-card--cinematic--raye {
+    /* CSS-Variable (erste Definition): --stage-photo = URL des Porträts für die weiche Künstlerinnen-Bildbühne */
     --stage-photo: url("../images/raye-portrait.jpg");
 
-    background:
-        radial-gradient(
-            ellipse 55% 90% at 12% 12%,
-            rgb(230 161 73 / 45%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 58% 85% at 30% 80%,
-            rgb(169 33 48 / 62%),
-            transparent 74%
-        ),
-        radial-gradient(
-            ellipse 65% 100% at 85% 45%,
-            rgb(110 27 40 / 35%),
-            transparent 80%
-        ),
-        linear-gradient(
-            105deg,
-            #47251c 0%,
-            #42151e 48%,
-            #160c13 100%
-        );
+    background: var(--raye-stage);
 }
 
 /* ========================================
@@ -821,31 +1035,10 @@ img {
 .artist-card--cinematic--amma {
     --stage-photo: url("../images/amma-portrait.jpg");
 
-    background:
-        radial-gradient(
-            ellipse 65% 90% at 10% 5%,
-            rgb(239 193 139 / 38%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 85% at 38% 95%,
-            rgb(206 96 15 / 39%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 95% at 88% 35%,
-            rgb(177 105 65 / 24%),
-            transparent 80%
-        ),
-        linear-gradient(
-            108deg,
-            #72503d 0%,
-            #955a3d 50%,
-            #2b1b19 100%
-        );
+    background: var(--amma-stage);
 }
 
-/* Amma's portrait has a brighter, warmer haze. */
+/* Ammas Porträt erhält eine hellere und wärmere Unschärfe. */
 .artist-card--cinematic--amma .artist-card__image-frame::before {
     filter: blur(55px) brightness(0.72) saturate(1.08);
     opacity: 0.8;
@@ -861,7 +1054,7 @@ img {
     background: var(--absolutely-stage);
 }
 
-/* Override the shared portrait blur. This rule must come AFTER it. */
+/* Absolutely überschreibt die gemeinsame Bildunschärfe; diese Regel muss danach stehen. */
 .artist-card--cinematic--absolutely .artist-card__image-frame::before {
     filter: blur(52px) brightness(0.4) saturate(1.2);
     opacity: 0.72;
@@ -876,7 +1069,7 @@ img {
     );
 }
 
-/* The brighter studio photograph needs a wider transparent edge. */
+/* Das hellere Studiofoto benötigt einen breiteren weichen Bildrand. */
 .artist-card--cinematic--absolutely .artist-card__image {
     -webkit-mask-image: radial-gradient(
         ellipse 75% 100% at 57% 45%,
@@ -892,7 +1085,7 @@ img {
     );
 }
 
-/* Darken only the edges, leaving the face bright. */
+/* Nur die Bildränder abdunkeln; das Gesicht bleibt hell. */
 .artist-card--cinematic--absolutely .artist-card__image-frame::after {
     content: "";
     position: absolute;
@@ -923,21 +1116,27 @@ img {
 }
 
 
-/* ========================================
-   MA2 - CINEMATIC ARTIST CAROUSEL
-   ======================================== */
+/* #endregion */
+
+/* #region 06 · HOMEPAGE: ARTIST-CAROUSEL */
+
+/* ============================================================
+   06 · HOMEPAGE: ARTIST-CAROUSEL
+   ============================================================ */
+/* MA2: Interaktiver Artist-Carousel – Aktivierung durch JavaScript */
 
 .artist-carousel {
     position: relative;
 }
 
 
-/* Stage provides the positioning reference for the arrows */
+/* Die Bühne ist der Positionierungsbezug für die Carousel-Pfeile. */
 .artist-carousel__stage {
     position: relative;
 }
 
-/* Only activated when JavaScript is available */
+/* Progressive Enhancement: Erst nach erfolgreicher JS-Initialisierung wird das Carousel aktiviert. */
+/* Konzept: Progressive Enhancement: Ohne erfolgreich initialisiertes JavaScript bleiben die Künstlerinnenkarten im normalen Layout. Erst .artist-carousel--ready aktiviert die überlagerte Carousel-Darstellung. */
 .artist-carousel--ready .artist-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -945,8 +1144,11 @@ img {
     isolation: isolate;
 }
 
-/* All three stages occupy the same grid position */
+/* Die drei Künstlerinnenkarten liegen in derselben Grid-Zelle übereinander. */
 .artist-carousel--ready .artist-grid > .artist-card {
+    /* CSS-Eigenschaften – erstmals hier:
+       grid-area = legt ein Grid-Gebiet oder Start-/Endlinien für ein Element fest.
+       visibility = hidden blendet optisch aus, ohne das Element aus dem Grid zu entfernen. */
     grid-area: 1 / 1;
     position: relative;
     z-index: 0;
@@ -963,17 +1165,18 @@ img {
         box-shadow 0.5s ease;
 }
 
-/* Selected artist becomes visible */
+/* Nur die aktive Künstlerinnenkarte wird sichtbar und bedienbar. */
 .artist-carousel--ready .artist-grid > .artist-card.is-active {
     z-index: 1;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    /* CSS-Eigenschaften – erstmals hier: transition-delay = Zeitversatz für Übergänge; lässt Teile nacheinander erscheinen. */
     transition-delay: 0s;
 }
 
 
-/* Only the dots and counter remain below the stage */
+/* Unterhalb der Bühne bleiben nur die Navigationspunkte und der Zähler. */
 .artist-carousel__controls {
     display: none;
     justify-content: center;
@@ -985,7 +1188,7 @@ img {
 }
 
 
-/* Floating arrows next to the artist stage */
+/* Navigationspfeile liegen seitlich neben der Bühne. */
 .artist-carousel__arrow {
     position: absolute;
     z-index: 3;
@@ -993,7 +1196,7 @@ img {
     display: none;
     place-items: center;
 
-    /* Centre arrows vertically on the entire card */    
+    /* Pfeile vertikal zur gesamten Karte zentrieren. */
     top: 50%;
 
     box-sizing: border-box;
@@ -1017,12 +1220,12 @@ img {
         background-color 0.25s ease;
 }
 
-/* Controls are visible only when JS activates the carousel */
+/* Pfeile erscheinen erst nach erfolgreicher JS-Initialisierung. */
 .artist-carousel--ready .artist-carousel__arrow {
     display: grid;
 }
 
-/* SVG fills the centre of the circular button */
+/* Das SVG-Symbol sitzt mittig im runden Button. */
 .artist-carousel__arrow svg {
     display: block;
     width: 1.375rem;
@@ -1031,7 +1234,7 @@ img {
 }
 
 
-/* Small screens: arrows stay inside the stage edges */
+/* Kleine Bildschirme: Pfeile bleiben innerhalb der Bühnenränder. */
 .artist-carousel__arrow--prev {
     left: 0.5rem;
 }
@@ -1041,10 +1244,10 @@ img {
 }
 
 
-/* Tablet and smaller desktop:
-   Reserve space beside the artist card for the arrows */
+/* Tablet und kleinere Desktops: Neben der Karte Platz für Pfeile freihalten. */
 @media (min-width: 768px) {
     .artist-carousel__stage {
+        /* CSS-Eigenschaften – erstmals hier: padding-inline = Innenabstand in Schreibrichtung links/rechts (sprachabhängig). */
         padding-inline: 3.75rem;
     }
 
@@ -1057,8 +1260,7 @@ img {
     }
 }
 
-/* Wide desktop:
-   Keep the card full-width and float arrows outside */
+/* Große Desktops: Karte nutzt die volle Breite; Pfeile stehen außen. */
 @media (min-width: 1280px) {
     .artist-carousel__stage {
         padding-inline: 0;
@@ -1088,7 +1290,7 @@ img {
     align-items: center;
 }
 
-/* Large touch target, small visible dot */
+/* Große anklickbare Fläche bei bewusst kleinem sichtbarem Navigationspunkt. */
 .artist-carousel__dot {
     display: grid;
     place-items: center;
@@ -1107,7 +1309,7 @@ img {
     width: 0.5rem;
     height: 0.5rem;
 
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     background-color: rgb(243 232 218 / 40%);
 
     transition:
@@ -1115,7 +1317,8 @@ img {
         background-color 0.3s ease;
 }
 
-/* Active dot becomes a golden line */
+/* Der aktive Navigationspunkt wird zur goldenen Linie. */
+/* Selektor/Technik: Attributselektor [aria-pressed=...] gestaltet den von JavaScript gesetzten Filterzustand. Das Attribut selbst ist kein CSS-Schalter. */
 .artist-carousel__dot[aria-pressed="true"]::before {
     width: 1.75rem;
     background-color: var(--color-accent);
@@ -1124,11 +1327,13 @@ img {
 .artist-carousel__count {
     color: var(--color-text);
     font-size: 0.7rem;
+    /* CSS-Eigenschaften – erstmals hier: font-variant-numeric = tabular-nums gibt allen Ziffern gleiche Breite, z. B. für Zähler. */
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.16em;
 }
 
-/* Accessible announcement without visible text */
+/* Unsichtbare Live-Ansage für Screenreader beim Wechsel der Künstlerin. */
+/* Konzept: Visuell versteckter Live-Text kann von Screenreadern weiter gelesen werden. clip-path dient hier nicht dazu, die Information semantisch zu löschen. */
 .artist-carousel__announcement {
     position: absolute;
     width: 1px;
@@ -1136,11 +1341,12 @@ img {
     margin: -1px;
     padding: 0;
     overflow: hidden;
+    /* CSS-Eigenschaften – erstmals hier: clip-path = schneidet den sichtbaren Bereich eines Elements geometrisch zu. */
     clip-path: inset(50%);
     white-space: nowrap;
 }
 
-/* Subtle navigation hover */
+/* Dezente Hover-Rückmeldung der Carousel-Pfeile. */
 @media (hover: hover) and (pointer: fine) {
     .artist-carousel__arrow:hover {
         border-color: var(--color-accent);
@@ -1148,7 +1354,7 @@ img {
     }
 }
 
-/* Animation happens only when changing artists */
+/* Eintrittsanimation nur bei einem tatsächlichen Künstlerinnenwechsel. */
 @media (prefers-reduced-motion: no-preference) {
     .artist-carousel--ready
     .artist-card.is-active.is-changing
@@ -1187,7 +1393,7 @@ img {
     }
 }
 
-/* Portrait emerges from the new colour atmosphere */
+/* Das neue Porträt erscheint weich aus dem Hintergrund. */
 @keyframes artist-carousel-image-in {
     from {
         opacity: 0.3;
@@ -1202,7 +1408,7 @@ img {
     }
 }
 
-/* Information follows after the portrait */
+/* Die Texte erscheinen zeitlich versetzt nach dem Porträt. */
 @keyframes artist-carousel-copy-in {
     from {
         opacity: 0;
@@ -1215,7 +1421,8 @@ img {
     }
 }
 
-/* No movement for users who prefer reduced motion */
+/* Bei reduzierter Bewegung entfallen Carousel-Übergänge. */
+/* Media Query: Barrierefreiheit: Betriebssystem-Einstellung für weniger Bewegung beachten; gezielt Animationen/Übergänge entfernen, ohne Inhalte unsichtbar zu machen. */
 @media (prefers-reduced-motion: reduce) {
     .artist-carousel--ready .artist-grid > .artist-card,
     .artist-carousel--ready .artist-grid > .artist-card.is-active,
@@ -1226,21 +1433,29 @@ img {
 }
 
 
-/* How to Explore-Section Mobile First*/
+/* #endregion */
+
+/* #region 07 · HOMEPAGE: HOW TO EXPLORE */
+
+/* ============================================================
+   07 · HOMEPAGE: HOW TO EXPLORE
+   ============================================================ */
+/* How to Explore – Mobile First */
 .artists-section,
 .records-section {
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
 }
 
 .artists-section {
     position: relative;
+    /* CSS-Eigenschaften – erstmals hier: padding-top = oberer Innenabstand, unabhängig von anderen Seiten. */
     padding-top: clamp(3rem, 5vw, 5rem);
 }
 
 
-/* How to Explore - cinematic chapter section */
+/* Vier redaktionelle Kapitel erklären die Nutzung der Website. */
 .explore-section {
     position: relative;
     isolation: isolate;
@@ -1271,7 +1486,7 @@ img {
         );
 }
 
-/* Very subtle ambient light */
+/* Sehr dezenter Lichtschein im Hintergrund. */
 .explore-section::before {
     content: "";
     position: absolute;
@@ -1287,17 +1502,18 @@ img {
     animation: explore-ambient-glow 12s ease-in-out infinite alternate;
 }
 
-/* Align content with the rest of the website */
+/* Inhalt an der gemeinsamen Homepage-Inhaltsbreite ausrichten. */
 .explore-section__inner {
     position: relative;
     z-index: 1;
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
 }
 
 
-/* Editorial heading */
+/* Redaktionelle Abschnittsüberschrift. */
 .explore-section__heading {
+    /* CSS-Eigenschaften – erstmals hier: margin-bottom = unterer Außenabstand. */
     margin-bottom: 2.75rem;
 }
 
@@ -1310,7 +1526,7 @@ img {
 }
 
 
-/* Four editorial chapters */
+/* Vier redaktionelle Schritte im Grid. */
 .steps-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -1322,11 +1538,15 @@ img {
 }
 
 
-/* Individual editorial chapter */
+/* Einzelnes Kapitel mit Nummer, Überschrift und Beschreibung. */
 .step-card {
     position: relative;
     display: grid;
     grid-template-columns: 3.5rem minmax(0, 1fr);
+    /* CSS-Eigenschaften – erstmals hier:
+       column-gap = horizontaler Abstand zwischen Grid-Spalten.
+       row-gap = vertikaler Abstand zwischen Grid-Zeilen.
+       border-left = Rahmen nur an der linken Kante. */
     column-gap: 1rem;
     row-gap: 0.5rem;
 
@@ -1340,7 +1560,7 @@ img {
 
 
 
-/* Large editorial numbers */
+/* Große redaktionelle Kapitelnummern. */
 .step-number {
     display: block;
     grid-column: 1;
@@ -1374,7 +1594,7 @@ img {
 }
 
 
-/* Slow ambient light - no movement of content */
+/* Nur der Hintergrund-Lichtschein pulsiert; Inhalte bleiben unbewegt. */
 @keyframes explore-ambient-glow {
     from {
         opacity: 0.25;
@@ -1386,9 +1606,16 @@ img {
 }
 
 
-/* Explore the Records Section - Mobile First */
+/* #endregion */
 
-/* Consistent editorial heading */
+/* #region 08 · HOMEPAGE: RECORD-GALERIE */
+
+/* ============================================================
+   08 · HOMEPAGE: RECORD-GALERIE
+   ============================================================ */
+/* Explore the Records – Mobile First */
+
+/* Einheitliche redaktionelle Abschnittsüberschrift. */
 .records-section > h2 {
     margin: 0;
     font-size: clamp(2rem, 4vw, 3rem);
@@ -1397,8 +1624,10 @@ img {
 }
 
 /* Kategorienfilter */
+/* Konzept: Die Filter-Klassen erhalten ihren Zustand über das HTML-Attribut aria-pressed, das JavaScript ändert. CSS verändert nicht selbst, welcher Filter aktiv ist. */
 .record-filters {
     display: flex;
+    /* CSS-Eigenschaften – erstmals hier: flex-wrap = wrap erlaubt Flex-Kindern bei Platzmangel neue Zeilen. */
     flex-wrap: wrap;
     gap: 0.75rem;
     margin: 1.5rem 0 2.5rem;
@@ -1421,7 +1650,7 @@ img {
     min-height: 44px;
     padding: 0.5rem 1.1rem;
     border: 1px solid rgb(221 182 111 / 45%);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     background-color: rgb(221 182 111 / 5%);
     color: var(--color-heading);
@@ -1438,14 +1667,14 @@ img {
 }
 
 
-/* Gentle highlight on hover */
+/* Filter erhält bei Hover eine leichte Hervorhebung. */
 .filter-chip:not([aria-pressed="true"]):hover {
     background-color: rgb(221 182 111 / 16%);
     border-color: var(--color-accent);
     color: var(--color-heading);
 }
 
-/* Stronger appearance for the selected filter */
+/* Der ausgewählte Filter wird über aria-pressed="true" gestaltet. */
 .filter-chip[aria-pressed="true"] {
     background-color: var(--color-accent);
     border-color: var(--color-accent);
@@ -1458,19 +1687,29 @@ img {
 
 
 
-/* Records-Grid */
-/* Each artist collection fills the available content width */
+/* Responsives Raster für die Record-Galerie. */
+/* Jede Künstlerinnengruppe nutzt die verfügbare Breite. */
 .record-group {
     max-width: none;
 }
 
 
-/* Mobile: swipeable album collection */
+/* Mobil: horizontal scrollbar mit Scroll-Snap pro Albumkarte. */
+/* Konzept: Mobiles horizontales Grid: grid-auto-flow: column ordnet die Albumkarten nebeneinander; overflow-x: auto lässt seitlich scrollen und scroll-snap-type lässt Karten einrasten. */
 .record-grid {
     display: grid;
 
     grid-template-columns: none;
+    /* CSS-Eigenschaften – erstmals hier:
+       grid-auto-flow = column ordnet automatisch erzeugte Grid-Kinder nebeneinander an.
+       grid-auto-columns = Breite der automatisch erzeugten Grid-Spalten.
+       overflow-x = horizontales Überlaufen; auto ermöglicht seitliches Scrollen.
+       overscroll-behavior-x = contain verhindert das Weiterreichen seitlicher Scrollgesten.
+       scroll-snap-type = Einrastmodus für horizontales Scrollen, hier x mandatory.
+       scroll-padding-inline = innerer Einrastabstand beim Scroll-Snap.
+       margin-inline = Außenabstand links/rechts in Schreibrichtung; negative Werte erweitern die Fläche. */
     grid-auto-flow: column;
+    /* CSS-Funktion: min() nimmt den kleineren von mehreren Größenwerten, z. B. für eine Kartengröße. */
     grid-auto-columns: min(82vw, 21rem);
 
     gap: 1rem;
@@ -1484,17 +1723,21 @@ img {
     margin-inline: -1rem;
     padding: 1rem 1rem 1.5rem;
 
+    /* CSS-Eigenschaften – erstmals hier:
+       scrollbar-width = Breite der Scrollleiste in unterstützenden Browsern.
+       scrollbar-color = Farben des Scrollleisten-Griffs und -Hintergrunds. */
     scrollbar-width: thin;
     scrollbar-color: rgb(221 182 111 / 35%) transparent;
 }
 
 .record-grid > .record-card {
+    /* CSS-Eigenschaften – erstmals hier: scroll-snap-align = Position, an der eine Karte beim Scrollen einrasten soll. */
     scroll-snap-align: start;
 }
 
 
 
-/* Editorial heading for each artist collection */
+/* Redaktionelle Überschrift und Link je Künstlerinnengruppe. */
 .record-group-header {
     display: flex;
     flex-direction: row;
@@ -1527,7 +1770,7 @@ img {
 
 
 
-/* Record gallery - editorial album sleeves */
+/* Albumkarten mit Schallplattenhüllen-Anmutung. */
 .record-card {
     position: relative;
 
@@ -1562,7 +1805,7 @@ img {
 }
 
 
-/* Album sleeves lift gently when explored */
+/* Albumkarten heben sich bei Hover leicht an. */
 @media (hover: hover) and (pointer: fine) {
     .record-card:hover {
         z-index: 2;
@@ -1576,12 +1819,13 @@ img {
             inset 0 1px 0 rgb(255 255 255 / 12%);
     }
 
+    /* Konzept: aspect-ratio: 1 / 1 legt ein quadratisches Coverfeld fest. Die Bilddarstellung wird mit object-fit: cover angepasst. */
     .record-card:hover .record-cover {
         transform: scale(1.025);
     }
 }
 
-/* Equivalent visual feedback for keyboard focus */
+/* Ähnliche visuelle Rückmeldung bei Tastaturfokus. */
 .record-card:focus-within {
     border-color: rgb(243 232 218 / 32%);
 }
@@ -1591,10 +1835,11 @@ img {
 }
 
 
-/* Album artwork remains the main visual focus */
+/* Das Albumcover bleibt das wichtigste Bildelement. */
 .record-cover {
     display: block;
     width: 100%;
+    /* CSS-Eigenschaften – erstmals hier: aspect-ratio = festes Breite-Höhe-Verhältnis, z. B. 1 / 1 für quadratische Cover. */
     aspect-ratio: 1 / 1;
 
     object-fit: cover;
@@ -1611,7 +1856,7 @@ img {
 
 
 
-/* Featured records with a detail page */
+/* Hervorgehobene Alben mit eigener Detailseite. */
 .record-card--featured .record-card__media {
     position: relative;
     overflow: hidden;
@@ -1622,7 +1867,7 @@ img {
 }
 
 
-/* Featured album covers grow as one complete image frame */
+/* Bei Interaktion wird der gesamte Coverrahmen leicht vergrößert. */
 .record-card--featured:focus-within .record-card__media {
     transform: scale(1.025);
 }
@@ -1633,40 +1878,50 @@ img {
     }
 }
 
-/* Cover fills the image frame */
+/* Cover füllt den quadratischen Bildrahmen. */
 .record-card--featured .record-cover {
     border-radius: 0;
 }
 
-/* Mobile: record link remains visible */
+/* Mobil bleibt der Link zur Albumdetailseite regulär sichtbar. */
 .record-card--featured .record-card__overlay {
     display: none;
 }
 
-/* Decorative label only appears on desktop hover */
+/* Dekoratives Label erscheint im Desktop-Overlay. */
 .record-card--featured .record-card__overlay-label {
     display: none;
 }
 
-/* Existing button styling is reused */
+/* Der Link nutzt die gemeinsame Button-Gestaltung. */
 .record-card--featured .record-card__link {
     align-self: center;
     margin-top: 0;
 }
 
 
-/* Cinematic cover reveal for desktop pointer devices */
+/* Cover-Overlay nur auf Desktopgeräten mit präzisem Mauszeiger. */
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
 
-    /* Featured cards use a grid to layer the link over the cover */
+    /* CSS Grid legt den Detailseiten-Link über das Cover. */
     .record-card--featured {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
     }
 
+    /* Alle hervorgehobenen Cover verwenden ein quadratisches Bildfeld. */
     .record-card--featured .record-card__media {
         grid-column: 1;
         grid-row: 1;
+        aspect-ratio: 1 / 1;
+    }
+
+    .record-card--featured .record-cover {
+        height: 100%;
+        object-fit: cover;
+        transition:
+            transform 0.85s cubic-bezier(0.2, 0.65, 0.25, 1),
+            filter 0.65s ease;
     }
 
     .record-card--featured h4 {
@@ -1679,7 +1934,7 @@ img {
         grid-row: 3;
     }
 
-    /* Position the existing link over the album cover */
+    /* Vorhandenen Detailseiten-Link über dem Cover positionieren. */
     .record-card.record-card--featured .record-card__link {
         grid-column: 1;
         grid-row: 1;
@@ -1688,6 +1943,7 @@ img {
         z-index: 2;
 
         align-self: end;
+        /* CSS-Eigenschaften – erstmals hier: justify-self = Ausrichtung eines einzelnen Grid-Kindes entlang der Inline-Achse. */
         justify-self: center;
 
         margin: 0 0 1.4rem;
@@ -1699,16 +1955,6 @@ img {
         transition:
             opacity 0.55s ease,
             transform 0.55s ease;
-    }
-
-    /* Featured covers use the same square image area */
-    .record-card--featured .record-card__media {
-        aspect-ratio: 1 / 1;
-    }
-
-    .record-card--featured .record-cover {
-        height: 100%;
-        object-fit: cover;
     }
 
     .record-card--featured .record-card__overlay {
@@ -1751,14 +1997,8 @@ img {
         text-transform: uppercase;
     }
 
-    .record-card--featured .record-cover {
-        transition:
-            transform 0.85s cubic-bezier(0.2, 0.65, 0.25, 1),
-            filter 0.65s ease;
-    }
-
  
-    /* Reveal the overlay and the link together */
+    /* Overlay und Link werden bei Hover oder Tastaturfokus gemeinsam eingeblendet. */
     .record-card--featured:hover .record-card__overlay,
     .record-card--featured:focus-within .record-card__overlay,
     .record-card--featured:hover .record-card__link,
@@ -1810,7 +2050,7 @@ img {
 }
 
 
-/* Align album metadata at the bottom of each card */
+/* Album-Metadaten am unteren Kartenrand ausrichten. */
 .record-card .record-meta {
     margin-top: auto;
 
@@ -1821,13 +2061,16 @@ img {
 
 
 
-/* Uniform warm-white glow for records with detail pages */
+/* Einheitlicher warmweißer Lichtschein bei Alben mit Detailseite. */
 .record-card--featured {
+    /* CSS-Variable (erste Definition):
+       --album-light = stärkerer Lichtschein um hervorgehobene Records
+       --album-light-soft = weichere zweite Schicht desselben Lichtscheins */
     --album-light: rgb(243 232 218 / 55%);
     --album-light-soft: rgb(243 232 218 / 15%);
 }
 
-/* Stronger light when navigating with the keyboard */
+/* Heller Lichtschein auch bei Tastaturfokus. */
 .record-card--featured:focus-within {
     border-color: var(--album-light);
 
@@ -1837,7 +2080,7 @@ img {
         0 0 70px var(--album-light-soft);
 }
 
-/* Warm-white glow on hover */
+/* Warmweißer Lichtschein beim Hover. */
 @media (hover: hover) and (pointer: fine) {
     .record-card--featured:hover {
         border-color: var(--album-light);
@@ -1850,13 +2093,22 @@ img {
 }
 
 
-.record-group + .record-group { /* durch + wird direkt folgendes Geschwisterelement angesprochen --> betrifft also nur Amma & Absolutely, nicht RAYE */
+/* Selektor/Technik: Der Nachbarselektor + erfasst nur das unmittelbar folgende Geschwisterelement. */
+.record-group + .record-group { /* + wählt jeweils die direkt folgende Künstlerinnengruppe aus. */
     margin-top: clamp(4.5rem, 7vw, 6rem);
 }
 
 
-/* Footer - Mobile First */
+/* #endregion */
+
+/* #region 09 · FOOTER UND GEMEINSAME RESPONSIVE-REGELN */
+
+/* ============================================================
+   09 · FOOTER UND GEMEINSAME RESPONSIVE-REGELN
+   ============================================================ */
+/* Footer – Mobile First */
 .site-footer {
+    /* CSS-Eigenschaften – erstmals hier: border-top = Rahmen nur an der oberen Kante. */
     border-top: 1px solid var(--color-border);
     padding: 3rem 0 2rem;
 }
@@ -1866,7 +2118,7 @@ img {
     flex-direction: column;
     gap: 2.5rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -1904,13 +2156,223 @@ img {
     color: var(--color-accent);
 }
 
+/* Gemeinsame Responsive-Regeln für Header, Homepage und Footer */
+@media (min-width: 768px) {
+    /*------------------*/
+    /* Gemeinsame Desktop-Anpassungen */
+    /*-----------------*/
+
+    /* Header */
+    .site-brand {
+        /* CSS-Eigenschaften – erstmals hier: flex = Kurzform für Wachstum, Schrumpfung und Ausgangsbreite im Flex-Layout. */
+        flex: 1;
+    }
+
+    .site-nav {
+        display: flex;
+    }
+
+    .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-list a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .header-actions {
+        flex: 1;
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+
+    .collection-label {
+        display: inline;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    
+    /* Homepage-Hero auf größeren Bildschirmen. */
+    .home-hero {
+        min-height: 89svh;
+        padding: 7rem 0 8rem;
+    }
 
 
-/*----------------------------------------------*/
-/* RAYE Album detail page Design - Mobile First */
-/*----------------------------------------------*/
+    /* Die Desktop-Collage nutzt nahezu die gesamte Bildschirmhöhe. */
+    .home-hero__image {
+        top: -6%;
+        bottom: -6%;
+        height: auto;
+    }
 
-/* Hero-Section */
+    /* Absolutely: atmosphärische Fotoebene links. */
+    .home-hero__image--absolutely {
+        left: 34%;
+        width: 38%;
+        background-position: 50% 23%;
+        --photo-opacity: 0.95;
+    }
+
+    /* RAYE: Hauptmotiv im Bildzentrum. */
+    .home-hero__image--raye {
+        left: 50%;
+        width: 40%;
+        background-position: 50% 22%;
+        --photo-opacity: 1;
+    }
+
+    /* Amma: weichere Fotoebene rechts. */
+    .home-hero__image--amma {
+        left: 72%;
+        width: 28%;
+        background-position: 50% 20%;
+        --photo-opacity: 0.95;
+    }
+
+
+    /* Dunkler Verlauf für gut lesbaren Text. */
+    .home-hero__shade {   
+        background:
+            linear-gradient(
+                90deg,
+                rgb(11 9 13 / 98%) 0%,
+                rgb(11 9 13 / 88%) 30%,
+                rgb(11 9 13 / 62%) 44%,
+                rgb(11 9 13 / 25%) 65%,
+                rgb(11 9 13 / 12%) 100%
+            ),
+            linear-gradient(
+                to bottom,
+                var(--color-bg) 0%,
+                transparent 16%,
+                transparent 72%,
+                var(--color-bg) 100%
+            );
+    }
+
+    /* Redaktionellen Text auf Desktop links halten. */
+    .home-hero h1 {
+        max-width: 40rem;
+    }
+
+    .home-hero .hero-description {
+        max-width: 35rem;
+    }
+
+
+    .hero-description {
+        font-size: 1.125rem;
+    }
+
+    /* Künstlerinnenbereich. */
+    .artist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    
+    /* How to Explore auf Desktop. */
+    .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2rem;
+        row-gap: 1.25rem;
+    }
+
+    .step-card {
+        display: block;
+        padding: 0 0 0 1.25rem;
+    }
+
+    .step-number {
+        font-size: 3rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .step-card h3 {
+        margin-bottom: 0.75rem;
+    }
+
+
+    /* Record-Galerie auf Desktop. */
+    .record-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+
+        overflow: visible;
+        scroll-snap-type: none;
+
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .record-group + .record-group {
+        margin-top: 5rem;
+    }
+
+    /* Footer auf größeren Bildschirmen. */
+    .footer-inner {
+        flex-direction: row; /* bringt Logo und Navigation nebeneinander */
+        justify-content: space-between; /* Verteilung von beiden Bereichen über verfügbare Breite */
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .footer-about {
+        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigation aber feste Breite beibehält */
+        min-width: 0;
+    }
+
+    .footer-nav {
+        width: 17rem;
+        margin-top: 3rem;
+    }
+}
+
+
+
+@media (min-width: 1100px) {
+    /*------------------*/
+    /* Gemeinsame Desktop-Anpassungen */
+    /*-----------------*/
+    .artist-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 1.75rem;
+        row-gap: 0;
+    }
+
+    .record-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* #endregion */
+
+/* #region 10 · GEMEINSAME ALBUM-HEROES UND FAKTENKARTEN */
+
+/* ============================================================
+   10 · GEMEINSAME ALBUM-HEROES UND FAKTENKARTEN
+   ============================================================ */
+
+/* Textlinks und Zurück-Navigation werden von beiden Albumseiten verwendet. */
 .text-link {
     color: var(--color-accent);
     font-size: 0.875rem;
@@ -1923,9 +2385,18 @@ img {
 }
 
 .album-back {
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 2rem auto 0;
     padding: 0 1rem;
+}
+
+/* :is() fasst beide Seitenklassen zusammen, ohne andere Seiten zu beeinflussen.
+   z-index hält den Zurück-Link über den dekorativen Hintergrundebenen. */
+:is(.page-raye, .page-absolutely) .album-back {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 1.75rem 1rem 0;
 }
 
 .album-hero {
@@ -1933,7 +2404,7 @@ img {
     grid-template-columns: 1fr;
     gap: 2rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 3rem 1rem 5rem;
 }
@@ -1964,46 +2435,19 @@ img {
 }
 
 
-/* ========================================
-   MA2 - RAYE CINEMATIC ALBUM HERO
-   ======================================== */
+/* Gemeinsames Cinematic-Hero-Layout: Die Albummotive unterscheiden
+   sich, ihre Grundstruktur wird aber nur an einer Stelle definiert. */
 
-.page-raye main {
-    background: transparent;
-}
-
-/* Shared background behind header and album content */
-.page-raye .raye-atmosphere {
+/* Benannte Grid-Bereiche bestimmen die mobile Reihenfolge:
+   zuerst Text, danach Cover, zuletzt Buttons. Ab 900px werden sie
+   im Media Query auf zwei Spalten verteilt. */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) {
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    background: linear-gradient(
-        to bottom,
-        #171019 0,
-        #1b111a 14rem,
-        #24131e 28rem,
-        #40151c 43rem,
-        var(--color-bg) 57rem
-    );
-}
-
-
-/* The back link belongs to the same dark atmosphere */
-.page-raye .album-back {
-    position: relative;
-    z-index: 1;
-    margin: 0 auto;
-    padding: 1.75rem 1rem 0;
-}
-
-
-/* Mobile: text, artwork, then buttons */
-.page-raye .album-hero--hope {
-    position: relative;
-
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+    /* CSS-Eigenschaften – erstmals hier:
+       grid-template-areas = benannte Rasterflächen; ordnen Inhalt, Cover und Buttons nach Viewport.
+       align-content = Ausrichtung des gesamten Zeilen-/Spaltenpakets innerhalb des Containers. */
     grid-template-areas:
         "content"
         "media"
@@ -2018,25 +2462,66 @@ img {
     max-width: none;
     margin: 0;
 
+    /* CSS-Funktion: max() nimmt den größeren Wert, z. B. als Mindestseitenabstand. */
     padding:
         clamp(2.75rem, 6vw, 5.5rem)
-        max(1rem, calc((100vw - 70rem) / 2));
+        max(1rem, calc((100vw - var(--layout-content)) / 2));
 
     background: transparent;
 }
 
-
-.page-raye .album-hero--hope .album-hero__content {
+/* Inhalt und Cover liegen vor den dekorativen Hintergründen */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__content {
     grid-area: content;
+    position: relative;
+    z-index: 1;
 }
 
-.page-raye .album-hero--hope .album-hero__media {
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__media {
     grid-area: media;
+    position: relative;
+    z-index: 1;
+
+    display: block;
+    width: min(100%, 23rem);
+    justify-self: center;
+    align-self: center;
 }
 
+/* Quadratische Cover mit unverzerrtem Bildausschnitt; die Schatten bleiben individuell. */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__media img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 1rem;
+}
 
-/* Buttons centered below the cover on mobile */
-.page-raye .album-hero--hope .album-hero__actions {
+/* Kleine redaktionelle Titelzeile */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__eyebrow {
+    margin: 0 0 1.25rem;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+}
+
+/* Gemeinsame Eigenschaften der Albumtitel und Einleitungen */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) h1 {
+    margin: 0;
+    /* CSS-Eigenschaften – erstmals hier: text-wrap = balance versucht Überschriften in ausgewogene Zeilen aufzuteilen. */
+    text-wrap: balance;
+}
+
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__lead {
+    margin: 1.6rem 0 0;
+    color: var(--color-heading);
+}
+
+/* Die Buttons liegen mobil als eigene Grid-Zeile unter dem Cover. */
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__actions {
     grid-area: actions;
     position: relative;
     z-index: 1;
@@ -2052,8 +2537,7 @@ img {
     margin: 0;
 }
 
-/* Compact, equally styled hero buttons */
-.page-raye .album-hero--hope .album-hero__actions .button {
+:is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__actions .button {
     min-height: 46px;
     box-sizing: border-box;
     padding: 0.62rem 1.1rem;
@@ -2061,9 +2545,100 @@ img {
     white-space: nowrap;
 }
 
+/* Gemeinsame Faktenkarte: Breite und Abstände zentral, Farbverläufe pro Album. */
+:is(.page-raye, .page-absolutely) .album-overview {
+    position: relative;
+    z-index: 1;
+
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
+    max-width: var(--layout-facts);
+
+    margin: 1.75rem auto 0;
+    padding: clamp(1.35rem, 3vw, 2rem);
+
+    border-radius: var(--radius-panel);
+}
+
+:is(.page-raye, .page-absolutely) .album-overview h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+:is(.page-raye, .page-absolutely) .album-overview .album-facts {
+    margin: 1.5rem 0 0;
+}
+
+:is(.page-raye, .page-absolutely) .album-overview .save-action {
+    width: fit-content;
+    margin-top: 1.5rem;
+}
+
+/* Ab 900px: zwei Grid-Spalten mit Text/Buttons links und Cover rechts. */
+@media (min-width: 900px) {
+    :is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) {
+        grid-template-columns:
+            minmax(0, 1.18fr)
+            minmax(0, 0.82fr);
+
+        grid-template-areas:
+            "content media"
+            "actions media";
+
+        /* CSS-Eigenschaften – erstmals hier: grid-template-rows = Höhen der Grid-Zeilen. */
+        grid-template-rows: auto auto;
+        column-gap: clamp(2rem, 4vw, 5rem);
+        row-gap: 1.35rem;
+
+        min-height: min(78svh, 48rem);
+    }
+
+    :is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__actions {
+        justify-self: start;
+        justify-content: flex-start;
+        width: auto;
+    }
+
+    :is(.page-raye .album-hero--hope, .page-absolutely .album-hero--paracosm) .album-hero__media {
+        width: min(100%, 28rem);
+    }
+
+    :is(.page-raye, .page-absolutely) .album-overview {
+        width: min(calc(100% - 2rem), var(--layout-facts));
+        /* CSS-Eigenschaften – erstmals hier: margin-right = rechter Außenabstand; auto kann einen Block zentrieren. */
+        margin-right: auto;
+        margin-left: max(1rem, calc((100vw - var(--layout-content)) / 2));
+    }
+}
 
 
-/* Blurred storm clouds across the whole atmosphere */
+
+/* #endregion */
+
+/* #region 11 · RAYE: BÜHNENATMOSPHÄRE UND ALBUMCOVER */
+
+/* ============================================================
+   11 · RAYE: BÜHNENATMOSPHÄRE UND ALBUMCOVER
+   ============================================================ */
+
+/* Eine gemeinsame atmosphärische Fläche verbindet Header und Albuminhalt. */
+.page-raye .raye-atmosphere {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background: linear-gradient(
+        to bottom,
+        #171019 0,
+        #1b111a 14rem,
+        #24131e 28rem,
+        #40151c 43rem,
+        var(--color-bg) 57rem
+    );
+}
+
+/* Das ::before-Pseudoelement zeigt das unscharfe Albumcover als Sturmwolken.
+   Die vertikale Maske lässt die Fotografie nach unten ausblenden. */
 .page-raye .raye-atmosphere::before {
     content: "";
     position: absolute;
@@ -2102,9 +2677,8 @@ img {
 
 }
 
-
-
-/* Warm cinematic light, also fading at both edges */
+/* ::after legt warme Licht- und Dunkelverläufe über das Hintergrundbild.
+   Beide Ebenen sind mit pointer-events: none nicht anklickbar. */
 .page-raye .raye-atmosphere::after {
     content: "";
     position: absolute;
@@ -2149,33 +2723,12 @@ img {
 }
 
 
-
-/* Content above the atmospheric background */
-.page-raye .album-hero--hope .album-hero__content,
-.page-raye .album-hero--hope .album-hero__media {
-    position: relative;
-    z-index: 1;
-}
-
-/* Small editorial heading */
-.page-raye .album-hero--hope .album-hero__eyebrow {
-    margin: 0 0 1.25rem;
-
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.17em;
-}
-
-/* Large cinematic album title */
+/* Individueller Albumtitel von RAYE */
 .page-raye .album-hero--hope h1 {
     max-width: 44rem;
-    margin: 0;
-
     font-size: clamp(2.8rem, 5.5vw, 5.6rem);
     line-height: 1.04;
     letter-spacing: -0.035em;
-    text-wrap: balance;
 }
 
 .page-raye .album-hero--hope h1 em {
@@ -2183,38 +2736,17 @@ img {
     color: var(--color-accent);
 }
 
-/* Emotional introduction */
+/* Individuelle Textbreite und Schriftgröße der Einleitung */
 .page-raye .album-hero--hope .album-hero__lead {
     max-width: 33rem;
-    margin: 1.6rem 0 0;
-
-    color: var(--color-heading);
     font-size: clamp(1rem, 1.5vw, 1.2rem);
     line-height: 1.7;
 }
 
-
-/* Floating album sleeve */
-.page-raye .album-hero--hope .album-hero__media {
-    display: block;
-    width: min(100%, 23rem);
-
-    justify-self: center;
-    align-self: center;
-}
-
+/* Der helle Rand und die beiden Schatten lassen RAYEs Cover frei schweben. */
 .page-raye .album-hero--hope .album-hero__media img {
     position: relative;
-
-    width: 100%;
-    max-width: none;
-    height: auto;
-    aspect-ratio: 1;
-    object-fit: cover;
-
-    box-sizing: border-box;
     border: 1px solid rgb(255 240 221 / 22%);
-    border-radius: 1rem;
 
     box-shadow:
         0 30px 65px rgb(0 0 0 / 62%),
@@ -2222,17 +2754,8 @@ img {
 }
 
 
-/* Quiet information section below the cinematic hero */
+/* Dunkelrote Faktenkarte mit warmer Lichtreflexion */
 .page-raye .album-overview {
-    position: relative;
-    z-index: 1;
-    box-sizing: border-box;
-    width: calc(100% - 2rem);
-    max-width: 48rem;
-
-    margin: 1.75rem auto 0;
-    padding: clamp(1.35rem, 3vw, 2rem);
-
     background:
         linear-gradient(
             145deg,
@@ -2242,71 +2765,19 @@ img {
         var(--color-surface);
 
     border: 1px solid rgb(255 240 221 / 18%);
-    border-radius: 1.5rem;
-}
-
-@media (min-width: 900px) {
-    .page-raye .album-overview {
-        width: min(calc(100% - 2rem), 48rem);
-        margin-top: 1.75rem;
-        margin-right: auto;
-        margin-left: max(1rem, calc((100vw - 70rem) / 2));
-    }
-}
-
-.page-raye .album-overview h2 {
-    margin: 0;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-.page-raye .album-overview .album-facts {
-    margin: 1.5rem 0 0;
-}
-
-.page-raye .album-overview .save-action {
-    width: fit-content;
-    margin-top: 1.5rem;
-}
-
-.page-raye .album-tracklist {
-    scroll-margin-top: 2rem;
 }
 
 
-/* Desktop: text and buttons left, album artwork right */
-@media (min-width: 900px) {
-    .page-raye .album-hero--hope {
-        grid-template-columns:
-            minmax(0, 1.18fr)
-            minmax(0, 0.82fr);
+/* #endregion */
 
-        grid-template-areas:
-            "content media"
-            "actions media";
+/* #region 12 · ALBUMFAKTEN UND GEMEINSAME BUTTONS */
 
-        grid-template-rows: auto auto;
-        align-content: center;
+/* ============================================================
+   12 · ALBUMFAKTEN UND GEMEINSAME BUTTONS
+   ============================================================ */
 
-        column-gap: clamp(2rem, 4vw, 5rem);
-        row-gap: 1.35rem;
-
-        min-height: min(78svh, 48rem);
-    }
-
-    /* Buttons directly below the introduction */
-    .page-raye .album-hero--hope .album-hero__actions {
-        justify-self: start;
-        justify-content: flex-start;
-        width: auto;
-    }
-
-    /* Floating album cover on the right */
-    .page-raye .album-hero--hope .album-hero__media {
-        width: min(100%, 28rem);
-    }
-}
-
-
+/* Die Faktenliste ist im HTML ein <dl> mit <dt> (Begriff) und <dd> (Wert).
+   Flexbox lässt die Einträge bei schmalen Bildschirmen umbrechen. */
 .album-facts {
     display: flex;
     flex-wrap: wrap;
@@ -2319,7 +2790,7 @@ img {
 
 .album-fact {
     display: flex;
-    flex-direction: column; /* damit <dt> oberhalb von <dd> steht */
+    flex-direction: column; /* Begriff und Wert werden untereinander angeordnet. */
     align-items: flex-start;
     gap: 0.4rem;
     min-width: 0;
@@ -2340,7 +2811,7 @@ img {
 
     background-color: transparent;
     border: 1px solid var(--color-pill-border);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     color: var(--color-heading);
     font-size: 0.9rem;
@@ -2348,11 +2819,12 @@ img {
 
     box-sizing: border-box;
     max-width: min(22rem, 100%);
-    overflow-wrap: anywhere; /* bei wenig Platz umbrechen */
+    /* CSS-Eigenschaften – erstmals hier: overflow-wrap = anywhere erlaubt Wortumbruch auch bei langen untrennbaren Inhalten. */
+    overflow-wrap: anywhere; /* Lange Angaben brechen auch ohne Leerzeichen um. */
 }
 
 .album-fact--wide {
-    flex: 0 0 100%; /* eigene Zeile für Musikstil-Gruppe oder Collaborator-Gruppe */
+    flex: 0 0 100%; /* Breite Fakteneinträge wie Genre und Mitwirkende belegen eine eigene Zeile. */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -2368,20 +2840,19 @@ img {
     background-color: var(--color-accent);
     color: var(--color-surface);
     border: 1px solid var(--color-accent);
-    border-radius: 999px;
-    padding: 0.4rem;
+    border-radius: var(--radius-full);
 }
 
 .save-action {
-    display: inline-flex; /* Container nur so breit wie Text --> wäre nur flex, dann Seitenbreite */
+    display: inline-flex; /* inline-flex hält die Hülle so schmal wie ihren Inhalt. */
     padding: 0.4rem;
     background-color: var(--color-detail-card);
     border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 }
 
 
-/* Button Design */
+/* Gemeinsame Button-Basis für Albumseiten und weitere Komponenten */
 .button {
     display: inline-flex;
     align-items: center;
@@ -2389,7 +2860,7 @@ img {
 
     min-height: 44px;
     padding: 0.65rem 1.25rem;
-    border-radius: 999px;
+    border-radius: var(--radius-full);
 
     font-family: var(--font-body);
     font-size: 0.9375rem;
@@ -2402,23 +2873,32 @@ img {
     color: var(--color-heading);
     border: 1px solid var(--color-accent);
 
-    transition: background-color 0.2s ease, color 0.2s ease; /* damit Farbänderung nicht plötzlich passiert -> sondern weich */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Farbwechsel beim Überfahren oder Fokussieren weich animieren. */
 }
 
 .button--secondary:hover,
-.button--secondary:focus-visible { /* mit focus-visible auch bei Tastaturnavigation Button = Rahmen */
+.button--secondary:focus-visible { /* :focus-visible greift insbesondere bei sichtbarem Tastaturfokus. */
     background-color: var(--color-accent);
     color: var(--color-bg);
 }
 
 
-/* Album Story Section */
+/* #endregion */
+
+/* #region 13 · EDITORIAL STORY UND RAYES FARBVARIANTE */
+
+/* ============================================================
+   13 · EDITORIAL STORY UND RAYES FARBVARIANTE
+   ============================================================ */
+
+/* Die allgemeine Story-Struktur wird auf den Albumseiten durch
+   die gemeinsamen Editorial-Regeln und lokale Farbvarianten verfeinert. */
 .album-story {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     margin: 0 auto;
     padding: 2rem 1rem 5rem;
 }
@@ -2429,7 +2909,7 @@ img {
 
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 }
 
 .story-text cite {
@@ -2449,16 +2929,17 @@ img {
 
 .story-details h3 {
     border-left: 3px solid var(--color-accent);
+    /* CSS-Eigenschaften – erstmals hier: padding-left = linker Innenabstand. */
     padding-left: 0.75rem;
 }
 
-.story-details > section { /* damit nur <section>-Elemente auswählen, die direkte Kinder von .story-details sind  --> gezielt Why It Matters & The Sound gestalten */
+.story-details > section { /* > beschränkt die Gestaltung auf direkte Kapitel-Sections innerhalb von .story-details. */
     min-width: 0;
     padding: 1.5rem;
 
     background-color: var(--color-detail-card);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
 }
 
 .album-story h2,
@@ -2472,7 +2953,7 @@ img {
     line-height: 1.75;
 }
 
-.story-text > p + p, /* wieder wie bei Records -> nur auf aufeinanderfolgende Absätze Abstand erzeugen */
+.story-text > p + p, /* + wählt nur direkt aufeinanderfolgende Absätze aus. */
 .story-details > section > p + p {
     margin-top: 1rem;
 }
@@ -2498,36 +2979,30 @@ img {
 }
 
 
-/* ========================================
-   MA2 - RAYE EDITORIAL STORY
-   ======================================== */
+/*---------------------------------------------*/
+/* Gemeinsame redaktionelle Geschichte – RAYE und Absolutely */
+/*---------------------------------------------*/
 
-/* Spacious reading section */
-.page-raye .album-story {
+/* Großzügiger Lesebereich für beide Albumdetailseiten */
+:is(.page-raye, .page-absolutely) .album-story {
     box-sizing: border-box;
-    max-width: 70rem;
-
-    padding:
-        clamp(4rem, 7vw, 6rem)
-        1rem
-        clamp(4rem, 7vw, 6rem);
-
+    max-width: var(--layout-content);
+    padding: clamp(4rem, 7vw, 6rem) 1rem;
     gap: clamp(2.5rem, 4vw, 4rem);
     align-items: start;
 }
 
-/* The main story is no longer a heavy card */
-.page-raye .story-text {
+/* Hauptgeschichte steht frei auf dem Seitenhintergrund */
+:is(.page-raye, .page-absolutely) .story-text {
     padding: 0;
     background: transparent;
     border: 0;
     border-radius: 0;
 }
 
-/* Editorial chapter labels */
-.page-raye .story-kicker {
+/* Kleine redaktionelle Kapitelmarkierung */
+:is(.page-raye, .page-absolutely) .story-kicker {
     display: inline-block;
-
     color: var(--color-accent);
     font-family: var(--font-body);
     font-size: 0.7rem;
@@ -2535,56 +3010,58 @@ img {
     letter-spacing: 0.16em;
 }
 
-/* Large magazine-style story heading */
-.page-raye .story-text h2 {
+/* Große Magazinüberschrift */
+:is(.page-raye, .page-absolutely) .story-text h2 {
     margin: 0.75rem 0 2rem;
-
     font-size: clamp(2.7rem, 4.5vw, 4.3rem);
     letter-spacing: -0.035em;
 }
 
-/* Comfortable reading width and line spacing */
-.page-raye .story-text > p {
+/* Angenehme Textbreite und großzügiger Zeilenabstand */
+:is(.page-raye, .page-absolutely) .story-text > p {
     max-width: 62ch;
     margin: 0;
-
     color: var(--color-text);
     font-size: 1.05rem;
     line-height: 1.85;
 }
 
-/* First paragraph acts as an editorial introduction */
-.page-raye .story-text > p:first-of-type {
+/* Erster Absatz als hervorgehobene Einleitung */
+/* Selektor/Technik: :first-of-type wählt das erste Element seines HTML-Typs unter denselben Eltern. */
+:is(.page-raye, .page-absolutely) .story-text > p:first-of-type {
     color: var(--color-heading);
     font-size: clamp(1.1rem, 1.25vw, 1.2rem);
     line-height: 1.8;
 }
 
-/* Clear separation between paragraphs */
-.page-raye .story-text > p + p {
+/* Abstand nur zwischen aufeinanderfolgenden Absätzen */
+:is(.page-raye, .page-absolutely) .story-text > p + p {
     margin-top: 1.65rem;
 }
 
-/* Album and song titles remain emphasized */
-.page-raye .album-story cite {
+/* Album- und Songtitel behalten die jeweilige Akzentfarbe */
+:is(.page-raye, .page-absolutely) .album-story cite {
     color: var(--color-accent);
     font-style: italic;
     font-weight: 500;
 }
 
 
-/* Editorial pull quote */
-.page-raye .story-text blockquote {
-    max-width: 36rem;
+/*---------------------------------------------*/
+/* Gemeinsame Zitate und Zusatzkapitel         */
+/* RAYE & Absolutely                           */
+/*---------------------------------------------*/
 
+/* Hervorgehobenes Zitat: Aufbau gemeinsam, obere Trennlinie albumspezifisch. */
+:is(.page-raye, .page-absolutely) .story-text blockquote {
+    max-width: 36rem;
     margin: 2.75rem 0 0;
     padding: 1.75rem 0 0;
-
     border-left: 0;
-    border-top: 1px solid rgb(243 179 34 / 35%);
 }
 
-.page-raye .story-text blockquote p {
+/* Zitattext übernimmt automatisch die jeweilige Akzentfarbe */
+:is(.page-raye, .page-absolutely) .story-text blockquote p {
     color: var(--color-accent);
     font-family: var(--font-heading);
     font-style: italic;
@@ -2592,65 +3069,51 @@ img {
     line-height: 1.4;
 }
 
-.page-raye .story-text blockquote footer {
+/* Quellenangabe unterhalb des Zitats */
+:is(.page-raye, .page-absolutely) .story-text blockquote footer {
     margin-top: 1rem;
-
     color: var(--color-text);
     font-size: 0.8rem;
     letter-spacing: 0.03em;
 }
 
-
-/* Supporting editorial chapters */
-.page-raye .story-details {
+/* Zusatzkapitel verwenden auf beiden Albumseiten dasselbe Grid. */
+:is(.page-raye, .page-absolutely) .story-details {
     gap: 1.5rem;
     align-content: start;
 }
 
-/* Quiet supporting panels */
-.page-raye .story-details > section {
+/* Gemeinsame Kartenform:
+   Hintergrund, Rahmen und Schatten bleiben individuell */
+:is(.page-raye, .page-absolutely) .story-details > section {
     padding: clamp(1.5rem, 2.3vw, 2rem);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgb(20 10 18 / 65%),
-            rgb(48 17 22 / 70%)
-        );
-
-    border: 1px solid rgb(255 240 221 / 16%);
-    border-radius: 1.25rem;
-
-    box-shadow: 0 18px 40px rgb(0 0 0 / 15%);
+    border-radius: var(--radius-card);
 }
 
-/* Headings without the previous thick side border */
-.page-raye .story-details h3 {
+/* Kapitelüberschriften ohne die ursprüngliche Seitenlinie */
+:is(.page-raye, .page-absolutely) .story-details h3 {
     margin: 0.75rem 0 1.35rem;
     padding: 0;
-
     border: 0;
-
     font-size: clamp(1.6rem, 2vw, 2rem);
 }
 
-/* Supporting text remains easy to read */
-.page-raye .story-details > section > p {
+/* Gute Lesbarkeit durch begrenzte Textbreite */
+:is(.page-raye, .page-absolutely) .story-details > section > p {
     max-width: 46ch;
-
     color: var(--color-text);
     font-size: 0.98rem;
     line-height: 1.8;
 }
 
-.page-raye .story-details > section > p + p {
+/* Zusätzlicher Abstand nur zwischen aufeinanderfolgenden Absätzen */
+:is(.page-raye, .page-absolutely) .story-details > section > p + p {
     margin-top: 1.25rem;
 }
 
-
-/* Desktop: main article and supporting editorial rail */
+/* Desktop: Hauptgeschichte links, Zusatzkapitel rechts */
 @media (min-width: 1000px) {
-    .page-raye .album-story {
+    :is(.page-raye, .page-absolutely) .album-story {
         grid-template-columns:
             minmax(0, 1.55fr)
             minmax(19rem, 1fr);
@@ -2660,12 +3123,40 @@ img {
 }
 
 
-/*-------------------------------------------*/
-/* RAYE Tracklist-Section - The Four Seasons */
-/*-------------------------------------------*/
-/* Tracklist-Section - gemeinsame Grundgestaltung aller Albumdetailseiten */
+
+/* RAYE-spezifische Zitatlinie und Hintergrundgestaltung der Zusatzkapitel */
+
+/* Goldene obere Trennlinie für RAYEs hervorgehobenes Zitat. */
+.page-raye .story-text blockquote {
+    border-top: 1px solid rgb(243 179 34 / 35%);
+}
+
+/* Dunkelrote Hintergrundatmosphäre für RAYEs Zusatzkapitel. */
+.page-raye .story-details > section {
+    background:
+        linear-gradient(
+            145deg,
+            rgb(20 10 18 / 65%),
+            rgb(48 17 22 / 70%)
+        );
+
+    border: 1px solid rgb(255 240 221 / 16%);
+
+    box-shadow: 0 18px 40px rgb(0 0 0 / 15%);
+}
+
+
+
+/* #endregion */
+
+/* #region 14 · RAYE: FOUR SEASONS UND AUTOMATISCHE TRACKNUMMERN */
+
+/* ============================================================
+   14 · RAYE: FOUR SEASONS UND AUTOMATISCHE TRACKNUMMERN
+   ============================================================ */
+/* Allgemeine Tracklist-Basis: gemeinsame Breite, Abstände und Trennlinie. */
 .album-tracklist {
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 3rem 1rem 5rem;
@@ -2683,13 +3174,15 @@ img {
 }
 
 /* Einleitung der musikalischen Reise */
+/* Konzept: CSS-Counter: counter-reset: track startet die gemeinsame RAYE-Nummerierung. Erst counter-increment erhöht pro Song; counter(..., decimal-leading-zero) stellt 01 bis 17 dar. */
 .page-raye .album-tracklist {
-    counter-reset: track; /* eigene Nummerierung startet bei 0 --> seasons liegen innerhalb von .album-tracklist --> kann von 01 bis 17 durchzählen */
-    max-width: 70rem;
-    box-sizing: border-box;
-    margin: 0 auto;
+    /* Zähler nur einmal zurücksetzen: alle vier Jahreszeiten zählen gemeinsam 01–17. */
+    /* CSS-Eigenschaften – erstmals hier:
+       counter-reset = startet einen CSS-Zähler einmalig neu.
+       scroll-margin-top = Abstand oberhalb eines Scrollziels, damit Anker nicht am Rand kleben. */
+    counter-reset: track;
     padding: clamp(4rem, 7vw, 6rem) 1rem;
-    border-top: 1px solid var(--color-divider);
+    scroll-margin-top: 2rem;
 }
 
 /* Kleine Kapitelüberschrift oberhalb des Titels */
@@ -2727,12 +3220,25 @@ img {
 }
 
 /* Gemeinsames Design für alle vier Jahreszeiten */
+/* Konzept: Lokale --season-Variablen steuern je Jahreszeit die Farben. Alle vier Kapitel teilen sich die Struktur, aber bekommen eigene Licht- und Titelwerte. */
 .page-raye .season {
     /* Farbvariablen werden unten für jede Jahreszeit angepasst */
+    /* CSS-Variable (erste Definition):
+       --season-light = Atmosphärenfarbe der jeweiligen RAYE-Jahreszeit
+       --season-start = erste Farbe des saisonalen Hintergrundverlaufs
+       --season-end = letzte Farbe des saisonalen Hintergrundverlaufs
+       --season-hover = sanfte Hover-Aufhellung der saisonalen Songzeilen */
     --season-light: rgb(197 114 56 / 34%);
     --season-start: #553027;
     --season-end: #21141d;
     --season-hover: rgb(197 114 56 / 12%);
+
+    /* Die saisonalen Variablen steuern Kapitelüberschrift und Lichtschein. */
+    /* CSS-Variable (erste Definition):
+       --season-title = Farbe der Kapitelüberschrift pro Jahreszeit
+       --season-glow = zusätzlicher subtiler saisonaler Lichtschein */
+    --season-title: #f1c59b;
+    --season-glow: rgb(206 119 63 / 13%);
 
     position: relative;
     isolation: isolate;
@@ -2764,7 +3270,8 @@ img {
 
     /* Leichter 3D-Effekt wie bei den Artist-Karten */
     box-shadow:
-        0 26px 55px rgb(0 0 0 / 19%),
+        0 26px 55px rgb(0 0 0 / 25%),
+        0 0 95px var(--season-glow),
         inset 0 1px 0 rgb(255 240 221 / 9%);
 
     scroll-margin-top: 2rem;
@@ -2795,7 +3302,11 @@ img {
     --season-light: rgb(206 119 63 / 38%);
     --season-start: #5b352b;
     --season-end: #24151e;
-    --season-hover: rgb(206 119 63 / 16%)
+    --season-hover: rgb(206 119 63 / 16%);
+    
+    /* Der Herbst nutzt eine bronzene Kapitelüberschrift und warmes Licht. */
+    --season-title: #f1c59b;
+    --season-glow: rgb(206 119 63 / 16%);
 }
 
 /* Winter - dunkles Blau und kühle Lichtstimmung */
@@ -2804,6 +3315,10 @@ img {
     --season-start: #273a4b;
     --season-end: #161b29;
     --season-hover: rgb(116 150 182 / 15%);
+
+    /* Im Winter werden Schrift und Lichtschein kühler. */
+    --season-title: #c0d6e8;
+    --season-glow: rgb(116 150 182 / 16%);
 }
 
 /* Spring - sanfte Rosé- und Bordeauxfarben */
@@ -2812,6 +3327,11 @@ img {
     --season-start: #60384c;
     --season-end: #251923;
     --season-hover: rgb(211 145 166 / 15%);
+
+    /* Im Frühling entstehen rosafarbene Lichtreflexe. */
+    --season-title: #edb6ce;
+    --season-glow: rgb(211 145 166 / 16%);
+
 }
 
 /* Summer - warmes Gold und Amber */
@@ -2820,6 +3340,10 @@ img {
     --season-start: #785022;
     --season-end: #302018;
     --season-hover: rgb(244 189 93 / 16%);
+
+    /* Der Sommer erhält die hellste goldene Lichtstimmung. */
+    --season-title: #f7d18b;
+    --season-glow: rgb(244 189 93 / 16%);
 }
 
 
@@ -2841,6 +3365,7 @@ img {
     font-size: clamp(2.9rem, 5.4vw, 4.6rem);
     font-style: italic;
     letter-spacing: -0.035em;
+    color: var(--season-title);
 }
 
 .page-raye .season__mood {
@@ -2863,8 +3388,6 @@ img {
     text-transform: uppercase;
 }
 
-
-/* Songliste innerhalb der jeweiligen Jahreszeit */
 
 /* Songliste innerhalb der jeweiligen Jahreszeit */
 .page-raye .season ol {
@@ -2899,10 +3422,11 @@ img {
 
 
 .page-raye .season li {
+    /* CSS-Eigenschaften – erstmals hier: counter-increment = erhöht den angegebenen CSS-Zähler je Element. */
     counter-increment: track;
 
     display: grid;
-    grid-template-columns: 2.25rem minmax(0, 1fr) auto 1rem; /* Trackzahl, Songtitel, Laufzeit und schmale Pfeilspalte */
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto 1rem; /* Spalten für Nummer, Titel, Laufzeit und dekorativen Stern. */
     column-gap: 0.5rem;
     row-gap: 0.15rem;
     align-items: baseline;
@@ -2912,9 +3436,10 @@ img {
 
     border: none;
     border-radius: 0.65rem;
+    /* CSS-Eigenschaften – erstmals hier: border-bottom = Rahmen nur an der unteren Kante. */
     border-bottom: 1px solid rgb(255 240 221 / 17%);
 
-    cursor: default; /* Noch keine Track-Links vorhanden */
+    cursor: default; /* Der Track ist derzeit nicht verlinkt, deshalb kein Klick-Cursor. */
     transition: background-color 0.25s ease,
                 transform 0.25s ease,
                 box-shadow 0.25s ease;
@@ -2926,7 +3451,9 @@ img {
 }
 
 .page-raye .season li::before {
-    content: counter(track, decimal-leading-zero); /* damit 01, 02, 03 statt 1, 2, 3 */
+    /* Der zuvor erhöhte Zähler erscheint zweistellig (01, 02, ...). */
+    /* CSS-Funktion: counter(track, decimal-leading-zero) zeigt den erhöhten Zähler zweistellig an: 01, 02, ... . */
+    content: counter(track, decimal-leading-zero);
     grid-column: 1;
     grid-row: 1;
 
@@ -2993,7 +3520,7 @@ img {
     opacity: 0.85;
 }
 
-.page-raye .season li::after { /* kleine visuelle Andeutung, dass jeder Song weiter erkundet werden kann */
+.page-raye .season li::after { /* Rein dekorativer Stern; die Songs haben derzeit noch keine Detail-Links. */
     content: "✧";
     grid-column: 4;
     grid-row: 1;
@@ -3009,8 +3536,8 @@ img {
                 transform 0.25s ease;
 }
 
-.page-raye .season li:hover, /* damit Songzeile leicht aufhellt --> wirkt wie Einstieg in eine spätere Detailansicht */
-.page-raye .season li:focus-within { /* focus-within für Tastaturbedienung später */
+.page-raye .season li:hover, /* Dezentes Mausfeedback für die momentan nicht verlinkten Songs. */
+.page-raye .season li:focus-within { /* Für mögliche spätere Track-Links vorbereitet. */
     background-color: var(--season-hover);
     transform: translateX(0.2rem);
     box-shadow: inset 0 0 0 1px rgb(255 240 221 / 8%);
@@ -3041,7 +3568,7 @@ img {
     }
 }
 
-/* Accessibility: Animationen bei reduzierter Bewegung deaktivieren */
+/* Reduzierte Bewegung: Song-Zeilen und Symbole ohne Übergangsanimationen. */
 @media (prefers-reduced-motion: reduce) {
     .page-raye .season li,
     .page-raye .season li > cite,
@@ -3059,18 +3586,21 @@ img {
 }
 
 
+/* #endregion */
 
-/*---------------------------------------------*/
-/* RAYE Keep Going - Cinematic Artist Previews  */
-/*---------------------------------------------*/
+/* #region 15 · GEMEINSAME KEEP-GOING-KARTEN */
 
-/* Keep Going-Section - gemeinsame Grundgestaltung */
+/* ============================================================
+   15 · GEMEINSAME KEEP-GOING-KARTEN
+   ============================================================ */
+
+/* Grid-Grundlage für die Vorschaukarten auf beiden Albumseiten. */
 .keep-going {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 2rem 1rem 5rem;
@@ -3081,7 +3611,7 @@ img {
     margin: 0 0 0.5rem;
 }
 
-/* Standardvorschaukarten auf Albumdetailseiten */
+/* Gemeinsame Grundkarte; das spätere Cinematic-Layout verfeinert sie. */
 .artist-preview__link {
     display: flex;
     align-items: center;
@@ -3090,7 +3620,7 @@ img {
     padding: 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-panel);
 
     color: var(--color-heading);
     text-decoration: none;
@@ -3102,7 +3632,7 @@ img {
 
     object-fit: cover;
     object-position: center 15%;
-    border-radius: 50%; /* Standardporträts als Kreise */
+    border-radius: 50%; /* Standardform: Kreis; die Cinematic-Karten überschreiben das später. */
     flex-shrink: 0;
 }
 
@@ -3136,15 +3666,7 @@ img {
 
 /* Ruhiger Übergang von der Tracklist zu den beiden Schwestern */
 :is(.page-raye, .page-absolutely) .keep-going {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-
-    max-width: 70rem;
-    box-sizing: border-box;
-    margin: 0 auto;
     padding: clamp(3.5rem, 6vw, 5.5rem) 1rem 5rem;
-
     border-top: 1px solid var(--color-divider);
 }
 
@@ -3168,68 +3690,27 @@ img {
 }
 
 
-/* Amma - Coffee & Terracotta, wie in Meet the Artists */
+/* Amma: dieselbe Farbwelt wie bei Meet the Artists */
 .page-raye .artist-preview:first-of-type,
 .page-absolutely .artist-preview--amma {
+    /* CSS-Variable (erste Definition):
+       --preview-photo = Porträtdatei für die Keep-Going-Vorschau
+       --preview-background = passende Bühnenatmosphäre für die Vorschaukarte */
     --preview-photo: url("../images/amma-portrait.jpg");
-
-    --preview-background:
-        radial-gradient(
-            ellipse 65% 90% at 10% 5%,
-            rgb(239 193 139 / 38%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 85% at 38% 95%,
-            rgb(206 96 15 / 39%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 65% 95% at 88% 35%,
-            rgb(177 105 65 / 24%),
-            transparent 80%
-        ),
-        linear-gradient(
-            108deg,
-            #72503d 0%,
-            #955a3d 50%,
-            #2b1b19 100%
-        );
+    --preview-background: var(--amma-stage);
 }
 
-/* Absolutely - gleiche Farbwelt wie Meet the Artists */
+/* Absolutely übernimmt ihre Farbwelt von den Homepage-Künstlerinnenkarten. */
 .page-raye .artist-preview:last-of-type {
     --preview-photo: url("../images/absolutely-portrait.jpg");
     --preview-background: var(--absolutely-stage);
 }
 
 
-/* RAYE auf Absolutelys Detailseite - Burgundy & Stage Gold */
+/* RAYE: dieselbe Farbwelt wie bei Meet the Artists */
 .page-absolutely .artist-preview--raye {
     --preview-photo: url("../images/raye-portrait.jpg");
-
-    --preview-background:
-        radial-gradient(
-            ellipse 55% 90% at 12% 12%,
-            rgb(230 161 73 / 45%),
-            transparent 78%
-        ),
-        radial-gradient(
-            ellipse 58% 85% at 30% 80%,
-            rgb(169 33 48 / 62%),
-            transparent 74%
-        ),
-        radial-gradient(
-            ellipse 65% 100% at 85% 45%,
-            rgb(110 27 40 / 35%),
-            transparent 80%
-        ),
-        linear-gradient(
-            105deg,
-            #47251c 0%,
-            #42151e 48%,
-            #160c13 100%
-        );
+    --preview-background: var(--raye-stage);
 }
 
 
@@ -3320,7 +3801,8 @@ img {
 }
 
 
-/* Hover und Tastaturfokus - dezentes Anheben der Karte */
+/* Beim Tastaturfokus ändern sich Rand und Schatten;
+   nur bei geeignetem Zeigegerät hebt Hover die Karte zusätzlich an. */
 :is(.page-raye, .page-absolutely) .artist-preview__link:focus-visible {
     border-color: rgb(255 240 221 / 55%);
     box-shadow:
@@ -3345,11 +3827,12 @@ img {
 }
 
 
-/* Größere Bildschirme: Text links, Porträt rechts */
+/* Ab 720px liegt der Text links; das Porträt wird rechts positioniert. */
 @media (min-width: 720px) {
     :is(.page-raye, .page-absolutely) .artist-preview__link {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
+        /* CSS-Eigenschaften – erstmals hier: justify-items = Ausrichtung aller Grid-Kinder innerhalb ihrer einzelnen Zellen. */
         justify-items: start;
         align-content: center;
 
@@ -3445,7 +3928,7 @@ img {
     }
 }
 
-/* Accessibility: Bewegungen bei entsprechender Einstellung deaktivieren */
+/* Reduzierte Bewegung: Karten und Pfeile ohne Übergänge oder Verschiebungen. */
 @media (prefers-reduced-motion: reduce) {
     :is(.page-raye, .page-absolutely) .artist-preview__link,
     :is(.page-raye, .page-absolutely) .artist-preview__arrow {
@@ -3458,7 +3941,16 @@ img {
 }
 
 
-/* Sources Section */
+/* #endregion */
+
+/* #region 16 · ALBUMQUELLEN UND MUSIKALISCHE TIMELINE */
+
+/* ============================================================
+   16 · ALBUMQUELLEN UND MUSIKALISCHE TIMELINE
+   ============================================================ */
+
+/* Die Quellen stehen in einem nativen <details>-Element. Dessen
+   <summary> lässt sich ohne JavaScript mit Maus und Tastatur öffnen. */
 .album-sources {
     width: calc(100% - 2rem);
     max-width: 68rem;
@@ -3519,6 +4011,7 @@ img {
 .album-sources a {
     color: var(--color-text);
     font-size: 0.875rem;
+    /* CSS-Eigenschaften – erstmals hier: text-underline-offset = Abstand einer Unterstreichung von den Buchstaben. */
     text-underline-offset: 0.2em;
     overflow-wrap: anywhere;
 }
@@ -3529,13 +4022,13 @@ img {
 
 
 
-/* Timeline Navigation Section */
+/* Gemeinsame Grundstruktur für die musikalische Timeline beider Alben */
 .timeline-neighbors {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
 
-    max-width: 70rem;
+    max-width: var(--layout-content);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 2rem 1rem 5rem;
@@ -3546,51 +4039,13 @@ img {
     margin: 0 0 0.5rem;
 }
 
-.timeline-neighbors > article {
-    min-width: 0;
-    padding: 1.5rem;
-
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
-}
-
-.timeline-neighbors article > p {
-    margin: 0 0 0.75rem;
-
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-}
-
-.timeline-neighbors article > h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    line-height: 1.25;
-}
-
-.timeline-neighbors article:first-of-type p::before {
-    content: "← ";
-}
-
-.timeline-neighbors article:last-of-type p::after {
-    content: " →";
-}
-
-
-/*----------------------------------------------*/
-/* Shared - Cinematic Musical Journey Timeline    */
-/*----------------------------------------------*/
+/* Editorial-Timeline: Die Ereignisse liegen innerhalb der
+   .timeline-neighbors__path, nicht direkt in .timeline-neighbors. */
 
 /* Zurückhaltender Abschluss der Albumgeschichte */
 :is(.page-raye, .page-absolutely) .timeline-neighbors {
     display: block;
-    max-width: 70rem;
-    margin: 0 auto;
     padding: clamp(3rem, 5vw, 4.5rem) 1rem 5rem;
-
     border-top: 1px solid var(--color-divider);
 }
 
@@ -3661,7 +4116,7 @@ img {
     box-shadow: 0 16px 35px rgb(0 0 0 / 13%);
 }
 
-/* Goldene Punkte markieren die Ereignisse */
+/* Akzentfarbene Ereignispunkte: RAYE Gold, Absolutely Kupferorange. */
 :is(.page-raye, .page-absolutely) .timeline-neighbors__event::before {
     content: "";
     position: absolute;
@@ -3748,14 +4203,17 @@ img {
 }
 
 
-/*----------------------------------------------------*/
-/* Absolutely Album detail page Design - Mobile First */
-/*----------------------------------------------------*/
+/* #endregion */
+
+/* #region 17 · ABSOLUTELY: TIMELINE UND FARBWELT */
+
+/* ============================================================
+   17 · ABSOLUTELY: TIMELINE UND FARBWELT
+   ============================================================ */
 
 
-/*----------------------------------------------------*/
-/* Absolutely - Copper & Aubergine Musical Timeline   */
-/*----------------------------------------------------*/
+/* Die gemeinsame Timeline-Struktur bleibt erhalten;
+   nur Bühnenlicht, Rahmen und Ereignispunkte wechseln die Farbe. */
 
 /* Kupferrotes Bühnenlicht auf den beiden Kapiteln */
 .page-absolutely .timeline-neighbors__event {
@@ -3774,22 +4232,23 @@ img {
     border-color: rgb(239 156 88 / 23%);
 }
 
-/* Kupferorange Lichtpunkte statt RAYEs Gold */
+/* Absolutely verwendet kupferfarbene Lichtpunkte statt RAYEs Gold. */
 .page-absolutely .timeline-neighbors__event::before {
     box-shadow:
         0 0 0 5px var(--color-bg),
         0 0 18px rgb(239 156 88 / 43%);
 }
 
-/* ========================================
-   MA2 - PARACOSM CINEMATIC ALBUM HERO
-   Burnt Red, Copper Orange & Dark Aubergine
-   ======================================== */
+/* #endregion */
 
-/* Der Header und der Hero teilen sich denselben Hintergrund */
-.page-absolutely main {
-    background: transparent;
-}
+/* #region 18 · ABSOLUTELY: CINEMATIC HERO UND ALBUMFAKTEN */
+
+/* ============================================================
+   18 · ABSOLUTELY: CINEMATIC HERO UND ALBUMFAKTEN
+   ============================================================ */
+
+/* Die Atmosphäre kombiniert das weichgezeichnete Albumcover mit
+   rot-orangen Lichtverläufen und einer dunklen Aubergine-Grundfarbe. */
 
 .page-absolutely .absolutely-atmosphere {
     position: relative;
@@ -3806,7 +4265,8 @@ img {
     );
 }
 
-/* Albumcover als weichgezeichneter atmosphärischer Hintergrund */
+/* ::before nutzt das Albumcover als weichgezeichnete Bildebene.
+   Die vertikale Maske lässt sie nach unten auslaufen. */
 .page-absolutely .absolutely-atmosphere::before {
     content: "";
     position: absolute;
@@ -3843,7 +4303,8 @@ img {
     );
 }
 
-/* Kupferoranges Bühnenlicht und dunkle Ebenen für lesbare Texte */
+/* ::after legt warmes Bühnenlicht und einen dunklen Kontrastverlauf
+   über die Fotografie, damit die Texte lesbar bleiben. */
 .page-absolutely .absolutely-atmosphere::after {
     content: "";
     position: absolute;
@@ -3894,149 +4355,42 @@ img {
 }
 
 
-/* Hero Section */
+/* Das gemeinsame Hero-Grid legt mobil die Reihenfolge Text, Cover,
+   Buttons fest; Absolutely überschreibt hier nur individuelle Werte. */
 
-/* Zurück-Link liegt vor der atmosphärischen Bildebene */
-.page-absolutely .album-back {
-    position: relative;
-    z-index: 1;
-    margin: 0 auto;
-    padding: 1.75rem 1rem 0;
-}
-
-/* Mobile First: Titel, Albumcover, anschließend Buttons */
-.page-absolutely .album-hero--paracosm {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-        "content"
-        "media"
-        "actions";
-
-    align-content: center;
-    align-items: center;
-    gap: clamp(1.25rem, 3vw, 2rem);
-
-    box-sizing: border-box;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-
-    padding:
-        clamp(2.75rem, 6vw, 5.5rem)
-        max(1rem, calc((100vw - 70rem) / 2));
-
-    background: transparent;
-}
-
-/* Text und Cover liegen vor der Hintergrundatmosphäre */
+/* min-width: 0 erlaubt dem Textbereich, im Grid schmaler zu werden. */
 .page-absolutely .album-hero--paracosm .album-hero__content {
-    position: relative;
-    z-index: 1;
-    grid-area: content;
     min-width: 0;
 }
 
-.page-absolutely .album-hero--paracosm .album-hero__media {
-    position: relative;
-    z-index: 1;
-    grid-area: media;
-
-    display: block;
-    width: min(100%, 23rem);
-    justify-self: center;
-    align-self: center;
-}
-
-/* Das Originalcover bleibt klar und schwebt vor dem Hintergrund */
+/* Individueller kupferfarbener Lichtschein um das Albumcover */
 .page-absolutely .album-hero--paracosm .album-hero__media img {
-    width: 100%;
-    max-width: none;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    box-sizing: border-box;
-
     border: 1px solid rgb(255 240 229 / 25%);
-    border-radius: 1rem;
 
     box-shadow:
         0 30px 70px rgb(0 0 0 / 65%),
         0 0 70px rgb(239 156 88 / 14%);
 }
 
-/* Kleine redaktionelle Überschrift über dem Albumnamen */
-.page-absolutely .album-hero--paracosm .album-hero__eyebrow {
-    margin: 0 0 1.25rem;
-
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.17em;
-}
-
-/* Albumtitel */
+/* Für den einteiligen Titel Paracosm sind Größe und Zeilenhöhe abgestimmt. */
 .page-absolutely .album-hero--paracosm h1 {
     max-width: 12ch;
-    margin: 0;
-
     font-size: clamp(3rem, 15vw, 5rem);
     line-height: 0.92;
     letter-spacing: -0.045em;
-    text-wrap: balance;
 }
 
 
-/* Einleitung in die Fantasiewelt des Albums */
+/* Individuelle Textbreite und Schriftgröße der Einleitung */
 .page-absolutely .album-hero--paracosm .album-hero__lead {
     max-width: 34rem;
-    margin: 1.6rem 0 0;
-
-    color: var(--color-heading);
     font-size: clamp(1.06rem, 1.45vw, 1.24rem);
     line-height: 1.72;
 }
 
-/* Mobile: beide Hero-Buttons mittig unter dem Albumcover */
-.page-absolutely .album-hero--paracosm .album-hero__actions {
-    position: relative;
-    z-index: 1;
-    grid-area: actions;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.65rem;
-
-    width: min(100%, 23rem);
-    justify-self: center;
-    margin: 0;
-}
-
-.page-absolutely .album-hero--paracosm .album-hero__actions .button {
-    min-height: 46px;
-    box-sizing: border-box;
-    padding: 0.62rem 1.1rem;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-
-/* Albumfakten in einer eigenen ruhigen Kachel */
+/* Dunkle Aubergine-Faktenkarte mit kupferfarbenem Licht */
 .page-absolutely .album-overview {
-    position: relative;
-    z-index: 1;
-
-    box-sizing: border-box;
-    width: calc(100% - 2rem);
-    max-width: 48rem;
-
-    margin: 1.75rem auto 0;
-    padding: clamp(1.35rem, 3vw, 2rem);
-
     background:
         linear-gradient(
             145deg,
@@ -4046,23 +4400,8 @@ img {
         var(--color-surface);
 
     border: 1px solid rgb(255 240 229 / 20%);
-    border-radius: 1.5rem;
 
     box-shadow: 0 18px 42px rgb(0 0 0 / 17%);
-}
-
-.page-absolutely .album-overview h2 {
-    margin: 0;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-.page-absolutely .album-overview .album-facts {
-    margin: 1.5rem 0 0;
-}
-
-.page-absolutely .album-overview .save-action {
-    width: fit-content;
-    margin-top: 1.5rem;
 }
 
 
@@ -4091,44 +4430,9 @@ img {
 }
 
 
-/* Desktop: Text und Buttons links, Albumcover rechts */
+/* Ab 900px greift das gemeinsame zweispaltige Album-Hero-Layout. */
 @media (min-width: 900px) {
-    .page-absolutely .album-hero--paracosm {
-        grid-template-columns:
-            minmax(0, 1.18fr)
-            minmax(0, 0.82fr);
-
-        grid-template-areas:
-            "content media"
-            "actions media";
-
-        grid-template-rows: auto auto;
-        column-gap: clamp(2rem, 4vw, 5rem);
-        row-gap: 1.35rem;
-
-        min-height: min(78svh, 48rem);
-    }
-
-    /* Albumcover auf Desktop etwas größer */
-    .page-absolutely .album-hero--paracosm .album-hero__media {
-        width: min(100%, 28rem);
-    }
-
-    /* Buttons stehen direkt unter dem Einleitungstext */
-    .page-absolutely .album-hero--paracosm .album-hero__actions {
-        width: auto;
-        justify-self: start;
-        justify-content: flex-start;
-    }
-
-    /* Facts-Kachel linksbündig zur übrigen Seite */
-    .page-absolutely .album-overview {
-        width: min(calc(100% - 2rem), 48rem);
-        margin-left: max(1rem, calc((100vw - 70rem) / 2));
-        margin-right: auto;
-    }
-
-    /* Die Hintergrundatmosphäre läuft zum Ende des Heros aus */
+    /* Die Hintergrundebenen enden abhängig von der kleineren Viewport-Höhe. */
     .page-absolutely .absolutely-atmosphere::before,
     .page-absolutely .absolutely-atmosphere::after {
         height: calc(min(78svh, 48rem) + 11rem);
@@ -4140,177 +4444,52 @@ img {
     }
 }
 
+/* #endregion */
 
+/* #region 19 · ABSOLUTELY: EDITORIAL STORY */
 
-/* ========================================
-   MA2 - ABSOLUTELY EDITORIAL STORY
-   Copper Orange & Dark Aubergine
-   ======================================== */
+/* ============================================================
+   19 · ABSOLUTELY: EDITORIAL STORY
+   ============================================================ */
 
-/* Großzügiger Lesebereich wie bei RAYE */
-.page-absolutely .album-story {
-    box-sizing: border-box;
-    max-width: 70rem;
+/* Gemeinsame Story-Struktur, aber eigene Zitatlinie und Kartenfarben. */
 
-    padding: clamp(4rem, 7vw, 6rem) 1rem;
-    gap: clamp(2.5rem, 4vw, 4rem);
-    align-items: start;
-}
-
-/* Die Hauptgeschichte steht frei auf dem Seitenhintergrund */
-.page-absolutely .story-text {
-    padding: 0;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-}
-
-/* Kleine redaktionelle Kapitelmarkierungen */
-.page-absolutely .story-kicker {
-    display: inline-block;
-
-    color: var(--color-accent);
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-}
-
-/* Große Magazinüberschrift */
-.page-absolutely .story-text h2 {
-    margin: 0.75rem 0 2rem;
-
-    font-size: clamp(2.7rem, 4.5vw, 4.3rem);
-    letter-spacing: -0.035em;
-}
-
-/* Angenehme Textbreite und großzügiger Zeilenabstand */
-.page-absolutely .story-text > p {
-    max-width: 62ch;
-    margin: 0;
-
-    color: var(--color-text);
-    font-size: 1.05rem;
-    line-height: 1.85;
-}
-
-/* Der erste Absatz wirkt wie eine redaktionelle Einleitung */
-.page-absolutely .story-text > p:first-of-type {
-    color: var(--color-heading);
-    font-size: clamp(1.1rem, 1.25vw, 1.2rem);
-    line-height: 1.8;
-}
-
-/* Deutliche Trennung zwischen den einzelnen Absätzen */
-.page-absolutely .story-text > p + p {
-    margin-top: 1.65rem;
-}
-
-/* Album- und Songtitel in Absolutelys Kupferorange */
-.page-absolutely .album-story cite {
-    color: var(--color-accent);
-    font-style: italic;
-    font-weight: 500;
-}
-
-/* Großes, redaktionelles Zitat als Abschluss */
+/* Großes redaktionelles Zitat:
+   Kupferorange Trennlinie als Abschluss der Geschichte */
 .page-absolutely .story-text blockquote {
-    max-width: 36rem;
-
-    margin: 2.75rem 0 0;
-    padding: 1.75rem 0 0;
-
-    border-left: 0;
     border-top: 1px solid rgb(239 156 88 / 38%);
-}
-
-.page-absolutely .story-text blockquote p {
-    color: var(--color-accent);
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-    line-height: 1.4;
-}
-
-.page-absolutely .story-text blockquote footer {
-    margin-top: 1rem;
-
-    color: var(--color-text);
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
-}
-
-
-/* Why It Matters und The Sound als unterstützende Kapitel */
-.page-absolutely .story-details {
-    gap: 1.5rem;
-    align-content: start;
 }
 
 /* Dunkle Aubergine-Karten mit sanfter Rot-Violett-Atmosphäre */
 .page-absolutely .story-details > section {
-    padding: clamp(1.5rem, 2.3vw, 2rem);
-
-    background: linear-gradient(
-        145deg,
-        rgb(32 18 38 / 94%),
-        rgb(65 29 43 / 78%)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            rgb(32 18 38 / 94%),
+            rgb(65 29 43 / 78%)
+        );
 
     border: 1px solid rgb(255 240 229 / 17%);
-    border-radius: 1.25rem;
 
     box-shadow: 0 18px 40px rgb(0 0 0 / 17%);
 }
 
-/* Überschriften ohne den bisherigen dicken Seitenrahmen */
-.page-absolutely .story-details h3 {
-    margin: 0.75rem 0 1.35rem;
-    padding: 0;
 
-    border: 0;
-    font-size: clamp(1.6rem, 2vw, 2rem);
-}
+/* #endregion */
 
-/* Gut lesbare Texte in den beiden Karten */
-.page-absolutely .story-details > section > p {
-    max-width: 46ch;
+/* #region 20 · PARACOSM: TRACKLIST MIT 13 SONGS */
 
-    color: var(--color-text);
-    font-size: 0.98rem;
-    line-height: 1.8;
-}
+/* ============================================================
+   20 · PARACOSM: TRACKLIST MIT 13 SONGS
+   ============================================================ */
 
-.page-absolutely .story-details > section > p + p {
-    margin-top: 1.25rem;
-}
+/* Anders als bei RAYEs vier Jahreszeiten bildet Paracosm
+   eine einzige zusammenhängende Bühne für alle 13 Songs. */
 
-
-/* Desktop: Hauptgeschichte links, ergänzende Kapitel rechts */
-@media (min-width: 1000px) {
-    .page-absolutely .album-story {
-        grid-template-columns:
-            minmax(0, 1.55fr)
-            minmax(19rem, 1fr);
-
-        column-gap: clamp(2.5rem, 4vw, 4rem);
-    }
-}
-
-
-
-/* ========================================
-   MA2 - PARACOSM IMAGINARY WORLD TRACKLIST
-   One album, thirteen doors into the same world
-   ======================================== */
-
-/* Section heading aligned with Hero and Story */
+/* Individueller Abstand der Paracosm-Tracklist */
+/* Konzept: Paracosm verwendet dieselbe Tracklist-Basis, jedoch eine eigene Variante und eine durchgehende Songliste mit 13 Titeln; die Sterne bleiben ohne Track-Links dekorativ. */
 .page-absolutely .album-tracklist--paracosm {
-    box-sizing: border-box;
-    max-width: 70rem;
-    margin: 0 auto;
     padding: clamp(4rem, 7vw, 6rem) 1rem;
-    border-top: 1px solid var(--color-divider);
     scroll-margin-top: 2rem;
 }
 
@@ -4343,7 +4522,8 @@ img {
     opacity: 0.82;
 }
 
-/* A single cinematic stage, rather than four separate seasons */
+/* Das Grid ist zunächst einspaltig; die Farbverläufe
+   erzeugen eine gemeinsame, atmosphärische Bühne. */
 .page-absolutely .paracosm-tracklist__stage {
     position: relative;
     isolation: isolate;
@@ -4385,13 +4565,15 @@ img {
     border-radius: 1.65rem;
 
     box-shadow:
-        0 26px 55px rgb(0 0 0 / 22%),
+        0 26px 55px rgb(0 0 0 / 29%),
+        0 0 110px rgb(211 85 59 / 13%),
+        0 0 125px rgb(99 56 116 / 11%),
         inset 0 1px 0 rgb(255 240 229 / 10%);
 }
 
 
 
-/* Intro typography */
+/* Typografie der Kapitelmarkierung und des Einführungstextes */
 .page-absolutely .paracosm-tracklist__chapter {
     display: block;
     color: var(--color-accent);
@@ -4419,7 +4601,8 @@ img {
     line-height: 1.7;
 }
 
-/* The 13 tracks share one quiet, readable panel */
+/* Ein gemeinsames <ol> enthält alle Songs. Der eigene CSS-Counter
+   zählt sie von 01 bis 13, unabhängig von RAYEs Tracknummern. */
 .page-absolutely .paracosm-tracklist__stage ol {
     counter-reset: paracosm-track;
     min-width: 0;
@@ -4428,12 +4611,23 @@ img {
     margin: 0;
     padding: 0.5rem clamp(0.5rem, 1.5vw, 1.25rem);
 
-    background: rgb(18 12 25 / 64%);
+    background:
+    radial-gradient(
+        ellipse 85% 55% at 95% 5%,
+        rgb(117 51 88 / 12%),
+        transparent 76%
+    ),
+    linear-gradient(
+        130deg,
+        rgb(26 14 32 / 85%),
+        rgb(15 10 23 / 90%)
+    );
+
     border: 1px solid rgb(255 240 229 / 15%);
     border-radius: 1.2rem;
 }
 
-/* Individual song rows */
+/* Jede Songzeile besitzt vier Grid-Spalten: Nummer, Titel, Dauer, Stern. */
 .page-absolutely .paracosm-tracklist__stage li {
     counter-increment: paracosm-track;
 
@@ -4458,7 +4652,7 @@ img {
     border-bottom: 0;
 }
 
-/* Automatic numbering from 01 to 13 */
+/* Das ::before-Pseudoelement zeigt die zweistellige Songnummer. */
 .page-absolutely .paracosm-tracklist__stage li::before {
     content: counter(paracosm-track, decimal-leading-zero);
     grid-column: 1;
@@ -4469,7 +4663,7 @@ img {
     font-variant-numeric: tabular-nums;
 }
 
-/* Song titles */
+/* Songtitel werden als <cite> gesetzt und dürfen umbrechen. */
 .page-absolutely .paracosm-tracklist__stage li > cite {
     grid-column: 2;
     grid-row: 1;
@@ -4485,7 +4679,7 @@ img {
     transition: transform 0.25s ease, color 0.25s ease;
 }
 
-/* Track durations aligned to the right */
+/* Laufzeiten stehen rechts und behalten durch tabular-nums gleiche Ziffernbreiten. */
 .page-absolutely .paracosm-tracklist__stage .track-duration {
     position: static;
     grid-column: 3;
@@ -4501,7 +4695,8 @@ img {
     transition: color 0.25s ease, opacity 0.25s ease;
 }
 
-/* A star, not a navigation arrow: songs are not linked yet */
+/* Der Stern ist rein dekorativ und kein Navigationspfeil.
+   Die Songs besitzen aktuell keine Detailseiten-Links. */
 .page-absolutely .paracosm-tracklist__stage li::after {
     content: "\2726";
     grid-column: 4;
@@ -4517,7 +4712,8 @@ img {
 
 
 
-/* Subtle preview effect on mouse devices */
+/* Nur bei Geräten mit Maus/feinem Zeiger wird der Hover-Effekt gezeigt.
+   Die Songzeilen sind derzeit nicht anklickbar. */
 @media (hover: hover) and (pointer: fine) {
     .page-absolutely .paracosm-tracklist__stage li:hover {
         background-color: rgb(239 156 88 / 9%);
@@ -4545,7 +4741,7 @@ img {
 }
 
 
-/* Desktop: imaginary world introduction left, all songs right */
+/* Ab 900px: Einführung links, vollständige Songliste rechts. */
 @media (min-width: 900px) {
     .page-absolutely .paracosm-tracklist__stage {
         grid-template-columns:
@@ -4554,7 +4750,7 @@ img {
     }
 }
 
-/* Respect reduced-motion preferences */
+/* Bei reduzierter Bewegung entfallen Übergänge und Verschiebungen. */
 @media (prefers-reduced-motion: reduce) {
     .page-absolutely .paracosm-tracklist__stage li,
     .page-absolutely .paracosm-tracklist__stage li > cite,
@@ -4573,207 +4769,16 @@ img {
     }
 }
 
+/* #endregion */
 
+/* #region 21 · CONTACT: EDITORIAL LAYOUT UND FORMULAR */
 
-/*---------------------------------------------*/
-/* Coming Soon Pages - Cinematic Editorial Hero */
-/*---------------------------------------------*/
+/* ============================================================
+   21 · CONTACT: EDITORIAL LAYOUT UND FORMULAR
+   ============================================================ */
 
-/* Shared page theme */
-.page-coming-soon {
-    min-height: 100svh;
-    margin: 0;
-    padding: 0;
-    background-color: #120b15;
-}
-
-/* One continuous image background - Mobile First */
-.page-coming-soon .coming-page {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    width: 100%;
-    min-height: max(34rem, calc(100svh - 5rem));
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
-    background-color: #160914;
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgb(14 6 18 / 78%) 0%,
-            rgb(14 6 18 / 48%) 30%,
-            rgb(14 6 18 / 12%) 65%,
-            rgb(14 6 18 / 6%) 100%
-        ),
-        url("../images/coming-soon-turntable-mobile.png");
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center, center bottom;
-}
-
-/* Editorial content - no card */
-.page-coming-soon .coming-hero {
-    display: flex;
-    align-items: flex-start;
-
-    width: calc(100% - 2rem);
-    max-width: 96rem;
-    min-height: max(34rem, calc(100svh - 5rem));
-    box-sizing: border-box;
-
-    margin: 0 auto;
-    padding: 10rem 0 4rem;
-}
-
-/* Narrow gold line instead of a heavy background card */
-.page-coming-soon .coming-hero__content {
-    width: 100%;
-    max-width: 33rem;
-    min-width: 0;
-    margin: 0;
-    padding: 0 0 0 1.1rem;
-
-    background: transparent;
-    border: 0;
-    border-left: 1px solid rgb(221 182 111 / 60%);
-    border-radius: 0;
-    box-shadow: none;
-    backdrop-filter: none;
-
-    text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
-}
-
-/* Small editorial heading */
-.page-coming-soon .coming-hero__eyebrow {
-    margin: 0 0 1rem;
-
-    color: var(--color-accent);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-}
-
-/* Main heading */
-.page-coming-soon .coming-hero h1 {
-    margin: 0 0 1.2rem;
-
-    color: var(--color-heading);
-    font-size: clamp(2.45rem, 9.2vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    text-wrap: balance;
-}
-
-/* Introduction */
-.page-coming-soon .coming-hero__lead {
-    max-width: 31rem;
-    margin: 0 0 0.85rem;
-
-    color: var(--color-heading);
-    font-size: 1rem;
-    line-height: 1.55;
-}
-
-/* Supporting explanation */
-.page-coming-soon .coming-hero__text {
-    max-width: 31rem;
-    margin: 0;
-
-    color: var(--color-text);
-    font-size: 0.91rem;
-    line-height: 1.7;
-}
-
-/* Compact navigation buttons */
-.page-coming-soon .coming-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.65rem;
-
-    margin-top: 1.45rem;
-}
-
-.page-coming-soon .coming-hero__actions .button {
-    width: auto;
-    min-height: 44px;
-    box-sizing: border-box;
-    padding: 0.58rem 0.95rem;
-
-    font-size: 0.84rem;
-}
-
-/* Footer has its own background, without the photograph */
-.page-coming-soon .site-footer {
-    position: relative;
-    background-color: var(--color-bg);
-}
-
-
-/* ========================================
-   DESKTOP - WIDE CINEMATIC STAGE
-   ======================================== */
-
-@media (min-width: 48rem) {
-
-    /* A single full-bleed desktop image */
-    .page-coming-soon .coming-page {
-        background-image:
-            linear-gradient(
-                to right,
-                rgb(12 5 16 / 78%) 0%,
-                rgb(12 5 16 / 65%) 24%,
-                rgb(12 5 16 / 25%) 51%,
-                rgb(12 5 16 / 3%) 82%
-            ),
-            url("../images/coming-soon-turntable-desktop.png");
-
-        /* Show more of the upper scene and the lamp */
-        background-position: center, center top;
-    }
-
-    /* Wider layout places text further left */
-    .page-coming-soon .coming-hero {
-        align-items: center;
-
-        width: min(calc(100% - 3rem), 96rem);
-        padding: 3rem 0 4rem;
-    }
-
-    .page-coming-soon .coming-hero__content {
-        max-width: 34rem;
-        padding-left: 1.25rem;
-    }
-
-    .page-coming-soon .coming-hero h1 {
-        font-size: clamp(3.25rem, 4.75vw, 5rem);
-    }
-
-    .page-coming-soon .coming-hero__lead {
-        font-size: 1.14rem;
-    }
-
-    .page-coming-soon .coming-hero__text {
-        font-size: 0.98rem;
-    }
-}
-
-
-
-
-/*-------------------------------------*/
-/* Contact Page Design - Mobile First  */
-/*-------------------------------------*/
-
-/* ========================================
-   MA2 - CINEMATIC EDITORIAL CONTACT PAGE
-   Burgundy, Dark Plum & Warm Golden Light
-   ======================================== */
+/* Bordeaux, Pflaumenlila und warmes Gold bilden einen
+   durchgehenden Seitenhintergrund statt einzelner Deko-Karten. */
 
 /* Der Farbverlauf erstreckt sich über Header und Main */
 .page-contact {
@@ -4808,7 +4813,7 @@ img {
         );
 }
 
-/* Der Main-Bereich bleibt transparent */
+/* Der Main-Container legt keinen eigenen Hintergrund über den Verlauf. */
 .page-contact .contact-page {
     position: relative;
     overflow: hidden;
@@ -4820,11 +4825,9 @@ img {
 }
 
 
-/* ========================================
-   CONTACT - EDITORIAL LAYOUT
-   ======================================== */
+/* CONTACT: Gemeinsame Inhaltsbreite und mobiles Einspalten-Grid */
 
-/* Gleiche maximale Inhaltsbreite wie auf der Homepage */
+/* var(--layout-content) hält die Breite im Designsystem konsistent. */
 .page-contact .contact-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -4834,7 +4837,7 @@ img {
 
     box-sizing: border-box;
     width: 100%;
-    max-width: 70rem;
+    max-width: var(--layout-content);
     min-height: 68vh;
 
     margin: 0 auto;
@@ -4845,9 +4848,7 @@ img {
 }
 
 
-/* ========================================
-   CONTACT - EDITORIAL INTRODUCTION
-   ======================================== */
+/* CONTACT: Einleitung und typografische Kapitelmarkierung */
 
 /* Die linke Textspalte bleibt ohne eigene Hintergrundkarte */
 .page-contact .contact-intro {
@@ -4913,11 +4914,10 @@ img {
 }
 
 
-/* ========================================
-   CONTACT - FORM CARD
-   ======================================== */
+/* CONTACT: Dunkle Formularfläche und Grid-Struktur */
 
 /* Hochwertige dunkle Formularkarte */
+/* Konzept: Das Formular verwendet Grid für Eingabefelder. CSS regelt nur Darstellung und Fokus; Datenversand entsteht durch HTML method=post und benötigt für Verarbeitung einen Server. */
 .page-contact .contact-form-section {
     min-width: 0;
     box-sizing: border-box;
@@ -4934,7 +4934,7 @@ img {
         rgb(29 23 29 / 93%);
 
     border: 1px solid rgb(243 232 218 / 20%);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-panel);
 
     box-shadow: 0 26px 55px rgb(0 0 0 / 28%);
 }
@@ -4961,9 +4961,7 @@ img {
 }
 
 
-/* ========================================
-   CONTACT - FORM FIELDS
-   ======================================== */
+/* CONTACT: Beschriftungen, Eingaben und sichtbarer Tastaturfokus */
 
 /* Label steht jeweils oberhalb des Eingabefeldes */
 .page-contact .form-field {
@@ -4993,6 +4991,7 @@ img {
     border-radius: 0.8rem;
 
     color: var(--color-heading);
+    /* CSS-Eigenschaften – erstmals hier: font = Kurzform für Schriftattribute; inherit übernimmt den Schriftstil des Elternteils. */
     font: inherit;
 
     transition:
@@ -5000,7 +4999,7 @@ img {
         background-color 0.25s ease;
 }
 
-/* Sichtbarer Tastaturfokus passend zum goldenen Akzent */
+/* :focus-visible kennzeichnet das aktuell per Tastatur fokussierte Feld. */
 .page-contact .contact-form :is(
     input,
     select,
@@ -5021,13 +5020,14 @@ img {
 /* Nachricht darf nur vertikal vergrößert werden */
 .page-contact .contact-form textarea {
     min-height: 9rem;
+    /* CSS-Eigenschaften – erstmals hier: resize = erlaubt z. B. das vertikale Vergrößern eines Textfelds. */
     resize: vertical;
 }
 
 
-/* ========================================
-   CONTACT - DEMO BUTTON & DISCLAIMER
-   ======================================== */
+/* CONTACT: Aktiver Submit-Button und Hinweis zur Demo-Verarbeitung.
+   Das HTML-Formular verwendet method="post", die statische Version
+   besitzt aber noch keine serverseitige Speicherung. */
 
 /* Kompakter Button wie bei den Albumdetailseiten */
 .page-contact .contact-form .button {
@@ -5038,12 +5038,6 @@ img {
     padding: 0.7rem 1.5rem;
 
     font-size: 0.9rem;
-}
-
-/* Deaktivierter Button signalisiert die Demo-Funktion */
-.page-contact .contact-form .button:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
 }
 
 /* Transparenter Hinweis unter dem Formular */
@@ -5059,9 +5053,7 @@ img {
 }
 
 
-/* ========================================
-   CONTACT - RESPONSIVE LAYOUT
-   ======================================== */
+/* CONTACT: Mehrspaltiges Formular ab 640px und zweispaltige Seite ab 1000px */
 
 /* Tablet: Name und E-Mail in zwei Spalten */
 @media (min-width: 640px) {
@@ -5070,6 +5062,7 @@ img {
     }
 
     /* Themenauswahl, Textarea und Button bleiben breit */
+    /* Selektor/Technik: :nth-child() wählt anhand der Position innerhalb der Geschwisterliste. */
     .page-contact .contact-form > .form-field:nth-child(n + 3),
     .page-contact .contact-form > .button {
         grid-column: 1 / -1;
@@ -5098,256 +5091,384 @@ img {
     }
 }
 
+/* #endregion */
+
+/* #region 22 · COMING SOON: CINEMATIC EDITORIAL HERO */
+
+/* ============================================================
+   22 · COMING SOON: CINEMATIC EDITORIAL HERO
+   ============================================================ */
+
+/* Gemeinsame Grundfarbe für alle Coming-Soon-Seiten. */
+.page-coming-soon {
+    min-height: 100svh;
+    margin: 0;
+    padding: 0;
+    background-color: #120b15;
+}
+
+/* Mobile First: Ein großflächiges Plattenspielerbild mit dunklem
+   Verlauf. Das mobile Hintergrundbild zeigt die pausierte Szene. */
+.page-coming-soon .coming-page {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: max(34rem, calc(100svh - 5rem));
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    background-color: #160914;
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgb(14 6 18 / 78%) 0%,
+            rgb(14 6 18 / 48%) 30%,
+            rgb(14 6 18 / 12%) 65%,
+            rgb(14 6 18 / 6%) 100%
+        ),
+        url("../images/coming-soon-turntable-mobile.png");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center, center bottom;
+}
+
+/* Der Text steht direkt über der Szene, ohne separate Hintergrundkarte. */
+/* Konzept: Coming Soon nutzt ein großflächiges Hintergrundbild statt einer einzelnen Karte; bei größeren Bildschirmen wechselt die Bildkomposition über einen Breakpoint. */
+.page-coming-soon .coming-hero {
+    display: flex;
+    align-items: flex-start;
+
+    width: calc(100% - 2rem);
+    max-width: 96rem;
+    min-height: max(34rem, calc(100svh - 5rem));
+    box-sizing: border-box;
+
+    margin: 0 auto;
+    padding: 5rem 0 4rem;
+}
+
+/* Die feine goldene Linie ersetzt die frühere schwere Card-Gestaltung. */
+.page-coming-soon .coming-hero__content {
+    width: 100%;
+    max-width: 33rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+
+    background: transparent;
+    border: 0;
+    border-left: 1px solid rgb(221 182 111 / 60%);
+    border-radius: 0;
+    box-shadow: none;
+    /* CSS-Eigenschaften – erstmals hier:
+       backdrop-filter = Filter auf Inhalte hinter einem Element; none deaktiviert ihn.
+       text-shadow = Schatten der Schrift, hier zur besseren Lesbarkeit vor Fotos. */
+    backdrop-filter: none;
+
+    text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
+}
+
+/* Kleine redaktionelle Kapitelmarkierung. */
+.page-coming-soon .coming-hero__eyebrow {
+    margin: 0 0 1rem;
+
+    color: var(--color-accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+/* Große, responsiv skalierte Hauptüberschrift. */
+.page-coming-soon .coming-hero h1 {
+    margin: 0 0 1.2rem;
+
+    color: var(--color-heading);
+    font-size: clamp(2.45rem, 9.2vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+}
+
+/* Einleitungstext mit begrenzter Zeilenbreite. */
+.page-coming-soon .coming-hero__lead {
+    max-width: 31rem;
+    margin: 0 0 0.85rem;
+
+    color: var(--color-heading);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+/* Zusätzlicher Erklärungstext mit ruhiger Typografie. */
+.page-coming-soon .coming-hero__text {
+    max-width: 31rem;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: 0.91rem;
+    line-height: 1.7;
+}
+
+/* Die Buttons dürfen auf schmalen Geräten umbrechen. */
+.page-coming-soon .coming-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+
+    margin-top: 1.45rem;
+}
+
+.page-coming-soon .coming-hero__actions .button {
+    width: auto;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 0.58rem 0.95rem;
+
+    font-size: 0.84rem;
+}
+
+/* Der Footer verwendet wieder eine einfarbige Fläche ohne Fotografie. */
+.page-coming-soon .site-footer {
+    position: relative;
+    background-color: var(--color-bg);
+}
 
 
-/* Desktop Navigation */
-@media (min-width: 768px) {
-    /*------------------*/
-    /* Homepage Design */
-    /*-----------------*/
+/* Ab 48rem: eigenes Desktopmotiv und linksbündige Editorial-Bühne. */
 
-    /* Header */
-    .site-brand {
-        flex: 1;
-    }
+@media (min-width: 48rem) {
 
-    .site-nav {
-        display: flex;
-    }
-
-    .nav-list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.25rem;
-
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-list a {
-        color: var(--color-text);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-
-    .header-actions {
-        flex: 1;
-        margin-left: 0;
-        justify-content: flex-end;
-    }
-
-    .collection-label {
-        display: inline;
-    }
-
-    .mobile-menu {
-        display: none;
-    }
-
-    
-    /* Homepage Hero - Desktop */
-    .home-hero {
-        min-height: 89svh;
-        padding: 7rem 0 8rem;
-    }
-
-
-    /* Full-height desktop collage */
-    .home-hero__image {
-        top: -6%;
-        bottom: -6%;
-        height: auto;
-    }
-
-    /* Absolutely - atmospheric left layer */
-    .home-hero__image--absolutely {
-        left: 34%;
-        width: 38%;
-        background-position: 50% 23%;
-        --photo-opacity: 0.95;
-    }
-
-    /* RAYE - central focal point */
-    .home-hero__image--raye {
-        left: 50%;
-        width: 40%;
-        background-position: 50% 22%;
-        --photo-opacity: 1;
-    }
-
-    /* Amma - softer right layer */
-    .home-hero__image--amma {
-        left: 72%;
-        width: 28%;
-        background-position: 50% 20%;
-        --photo-opacity: 0.95;
-    }
-
-
-    /* Dark gradient for readable typography */
-    .home-hero__shade {   
-        background:
+    /* Das Desktop-Bild füllt die Bühne; ein seitlicher Verlauf schützt den Text. */
+    .page-coming-soon .coming-page {
+        background-image:
             linear-gradient(
-                90deg,
-                rgb(11 9 13 / 98%) 0%,
-                rgb(11 9 13 / 88%) 30%,
-                rgb(11 9 13 / 62%) 44%,
-                rgb(11 9 13 / 25%) 65%,
-                rgb(11 9 13 / 12%) 100%
+                to right,
+                rgb(12 5 16 / 78%) 0%,
+                rgb(12 5 16 / 65%) 24%,
+                rgb(12 5 16 / 25%) 51%,
+                rgb(12 5 16 / 3%) 82%
             ),
-            linear-gradient(
-                to bottom,
-                var(--color-bg) 0%,
-                transparent 16%,
-                transparent 72%,
-                var(--color-bg) 100%
-            );
+            url("../images/coming-soon-turntable-desktop.png");
+
+        /* background-position: center top lässt mehr von der Lampe erkennen. */
+        background-position: center, center top;
     }
 
-    /* Keep the editorial text on the left */
-    .home-hero h1 {
-        max-width: 40rem;
+    /* Mehr Platz für den linken Textbereich auf breiten Bildschirmen. */
+    .page-coming-soon .coming-hero {
+        align-items: center;
+
+        width: min(calc(100% - 3rem), 96rem);
+        padding: 3rem 0 4rem;
     }
 
-    .home-hero .hero-description {
-        max-width: 35rem;
+    .page-coming-soon .coming-hero__content {
+        max-width: 34rem;
+        padding-left: 1.25rem;
+    }
+
+    .page-coming-soon .coming-hero h1 {
+        font-size: clamp(3.25rem, 4.75vw, 5rem);
+    }
+
+    .page-coming-soon .coming-hero__lead {
+        font-size: 1.14rem;
+    }
+
+    .page-coming-soon .coming-hero__text {
+        font-size: 0.98rem;
+    }
+}
+
+
+/* #endregion */
+
+/* #region 23 · EXTRA-BREITE DESKTOP-LAYOUTS AB 1280PX */
+
+/* ============================================================
+   23 · EXTRA-BREITE DESKTOP-LAYOUTS AB 1280PX
+   ============================================================ */
+
+/* Diese Regeln stehen absichtlich am Dateiende: Sie überschreiben
+   die engeren Komponentenlayouts nur auf großen Bildschirmen. */
+
+@media (min-width: 1280px) {
+    /* --album-stage-inset berechnet den gleichen linken/rechten
+   Innenabstand für RAYE und Absolutely, passend zur großen Bühne. */
+    :is(.page-raye, .page-absolutely) {
+        /* CSS-Variable (erste Definition): --album-stage-inset = gemeinsamer seitlicher Abstand von Hero und Editorial-Inhalten auf Desktop */
+        --album-stage-inset: max(
+            calc(1rem + var(--layout-gutter)),
+            calc((100vw - var(--layout-stage)) / 2 + var(--layout-gutter))
+        );
+    }
+
+    /* Gemeinsame breite Ausstellungsfläche */
+    .page-home .site-header,
+    .page-home .home-hero__copy,
+    .page-home .artists-section,
+    .page-home .explore-section__inner,
+    .page-home .records-section,
+    .page-home .footer-inner {
+        box-sizing: border-box;
+        max-width: var(--layout-stage);
+    }
+
+    /* Gleiche Innenabstände für alle Homepage-Kapitel */
+    .page-home .home-hero__copy,
+    .page-home .artists-section,
+    .page-home .explore-section__inner,
+    .page-home .records-section,
+    .page-home .footer-inner {
+        width: calc(100% - 2rem);
+        padding-inline: var(--layout-gutter);
+    }
+
+    /* Navigation an der breiteren Bühne ausrichten */
+    .page-home .site-header {
+        padding-inline: var(--layout-gutter);
+    }
+
+    /* Hintergrund bleibt über die gesamte Bildschirmbreite */
+    .page-home .explore-section {
+        padding-inline: 0;
+    }
+
+    /* Größere redaktionelle Kapitelüberschriften */
+    .page-home .artists-section > h2,
+    .page-home .explore-section h2,
+    .page-home .records-section > h2 {
+        font-size: clamp(2.75rem, 3.6vw, 4rem);
     }
 
 
-    .hero-description {
-        font-size: 1.125rem;
+    /* Gemeinsame Erweiterung der Album-Heroes auf großen Desktops */
+
+    /* Navigation und Zurück-Link an der breiten Bühne ausrichten */
+    :is(.page-raye, .page-absolutely) .site-header,
+    :is(.page-raye, .page-absolutely) .album-back {
+        box-sizing: border-box;
+        width: calc(100% - 2rem);
+        max-width: var(--layout-stage);
+        padding-inline: var(--layout-gutter);
     }
 
-    /* Artists-Section */
-    .artist-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .page-raye .album-hero--hope,
+    .page-absolutely .album-hero--paracosm {
+        padding-inline: var(--album-stage-inset);
+    }
+
+    .page-raye .album-overview,
+    .page-absolutely .album-overview {
+        margin-left: var(--album-stage-inset);
+    }
+
+    /* Albumcover erhalten etwas mehr visuelle Präsenz */
+    .page-raye .album-hero--hope .album-hero__media,
+    .page-absolutely .album-hero--paracosm .album-hero__media {
+        width: min(100%, 30rem);
+    }
+
+
+    /* Gemeinsame Inhaltsachse für Story und Tracklist */
+
+    /* Große redaktionelle und musikalische Kapitel */
+    :is(.page-raye, .page-absolutely) .album-story,
+    .page-raye .album-tracklist,
+    .page-absolutely .album-tracklist--paracosm {
+        box-sizing: border-box;
+
+        width: 100%;
+        max-width: none;
+
+        margin-inline: 0;
+        padding-inline: var(--album-stage-inset);
+    }
+
+    /* Mehr Raum zwischen Hauptgeschichte und Zusatzkapiteln */
+    :is(.page-raye, .page-absolutely) .album-story {
+        grid-template-columns:
+            minmax(0, 1.45fr)
+            minmax(24rem, 1fr);
+
+        column-gap: clamp(4rem, 7vw, 7rem);
+        align-items: start;
     }
 
     
-    /* How to Explore - Desktop */
-    .steps-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 2rem;
-        row-gap: 1.25rem;
+    /* Keep Going, Timeline und Quellen erhalten symmetrische Ränder */
+
+    /* Keep Going und Timeline nutzen die breite Editorial-Bühne */
+    :is(.page-raye, .page-absolutely) .keep-going,
+    :is(.page-raye, .page-absolutely) .timeline-neighbors {
+        box-sizing: border-box;
+
+        width: calc(
+            100% -
+            var(--album-stage-inset) -
+            var(--album-stage-inset)
+        );
+
+        max-width: none;
+
+        /* Gleicher Abstand links und rechts */
+        margin-left: var(--album-stage-inset);
+        margin-right: var(--album-stage-inset);
+
+        padding-inline: 0;
     }
 
-    .step-card {
-        display: block;
-        padding: 0 0 0 1.25rem;
-    }
+    /* Quellenbereich ebenfalls auf beiden Seiten ausbalancieren */
+    :is(.page-raye, .page-absolutely) .album-sources {
+        box-sizing: border-box;
 
-    .step-number {
-        font-size: 3rem;
-        margin-bottom: 1.1rem;
-    }
+        width: calc(
+            100% -
+            var(--album-stage-inset) -
+            var(--album-stage-inset)
+        );
 
-    .step-card h3 {
-        margin-bottom: 0.75rem;
-    }
+        max-width: none;
 
-
-    /* Explore the Records-Section */
-    .record-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-flow: row;
-        grid-auto-columns: auto;
-
-        overflow: visible;
-        scroll-snap-type: none;
-
-        margin: 0;
-        padding: 0;
-    }
-
-
-    .record-group + .record-group {
-        margin-top: 5rem;
-    }
-
-    /* Footer-Section */
-    .footer-inner {
-        flex-direction: row; /* bringt Logo und Navigation nebeneinander */
-        justify-content: space-between; /* Verteilung von beiden Bereichen über verfügbare Breite */
-        align-items: flex-start;
-        gap: 3rem;
-    }
-
-    .footer-about {
-        flex: 1; /* damit nimmt linker Bereich übrigen Platz von Breite ein, während Navigation aber feste Breite beibehält */
-        min-width: 0;
-    }
-
-    .footer-nav {
-        width: 17rem;
-        margin-top: 3rem;
-    }
-
-    /*-------------------------------*/
-    /* RAYE album detail page Design */
-    /*-------------------------------*/
-    .season {
-        padding: 2rem 2.5rem;
-    }
-
-    .season h3 {
-        font-size: 2rem;
-    }
-
-    .keep-going {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .timeline-neighbors {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .timeline-neighbors > article:last-of-type {
-        text-align: right;
+        margin-left: var(--album-stage-inset);
+        margin-right: var(--album-stage-inset);
     }
 }
 
+/* Zwischen 1280 und 1599px bleiben die Carousel-Pfeile innerhalb
+   der verfügbaren Bühne und überlagern keine abgeschnittenen Ränder. */
+/* Media Query: Sonderfall: zwischen 1280 und 1599px brauchen die Carousel-Pfeile einen engeren Versatz als auf sehr breiten Desktops. */
+@media (min-width: 1280px) and (max-width: 1599px) {
 
-
-@media (min-width: 1100px) {
-    /*------------------*/
-    /* Homepage Design */
-    /*-----------------*/
-    .artist-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .page-home .artist-carousel__stage {
+        padding-inline: 3.75rem;
     }
 
-    .steps-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        column-gap: 1.75rem;
-        row-gap: 0;
+    .page-home .artist-carousel__arrow--prev {
+        left: 0;
     }
 
-    .record-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    /*-------------------------------*/
-    /* RAYE album detail page Design */
-    /*-------------------------------*/
-    .album-hero {
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); /* zweispaltiges Raster, das den Platz im flexiblen Verhältnis von 45% zu 55% aufteilt */
-        align-items: center;
-        gap: 3rem;
-    }
-
-    .album-story {
-        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-        align-items: start;
-        gap: 1.5rem;
+    .page-home .artist-carousel__arrow--next {
+        right: 0;
     }
 }
 
+/* #endregion */
 
+/* #region 24 · BARRIEREFREIHEIT: REDUZIERTE BEWEGUNG */
 
-/* Accessibility: reduced motion */
+/* ============================================================
+   24 · BARRIEREFREIHEIT: REDUZIERTE BEWEGUNG
+   ============================================================ */
+
+/* Die Nutzerpräferenz prefers-reduced-motion vermeidet starke
+   Bewegungen; die Inhalte bleiben ohne Einblendanimation sichtbar. */
 @media (prefers-reduced-motion: reduce) {
     .home-hero__image,
     .home-hero__copy {
@@ -5368,7 +5489,7 @@ img {
     }
 
 
-    /* Prevent movement of artist cards */
+    /* Künstlerinnenkarten und Porträts werden nicht mehr verschoben. */
     .artist-card:hover,
     .artist-card:focus-within,
     .artist-card:hover .artist-card__image,
@@ -5382,7 +5503,7 @@ img {
     }
 
 
-    /* No cover movement when reduced motion is preferred */
+    /* Albumcover, Overlays und Filter erhalten keine Übergangsanimationen. */
     .record-card--featured .record-cover,
     .record-card--featured .record-card__overlay {
         transition: none;
@@ -5426,7 +5547,7 @@ img {
     }
 
 
-    /* No zoom animation for featured album image frames */
+    /* Die Vergrößerung hervorgehobener Cover entfällt. */
     .record-card--featured .record-card__media {
         transition: none;
     }
@@ -5436,3 +5557,5 @@ img {
         transform: none;
     }
 }
+
+/* #endregion */

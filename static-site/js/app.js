@@ -1,27 +1,41 @@
 
-// Kategoriebegriffe aus index.html gezielt suchen für JavaScript
+// #region 01 · RECORDS-FILTER: HTML-ELEMENTE FINDEN
+// querySelectorAll liefert alle passenden Elemente als NodeList.
+// Die CSS-Klassen und data-Attribute stammen aus index.html.
 const filterButtons = document.querySelectorAll(".filter-chip");
 
-const recordGroups = document.querySelectorAll(".record-group[data-category]"); // mit data-category, da ja nach best. Künstlerinnen filtern möchte
+// [data-category] wählt nur Albumgruppen, denen eine Kategorie zugewiesen ist.
+const recordGroups = document.querySelectorAll(".record-group[data-category]");
 
-// Welcher Button wurde angeklickt
+// #endregion
+
+// #region 02 · RECORDS-FILTER: KLICK UND SICHTBARKEIT
+// forEach geht alle Filterbuttons durch; addEventListener reagiert erst beim Klick.
 filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        const selectedCategory = button.dataset.filter; // damit dann in Konsole (Entwicklertools) Künstlername, je nachdem welcher angeklickt wurde (HTML-Attribut data-filter auslesen aus index.html)
+        // dataset.filter liest den Wert aus data-filter, ohne etwas in der Konsole auszugeben.
+        const selectedCategory = button.dataset.filter;
     
         recordGroups.forEach((group) => {
+            // Jede Albumgruppe besitzt data-category (raye, amma oder absolutely).
             const category = group.dataset.category;
 
             const shouldShow = 
-            selectedCategory === "all" || category === selectedCategory; // mit || Albumgruppe soll sichtbar sein, wenn "All" ausgewählt wurde ODER ihre Kategorie zum ausgewählten Filter passt (jew. Künstlergruppe anzeigen)
+            selectedCategory === "all" || category === selectedCategory; // || heißt ODER: Alle oder die passende Künstlerin anzeigen.
 
-            group.hidden = !shouldShow; // ! kehrt booleschen Wert um --> shouldShow = true (Bedingung) --> hidden ist false --> Albumgruppe bleibt sichtbar
+            // ! kehrt den Boolean um: Eine passende Gruppe erhält hidden=false.
+            group.hidden = !shouldShow;
         });
 
-        filterButtons.forEach((filterButton) => { // jeden Filterbutton einzeln durchgehen
-            const isActive = filterButton === button; // Vergleichen --> verweist ursprünglich angeklickter Button aus äußerem Event-Listener auf dasselbe HTML-Element wie filterButton, der gerade untersucht wird?
+        // Danach den gewählten Zustand aller Filterbuttons für CSS und Screenreader aktualisieren.
+        filterButtons.forEach((filterButton) => {
+            // === vergleicht hier, ob beide Variablen dasselbe Button-Element referenzieren.
+            const isActive = filterButton === button;
 
-            filterButton.setAttribute("aria-pressed", String(isActive)); // mit setAttribute() HTML-Attribut aktualisieren --> boolescher Wert wird in "true" oder "false" umgewandelt --> CSS-Regel anwenden 
+            // aria-pressed kennzeichnet den aktiven Filter; String erzeugt "true" oder "false".
+            filterButton.setAttribute("aria-pressed", String(isActive));
         })
     });
 });
+
+// #endregion

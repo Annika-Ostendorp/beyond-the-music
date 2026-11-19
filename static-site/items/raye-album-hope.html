@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body class="page-raye">
+    <!-- Der äußere Atmosphären-Container umfasst Header und Hauptinhalt.
+         CSS erzeugt darin das unscharfe Cover und den farbigen Lichtverlauf. -->
     <div class="raye-atmosphere">
+      <!-- #region 01 · RAYE: HEADER UND NAVIGATION -->
+      <!-- Gleicher semantischer Header wie auf der Homepage; Links nutzen ../ wegen des Unterordners items/. -->
       <header class="site-header">
         <a class="site-brand" href="../index.html">
           Beyond <em>the</em> Music
@@ -54,13 +58,16 @@
         </div>
       </header>
 
+      <!-- #endregion -->
       <main>
+        <!-- #region 02 · RAYE: HERO UND ALBUMFAKTEN -->
+        <!-- Hero und Faktenkasten sind getrennte Sections, teilen sich aber die atmosphärische Bühne. -->
         <section class="raye-hero">
           <div class="album-back">
             <a href="../raye.html" class="text-link">← Back to RAYE's story</a>
           </div>
 
-          <!-- RAYE - Cinematic album hero -->
+          <!-- Gemeinsames Grid: Text, Cover und Links werden über grid-template-areas responsiv angeordnet. -->
           <section
             class="album-hero album-hero--hope"
             aria-labelledby="hope-title"
@@ -102,7 +109,7 @@
             </div>
           </section>
 
-          <!-- Supporting album information -->
+          <!-- aria-labelledby verbindet die Fakten-Section mit ihrer h2-Überschrift. -->
           <section
             class="album-overview"
             aria-labelledby="album-overview-title"
@@ -111,9 +118,9 @@
 
             <dl class="album-facts">
               <div class="album-fact">
-                <!-- bezeichnet jew. Fakt -->
+                <!-- <dt> benennt einen Fakt innerhalb der Beschreibungsliste <dl>. -->
                 <dt>Artist</dt>
-                <!-- enthält zugehörigen Wert -->
+                <!-- <dd> enthält den zugehörigen Wert; weitere dt/dd-Paare folgen demselben Prinzip. -->
                 <dd>RAYE</dd>
               </div>
 
@@ -151,6 +158,8 @@
               </div>
             </dl>
 
+            <!-- Der Speicherbutton ist mit disabled bewusst nicht bedienbar;
+                 eine Speichersystem-Funktion existiert in der statischen Version noch nicht. -->
             <div class="save-action">
               <button type="button" class="button button--primary" disabled>
                 Save this record
@@ -159,6 +168,9 @@
           </section>
         </section>
 
+        <!-- #endregion -->
+        <!-- #region 03 · RAYE: EDITORIAL STORY -->
+        <!-- Die Geschichte und der ergänzende <aside> bilden das zweispaltige Editorial-Layout. -->
         <section class="album-story" aria-labelledby="raye-story-title">
           <div class="story-text">
             <span class="story-kicker" aria-hidden="true">
@@ -214,7 +226,7 @@
             </blockquote>
           </div>
 
-          <!-- Enthält ergänzende Infos für die Seite -> später für Grid -->
+          <!-- <aside> enthält ergänzende Kapitel zu Bedeutung und Klang des Albums. -->
           <aside
             class="story-details"
             aria-label="Further insights about the album"
@@ -278,6 +290,9 @@
           </aside>
         </section>
 
+        <!-- #endregion -->
+        <!-- #region 04 · RAYE: FOUR SEASONS / TRACKLIST -->
+        <!-- Vier Jahreszeiten enthalten eigene <ol>-Listen; start= setzt deren semantische Startnummer. -->
         <section
           class="album-tracklist"
           id="seasons"
@@ -298,6 +313,8 @@
             Hover over each track to begin exploring its story.
           </p>
 
+          <!-- CSS zählt die Tracks über alle Kapitel zusätzlich mit einem eigenen Counter;
+               die Sternsymbole und Hover-Effekte sind momentan dekorativ, keine Links. -->
           <section
             class="season autumn"
             id="autumn"
@@ -450,6 +467,9 @@
           </section>
         </section>
 
+        <!-- #endregion -->
+        <!-- #region 05 · RAYE: KEEP GOING -->
+        <!-- Zwei echte Links führen zu den anderen Künstlerinnen; die Vorschau nutzt gemeinsame CSS-Klassen. -->
         <section class="keep-going" aria-labelledby="keep-going-title">
           <h2 id="keep-going-title">Keep Going</h2>
 
@@ -495,6 +515,9 @@
           </article>
         </section>
 
+        <!-- #endregion -->
+        <!-- #region 06 · RAYE: QUELLEN -->
+        <!-- <details> und <summary> bilden einen ohne JavaScript aufklappbaren Quellenbereich. -->
         <details class="album-sources">
           <summary>Sources for this page</summary>
 
@@ -541,7 +564,10 @@
           </ul>
         </details>
 
-        <!-- RAYE - Musical journey timeline -->
+        <!-- #endregion -->
+        <!-- #region 07 · RAYE: MUSIKALISCHE TIMELINE -->
+        <!-- Die Ereigniskarten liegen in .timeline-neighbors__path; <time datetime> liefert maschinenlesbare Jahresangaben. -->
+        <!-- Zwei redaktionelle Stationen vor und nach dem Album. -->
         <section
           class="timeline-neighbors"
           aria-labelledby="raye-journey-title"
@@ -579,9 +605,12 @@
             </article>
           </div>
         </section>
+      <!-- #endregion -->
       </main>
     </div>
 
+    <!-- #region 08 · RAYE: FOOTER -->
+    <!-- Wiederverwendeter Footer mit den gleichen Zielen wie auf der Homepage. -->
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-about">
@@ -610,5 +639,6 @@
         </nav>
       </div>
     </footer>
+  <!-- #endregion -->
   </body>
 </html>

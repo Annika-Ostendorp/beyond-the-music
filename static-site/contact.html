@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="page-contact">
+    <!-- #region 01 · CONTACT: HEADER -->
+    <!-- Wiederverwendete Navigation, Desktoplinks und aufklappbares Mobile-Menü. -->
     <header class="site-header">
       <a class="site-brand" href="index.html"> Beyond <em>the</em> Music </a>
 
@@ -51,6 +53,9 @@
       </div>
     </header>
 
+    <!-- #endregion -->
+    <!-- #region 02 · CONTACT: EINFÜHRUNG UND FORMULAR -->
+    <!-- Das Responsive Grid ordnet Einführung und Formularkarte je nach Bildschirmbreite an. -->
     <main class="contact-page">
       <div class="contact-layout">
         <section class="contact-intro" aria-labelledby="contact-title">
@@ -69,12 +74,17 @@
         >
           <h2 id="contact-form-title">Write Your Note</h2>
 
+          <!-- <form method="post"> sendet beim Absenden einen HTTP-POST an die aktuelle Seite,
+               sofern kein action angegeben ist. Ohne Backend speichert die Demo keine Daten.
+               aria-describedby verweist auf den Hinweis unterhalb des Formulars. -->
           <form
             class="contact-form"
             aria-describedby="contact-disclaimer"
             method="post"
           >
             <div class="form-field">
+              <!-- for verbindet das <label> mit der id des Eingabefeldes;
+                   name benennt das Feld in den Formulardaten, required verlangt einen Wert. -->
               <label for="contact-name">Your name</label>
               <input
                 type="text"
@@ -86,6 +96,8 @@
             </div>
 
             <div class="form-field">
+              <!-- type="email" ergänzt die eingebaute Prüfung der E-Mail-Syntax;
+                   Browservalidierung ersetzt keine serverseitige Validierung. -->
               <label for="contact-email">Your email</label>
 
               <input
@@ -112,7 +124,7 @@
 
             <div class="form-field">
               <label for="contact-message">Your note</label>
-              <!-- rows="6" -> gibt an, wie viele Textzeilen Eingabefeld standardmäßig hoch ist -->
+              <!-- rows="6" gibt die ungefähre sichtbare Höhe in Textzeilen an; CSS kann die Höhe ergänzend gestalten. -->
               <textarea
                 id="contact-message"
                 name="message"
@@ -122,6 +134,7 @@
               ></textarea>
             </div>
 
+            <!-- type="submit" löst die Formularübermittlung aus; der Button ist nicht disabled. -->
             <button class="button button--primary" type="submit">
               Send note (demo only)
             </button>
@@ -135,6 +148,9 @@
       </div>
     </main>
 
+    <!-- #endregion -->
+    <!-- #region 03 · CONTACT: FOOTER -->
+    <!-- Gemeinsamer Footer mit dem Hinweis, dass Nachrichten noch nicht verarbeitet werden. -->
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-about">
@@ -163,5 +179,6 @@
         </nav>
       </div>
     </footer>
+  <!-- #endregion -->
   </body>
 </html>
